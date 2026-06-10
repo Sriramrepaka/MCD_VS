@@ -1,1 +1,1 @@
-# MCD group for Vishnu Mula and Sriram Repaka
+# MCD group for Mula Sunkari and Sriram Repaka
