@@ -152,6 +152,6 @@ spiceprefix=X}
 C {iopin.sym} -460 -280 0 1 {name=p1 lab=vdd}
 C {iopin.sym} -460 460 0 1 {name=p2 lab=vss}
 C {ipin.sym} -460 -160 0 0 {name=p3 lab=ibias}
-C {ipin.sym} 680 90 0 1 {name=p4 lab=vout}
+C {iopin.sym} 680 90 0 0 {name=p4 lab=vout}
 C {ipin.sym} -460 20 0 0 {name=p5 lab=vinn}
 C {ipin.sym} -460 160 0 0 {name=p6 lab=vinp}

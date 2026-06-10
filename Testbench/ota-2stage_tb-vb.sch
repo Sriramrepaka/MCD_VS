@@ -6,41 +6,31 @@ S {}
 F {}
 E {}
 N 1280 -230 1280 -200 {lab=#net1}
-N 710 360 710 380 {
+N 880 -250 880 -230 {
 lab=GND}
-N 790 360 790 380 {
+N 800 -250 800 -230 {
 lab=GND}
-N 790 280 790 300 {
-lab=v_ss}
-N 710 -340 710 300 {lab=v_dd}
-N 710 -340 1230 -340 {lab=v_dd}
-N 1230 -340 1230 -200 {lab=v_dd}
-N 1230 -340 1280 -340 {lab=v_dd}
-N 1280 -340 1280 -290 {lab=v_dd}
-N 1050 -80 1050 120 {lab=v_out}
-N 1370 -120 1370 120 {lab=v_out}
+N 1280 -340 1280 -290 {lab=vdd}
 N 1330 -120 1370 -120 {lab=v_out}
-N 800 -150 1150 -150 {lab=v_in}
 N 1370 -120 1480 -120 {lab=v_out}
-N 800 -40 800 -20 {lab=0}
-N 800 -150 800 -100 {lab=v_in}
-N 780 -150 800 -150 {lab=v_in}
-N 1050 120 1370 120 {lab=v_out}
+N 1060 -40 1060 -20 {lab=0}
+N 1130 0 1370 0 {lab=v_out}
 N 1480 -120 1480 -50 {lab=v_out}
-N 1480 10 1480 60 {lab=GND}
-N 1250 -40 1250 280 {lab=v_ss}
-N 790 280 1250 280 {lab=v_ss}
-N 1050 -80 1170 -80 {lab=v_out}
-N 1050 -90 1050 -80 {lab=v_out}
-N 1150 -160 1170 -160 {lab=v_in}
-N 1150 -160 1150 -150 {lab=v_in}
+N 1130 -80 1170 -80 {lab=v_out}
+N 1060 -160 1170 -160 {lab=v_in}
+N 1060 -160 1060 -100 {lab=v_in}
+N 1130 -80 1130 0 {lab=v_out}
+N 1370 -120 1370 0 {lab=v_out}
+N 1230 -230 1230 -200 {lab=vdd}
+N 1480 10 1480 30 {lab=GND}
+N 800 -330 800 -310 {lab=vss}
+N 880 -330 880 -310 {lab=vdd}
+N 1250 -40 1250 -20 {lab=vss}
 C {isource.sym} 1280 -260 0 0 {name=I0 value=20u}
-C {devices/vsource.sym} 710 330 0 0 {name=Vdd value=1.5}
-C {devices/gnd.sym} 710 380 0 0 {name=l3 lab=GND}
-C {devices/lab_pin.sym} 710 280 0 0 {name=p2 sig_type=std_logic lab=v_dd}
-C {devices/vsource.sym} 790 330 0 0 {name=Vss value=0}
-C {devices/gnd.sym} 790 380 0 0 {name=l1 lab=GND}
-C {devices/lab_pin.sym} 790 280 0 0 {name=p1 sig_type=std_logic lab=v_ss}
+C {devices/vsource.sym} 880 -280 0 1 {name=Vdd value=1.5}
+C {devices/gnd.sym} 880 -230 0 1 {name=l3 lab=GND}
+C {devices/vsource.sym} 800 -280 0 1 {name=Vss value=0}
+C {devices/gnd.sym} 800 -230 0 1 {name=l1 lab=GND}
 C {lab_pin.sym} 1450 -120 0 0 {name=p5 sig_type=std_logic lab=v_out}
 C {code_shown.sym} -60 -370 0 0 {name=NGSPICE only_toplevel=true value="
 .temp 27
@@ -89,15 +79,25 @@ print vout_at_vin_max
 C {devices/code_shown.sym} -60 450 0 0 {name=MODEL only_toplevel=true
 format="tcleval( @value )"
 value=".lib cornerMOSlv.lib mos_tt
-.lib cornerCAP.lib cap_tt
+.lib cornerCAP.lib cap_typ
 "}
-C {lab_pin.sym} 790 -150 0 0 {name=p3 sig_type=std_logic lab=v_in}
-C {vsource.sym} 800 -70 0 0 {name=v_in_p value="dc 0.8 ac 1" savecurrent=false}
-C {gnd.sym} 800 -20 0 0 {name=l2 lab=0}
+C {lab_pin.sym} 1060 -160 0 0 {name=p3 sig_type=std_logic lab=v_in}
+C {vsource.sym} 1060 -70 0 1 {name=v_in_p value="dc 0.8 ac 1" savecurrent=false}
+C {gnd.sym} 1060 -20 0 1 {name=l2 lab=0}
 C {capa.sym} 1480 -20 0 0 {name=C_out
 m=1
 value=50f
 footprint=1206
 device="ceramic capacitor"}
-C {devices/gnd.sym} 1480 60 0 0 {name=l4 lab=GND}
+C {devices/gnd.sym} 1480 30 0 0 {name=l4 lab=GND}
 C {ota-2stage.sym} 1250 -120 0 0 {name=x2}
+C {iopin.sym} 800 -330 0 0 {name=p1 lab=vss
+}
+C {iopin.sym} 880 -330 0 0 {name=p2 lab=vdd
+}
+C {iopin.sym} 1250 -20 0 1 {name=p4 lab=vss
+}
+C {iopin.sym} 1230 -230 0 1 {name=p6 lab=vdd
+}
+C {iopin.sym} 1280 -340 0 1 {name=p7 lab=vdd
+}
