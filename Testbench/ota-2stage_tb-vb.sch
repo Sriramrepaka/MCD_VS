@@ -80,6 +80,7 @@ C {devices/code_shown.sym} -60 450 0 0 {name=MODEL only_toplevel=true
 format="tcleval( @value )"
 value=".lib cornerMOSlv.lib mos_tt
 .lib cornerCAP.lib cap_typ
+.lib cornerRES.lib res_typ
 "}
 C {lab_pin.sym} 1060 -160 0 0 {name=p3 sig_type=std_logic lab=v_in}
 C {vsource.sym} 1060 -70 0 1 {name=v_in_p value="dc 0.8 ac 1" savecurrent=false}
