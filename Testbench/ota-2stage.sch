@@ -42,9 +42,6 @@ N -310 460 80 460 {lab=vss}
 N -460 -160 -310 -160 {lab=ibias}
 N 500 90 500 290 {lab=vout}
 N -460 20 -130 20 {lab=vinn}
-N 270 20 340 20 {lab=vinp}
-N 340 20 340 160 {lab=vinp}
-N -460 160 340 160 {lab=vinp}
 N -170 -190 -90 -190 {lab=vdd}
 N -170 -280 -170 -190 {lab=vdd}
 N -460 -280 -170 -280 {lab=vdd}
@@ -68,18 +65,21 @@ N 180 460 500 460 {lab=vss}
 N -400 460 -310 460 {lab=vss}
 N 140 20 140 100 {lab=#net3}
 N 80 100 140 100 {lab=#net3}
-N 500 -10 500 90 {lab=vout}
+N 500 40 500 90 {lab=vout}
 N 0 100 80 100 {lab=#net3}
 N -90 20 -0 20 {lab=#net3}
 N 0 20 0 100 {lab=#net3}
 N -90 100 0 100 {lab=#net3}
-N 480 -10 500 -10 {lab=vout}
-N 500 -70 500 -10 {lab=vout}
-N 370 -10 420 -10 {lab=#net4}
-N 370 -100 460 -100 {lab=#net2}
-N 370 -30 370 -10 {lab=#net4}
-N 370 -100 370 -90 {lab=#net2}
-N 230 -100 370 -100 {lab=#net2}
+N 480 40 500 40 {lab=vout}
+N 500 -70 500 40 {lab=vout}
+N 350 -100 350 -90 {lab=#net2}
+N 350 -100 460 -100 {lab=#net2}
+N 230 -100 350 -100 {lab=#net2}
+N 350 -30 350 40 {lab=#net4}
+N 350 40 420 40 {lab=#net4}
+N 300 20 300 160 {lab=vinp}
+N 270 20 300 20 {lab=vinp}
+N -460 160 300 160 {lab=vinp}
 C {sg13g2_pr/sg13_lv_nmos.sym} -110 20 0 0 {name=M1
 l=2u
 w=0.5u
@@ -144,7 +144,7 @@ m=1
 model=sg13_lv_nmos
 spiceprefix=X
 }
-C {sg13g2_pr/cap_cmim.sym} 450 -10 1 0 {name=CM
+C {sg13g2_pr/cap_cmim.sym} 450 40 1 0 {name=CM
 model=cap_cmim
 w=11.8e-6
 l=11.8e-6
@@ -156,8 +156,13 @@ C {ipin.sym} -460 -160 0 0 {name=p3 lab=ibias}
 C {iopin.sym} 680 90 0 0 {name=p4 lab=vout}
 C {ipin.sym} -460 20 0 0 {name=p5 lab=vinn}
 C {ipin.sym} -460 160 0 0 {name=p6 lab=vinp}
-C {res.sym} 370 -60 0 0 {name=R1
-value=24k
-footprint=1206
-device=resistor
-m=1}
+C {sg13g2_pr/rhigh.sym} 350 -60 0 0 {name=RN
+w=1e-6
+l=17e-6
+model=rhigh
+body=GND
+spiceprefix=X
+b=0
+m=1
+value="expr_eng(  ( 1.6e-4 / @w + 1360.0 * ( (@b + 1)* @l + ( 1.081*( @w - 0.04e-6 ) + 0.18e-6 )*@b ) / ( @w - 0.04e-6 ) ) / @m  )"
+}
