@@ -87,7 +87,7 @@ C {vsource.sym} 1060 -70 0 1 {name=v_in_p value="dc 0.8 ac 1" savecurrent=false}
 C {gnd.sym} 1060 -20 0 1 {name=l2 lab=0}
 C {capa.sym} 1480 -20 0 0 {name=C_out
 m=1
-value=50f
+value=100f
 footprint=1206
 device="ceramic capacitor"}
 C {devices/gnd.sym} 1480 30 0 0 {name=l4 lab=GND}

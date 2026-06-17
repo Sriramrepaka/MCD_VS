@@ -15,7 +15,6 @@ N -50 -190 40 -190 {lab=#net1}
 N -90 50 -90 100 {lab=#net3}
 N 140 100 230 100 {lab=#net3}
 N 230 50 230 100 {lab=#net3}
-N 390 -100 460 -100 {lab=#net2}
 N 230 -160 230 -100 {lab=#net2}
 N -310 240 -310 290 {lab=ibias}
 N -20 240 400 240 {lab=ibias}
@@ -33,9 +32,6 @@ N -90 -280 -90 -220 {lab=vdd}
 N 230 -280 230 -220 {lab=vdd}
 N -90 -280 230 -280 {lab=vdd}
 N 500 -280 500 -130 {lab=vdd}
-N 390 -100 390 -80 {lab=#net2}
-N 230 -100 390 -100 {lab=#net2}
-N 390 -20 390 -0 {lab=vout}
 N 500 90 680 90 {lab=vout}
 N -170 -280 -90 -280 {lab=vdd}
 N -310 -160 -310 240 {lab=ibias}
@@ -72,81 +68,86 @@ N 180 460 500 460 {lab=vss}
 N -400 460 -310 460 {lab=vss}
 N 140 20 140 100 {lab=#net3}
 N 80 100 140 100 {lab=#net3}
-N 500 -0 500 90 {lab=vout}
-N 390 -0 500 -0 {lab=vout}
-N 500 -70 500 -0 {lab=vout}
+N 500 -10 500 90 {lab=vout}
 N 0 100 80 100 {lab=#net3}
 N -90 20 -0 20 {lab=#net3}
 N 0 20 0 100 {lab=#net3}
 N -90 100 0 100 {lab=#net3}
+N 480 -10 500 -10 {lab=vout}
+N 500 -70 500 -10 {lab=vout}
+N 370 -10 420 -10 {lab=#net4}
+N 370 -100 460 -100 {lab=#net2}
+N 370 -30 370 -10 {lab=#net4}
+N 370 -100 370 -90 {lab=#net2}
+N 230 -100 370 -100 {lab=#net2}
 C {sg13g2_pr/sg13_lv_nmos.sym} -110 20 0 0 {name=M1
-l=5u
-w=2u
+l=2u
+w=0.5u
 ng=1
 m=1
 model=sg13_lv_nmos
 spiceprefix=X
 }
 C {sg13g2_pr/sg13_lv_nmos.sym} 250 20 0 1 {name=M2
-l=5u
-w=2u
+l=2u
+w=0.5u
 ng=1
 m=1
 model=sg13_lv_nmos
 spiceprefix=X
 }
 C {sg13g2_pr/sg13_lv_pmos.sym} 210 -190 0 0 {name=M4
-l=5u
-w=2.5u
+l=2u
+w=1u
 ng=1
 m=1
 model=sg13_lv_pmos
 spiceprefix=X
 }
 C {sg13g2_pr/sg13_lv_pmos.sym} -70 -190 0 1 {name=M3
-l=5u
-w=2.5u
+l=2u
+w=1u
 ng=1
 m=1
 model=sg13_lv_pmos
 spiceprefix=X
 }
 C {sg13g2_pr/sg13_lv_pmos.sym} 480 -100 0 0 {name=M5
-l=10u
-w=5u
+l=2u
+w=4.5u
 ng=1
 m=1
 model=sg13_lv_pmos
 spiceprefix=X
 }
 C {sg13g2_pr/sg13_lv_nmos.sym} -290 320 0 1 {name=M6
-l=5u
-w=5u
+l=2u
+w=2u
 ng=1
 m=1
 model=sg13_lv_nmos
 spiceprefix=X
 }
 C {sg13g2_pr/sg13_lv_nmos.sym} 60 320 0 0 {name=M7
-l=5u
-w=1u
+l=2u
+w=0.5u
 ng=1
 m=1
 model=sg13_lv_nmos
 spiceprefix=X
 }
 C {sg13g2_pr/sg13_lv_nmos.sym} 480 320 0 0 {name=M8
-l=5u
-w=1u
+l=2u
+w=0.5u
 ng=1
 m=1
 model=sg13_lv_nmos
 spiceprefix=X
 }
-C {sg13g2_pr/cap_cmim.sym} 390 -50 0 0 {name=CM
+C {sg13g2_pr/cap_cmim.sym} 450 -10 1 0 {name=CM
 model=cap_cmim
-w=29e-6
-l=29e-6
+w=11.8e-6
+l=11.8e-6
 m=1
 spiceprefix=X}
 C {iopin.sym} -460 -280 0 1 {name=p1 lab=vdd}
@@ -155,3 +156,8 @@ C {ipin.sym} -460 -160 0 0 {name=p3 lab=ibias}
 C {iopin.sym} 680 90 0 0 {name=p4 lab=vout}
 C {ipin.sym} -460 20 0 0 {name=p5 lab=vinn}
 C {ipin.sym} -460 160 0 0 {name=p6 lab=vinp}
+C {res.sym} 370 -60 0 0 {name=R1
+value=24k
+footprint=1206
+device=resistor
+m=1}
