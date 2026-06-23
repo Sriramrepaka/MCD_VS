@@ -13,7 +13,7 @@ lab=GND}
 N 1280 -340 1280 -290 {lab=vdd}
 N 1330 -120 1370 -120 {lab=v_out}
 N 1370 -120 1480 -120 {lab=v_out}
-N 1060 -40 1060 -20 {lab=0}
+N 1060 -40 1060 -10 {lab=vss}
 N 1130 0 1370 0 {lab=v_out}
 N 1480 -120 1480 -50 {lab=v_out}
 N 1130 -80 1170 -80 {lab=v_out}
@@ -84,10 +84,9 @@ value=".lib cornerMOSlv.lib mos_tt
 "}
 C {lab_pin.sym} 1060 -160 0 0 {name=p3 sig_type=std_logic lab=v_in}
 C {vsource.sym} 1060 -70 0 1 {name=v_in_p value="dc 0.8 ac 1" savecurrent=false}
-C {gnd.sym} 1060 -20 0 1 {name=l2 lab=0}
 C {capa.sym} 1480 -20 0 0 {name=C_out
 m=1
-value=100f
+value=1p
 footprint=1206
 device="ceramic capacitor"}
 C {devices/gnd.sym} 1480 30 0 0 {name=l4 lab=GND}
@@ -101,4 +100,6 @@ C {iopin.sym} 1250 -20 0 1 {name=p4 lab=vss
 C {iopin.sym} 1230 -230 0 1 {name=p6 lab=vdd
 }
 C {iopin.sym} 1280 -340 0 1 {name=p7 lab=vdd
+}
+C {iopin.sym} 1060 -10 0 0 {name=p8 lab=vss
 }

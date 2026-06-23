@@ -43,6 +43,8 @@ N 1370 -410 1370 -120 {lab=v_out}
 N 1050 120 1350 120 {lab=v_out}
 N 1350 -120 1350 120 {lab=v_out}
 N 1330 -120 1350 -120 {lab=v_out}
+N 1480 50 1480 70 {lab=GND}
+N 1480 -120 1480 -10 {lab=v_out}
 C {isource.sym} 1270 -260 0 0 {name=I0 value=20u}
 C {devices/vsource.sym} 710 330 0 0 {name=Vdd value=1.5}
 C {devices/gnd.sym} 710 380 0 0 {name=l3 lab=GND}
@@ -59,7 +61,7 @@ option sparse
 save all
 
 * Sweep from 100 Hz to 1 MHz 
-ac dec 101 100 30M
+ac dec 101 100 30MEG
 
 * Plot the response to see your beautiful 20kHz cutoff!
 plot v(v_out)
@@ -83,23 +85,29 @@ C {vsource.sym} 800 -70 0 0 {name=v_in_p value="dc 0.8 ac 1" savecurrent=false}
 C {gnd.sym} 800 -20 0 0 {name=l2 lab=0}
 C {ota-5t-custom.sym} 1230 -120 0 0 {name=x1}
 C {res.sym} 870 -150 3 0 {name=R1
-value=8.8k
+value=2.25MEG
 footprint=1206
 device=resistor
 m=1}
 C {res.sym} 980 -150 3 0 {name=R2
-value=8.8k
+value=2.25MEG
 footprint=1206
 device=resistor
 m=1}
 C {capa.sym} 1100 -30 0 0 {name=C2
 m=1
-value=500p
+value=5p
 footprint=1206
 device="ceramic capacitor"}
 C {devices/gnd.sym} 1100 50 0 0 {name=l5 lab=GND}
 C {capa.sym} 1140 -410 3 0 {name=C1
 m=1
-value=1n
+value=10p
 footprint=1206
 device="ceramic capacitor"}
+C {capa.sym} 1480 20 0 0 {name=C_out
+m=1
+value=50f
+footprint=1206
+device="ceramic capacitor"}
+C {devices/gnd.sym} 1480 70 0 0 {name=l4 lab=GND}
