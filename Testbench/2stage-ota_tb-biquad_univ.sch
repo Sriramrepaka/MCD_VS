@@ -131,7 +131,7 @@ footprint=1206
 device=resistor
 m=1}
 C {res.sym} -100 -70 3 0 {name=R6
-value=\{R\}
+value=\{RQ\}
 footprint=1206
 device=resistor
 m=1}
@@ -156,7 +156,7 @@ C {vsource.sym} -200 80 0 1 {name=V1 value= "dc 0.8 ac 1"
 C {devices/code_shown.sym} 940 -120 0 0 {name=NGSPICE only_toplevel=true 
 value="
 .temp 27
-.param R=3.18MEG C=5p RQ=R*10 RH=R/1
+.param R=3.18MEG C=5p RQ=R*0.707 RH=R/1
 .control
 option sparse
 save all

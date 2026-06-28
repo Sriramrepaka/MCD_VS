@@ -146,8 +146,8 @@ spiceprefix=X
 }
 C {sg13g2_pr/cap_cmim.sym} 450 40 1 0 {name=CM
 model=cap_cmim
-w=19.5e-6
-l=19.5e-6
+w=20e-6
+l=20e-6
 m=1
 spiceprefix=X}
 C {iopin.sym} -460 -280 0 1 {name=p1 lab=vdd}
