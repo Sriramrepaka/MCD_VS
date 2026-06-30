@@ -33,7 +33,7 @@ def postprocess(results: dict[str, list], conditions: dict[str, Any]) -> dict[st
     print(f'bw_mc_arr = {bw_mc_arr}')
     
     # Save data as .csv for later use
-    np.savetxt('cace/scripts/ota-5t-ac.csv', 
+    np.savetxt('cace/scripts/ota-2stage-ac.csv', 
         np.column_stack((np.array(gain_mc_arr), np.array(bw_mc_arr))), comments = "", 
         header = "gain_mc_arr,bw_mc_arr", delimiter = ",")
 
