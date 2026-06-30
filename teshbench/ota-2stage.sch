@@ -82,7 +82,7 @@ N 270 20 300 20 {lab=vinp}
 N -460 160 300 160 {lab=vinp}
 C {sg13g2_pr/sg13_lv_nmos.sym} -110 20 0 0 {name=M1
 l=2u
-w=1u
+w=2.5u
 ng=1
 m=1
 model=sg13_lv_nmos
@@ -90,7 +90,7 @@ spiceprefix=X
 }
 C {sg13g2_pr/sg13_lv_nmos.sym} 250 20 0 1 {name=M2
 l=2u
-w=1u
+w=2.5u
 ng=1
 m=1
 model=sg13_lv_nmos
@@ -98,7 +98,7 @@ spiceprefix=X
 }
 C {sg13g2_pr/sg13_lv_pmos.sym} 210 -190 0 0 {name=M4
 l=2u
-w=1u
+w=3.5u
 ng=1
 m=1
 model=sg13_lv_pmos
@@ -106,7 +106,7 @@ spiceprefix=X
 }
 C {sg13g2_pr/sg13_lv_pmos.sym} -70 -190 0 1 {name=M3
 l=2u
-w=1u
+w=3.5u
 ng=1
 m=1
 model=sg13_lv_pmos
@@ -130,7 +130,7 @@ spiceprefix=X
 }
 C {sg13g2_pr/sg13_lv_nmos.sym} 60 320 0 0 {name=M7
 l=2u
-w=0.5u
+w=1.5u
 ng=1
 m=1
 model=sg13_lv_nmos
@@ -146,8 +146,8 @@ spiceprefix=X
 }
 C {sg13g2_pr/cap_cmim.sym} 450 40 1 0 {name=CM
 model=cap_cmim
-w=20e-6
-l=20e-6
+w=25e-6
+l=25e-6
 m=1
 spiceprefix=X}
 C {iopin.sym} -460 -280 0 1 {name=p1 lab=vdd}
@@ -158,7 +158,7 @@ C {ipin.sym} -460 20 0 0 {name=p5 lab=vinn}
 C {ipin.sym} -460 160 0 0 {name=p6 lab=vinp}
 C {sg13g2_pr/rhigh.sym} 350 -60 0 0 {name=RN
 w=1e-6
-l=12.6e-6
+l=19.5e-6
 model=rhigh
 body=GND
 spiceprefix=X

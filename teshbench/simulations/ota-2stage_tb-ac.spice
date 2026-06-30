@@ -1,0 +1,71 @@
+** sch_path: /foss/designs/MCD_VS/teshbench/ota-2stage_tb-ac.sch
+**.subckt ota-2stage_tb-ac
+Vdd v_dd GND 1.5
+Vss v_ss GND 0
+C1 v_out v_ss 1p
+Vin v_in v_ss dc 0.8 ac 1
+I0 v_dd net1 20u
+.save v(v_in)
+.save v(v_out)
+I1 v_ss v_out dc 0 ac 0
+x1 v_dd net1 v_out v_out v_in v_ss ota-2stage
+**** begin user architecture code
+
+
+.temp 130
+.control
+option sparse
+save all
+op
+write ota-5t_tb-ac.raw
+set appendwrite
+
+ac dec 101 1k 100MEG
+write ota-5t_tb-ac.raw
+plot 20*log10(v_out)
+
+meas ac dcgain MAX vmag(v_out) FROM=10 TO=10k
+let f3db = dcgain/sqrt(2)
+meas ac fbw WHEN vmag(v_out)=f3db FALL=1
+let gainerror=(dcgain-1)/1
+print dcgain
+print fbw
+print gainerror
+
+noise v(v_out) Vin dec 101 1k 100MEG
+print onoise_total
+
+.endc
+
+
+ .lib cornerMOSlv.lib mos_ss
+.lib cornerCAP.lib cap_typ
+.lib cornerRES.lib res_typ
+
+**** end user architecture code
+**.ends
+
+* expanding   symbol:  ota-2stage.sym # of pins=6
+** sym_path: /foss/designs/MCD_VS/teshbench/ota-2stage.sym
+** sch_path: /foss/designs/MCD_VS/teshbench/ota-2stage.sch
+.subckt ota-2stage vdd ibias vinn vout vinp vss
+*.iopin vdd
+*.iopin vss
+*.ipin ibias
+*.iopin vout
+*.ipin vinn
+*.ipin vinp
+XM1 net1 vinn net3 net3 sg13_lv_nmos w=2.5u l=2u ng=1
+XM2 net2 vinp net3 net3 sg13_lv_nmos w=2.5u l=2u ng=1
+XM4 net2 net1 vdd vdd sg13_lv_pmos w=3.5u l=2u ng=1
+XM3 net1 net1 vdd vdd sg13_lv_pmos w=3.5u l=2u ng=1
+XM5 vout net2 vdd vdd sg13_lv_pmos w=9.5u l=2u ng=1
+XM6 ibias ibias vss vss sg13_lv_nmos w=2u l=2u ng=1
+XM7 net3 ibias vss vss sg13_lv_nmos w=1.5u l=2u ng=1
+XM8 vout ibias vss vss sg13_lv_nmos w=1u l=2u ng=1
+XCM vout net4 cap_cmim w=25e-6 l=25e-6
+XRN net2 net4 GND rhigh w=1e-6 l=19.5e-6 m=1 b=0
+.ends
+
+.GLOBAL GND
+.end
