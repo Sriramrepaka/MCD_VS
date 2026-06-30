@@ -120,22 +120,27 @@ option sparse
 save all
 
 * Sweep from 100 Hz to 1 MHz 
-ac dec 101 100 10MEG
+ac dec 101 100 1MEG
 
-* Plot the response to see your beautiful 10kHz cutoff!
+* Plot the response to see 10kHz cutoff
 let LPF = 20*log10(v(v_lpf))
 let HPF = 20*log10(v(v_hpf))
-let SUM = 20*log10(v(v_lpf) + v(v_hpf))
-let DIF = 20*log10(v(v_lpf) - v(v_hpf))
+let SUM = 20*log10(mag(v(v_lpf) + v(v_hpf)))
+let DIF = 20*log10(mag(v(v_lpf) - v(v_hpf)))
 plot LPF HPF SUM DIF 
 
-* Calculate the exact -3dB cutoff frequency
-meas ac dcgain MAX vmag(v_out) FROM=50k TO=0.5MEG
-let f3db_target = dcgain / sqrt(2)
-meas ac fbw WHEN vmag(v_out)=f3db_target RISE=1
+* Measure the exact maximum DC gain of the Low-Pass section
+meas ac max_gain MAX vmag(v_lpf) FROM=100 TO=1k
 
-print dcgain
-print fbw
+* For LR4, the crossover target is exactly half the voltage amplitude (-6dB)
+let fc_target = max_gain / 2
+
+* Find the exact frequency where the LPF drops to that target (-6dB)
+meas ac crossover_freq WHEN vmag(v_lpf)=fc_target FALL=1
+
+print max_gain
+print crossover_freq
+
 .endc
 "}
 C {lab_pin.sym} 100 -370 0 0 {name=p3 sig_type=std_logic lab=v_in}

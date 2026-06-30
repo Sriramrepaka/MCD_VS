@@ -67,31 +67,6 @@ C {devices/gnd.sym} -180 -330 0 0 {name=l3 lab=GND}
 C {devices/vsource.sym} -70 -380 0 0 {name=Vss value=0}
 C {devices/gnd.sym} -70 -330 0 0 {name=l1 lab=GND}
 C {lab_pin.sym} 900 -180 1 0 {name=p5 sig_type=std_logic lab=v_hpf}
-C {code_shown.sym} -670 -1100 0 0 {name=NGSPICE only_toplevel=true value="
-.temp 27
-.control
-option sparse
-save all
-
-* Sweep from 100 Hz to 1 MHz 
-ac dec 101 100 1MEG
-
-* Plot the response to see your beautiful 10kHz cutoff!
-let LPF = 20*log10(v(v_lpf))
-let HPF = 20*log10(v(v_hpf))
-let SUM = 20*log10(v(v_lpf) + v(v_hpf))
-let DIF = 20*log10(v(v_lpf) - v(v_hpf))
-plot LPF HPF SUM DIF 
-
-* Calculate the exact -3dB cutoff frequency
-meas ac dcgain MAX vmag(v_out) FROM=50k TO=0.5MEG
-let f3db_target = dcgain / sqrt(2)
-meas ac fbw WHEN vmag(v_out)=f3db_target RISE=1
-
-print dcgain
-print fbw
-.endc
-"}
 C {lab_pin.sym} 110 -530 0 0 {name=p3 sig_type=std_logic lab=v_in}
 C {vsource.sym} 110 -460 0 0 {name=v_in_p value="dc 0.8 ac 1" savecurrent=false}
 C {devices/gnd.sym} 530 60 0 0 {name=l5 lab=GND}
@@ -156,3 +131,33 @@ C {ota-2stage.sym} 710 -800 0 0 {name=x2}
 C {iopin.sym} 740 -1020 0 0 {name=p10 lab=vdd}
 C {iopin.sym} 690 -980 2 0 {name=p11 lab=vdd}
 C {iopin.sym} 710 -670 0 0 {name=p12 lab=vss}
+C {code_shown.sym} -670 -1070 0 0 {name=NGSPICE only_toplevel=true value="
+.temp 27
+.control
+option sparse
+save all
+
+* Sweep from 100 Hz to 1 MHz 
+ac dec 101 100 1MEG
+
+* Plot the response to see 10kHz cutoff
+let LPF = 20*log10(v(v_lpf))
+let HPF = 20*log10(v(v_hpf))
+let SUM = 20*log10(mag(v(v_lpf) + v(v_hpf)))
+let DIF = 20*log10(mag(v(v_lpf) - v(v_hpf)))
+plot LPF HPF SUM DIF 
+
+* Measure the exact maximum DC gain of the Low-Pass section
+meas ac max_gain MAX vmag(v_lpf) FROM=100 TO=1k
+
+* For LR4, the crossover target is exactly half the voltage amplitude (-6dB)
+let fc_target = max_gain / 2
+
+* Find the exact frequency where the LPF drops to that target (-6dB)
+meas ac crossover_freq WHEN vmag(v_lpf)=fc_target FALL=1
+
+print max_gain
+print crossover_freq
+
+.endc
+"}
