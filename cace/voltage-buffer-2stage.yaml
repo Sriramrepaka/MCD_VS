@@ -94,7 +94,7 @@ parameters:
         description: The -3dB bandwidth of the buffer
         unit: Hz
         minimum:
-          value: 8e6
+          value: 10e6
         typical:
           value: any
         maximum:
@@ -179,7 +179,7 @@ parameters:
         description: The -3dB bandwidth of the buffer (Monte Carlo)
         unit: Hz
         minimum:
-          value: 8e6
+          value: 10e6
         typical:
           value: any
         maximum:

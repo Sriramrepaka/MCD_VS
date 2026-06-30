@@ -120,7 +120,7 @@ option sparse
 save all
 
 * Sweep from 100 Hz to 1 MHz 
-ac dec 101 100 1MEG
+ac dec 101 100 10MEG
 
 * Plot the response to see your beautiful 10kHz cutoff!
 let LPF = 20*log10(v(v_lpf))
