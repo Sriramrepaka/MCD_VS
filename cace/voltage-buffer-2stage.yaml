@@ -158,9 +158,9 @@ parameters:
       corner:
         enumerate: [ss, sf, tt, fs, ff]
       corner_res:
-        enumerate: [typ, typ, typ, typ, typ]
+        enumerate: typ
       corner_cap:
-        enumerate: [typ, typ, typ, typ, typ]
+        enumerate: typ
       vdd:
         minimum: 1.45
         typical: 1.5
@@ -283,9 +283,9 @@ parameters:
       corner:
         enumerate: [ss, sf, tt, fs, ff]
       corner_res:
-        enumerate: [typ, typ, typ, typ, typ]
+        enumerate: typ
       corner_cap:
-        enumerate: [typ, typ, typ, typ, typ]
+        enumerate: typ
       vdd:
         minimum: 1.45
         typical: 1.5
@@ -342,9 +342,9 @@ parameters:
       corner:
         enumerate: [ss, sf, tt, fs, ff]
       corner_res:
-        enumerate: [typ, typ, typ, typ, typ]
+        enumerate: typ
       corner_cap:
-        enumerate: [typ, typ, typ, typ, typ]
+        enumerate: typ
       vdd:
         minimum: 1.45
         typical: 1.5
