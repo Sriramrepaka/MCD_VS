@@ -1,0 +1,45 @@
+** sch_path: /home/sriram/MCD_VS/_runs/RUN_2026-06-30_16-33-54/parameters/tran_params/run_0749/ota-2stage-tran.sch
+**.subckt ota-2stage-tran
+Vdd v_dd GND 1.55
+Vss v_ss GND 0
+C1 v_out v_ss 1e-12 m=1
+Vin v_in v_ss 0.7
+I0 v_dd net1 dc 0 pwl(0 0 1.1u 0 1.2u 1.9999999999999998e-05)
+.save v(v_in)
+.save v(v_out)
+x1 v_dd net1 v_out v_out v_in v_ss ota-2stage
+**** begin user architecture code
+
+
+.include /home/sriram/MCD_VS/cace/netlist/schematic/ota-2stage.spice
+.temp 130
+.param mc_ok = 1
+.option SEED=12345
+
+.ic v(v_out)=0
+.option method=gear
+
+.control
+set num_threads=1
+tran 0.005u 15u uic
+
+let vout_limit=0.7*0.99
+meas tran tcross WHEN v(v_out)=vout_limit
+let vena_limit=0.5*1.55
+meas tran tstart WHEN v(v_ena)=vena_limit
+let tsettle=tcross-tstart
+
+echo $&tsettle > /home/sriram/MCD_VS/_runs/RUN_2026-06-30_16-33-54/parameters/tran_params/run_0749/ota-2stage-tran_749.data
+.endc
+
+
+
+.lib cornerMOSlv.lib mos_tt
+.lib cornerMOShv.lib mos_tt
+.lib cornerRES.lib res_typ
+.lib cornerCAP.lib cap_typ
+
+**** end user architecture code
+**.ends
+.GLOBAL GND
+.end

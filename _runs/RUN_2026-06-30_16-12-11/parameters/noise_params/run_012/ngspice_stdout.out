@@ -1,0 +1,14 @@
+
+Note: No compatibility mode selected!
+
+
+Circuit: ** sch_path: /home/sriram/mcd_vs/_runs/run_2026-06-30_16-12-11/parameters/noise_params/run_012/ota-2stage-noise.sch
+
+Doing analysis at TEMP = -40.000000 and TNOM = 27.000000
+
+Using SPARSE 1.3 as Direct Linear Solver
+
+No. of Data Rows : 506
+
+No. of Data Rows : 1
+Note: Simulation executed from .control section 

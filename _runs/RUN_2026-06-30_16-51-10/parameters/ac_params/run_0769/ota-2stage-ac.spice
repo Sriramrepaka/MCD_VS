@@ -1,0 +1,43 @@
+** sch_path: /home/sriram/MCD_VS/_runs/RUN_2026-06-30_16-51-10/parameters/ac_params/run_0769/ota-2stage-ac.sch
+**.subckt ota-2stage-ac
+Vdd v_dd GND 1.5
+Vss v_ss GND 0
+C1 v_out v_ss 1e-12 m=1
+Vin v_in v_ss dc 0.8 ac 1
+I0 v_dd net1 1.9999999999999998e-05
+.save v(v_in)
+.save v(v_out)
+x1 v_dd net1 v_out v_out v_in v_ss ota-2stage
+**** begin user architecture code
+
+
+.include /home/sriram/MCD_VS/cace/netlist/schematic/ota-2stage.spice
+.temp 27
+.param mc_ok = 1
+.option SEED=12345
+
+.control
+set num_threads=1
+
+op
+let dcgain=v(v_out)/v(v_in)
+
+ac dec 101 10 100MEG
+meas ac acgain MAX vmag(v_out) FROM=10 TO=100
+let f3db = acgain/sqrt(2)
+meas ac fbw WHEN vmag(v_out)=f3db FALL=1
+
+echo $&op1.dcgain $&fbw > /home/sriram/MCD_VS/_runs/RUN_2026-06-30_16-51-10/parameters/ac_params/run_0769/ota-2stage-ac_769.data
+.endc
+
+
+
+.lib cornerMOSlv.lib mos_fs
+.lib cornerMOShv.lib mos_fs
+.lib cornerRES.lib res_p
+.lib cornerCAP.lib cap_y
+
+**** end user architecture code
+**.ends
+.GLOBAL GND
+.end

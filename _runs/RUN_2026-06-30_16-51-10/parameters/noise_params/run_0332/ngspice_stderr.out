@@ -1,0 +1,3 @@
+ERROR, library file cornerRES.lib, section definition res_p not found
+
+ERROR: fatal error in ngspice, exit(1)
