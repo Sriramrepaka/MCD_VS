@@ -2,8 +2,8 @@
 # CACE circuit characterization file
 #--------------------------------------------------------------
 
-name:           ota-improved 
-description:    Simple voltage buffer for capacitive load realized with improved OTA
+name:           ota-5t 
+description:    Simple voltage buffer for capacitive load realized with 5T-OTA
 PDK:            ihp-sg13g2 # (for IIC-OSIC-Tools version 2025.01 or newer)
 #PDK:           sg13g2 # (for IIC-OSIC-Tools version 2024.12 or older)
 
@@ -12,7 +12,7 @@ cace_format:    5.2
 authorship:
   designer:         Harald Pretl
   company:          Johannes Kepler University
-  creation_date:    September 3, 2024
+  creation_date:    August 25, 2024
   license:          Apache 2.0
 
 paths:
@@ -33,8 +33,8 @@ pins:
     description: Analog ground
     type: ground
     direction: inout
-  ibias_5u:
-    description: Bias current input 5uA (nom)
+  ibias_20u:
+    description: Bias current input 20uA nom.
     type: signal
     direction: input
   vinp:
@@ -60,15 +60,11 @@ default_conditions:
     description: Bias current
     display: Ibias
     unit: uA
-    typical: 5
-  corner_mos:
-    description: Process corner MOSFET
-    display: Corner MOSFET
+    typical: 20
+  corner:
+    description: Process corner
+    display: Corner
     typical: tt
-  corner_res:
-    description: Process corner resistors
-    display: Corner RES
-    typical: typ
   temp:
     description: Ambient temperature
     display: Temperature
@@ -77,8 +73,8 @@ default_conditions:
   cload:
     description: Load capacitance
     display: Cload
-    unit: fF
-    typical: 50
+    unit: pF
+    typical: 1
 
 parameters:
   ac_params:
@@ -88,24 +84,24 @@ parameters:
         description: Large-signal dc gain
         unit: V/V
         minimum:
-          value: 0.99
+          value: 0.97
         typical:
           value: any
         maximum:
-          value: 1.01
+          value: 1.03
       bw:
         display: Bandwidth
         description: The -3dB bandwidth of the buffer
         unit: Hz
         minimum:
-          value: 10e6
+          value: 8e6
         typical:
           value: any
         maximum:
           value: any
     tool:
       ngspice:
-        template: ota-improved-ac.sch
+        template: ota-5t-ac.sch
         format: ascii
         suffix: .data
         variables: [gain, bw]
@@ -127,7 +123,7 @@ parameters:
         limits: auto
       gain_vs_corner:
         type: xyplot
-        xaxis: corner_mos
+        xaxis: corner
         yaxis: gain
         limits: auto
       bw_vs_temp:
@@ -147,14 +143,12 @@ parameters:
         limits: auto
       bw_vs_corner:
         type: xyplot
-        xaxis: corner_mos
+        xaxis: corner
         yaxis: bw
         limits: auto
     conditions:
-      corner_mos:
+      corner:
         enumerate: [ss, sf, tt, fs, ff]
-      corner_res:
-        enumerate: [wcs, typ, bcs]
       vdd:
         minimum: 1.45
         typical: 1.5
@@ -167,7 +161,7 @@ parameters:
         minimum: -40
         typical: 27
         maximum: 130
-  
+
   ac_mc_params:
     spec:
       gain_mc:
@@ -185,19 +179,19 @@ parameters:
         description: The -3dB bandwidth of the buffer (Monte Carlo)
         unit: Hz
         minimum:
-          value: 10e6
+          value: 8e6
         typical:
           value: any
         maximum:
           value: any
     tool:
       ngspice:
-        template: ota-improved-ac.sch
+        template: ota-5t-ac.sch
         collate: iterations
         format: ascii
         suffix: .data
         variables: [gain_mc, bw_mc]
-        script: ota-improved-ac.py
+        script: ota-5t-ac.py
         script_variables: [gain_mc_arr, bw_mc_arr]
     plot:
       gain_mc:
@@ -221,10 +215,8 @@ parameters:
         # https://github.com/IHP-GmbH/IHP-Open-PDK/issues/149
         #minimum: 0
         typical: 1
-      corner_mos:
+      corner:
         typical: tt_stat # Monte Carlo corner for TT
-      corner_res:
-        typical: typ
       vdd:
         typical: 1.5
       vin:
@@ -243,10 +235,10 @@ parameters:
         typical:
           value: any
         maximum:
-          value: 0.6
+          value: 1
     tool:
       ngspice:
-        template: ota-improved-noise.sch
+        template: ota-5t-noise.sch
         format: ascii
         suffix: .data
         variables: [noise]
@@ -268,14 +260,12 @@ parameters:
         limits: auto
       noise_vs_corner:
         type: xyplot
-        xaxis: corner_mos
+        xaxis: corner
         yaxis: noise
         limits: auto
     conditions:
-      corner_mos:
+      corner:
         enumerate: [ss, sf, tt, fs, ff]
-      corner_res:
-        enumerate: [wcs, typ, bcs]
       vdd:
         minimum: 1.45
         typical: 1.5
@@ -300,10 +290,10 @@ parameters:
         typical:
           value: any
         maximum:
-          value: 1
+          value: 10
     tool:
       ngspice:
-        template: ota-improved-tran.sch
+        template: ota-5t-tran.sch
         format: ascii
         suffix: .data
         variables: [tsettle]
@@ -325,14 +315,12 @@ parameters:
         limits: auto
       settling_vs_corner:
         type: xyplot
-        xaxis: corner_mos
+        xaxis: corner
         yaxis: tsettle
         limits: auto
     conditions:
-      corner_mos:
+      corner:
         enumerate: [ss, sf, tt, fs, ff]
-      corner_res:
-        enumerate: [wcs, typ, bcs]
       vdd:
         minimum: 1.45
         typical: 1.5

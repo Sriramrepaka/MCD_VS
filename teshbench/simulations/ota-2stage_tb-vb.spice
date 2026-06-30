@@ -1,0 +1,92 @@
+** sch_path: /foss/designs/MCD_VS/Testbench/ota-2stage_tb-vb.sch
+**.subckt ota-2stage_tb-vb vss vdd vss vdd vdd vss
+*.iopin vss
+*.iopin vdd
+*.iopin vss
+*.iopin vdd
+*.iopin vdd
+*.iopin vss
+I0 vdd net1 20u
+Vdd vdd GND 1.5
+Vss vss GND 0
+v_in_p v_in vss dc 0.8 ac 1
+C_out v_out GND 1p
+x2 vdd net1 v_out v_out v_in vss ota-2stage
+**** begin user architecture code
+
+
+.temp 27
+.control
+option sparse
+save all
+
+* ─────────────────────────────────────────────────────────
+* TEST 1: AC Simulation (Bandwidth, Gain, and Gain Error)
+* ─────────────────────────────────────────────────────────
+op
+ac dec 101 1k 10g
+
+plot 20*log10(v(v_out))
+
+* Calculate exact maximum voltage magnitude
+meas ac dcgain MAX vmag(v_out) FROM=1k TO=10k
+
+* Find the exact -3dB frequency point
+let f3db_target = dcgain / sqrt(2)
+meas ac fbw WHEN vmag(v_out)=f3db_target FALL=1
+
+* Compute the voltage tracking gain error
+let gainerror = (dcgain - 1.0) / 1.0
+
+print dcgain
+print fbw
+print gainerror
+
+* ─────────────────────────────────────────────────────────
+* TEST 2: DC Sweep (Input Range Tracking: 0.7V to 0.9V)
+* ─────────────────────────────────────────────────────────
+* This executes the sweep on your voltage source component
+dc v_in_p 0.5 1.2 0.01
+
+* FIXED: We use 'v-sweep', which is NGSPICE's universal name
+* for the x-axis variable during any DC sweep.
+meas dc vout_at_vin_min find v(v_out) when v-sweep=0.7
+meas dc vout_at_vin_max find v(v_out) when v-sweep=0.9
+
+print vout_at_vin_min
+print vout_at_vin_max
+
+.endc
+
+
+ .lib cornerMOSlv.lib mos_tt
+.lib cornerCAP.lib cap_typ
+.lib cornerRES.lib res_typ
+
+**** end user architecture code
+**.ends
+
+* expanding   symbol:  ota-2stage.sym # of pins=6
+** sym_path: /foss/designs/MCD_VS/Testbench/ota-2stage.sym
+** sch_path: /foss/designs/MCD_VS/Testbench/ota-2stage.sch
+.subckt ota-2stage vdd ibias vinn vout vinp vss
+*.iopin vdd
+*.iopin vss
+*.ipin ibias
+*.iopin vout
+*.ipin vinn
+*.ipin vinp
+XM1 net1 vinn net3 net3 sg13_lv_nmos w=1u l=2u ng=1
+XM2 net2 vinp net3 net3 sg13_lv_nmos w=1u l=2u ng=1
+XM4 net2 net1 vdd vdd sg13_lv_pmos w=1u l=2u ng=1
+XM3 net1 net1 vdd vdd sg13_lv_pmos w=1u l=2u ng=1
+XM5 vout net2 vdd vdd sg13_lv_pmos w=9.5u l=2u ng=1
+XM6 ibias ibias vss vss sg13_lv_nmos w=2u l=2u ng=1
+XM7 net3 ibias vss vss sg13_lv_nmos w=0.5u l=2u ng=1
+XM8 vout ibias vss vss sg13_lv_nmos w=1u l=2u ng=1
+XCM vout net4 cap_cmim w=20e-6 l=20e-6
+XRN net2 net4 GND rhigh w=1e-6 l=12.6e-6 m=1 b=0
+.ends
+
+.GLOBAL GND
+.end

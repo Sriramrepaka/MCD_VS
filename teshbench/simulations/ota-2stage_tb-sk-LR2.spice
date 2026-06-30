@@ -1,0 +1,85 @@
+** sch_path: /foss/designs/MCD_VS/Testbench/ota-2stage_tb-sk-LR2.sch
+**.subckt ota-2stage_tb-sk-LR2 vdd vdd vdd vss vss vdd vdd vss
+*.iopin vdd
+*.iopin vdd
+*.iopin vdd
+*.iopin vss
+*.iopin vss
+*.iopin vdd
+*.iopin vdd
+*.iopin vss
+I0 vdd net1 20u
+Vdd vdd GND 1.5
+Vss vss GND 0
+v_in_p v_in GND dc 0.8 ac 1
+x1 vdd net1 v_hpf v_hpf net3 vss ota-2stage
+R1 v_hpf net2 18.7MEG
+R2 net4 net3 37.4MEG
+C1 net2 v_in 0.6p
+C2 net3 net2 0.6p
+V1 net4 GND dc 0.8
+I1 vdd net5 20u
+R3 v_in net6 37.5MEG
+R4 net6 net7 37.5MEG
+C3 net7 GND 0.3p
+C4 net6 v_lpf 0.6p
+x2 vdd net5 v_lpf v_lpf net7 vss ota-2stage
+**** begin user architecture code
+
+
+.temp 27
+.control
+option sparse
+save all
+
+* Sweep from 100 Hz to 1 MHz
+ac dec 101 100 1MEG
+
+* Plot the response to see your beautiful 10kHz cutoff!
+let LPF = 20*log10(v(v_lpf))
+let HPF = 20*log10(v(v_hpf))
+let SUM = 20*log10(v(v_lpf) + v(v_hpf))
+let DIF = 20*log10(v(v_lpf) - v(v_hpf))
+plot LPF HPF SUM DIF
+
+* Calculate the exact -3dB cutoff frequency
+meas ac dcgain MAX vmag(v_out) FROM=50k TO=0.5MEG
+let f3db_target = dcgain / sqrt(2)
+meas ac fbw WHEN vmag(v_out)=f3db_target RISE=1
+
+print dcgain
+print fbw
+.endc
+
+
+ .lib cornerMOSlv.lib mos_tt
+.lib cornerCAP.lib cap_typ
+.lib cornerRES.lib res_typ
+
+**** end user architecture code
+**.ends
+
+* expanding   symbol:  ota-2stage.sym # of pins=6
+** sym_path: /foss/designs/MCD_VS/Testbench/ota-2stage.sym
+** sch_path: /foss/designs/MCD_VS/Testbench/ota-2stage.sch
+.subckt ota-2stage vdd ibias vinn vout vinp vss
+*.iopin vdd
+*.iopin vss
+*.ipin ibias
+*.iopin vout
+*.ipin vinn
+*.ipin vinp
+XM1 net1 vinn net3 net3 sg13_lv_nmos w=1u l=2u ng=1
+XM2 net2 vinp net3 net3 sg13_lv_nmos w=1u l=2u ng=1
+XM4 net2 net1 vdd vdd sg13_lv_pmos w=1u l=2u ng=1
+XM3 net1 net1 vdd vdd sg13_lv_pmos w=1u l=2u ng=1
+XM5 vout net2 vdd vdd sg13_lv_pmos w=9.5u l=2u ng=1
+XM6 ibias ibias vss vss sg13_lv_nmos w=2u l=2u ng=1
+XM7 net3 ibias vss vss sg13_lv_nmos w=0.5u l=2u ng=1
+XM8 vout ibias vss vss sg13_lv_nmos w=1u l=2u ng=1
+XCM vout net4 cap_cmim w=20e-6 l=20e-6
+XRN net2 net4 GND rhigh w=1e-6 l=12.6e-6 m=1 b=0
+.ends
+
+.GLOBAL GND
+.end

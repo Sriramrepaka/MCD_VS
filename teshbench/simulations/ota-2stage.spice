@@ -1,0 +1,20 @@
+** sch_path: /foss/designs/MCD_VS/Testbench/ota-2stage.sch
+**.subckt ota-2stage vdd ibias vinn vout vinp vss
+*.iopin vdd
+*.iopin vss
+*.ipin ibias
+*.iopin vout
+*.ipin vinn
+*.ipin vinp
+XM1 net1 vinn net3 net3 sg13_lv_nmos w=1u l=2u ng=1
+XM2 net2 vinp net3 net3 sg13_lv_nmos w=1u l=2u ng=1
+XM4 net2 net1 vdd vdd sg13_lv_pmos w=1u l=2u ng=1
+XM3 net1 net1 vdd vdd sg13_lv_pmos w=1u l=2u ng=1
+XM5 vout net2 vdd vdd sg13_lv_pmos w=9.5u l=2u ng=1
+XM6 ibias ibias vss vss sg13_lv_nmos w=2u l=2u ng=1
+XM7 net3 ibias vss vss sg13_lv_nmos w=0.5u l=2u ng=1
+XM8 vout ibias vss vss sg13_lv_nmos w=1u l=2u ng=1
+XCM vout net4 cap_cmim w=18.3e-6 l=18.3e-6
+XRN net2 net4 GND rhigh w=1e-6 l=9e-6 m=1 b=0
+**.ends
+.end
