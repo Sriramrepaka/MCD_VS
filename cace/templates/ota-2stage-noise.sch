@@ -85,12 +85,12 @@ C {lab_wire.sym} 1020 -600 0 0 {name=p4 sig_type=std_logic lab=v_in}
 C {isource.sym} 1340 -710 0 0 {name=I0 value=CACE\{ibias\}}
 C {spice_probe.sym} 1080 -600 0 0 {name=p5 attrs=""}
 C {spice_probe.sym} 1440 -570 0 0 {name=p6 attrs=""}
-C {devices/code_shown.sym} 0 -230 0 0 {name=MODEL only_toplevel=true
+C {ota-2stage.sym} 1310 -560 0 0 {name=x1}
+C {devices/code_shown.sym} 0 -250 0 0 {name=MODEL only_toplevel=true
 format="tcleval( @value )"
 value="
 .lib cornerMOSlv.lib mos_CACE\{corner\}
 .lib cornerMOShv.lib mos_CACE\{corner\}
-.lib cornerRES.lib res_typ
-.lib cornerCAP.lib cap_typ
+.lib cornerRES.lib res_CACE\{corner_res\}
+.lib cornerCAP.lib cap_CACE\{corner_cap\}
 "}
-C {ota-2stage.sym} 1310 -560 0 0 {name=x1}

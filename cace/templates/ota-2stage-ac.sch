@@ -94,7 +94,7 @@ format="tcleval( @value )"
 value="
 .lib cornerMOSlv.lib mos_CACE\{corner\}
 .lib cornerMOShv.lib mos_CACE\{corner\}
-.lib cornerRES.lib res_typ
-.lib cornerCAP.lib cap_typ
+.lib cornerRES.lib res_CACE\{corner_res\}
+.lib cornerCAP.lib cap_CACE\{corner_cap\}
 "}
 C {ota-2stage.sym} 1310 -560 0 0 {name=x1}
