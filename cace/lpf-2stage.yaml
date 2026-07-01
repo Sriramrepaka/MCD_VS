@@ -18,7 +18,7 @@ authorship:
 paths:
   root:             ..
   schematic:        xschem
-  source:           ota-2stage.sch
+  filename:         ota-2stage.sch
   netlist:          cace/netlist
   documentation:    cace/_docs
   runs:             _runs
