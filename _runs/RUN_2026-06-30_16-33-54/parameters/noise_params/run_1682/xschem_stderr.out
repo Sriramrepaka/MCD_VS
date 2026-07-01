@@ -1,5 +1,0 @@
-Using run time directory XSCHEM_SHAREDIR = /nix/store/r6pr9v38yhk22j5q1l5x29g6laxg2sfl-xschem-3.4.7/share/xschem
-Sourcing /nix/store/r6pr9v38yhk22j5q1l5x29g6laxg2sfl-xschem-3.4.7/share/xschem/xschemrc init file
-Sourcing /home/sriram/analog/pdk/IHP-Open-PDK/ihp-sg13g2/libs.tech/xschem/xschemrc init file
-MODELS_NGSPICE: /home/sriram/analog/pdk/IHP-Open-PDK/ihp-sg13g2/libs.tech/ngspice/models
-MODELS_XYCE: /home/sriram/analog/pdk/IHP-Open-PDK/ihp-sg13g2/libs.tech/xyce/models
