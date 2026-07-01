@@ -58,7 +58,7 @@ plot 20*log10(v(v_out))
 
 * Calculate the exact -3dB cutoff frequency
 meas ac dcgain MAX vmag(v_out) FROM=50k TO=0.5MEG
-let f3db_target = dcgain / sqrt(2)
+let f3db_target = dcgain / 2
 meas ac fbw WHEN vmag(v_out)=f3db_target RISE=1
 
 print dcgain
@@ -81,23 +81,23 @@ C {iopin.sym} 760 -460 2 0 {name=p6 lab=vdd}
 C {iopin.sym} 350 80 0 0 {name=p1 lab=vss}
 C {iopin.sym} 780 -150 0 0 {name=p7 lab=vss}
 C {res.sym} 670 -580 1 0 {name=R1
-value=18.7MEG
+value=20MEG
 footprint=1206
 device=resistor
 m=1}
 C {res.sym} 580 -220 2 0 {name=R2
-value=37.4MEG
+value=20MEG
 footprint=1206
 device=resistor
 m=1}
 C {capa.sym} 400 -320 1 0 {name=C1
 m=1
-value=0.6p
+value=0.8p
 footprint=1206
 device="ceramic capacitor"}
 C {capa.sym} 510 -320 1 0 {name=C2
 m=1
-value=0.6p
+value=0.8p
 footprint=1206
 device="ceramic capacitor"}
 C {devices/gnd.sym} 330 -190 0 0 {name=l2 lab=GND}

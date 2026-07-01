@@ -51,13 +51,13 @@ save all
 * Sweep from 100 Hz to 0.5 MHz 
 ac dec 101 100 0.5MEG
 
-* Plot the response to see your beautiful 10kHz cutoff!
+* Plot the response to see your 10kHz cutoff!
 plot v(v_out)
 plot 20*log10(v(v_out))
 
 * Calculate the exact -3dB cutoff frequency
 meas ac dcgain MAX vmag(v_out) FROM=100 TO=1k
-let f3db_target = dcgain / sqrt(2)
+let f3db_target = dcgain / 2
 meas ac fbw WHEN vmag(v_out)=f3db_target FALL=1
 
 print dcgain
@@ -68,24 +68,24 @@ C {lab_pin.sym} 460 -160 0 0 {name=p3 sig_type=std_logic lab=v_in}
 C {vsource.sym} 470 -80 0 0 {name=v_in_p value="dc 0.8 ac 1" savecurrent=false}
 C {gnd.sym} 470 -30 0 0 {name=l2 lab=0}
 C {res.sym} 540 -160 3 0 {name=R1
-value=37.5MEG
+value=68MEG
 footprint=1206
 device=resistor
 m=1}
 C {res.sym} 650 -160 3 0 {name=R2
-value=37.5MEG
+value=10MEG
 footprint=1206
 device=resistor
 m=1}
 C {capa.sym} 720 -40 0 0 {name=C2
 m=1
-value=0.3p
+value=0.4p
 footprint=1206
 device="ceramic capacitor"}
 C {devices/gnd.sym} 720 40 0 0 {name=l5 lab=GND}
 C {capa.sym} 810 -420 3 0 {name=C1
 m=1
-value=0.6p
+value=0.9p
 footprint=1206
 device="ceramic capacitor"}
 C {ota-2stage.sym} 910 -120 0 0 {name=x1}

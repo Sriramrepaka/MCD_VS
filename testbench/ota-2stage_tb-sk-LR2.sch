@@ -83,23 +83,23 @@ C {iopin.sym} 710 -360 2 0 {name=p6 lab=vdd}
 C {iopin.sym} -70 -460 0 0 {name=p1 lab=vss}
 C {iopin.sym} 730 -50 0 0 {name=p7 lab=vss}
 C {res.sym} 620 -480 1 0 {name=R1
-value=18.7MEG
+value=20MEG
 footprint=1206
 device=resistor
 m=1}
 C {res.sym} 530 -120 2 0 {name=R2
-value=37.4MEG
+value=20MEG
 footprint=1206
 device=resistor
 m=1}
 C {capa.sym} 350 -220 1 0 {name=C1
 m=1
-value=0.6p
+value=0.8p
 footprint=1206
 device="ceramic capacitor"}
 C {capa.sym} 460 -220 1 0 {name=C2
 m=1
-value=0.6p
+value=0.8p
 footprint=1206
 device="ceramic capacitor"}
 C {devices/gnd.sym} 110 -410 0 0 {name=l2 lab=GND}
@@ -107,24 +107,24 @@ C {vsource.sym} 530 -20 0 0 {name=V1 value="dc 0.8" savecurrent=false}
 C {isource.sym} 740 -940 0 0 {name=I1 value=20u}
 C {lab_pin.sym} 890 -800 1 0 {name=p8 sig_type=std_logic lab=v_lpf}
 C {res.sym} 340 -840 3 0 {name=R3
-value=37.5MEG
+value=68MEG
 footprint=1206
 device=resistor
 m=1}
 C {res.sym} 450 -840 3 0 {name=R4
-value=37.5MEG
+value=10MEG
 footprint=1206
 device=resistor
 m=1}
 C {capa.sym} 520 -720 0 0 {name=C3
 m=1
-value=0.3p
+value=0.4p
 footprint=1206
 device="ceramic capacitor"}
 C {devices/gnd.sym} 520 -640 0 0 {name=l6 lab=GND}
 C {capa.sym} 610 -1100 3 0 {name=C4
 m=1
-value=0.6p
+value=0.9p
 footprint=1206
 device="ceramic capacitor"}
 C {ota-2stage.sym} 710 -800 0 0 {name=x2}
