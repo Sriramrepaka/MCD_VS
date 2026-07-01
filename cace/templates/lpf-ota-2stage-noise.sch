@@ -27,8 +27,8 @@ N 1650 -550 1650 -540 {lab=v_out}
 N 1530 -740 1580 -740 {lab=vdd}
 N 1530 -690 1530 -620 {
 lab=vdd}
-N 570 -240 570 -200 {lab=v_dd}
-N 680 -240 680 -200 {lab=v_ss}
+N 570 -240 570 -200 {lab=vdd}
+N 680 -240 680 -200 {lab=vss}
 N 1450 -690 1530 -690 {lab=vdd}
 N 1530 -740 1530 -690 {
 lab=vdd}
@@ -76,10 +76,8 @@ value="
 "}
 C {devices/vsource.sym} 570 -170 0 0 {name=Vdd value=CACE\{vdd\}}
 C {devices/gnd.sym} 570 -120 0 0 {name=l3 lab=GND}
-C {lab_pin.sym} 570 -220 0 0 {name=p2 sig_type=std_logic lab=v_dd}
 C {devices/vsource.sym} 680 -170 0 0 {name=Vss value=0}
 C {devices/gnd.sym} 680 -120 0 0 {name=l2 lab=GND}
-C {lab_pin.sym} 680 -220 0 0 {name=p1 sig_type=std_logic lab=v_ss}
 C {lab_wire.sym} 1800 -550 0 0 {name=p3 sig_type=std_logic lab=v_out}
 C {devices/vsource.sym} 790 -460 0 0 {name=Vin value="dc CACE\{vin\} ac 1"}
 C {lab_wire.sym} 850 -580 0 0 {name=p4 sig_type=std_logic lab=v_in}

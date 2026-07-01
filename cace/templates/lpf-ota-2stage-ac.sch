@@ -27,7 +27,7 @@ N 1660 -570 1660 -560 {lab=v_out}
 N 1540 -760 1590 -760 {lab=vdd}
 N 1540 -710 1540 -640 {
 lab=vdd}
-N 580 -260 580 -220 {lab=v_dd}
+N 580 -260 580 -220 {lab=vdd}
 N 690 -260 690 -220 {lab=v_ss}
 N 1460 -710 1540 -710 {lab=vdd}
 N 1540 -760 1540 -710 {
@@ -72,10 +72,8 @@ echo $&op1.dcgain $&fc > CACE\{simpath\}/CACE\{filename\}_CACE\{N\}.data
 C {devices/vsource.sym} 580 -190 0 0 {name=Vdd value=CACE\{vdd\}}
 C {devices/gnd.sym} 580 -140 0 0 {name=l3 lab=GND}
 C {devices/title.sym} 160 -30 0 0 {name=l5 author="Copyright 2024 Harald Pretl"}
-C {lab_pin.sym} 580 -240 0 0 {name=p2 sig_type=std_logic lab=v_dd}
 C {devices/vsource.sym} 690 -190 0 0 {name=Vss value=0}
 C {devices/gnd.sym} 690 -140 0 0 {name=l1 lab=GND}
-C {lab_pin.sym} 690 -240 0 0 {name=p1 sig_type=std_logic lab=v_ss}
 C {lab_wire.sym} 1810 -570 0 0 {name=p3 sig_type=std_logic lab=v_out}
 C {devices/vsource.sym} 800 -480 0 0 {name=Vin value="dc CACE\{vin\} ac 1"}
 C {lab_wire.sym} 860 -600 0 0 {name=p4 sig_type=std_logic lab=v_in}
