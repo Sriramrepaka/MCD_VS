@@ -370,62 +370,62 @@ parameters:
           value: any
         maximum:
           value: 1.03
-      bw:
+      fc:
         display: Cutoff Frequency (-3dB)
         description: The -3dB cutoff frequency of the filter
         unit: Hz
         minimum:
-          value: 9.0e3
+          value: 9.5e3
         typical:
           value: 10.0e3
         maximum:
-          value: 11.0e3
+          value: 10.5e3
     tool:
       ngspice:
         template: lpf-ota-2stage-ac.sch
         format: ascii
         suffix: .data
-        variables: [gain, bw]
+        variables: [gain, fc]
     plot:
-      gain_vs_temp:
+      gain_vs_temp_lpf:
         type: xyplot
         xaxis: temp
         yaxis: gain
         limits: auto
-      gain_vs_vin:
+      gain_vs_vin_lpf:
         type: xyplot
         xaxis: vin
         yaxis: gain
         limits: auto
-      gain_vs_vdd:
+      gain_vs_vdd_lpf:
         type: xyplot
         xaxis: vdd
         yaxis: gain
         limits: auto
-      gain_vs_corner:
+      gain_vs_corner_lpf:
         type: xyplot
         xaxis: corner
         yaxis: gain
         limits: auto
-      bw_vs_temp:
+      fc_vs_temp_lpf:
         type: xyplot
         xaxis: temp
-        yaxis: bw
+        yaxis: fc
         limits: auto
-      bw_vs_vin:
+      fc_vs_vin_lpf:
         type: xyplot
         xaxis: vin
-        yaxis: bw
+        yaxis: fc
         limits: auto
-      bw_vs_vdd:
+      fc_vs_vdd_lpf:
         type: xyplot
         xaxis: vdd
-        yaxis: bw
+        yaxis: fc
         limits: auto
-      bw_vs_corner:
+      fc_vs_corner_lpf:
         type: xyplot
         xaxis: corner
-        yaxis: bw
+        yaxis: fc
         limits: auto
     conditions:
       corner:
@@ -446,7 +446,73 @@ parameters:
         minimum: -40
         typical: 27
         maximum: 130
-        
+
+  ac_mc_params_lpf:
+    spec:
+      gain_mc:
+        display: Passband Gain (MC)
+        description: Large-signal dc gain (Monte Carlo)
+        unit: V/V
+        minimum:
+          value: any
+        typical:
+          value: any
+        maximum:
+          value: any
+      fc_mc:
+        display: Cutoff (MC)
+        description: The -3dB cutoff of the filter (Monte Carlo)
+        unit: Hz
+        minimum:
+          value: 9e3
+        typical:
+          value: 10e3
+        maximum:
+          value: 11e3
+    tool:
+      ngspice:
+        template: lpf-ota-2stage-ac.sch
+        collate: iterations
+        format: ascii
+        suffix: .data
+        variables: [gain_mc, fc_mc]
+        script: ota-2stage-ac.py
+        script_variables: [gain_mc_arr, fc_mc_arr]
+    plot:
+      gain_mc_lpf:
+        type: histogram
+        xaxis: gain_mc_arr
+      fc_mc_lpf:
+        type: histogram
+        xaxis: fc_mc_arr
+    conditions:
+      iterations: # for Monte Carlo
+        description: Iterations to run
+        display: Iterations
+        minimum: 1
+        maximum: 100
+        step: linear
+        stepsize: 1
+      sigma:
+        # This is actually mc_ok.
+        # If mc_ok = 1: MC with 3 sigma.
+        # If mc_ok = 0: MC is turned off.
+        # https://github.com/IHP-GmbH/IHP-Open-PDK/issues/149
+        #minimum: 0
+        typical: 1
+      corner:
+        typical: tt_stat # Monte Carlo corner for TT
+      corner_res:
+        typical: typ
+      corner_cap:
+        typical: typ
+      vdd:
+        typical: 1.5
+      vin:
+        typical: 0.8
+      temp:
+        typical: 27
+
   noise_params_lpf:
     spec:
       noise:
@@ -466,22 +532,22 @@ parameters:
         suffix: .data
         variables: [noise]
     plot:
-      noise_vs_temp:
+      noise_vs_temp_lpf:
         type: xyplot
         xaxis: temp
         yaxis: noise
         limits: auto
-      noise_vs_vin:
+      noise_vs_vin_lpf:
         type: xyplot
         xaxis: vin
         yaxis: noise
         limits: auto
-      noise_vs_vdd:
+      noise_vs_vdd_lpf:
         type: xyplot
         xaxis: vdd
         yaxis: noise
         limits: auto
-      noise_vs_corner:
+      noise_vs_corner_lpf:
         type: xyplot
         xaxis: corner
         yaxis: noise
@@ -498,7 +564,9 @@ parameters:
         typical: 1.5
         maximum: 1.55
       vin:
+        minimum: 0.7
         typical: 0.8
+        maximum: 0.9
       temp:
         minimum: -40
         typical: 27
@@ -523,22 +591,22 @@ parameters:
         suffix: .data
         variables: [tsettle]
     plot:
-      settling_vs_temp:
+      settling_vs_temp_lpf:
         type: xyplot
         xaxis: temp
         yaxis: tsettle
         limits: auto
-      settling_vs_vin:
+      settling_vs_vin_lpf:
         type: xyplot
         xaxis: vin
         yaxis: tsettle
         limits: auto
-      settling_vs_vdd:
+      settling_vs_vdd_lpf:
         type: xyplot
         xaxis: vdd
         yaxis: tsettle
         limits: auto
-      settling_vs_corner:
+      settling_vs_corner_lpf:
         type: xyplot
         xaxis: corner
         yaxis: tsettle
