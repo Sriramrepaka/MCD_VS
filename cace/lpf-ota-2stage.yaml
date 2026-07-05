@@ -630,3 +630,172 @@ parameters:
         minimum: -40
         typical: 27
         maximum: 130
+
+  ac_params_lr4:
+    spec:
+      gain_lpf:
+        display: Passband Gain
+        description: Low-frequency filter passband voltage gain ratio
+        unit: V/V
+        minimum:
+          value: 0.95
+        typical:
+          value: any
+        maximum:
+          value: 1.03
+      gain_hpf:
+        display: Passband Gain
+        description: Low-frequency filter passband voltage gain ratio
+        unit: V/V
+        minimum:
+          value: 0.95
+        typical:
+          value: any
+        maximum:
+          value: 1.03
+      fc_lpf:
+        display: Cutoff Frequency (-3dB)
+        description: The -3dB cutoff frequency of the filter
+        unit: Hz
+        minimum:
+          value: 9.5e3
+        typical:
+          value: 10.0e3
+        maximum:
+          value: 10.5e3
+      fc_hpf:
+        display: Cutoff Frequency (-3dB)
+        description: The -3dB cutoff frequency of the filter
+        unit: Hz
+        minimum:
+          value: 9.5e3
+        typical:
+          value: 10.0e3
+        maximum:
+          value: 10.5e3
+      phase_error:
+        display: Phase Mismatch
+        description: Absolute phase alignment difference between LPF and HPF at 10kHz
+        unit: °
+        minimum: 
+          value: 0
+        typical:
+          value: 0
+        maximum:
+          value: 10
+    tool:
+      ngspice:
+        template: lr4-ota-2stage-ac.sch
+        format: ascii
+        suffix: .data
+        variables: [gain_lpf, fc_lpf, gain_hpf, fc_hpf, phase_error]
+    plot:
+      gain_vs_temp_lr4_lpf:
+        type: xyplot
+        xaxis: temp
+        yaxis: gain_lpf
+        limits: auto
+      gain_vs_vin_lr4_lpf:
+        type: xyplot
+        xaxis: vin
+        yaxis: gain_lpf
+        limits: auto
+      gain_vs_vdd_lr4_lpf:
+        type: xyplot
+        xaxis: vdd
+        yaxis: gain_lpf
+        limits: auto
+      gain_vs_corner_lr4_lpf:
+        type: xyplot
+        xaxis: corner
+        yaxis: gain_lpf
+        limits: auto
+      fc_vs_temp_lr4_lpf:
+        type: xyplot
+        xaxis: temp
+        yaxis: fc_lpf
+        limits: auto
+      fc_vs_vin_lr4_lpf:
+        type: xyplot
+        xaxis: vin
+        yaxis: fc_lpf
+        limits: auto
+      fc_vs_vdd_lr4_lpf:
+        type: xyplot
+        xaxis: vdd
+        yaxis: fc_lpf
+        limits: auto
+      fc_vs_corner_lr4_lpf:
+        type: xyplot
+        xaxis: corner
+        yaxis: fc_lpf
+        limits: auto
+      gain_vs_temp_lr4_hpf:
+        type: xyplot
+        xaxis: temp
+        yaxis: gain_hpf
+        limits: auto
+      gain_vs_vin_lr4_hpf:
+        type: xyplot
+        xaxis: vin
+        yaxis: gain_hpf
+        limits: auto
+      gain_vs_vdd_lr4_hpf:
+        type: xyplot
+        xaxis: vdd
+        yaxis: gain_hpf
+        limits: auto
+      gain_vs_corner_lr4_hpf:
+        type: xyplot
+        xaxis: corner
+        yaxis: gain_hpf
+        limits: auto
+      fc_vs_temp_lr4_hpf:
+        type: xyplot
+        xaxis: temp
+        yaxis: fc_hpf
+        limits: auto
+      fc_vs_vin_lr4_hpf:
+        type: xyplot
+        xaxis: vin
+        yaxis: fc_hpf
+        limits: auto
+      fc_vs_vdd_lr4_hpf:
+        type: xyplot
+        xaxis: vdd
+        yaxis: fc_hpf
+        limits: auto
+      fc_vs_corner_lr4_hpf:
+        type: xyplot
+        xaxis: corner
+        yaxis: fc_hpf
+        limits: auto
+      phase_error_vs_temp:
+        type: xyplot
+        xaxis: temp
+        yaxis: phase_error
+        limits: auto
+      phase_error_vs_corner:
+        type: xyplot
+        xaxis: corner
+        yaxis: phase_error
+        limits: auto
+    conditions:
+      corner:
+        enumerate: [ss, sf, tt, fs, ff]
+      corner_res:
+        typical: typ
+      corner_cap:
+        typical: typ
+      vdd:
+        minimum: 1.45
+        typical: 1.5
+        maximum: 1.55
+      vin:
+        minimum: 0.7
+        typical: 0.8
+        maximum: 0.9
+      temp:
+        minimum: -40
+        typical: 27
+        maximum: 130
