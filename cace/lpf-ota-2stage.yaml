@@ -642,7 +642,7 @@ parameters:
         typical:
           value: any
         maximum:
-          value: 1.03
+          value: 1.15
       gain_hpf:
         display: Passband Gain
         description: Low-frequency filter passband voltage gain ratio
@@ -652,13 +652,13 @@ parameters:
         typical:
           value: any
         maximum:
-          value: 1.03
+          value: 1.15
       fc_lpf:
         display: Cutoff Frequency (-3dB)
         description: The -3dB cutoff frequency of the filter
         unit: Hz
         minimum:
-          value: 9.5e3
+          value: 9.4e3
         typical:
           value: 10.0e3
         maximum:
@@ -668,7 +668,7 @@ parameters:
         description: The -3dB cutoff frequency of the filter
         unit: Hz
         minimum:
-          value: 9.5e3
+          value: 9.4e3
         typical:
           value: 10.0e3
         maximum:
@@ -682,7 +682,7 @@ parameters:
         typical:
           value: 0
         maximum:
-          value: 10
+          value: 5
     tool:
       ngspice:
         template: lr4-ota-2stage-ac.sch
