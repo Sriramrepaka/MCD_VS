@@ -464,11 +464,11 @@ parameters:
         description: The -3dB cutoff of the filter (Monte Carlo)
         unit: Hz
         minimum:
-          value: 9e3
+          value: 9.5e3
         typical:
           value: 10e3
         maximum:
-          value: 11e3
+          value: 10.5e3
     tool:
       ngspice:
         template: lpf-ota-2stage-ac.sch
