@@ -361,7 +361,7 @@ parameters:
   ac_params_lpf:
     spec:
       gain:
-        display: Passband Gain
+        display: Passband Gain LPF
         description: Low-frequency filter passband voltage gain ratio
         unit: V/V
         minimum:
@@ -371,7 +371,7 @@ parameters:
         maximum:
           value: 1.03
       fc:
-        display: Cutoff Frequency (-3dB)
+        display: Cutoff Frequency LPF(-3dB)
         description: The -3dB cutoff frequency of the filter
         unit: Hz
         minimum:
@@ -450,7 +450,7 @@ parameters:
   ac_mc_params_lpf:
     spec:
       gain_mc:
-        display: Passband Gain (MC)
+        display: Passband Gain LPF(MC)
         description: Large-signal dc gain (Monte Carlo)
         unit: V/V
         minimum:
@@ -460,7 +460,7 @@ parameters:
         maximum:
           value: any
       fc_mc:
-        display: Cutoff (MC)
+        display: Cutoff Frequency LPF(MC)
         description: The -3dB cutoff of the filter (Monte Carlo)
         unit: Hz
         minimum:
@@ -575,7 +575,7 @@ parameters:
   tran_params_lpf:
     spec:
       tsettle:
-        display: Settling time
+        display: Settling time LPF
         description: Settling time of output
         unit: us
         minimum:
@@ -634,7 +634,7 @@ parameters:
   ac_params_lr4:
     spec:
       gain_lpf:
-        display: Passband Gain
+        display: Passband Gain LR4 LPF
         description: Low-frequency filter passband voltage gain ratio
         unit: V/V
         minimum:
@@ -644,7 +644,7 @@ parameters:
         maximum:
           value: 1.15
       gain_hpf:
-        display: Passband Gain
+        display: Passband Gain LR4 HPF
         description: Low-frequency filter passband voltage gain ratio
         unit: V/V
         minimum:
@@ -654,7 +654,7 @@ parameters:
         maximum:
           value: 1.15
       fc_lpf:
-        display: Cutoff Frequency (-3dB)
+        display: Cutoff Frequency LPF (-3dB)
         description: The -3dB cutoff frequency of the filter
         unit: Hz
         minimum:
@@ -664,7 +664,7 @@ parameters:
         maximum:
           value: 10.5e3
       fc_hpf:
-        display: Cutoff Frequency (-3dB)
+        display: Cutoff Frequency HPF (-3dB)
         description: The -3dB cutoff frequency of the filter
         unit: Hz
         minimum:
@@ -674,7 +674,7 @@ parameters:
         maximum:
           value: 10.5e3
       phase_error:
-        display: Phase Mismatch
+        display: Phase Mismatch LPR4
         description: Absolute phase alignment difference between LPF and HPF at 10kHz
         unit: °
         minimum: 

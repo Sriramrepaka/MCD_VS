@@ -60,12 +60,12 @@ value="
 
 .control
 set num_threads=1
-tran 0.1u 500u uic
+tran 0.1u 500u
 
 let vout_limit=CACE\{vin\}*0.99
 meas tran tcross WHEN v(v_out)=vout_limit
-let vena_limit=0.5*CACE\{vdd\}
-meas tran tstart WHEN v(v_ena)=vena_limit
+let vin_limit=0.5*CACE\{vdd\}
+meas tran tstart WHEN v(v_in)=vin_limit
 let tsettle=tcross-tstart
 
 echo $&tsettle > CACE\{simpath\}/CACE\{filename\}_CACE\{N\}.data
@@ -85,7 +85,7 @@ C {devices/title.sym} 160 -30 0 0 {name=l1 author="Copyright 2024 Harald Pretl"}
 C {devices/vsource.sym} 690 -190 0 0 {name=Vss value=0}
 C {devices/gnd.sym} 690 -140 0 0 {name=l2 lab=GND}
 C {lab_wire.sym} 1810 -570 0 0 {name=p3 sig_type=std_logic lab=v_out}
-C {devices/vsource.sym} 800 -480 0 0 {name=Vin value="dc CACE\{vin\} ac 1"}
+C {devices/vsource.sym} 800 -480 0 0 {name=Vin value="dc 0 pwl(0 0 1u 0 1.1u CACE\{vin\})"}
 C {lab_wire.sym} 860 -600 0 0 {name=p4 sig_type=std_logic lab=v_in}
 C {isource.sym} 1590 -710 0 0 {name=I0 value=CACE\{ibias\}}
 C {spice_probe.sym} 920 -600 0 0 {name=p5 attrs=""}
