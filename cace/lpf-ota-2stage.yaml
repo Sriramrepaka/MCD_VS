@@ -800,20 +800,10 @@ parameters:
         typical: 27
         maximum: 130
 
-  noise_params_lr4:
+  noise_params_lr4_lpf:
     spec:
       noise_lpf:
         display: Output noise LR4 LPF
-        description: Total output noise (rms)
-        unit: mV
-        minimum:
-          value: any
-        typical:
-          value: any
-        maximum:
-          value: 5.0
-      noise_hpf:
-        display: Output noise LR4 HPF
         description: Total output noise (rms)
         unit: mV
         minimum:
@@ -826,8 +816,8 @@ parameters:
       ngspice:
         template: lr4-ota-2stage-noise.sch
         format: ascii
-        suffix: .data
-        variables: [noise_lpf, noise_hpf]
+        suffix: _lpf.data
+        variables: [noise_lpf]
     plot:
       noise_vs_temp_lpf:
         type: xyplot
@@ -849,6 +839,45 @@ parameters:
         xaxis: corner
         yaxis: noise_lpf
         limits: auto
+    conditions:
+      corner:
+        enumerate: [ss, sf, tt, fs, ff]
+      corner_res:
+        typical: typ
+      corner_cap:
+        typical: typ
+      vdd:
+        minimum: 1.45
+        typical: 1.5
+        maximum: 1.55
+      vin:
+        minimum: 0.7
+        typical: 0.8
+        maximum: 0.9
+      temp:
+        minimum: -40
+        typical: 27
+        maximum: 130
+
+  noise_params_lr4_hpf:
+    spec:
+      noise_hpf:
+        display: Output noise LR4 HPF
+        description: Total output noise (rms)
+        unit: mV
+        minimum:
+          value: any
+        typical:
+          value: any
+        maximum:
+          value: 5.0
+    tool:
+      ngspice:
+        template: lr4-ota-2stage-noise.sch
+        format: ascii
+        suffix: _hpf.data
+        variables: [noise_hpf]
+    plot:
       noise_vs_temp_hpf:
         type: xyplot
         xaxis: temp
@@ -869,25 +898,26 @@ parameters:
         xaxis: corner
         yaxis: noise_hpf
         limits: auto
-    conditions:
-      corner:
-        enumerate: [ss, sf, tt, fs, ff]
-      corner_res:
-        typical: typ
-      corner_cap:
-        typical: typ
-      vdd:
-        minimum: 1.45
-        typical: 1.5
-        maximum: 1.55
-      vin:
-        minimum: 0.7
-        typical: 0.8
-        maximum: 0.9
-      temp:
-        minimum: -40
-        typical: 27
-        maximum: 130
+      conditions:
+        corner:
+          enumerate: [ss, sf, tt, fs, ff]
+        corner_res:
+          typical: typ
+        corner_cap:
+          typical: typ
+        vdd:
+          minimum: 1.45
+          typical: 1.5
+          maximum: 1.55
+        vin:
+          minimum: 0.7
+          typical: 0.8
+          maximum: 0.9
+        temp:
+          minimum: -40
+          typical: 27
+          maximum: 130
+
 
   tran_params_lr4:
     spec:
