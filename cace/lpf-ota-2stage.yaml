@@ -921,42 +921,42 @@ parameters:
       settling_vs_temp_lr4_lpf:
         type: xyplot
         xaxis: temp
-        yaxis: tsettle
+        yaxis: tsettle_lpf
         limits: auto
       settling_vs_vin_lr4_lpf:
         type: xyplot
         xaxis: vin
-        yaxis: tsettle
+        yaxis: tsettle_lpf
         limits: auto
       settling_vs_vdd_lr4_lpf:
         type: xyplot
         xaxis: vdd
-        yaxis: tsettle
+        yaxis: tsettle_lpf
         limits: auto
       settling_vs_corner_lr4_lpf:
         type: xyplot
         xaxis: corner
-        yaxis: tsettle
+        yaxis: tsettle_lpf
         limits: auto
       settling_vs_temp_lr4_hpf:
         type: xyplot
         xaxis: temp
-        yaxis: tsettle
+        yaxis: tsettle_hpf
         limits: auto
       settling_vs_vin_lr4_hpf:
         type: xyplot
         xaxis: vin
-        yaxis: tsettle
+        yaxis: tsettle_hpf
         limits: auto
       settling_vs_vdd_lr4_hpf:
         type: xyplot
         xaxis: vdd
-        yaxis: tsettle
+        yaxis: tsettle_hpf
         limits: auto
       settling_vs_corner_lr4_hpf:
         type: xyplot
         xaxis: corner
-        yaxis: tsettle
+        yaxis: tsettle_hpf
         limits: auto
     conditions:
       corner:

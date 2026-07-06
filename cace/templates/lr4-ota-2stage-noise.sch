@@ -246,10 +246,10 @@ set num_threads=1
 save all
 
 noise v(v_lpf) Vin dec 101 1k 1MEG
-let noise_lpf=onoise_total
+let noise_lpf=noise1.onoise_total
 
 noise v(v_hpf) Vin dec 101 1k 1MEG
-let noise_hpf=onoise_total
+let noise_hpf=noise2.onoise_total
 
 echo $&noise_lpf $&noise_hpf > CACE\{simpath\}/CACE\{filename\}_CACE\{N\}.data
 .endc
