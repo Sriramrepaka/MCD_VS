@@ -61,7 +61,7 @@ C {devices/lab_pin.sym} -210 300 0 0 {name=p1 sig_type=std_logic lab=v_ss}
 C {devices/capa.sym} 490 120 0 0 {name=C1
 value=1p}
 C {devices/lab_wire.sym} 490 50 0 0 {name=p3 sig_type=std_logic lab=v_out}
-C {devices/vsource.sym} -110 140 0 0 {name=Vin value="dc 0 pwl(0 0 1u 0 1.1u 0.8)"}
+C {devices/vsource.sym} -110 140 0 0 {name=Vin value="dc 0 pwl(0 0 1u 0 1.1u 0.7)"}
 C {devices/lab_wire.sym} -50 20 0 0 {name=p4 sig_type=std_logic lab=v_in}
 C {devices/isource.sym} 270 -90 0 0 {name=I0 value="dc 0 pwl(0 0 1.1u 0 1.2u 20u)"}
 C {devices/spice_probe.sym} 10 20 0 0 {name=p5 attrs=""}
@@ -91,9 +91,9 @@ tran 0.005u 15u
 
 plot v_in v_out
 
-let vout_limit=0.8*0.99
+let vout_limit=0.7*0.99
 meas tran tcross WHEN v(v_out)=vout_limit
-let vin_limit=0.5*1.5
+let vin_limit=0.8*0.7
 meas tran tstart WHEN v(v_in)=vin_limit
 let tsettle=tcross-tstart
 

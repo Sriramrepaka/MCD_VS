@@ -10,8 +10,8 @@ PDK:            ihp-sg13g2 # (for IIC-OSIC-Tools version 2025.01 or newer)
 cace_format:    5.2
 
 authorship:
-  designer:         Harald Pretl
-  company:          Johannes Kepler University
+  designer:         Sriram Repaka
+  company:          Hochschule Bremen
   creation_date:    August 25, 2024
   license:          Apache 2.0
 
@@ -371,7 +371,7 @@ parameters:
         maximum:
           value: 1.03
       fc:
-        display: Cutoff Frequency LPF(-3dB)
+        display: Cutoff Frequency LPF (-3dB)
         description: The -3dB cutoff frequency of the filter
         unit: Hz
         minimum:
@@ -450,7 +450,7 @@ parameters:
   ac_mc_params_lpf:
     spec:
       gain_mc:
-        display: Passband Gain LPF(MC)
+        display: Passband Gain LPF (MC)
         description: Large-signal dc gain (Monte Carlo)
         unit: V/V
         minimum:
@@ -460,7 +460,7 @@ parameters:
         maximum:
           value: any
       fc_mc:
-        display: Cutoff Frequency LPF(MC)
+        display: Cutoff Frequency LPF (MC)
         description: The -3dB cutoff of the filter (Monte Carlo)
         unit: Hz
         minimum:
@@ -779,6 +779,184 @@ parameters:
         type: xyplot
         xaxis: corner
         yaxis: phase_error
+        limits: auto
+    conditions:
+      corner:
+        enumerate: [ss, sf, tt, fs, ff]
+      corner_res:
+        typical: typ
+      corner_cap:
+        typical: typ
+      vdd:
+        minimum: 1.45
+        typical: 1.5
+        maximum: 1.55
+      vin:
+        minimum: 0.7
+        typical: 0.8
+        maximum: 0.9
+      temp:
+        minimum: -40
+        typical: 27
+        maximum: 130
+
+  noise_params_lr4:
+    spec:
+      noise_lpf:
+        display: Output noise LR4 LPF
+        description: Total output noise (rms)
+        unit: mV
+        minimum:
+          value: any
+        typical:
+          value: any
+        maximum:
+          value: 5.0
+      noise_hpf:
+        display: Output noise LR4 HPF
+        description: Total output noise (rms)
+        unit: mV
+        minimum:
+          value: any
+        typical:
+          value: any
+        maximum:
+          value: 5.0
+    tool:
+      ngspice:
+        template: lr4-ota-2stage-noise.sch
+        format: ascii
+        suffix: .data
+        variables: [noise_lpf, noise_hpf]
+    plot:
+      noise_vs_temp_lpf:
+        type: xyplot
+        xaxis: temp
+        yaxis: noise_lpf
+        limits: auto
+      noise_vs_vin_lpf:
+        type: xyplot
+        xaxis: vin
+        yaxis: noise_lpf
+        limits: auto
+      noise_vs_vdd_lpf:
+        type: xyplot
+        xaxis: vdd
+        yaxis: noise_lpf
+        limits: auto
+      noise_vs_corner_lpf:
+        type: xyplot
+        xaxis: corner
+        yaxis: noise_lpf
+        limits: auto
+      noise_vs_temp_hpf:
+        type: xyplot
+        xaxis: temp
+        yaxis: noise_hpf
+        limits: auto
+      noise_vs_vin_hpf:
+        type: xyplot
+        xaxis: vin
+        yaxis: noise_hpf
+        limits: auto
+      noise_vs_vdd_hpf:
+        type: xyplot
+        xaxis: vdd
+        yaxis: noise_hpf
+        limits: auto
+      noise_vs_corner_hpf:
+        type: xyplot
+        xaxis: corner
+        yaxis: noise_hpf
+        limits: auto
+    conditions:
+      corner:
+        enumerate: [ss, sf, tt, fs, ff]
+      corner_res:
+        typical: typ
+      corner_cap:
+        typical: typ
+      vdd:
+        minimum: 1.45
+        typical: 1.5
+        maximum: 1.55
+      vin:
+        minimum: 0.7
+        typical: 0.8
+        maximum: 0.9
+      temp:
+        minimum: -40
+        typical: 27
+        maximum: 130
+
+  tran_params_lr4:
+    spec:
+      tsettle_lpf:
+        display: Settling time LR4 LPF
+        description: Settling time of output
+        unit: us
+        minimum:
+          value: any
+        typical:
+          value: 150
+        maximum:
+          value: 400
+      tsettle_hpf:
+        display: Settling time LR4 HPF
+        description: Settling time of output
+        unit: us
+        minimum:
+          value: any
+        typical:
+          value: 150
+        maximum:
+          value: 400
+    tool:
+      ngspice:
+        template: lr4-ota-2stage-tran.sch
+        format: ascii
+        suffix: .data
+        variables: [tsettle_lpf,tsettle_hpf]
+    plot:
+      settling_vs_temp_lr4_lpf:
+        type: xyplot
+        xaxis: temp
+        yaxis: tsettle
+        limits: auto
+      settling_vs_vin_lr4_lpf:
+        type: xyplot
+        xaxis: vin
+        yaxis: tsettle
+        limits: auto
+      settling_vs_vdd_lr4_lpf:
+        type: xyplot
+        xaxis: vdd
+        yaxis: tsettle
+        limits: auto
+      settling_vs_corner_lr4_lpf:
+        type: xyplot
+        xaxis: corner
+        yaxis: tsettle
+        limits: auto
+      settling_vs_temp_lr4_hpf:
+        type: xyplot
+        xaxis: temp
+        yaxis: tsettle
+        limits: auto
+      settling_vs_vin_lr4_hpf:
+        type: xyplot
+        xaxis: vin
+        yaxis: tsettle
+        limits: auto
+      settling_vs_vdd_lr4_hpf:
+        type: xyplot
+        xaxis: vdd
+        yaxis: tsettle
+        limits: auto
+      settling_vs_corner_lr4_hpf:
+        type: xyplot
+        xaxis: corner
+        yaxis: tsettle
         limits: auto
     conditions:
       corner:
