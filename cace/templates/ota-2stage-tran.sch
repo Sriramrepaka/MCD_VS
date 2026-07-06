@@ -69,7 +69,7 @@ tran 0.005u 15u
 
 let vout_limit=CACE\{vin\}*0.99
 meas tran tcross WHEN v(v_out)=vout_limit
-let vin_limit=0.5*CACE\{vdd\}
+let vin_limit=0.8*CACE\{vin\}
 meas tran tstart WHEN v(v_in)=vin_limit
 let tsettle=tcross-tstart
 
