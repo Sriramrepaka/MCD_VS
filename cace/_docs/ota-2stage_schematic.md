@@ -10,18 +10,18 @@
 | Output voltage ratio (MC) | ngspice              | gain_mc              |             any |  1.003 V/V |          any |  1.004 V/V |          any |  1.004 V/V |   Pass ✅    |
 | Bandwidth (MC)       | ngspice              | bw_mc                |         10e6 Hz | 21808100.000 Hz |          any | 22636000.000 Hz |          any | 23662600.000 Hz |   Pass ✅    |
 | Output noise         | ngspice              | noise                |             any |   0.183 mV |          any |   0.189 mV |         1 mV |   0.214 mV |   Pass ✅    |
-| Settling time        | ngspice              | tsettle              |             any |   0.010 us |          any |   0.015 us |        10 us |   0.031 us |   Pass ✅    |
-| Passband Gain        | ngspice              | gain                 |        0.95 V/V |  1.002 V/V |          any |  1.003 V/V |     1.03 V/V |  1.006 V/V |   Pass ✅    |
-| Cutoff Frequency (-3dB) | ngspice              | fc                   |        9.5e3 Hz | 9841.090 Hz |    10.0e3 Hz | 9926.370 Hz |    10.5e3 Hz | 10430.500 Hz |   Pass ✅    |
-| Passband Gain (MC)   | ngspice              | gain_mc              |             any |  1.001 V/V |          any |  1.003 V/V |          any |  1.004 V/V |   Pass ✅    |
-| Cutoff (MC)          | ngspice              | fc_mc                |          9e3 Hz | 9917.090 Hz |      10e3 Hz | 9928.145 Hz |      11e3 Hz | 9935.930 Hz |   Pass ✅    |
+| Settling time        | ngspice              | tsettle              |             any |   0.187 us |          any |   0.198 us |        10 us |   0.208 us |   Pass ✅    |
+| Passband Gain LPF    | ngspice              | gain                 |        0.95 V/V |  1.002 V/V |          any |  1.003 V/V |     1.03 V/V |  1.006 V/V |   Pass ✅    |
+| Cutoff Frequency LPF(-3dB) | ngspice              | fc                   |        9.5e3 Hz | 9841.090 Hz |    10.0e3 Hz | 9926.370 Hz |    10.5e3 Hz | 10430.500 Hz |   Pass ✅    |
+| Passband Gain LPF(MC) | ngspice              | gain_mc              |             any |  1.001 V/V |          any |  1.003 V/V |          any |  1.004 V/V |   Pass ✅    |
+| Cutoff Frequency LPF(MC) | ngspice              | fc_mc                |        9.5e3 Hz | 9917.090 Hz |      10e3 Hz | 9928.145 Hz |    10.5e3 Hz | 9935.930 Hz |   Pass ✅    |
 | Output noise LPF     | ngspice              | noise                |             any |   0.150 mV |          any |   0.172 mV |       5.0 mV |   0.220 mV |   Pass ✅    |
-| Settling time        | ngspice              | tsettle              |             any |   0.001 us |       150 us |   0.003 us |       400 us |   0.046 us |   Pass ✅    |
-| Passband Gain        | ngspice              | gain_lpf             |        0.95 V/V |  1.003 V/V |          any |  1.007 V/V |     1.15 V/V |  1.129 V/V |   Pass ✅    |
-| Passband Gain        | ngspice              | gain_hpf             |        0.95 V/V |  0.964 V/V |          any |  0.982 V/V |     1.15 V/V |  1.088 V/V |   Pass ✅    |
-| Cutoff Frequency (-3dB) | ngspice              | fc_lpf               |        9.4e3 Hz | 9842.690 Hz |    10.0e3 Hz | 9926.930 Hz |    10.5e3 Hz | 10477.200 Hz |   Pass ✅    |
-| Cutoff Frequency (-3dB) | ngspice              | fc_hpf               |        9.4e3 Hz | 9418.050 Hz |    10.0e3 Hz | 9925.470 Hz |    10.5e3 Hz | 9949.630 Hz |   Pass ✅    |
-| Phase Mismatch       | ngspice              | phase_error          |             0 ° |    0.006 ° |          0 ° |    0.007 ° |          5 ° |    0.008 ° |   Pass ✅    |
+| Settling time LPF    | ngspice              | tsettle              |             any |  46.272 us |       150 us |  49.572 us |       400 us |  52.504 us |   Pass ✅    |
+| Passband Gain LR4 LPF | ngspice              | gain_lpf             |        0.95 V/V |  1.003 V/V |          any |  1.007 V/V |     1.15 V/V |  1.129 V/V |   Pass ✅    |
+| Passband Gain LR4 HPF | ngspice              | gain_hpf             |        0.95 V/V |  0.964 V/V |          any |  0.982 V/V |     1.15 V/V |  1.088 V/V |   Pass ✅    |
+| Cutoff Frequency LPF (-3dB) | ngspice              | fc_lpf               |        9.4e3 Hz | 9842.690 Hz |    10.0e3 Hz | 9926.930 Hz |    10.5e3 Hz | 10477.200 Hz |   Pass ✅    |
+| Cutoff Frequency HPF (-3dB) | ngspice              | fc_hpf               |        9.4e3 Hz | 9418.050 Hz |    10.0e3 Hz | 9925.470 Hz |    10.5e3 Hz | 9949.630 Hz |   Pass ✅    |
+| Phase Mismatch LPR4  | ngspice              | phase_error          |             0 ° |    0.006 ° |          0 ° |    0.007 ° |          5 ° |    0.008 ° |   Pass ✅    |
 
 
 ## Plots
