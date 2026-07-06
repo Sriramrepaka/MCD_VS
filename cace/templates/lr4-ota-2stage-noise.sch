@@ -247,11 +247,11 @@ save all
 
 noise v(v_lpf) Vin dec 101 1k 1MEG
 let noise_lpf=onoise_total
-echo $&noise_lpf > CACE\{simpath\}/CACE\{filename\}_lpf_CACE\{N\}.data
+echo $&noise_lpf > CACE\{simpath\}/CACE\{filename\}_CACE\{N\}_lpf.data
 
 noise v(v_hpf) Vin dec 101 1k 1MEG
 let noise_hpf=onoise_total
-echo $&noise_hpf > CACE\{simpath\}/CACE\{filename\}_hpf_CACE\{N\}.data
+echo $&noise_hpf > CACE\{simpath\}/CACE\{filename\}_CACE\{N\}_hpf.data
 
 .endc
 "}
