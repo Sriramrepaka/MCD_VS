@@ -930,7 +930,7 @@ parameters:
         typical:
           value: 150
         maximum:
-          value: 400
+          value: 280
       tsettle_hpf:
         display: Settling time LR4 HPF
         description: Settling time of output
@@ -940,7 +940,7 @@ parameters:
         typical:
           value: 150
         maximum:
-          value: 400
+          value: 280
     tool:
       ngspice:
         template: lr4-ota-2stage-tran.sch
