@@ -233,7 +233,7 @@ value="
 .lib cornerRES.lib res_CACE\{corner_res\}
 .lib cornerCAP.lib cap_CACE\{corner_cap\}
 "}
-C {devices/code_shown.sym} -2130 -1110 0 0 {name=NGSPICE only_toplevel=true 
+C {devices/code_shown.sym} -2180 -1150 0 0 {name=NGSPICE only_toplevel=true 
 value="
 .include CACE\{DUT_path\}
 .temp CACE\{temp\}
@@ -246,13 +246,18 @@ value="
 
 .control
 set num_threads=1
-tran 0.1u 500u
+tran 0.1u 280u uic
 
-let vout_limit=CACE\{vin\}*0.99
-meas tran tcross_lpf WHEN v(v_lpf)=vout_limit
-meas tran tcross_hpf WHEN v(v_hpf)=vout_limit
-let vin_limit=0.8*CACE\{vin\}
+let vin_limit=CACE\{vin\}
 meas tran tstart WHEN v(v_in)=vin_limit
+
+meas tran v_final_lpf FIND v(v_lpf) AT=200u
+meas tran v_final_hpf FIND v(v_hpf) AT=200u
+
+meas tran tcross_lpf WHEN v(v_lpf)=\{v_final_lpf + (CACE\{vin\}*0.01)\} LAST
+
+meas tran tcross_hpf WHEN v(v_hpf)=\{v_final_hpf - (CACE\{vin\}*0.01)\} LAST
+
 let tsettle_lpf=tcross_lpf-tstart
 let tsettle_hpf=tcross_hpf-tstart
 
