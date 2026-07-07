@@ -113,7 +113,7 @@ C {devices/vsource.sym} -190 -220 0 0 {name=Vdd value=1.5}
 C {devices/gnd.sym} -190 -170 0 0 {name=l3 lab=GND}
 C {devices/vsource.sym} -80 -220 0 0 {name=Vss value=0}
 C {devices/gnd.sym} -80 -170 0 0 {name=l1 lab=GND}
-C {code_shown.sym} -680 -940 0 0 {name=NGSPICE only_toplevel=true value="
+C {code_shown.sym} -730 -1120 0 0 {name=NGSPICE only_toplevel=true value="
 .temp 27
 .control
 option sparse
@@ -127,7 +127,11 @@ let LPF = 20*log10(v(v_lpf))
 let HPF = 20*log10(v(v_hpf))
 let SUM = 20*log10(mag(v(v_lpf) + v(v_hpf)))
 let DIF = 20*log10(mag(v(v_lpf) - v(v_hpf)))
-plot LPF HPF SUM DIF 
+plot LPF HPF SUM DIF title 'Frequency Responce'
+
+let LPF_PHASE = vp(v_lpf)
+let HPF_PHASE = vp(v_hpf)
+plot LPF_PHASE HPF_PHASE title 'Phase Responce'
 
 * Measure the exact maximum DC gain of the Low-Pass section
 meas ac max_gain MAX vmag(v_lpf) FROM=100 TO=1k
@@ -138,16 +142,35 @@ let fc_target = max_gain / 2
 * Find the exact frequency where the LPF drops to that target (-6dB)
 meas ac crossover_freq WHEN vmag(v_lpf)=fc_target FALL=1
 
+* 1. Find the voltage magnitudes at 100kHz and 1MHz
+meas ac v_lpf_100k FIND vmag(v_lpf) AT=100k
+meas ac v_lpf_1meg FIND vmag(v_lpf) AT=1MEG
+
+* 2. Convert both points to dB and subtract to find the drop per decade
+let db_lpf_100k = 20 * log10(v_lpf_100k)
+let db_lpf_1meg = 20 * log10(v_lpf_1meg)
+let slope_lpf = db_lpf_1meg - db_lpf_100k
+
+* 1. Find the voltage magnitudes at 100Hz and 1kHz
+meas ac v_hpf_100 FIND vmag(v_hpf) AT=100
+meas ac v_hpf_1k   FIND vmag(v_hpf) AT=1k
+
+* 2. Convert both points to dB and subtract to find the rise per decade
+let db_hpf_100 = 20 * log10(v_hpf_100)
+let db_hpf_1k   = 20 * log10(v_hpf_1k)
+let slope_hpf = db_hpf_1k - db_hpf_100
+
 print max_gain
 print crossover_freq
-
+print slope_lpf
+print slope_hpf
 .endc
 "}
 C {lab_pin.sym} 100 -370 0 0 {name=p3 sig_type=std_logic lab=v_in}
 C {vsource.sym} 100 -300 0 0 {name=v_in_p value="dc 0.8 ac 1" savecurrent=false}
 C {devices/gnd.sym} 520 220 0 0 {name=l5 lab=GND}
 C {ota-2stage.sym} 720 -20 0 0 {name=x1}
-C {devices/code_shown.sym} -680 -250 0 0 {name=MODEL1 only_toplevel=true
+C {devices/code_shown.sym} -730 150 0 0 {name=MODEL1 only_toplevel=true
 format="tcleval( @value )"
 value=".lib cornerMOSlv.lib mos_tt
 .lib cornerCAP.lib cap_typ
