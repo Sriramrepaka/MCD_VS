@@ -5,8 +5,8 @@
 
 ## Authorship
 
-- Designer: Harald Pretl
-- Company: Johannes Kepler University
+- Designer: Sriram Repaka
+- Company: Hochschule Bremen
 - Created: August 25, 2024
 - License: Apache 2.0
 - Last modified: None
