@@ -32,7 +32,7 @@ C {devices/gnd.sym} 880 -230 0 1 {name=l3 lab=GND}
 C {devices/vsource.sym} 800 -280 0 1 {name=Vss value=0}
 C {devices/gnd.sym} 800 -230 0 1 {name=l1 lab=GND}
 C {lab_pin.sym} 1450 -120 0 0 {name=p5 sig_type=std_logic lab=v_out}
-C {code_shown.sym} -60 -370 0 0 {name=NGSPICE only_toplevel=true value="
+C {code_shown.sym} -80 -420 0 0 {name=NGSPICE only_toplevel=true value="
 .temp 27
 .control
 option sparse
@@ -76,7 +76,7 @@ print vout_at_vin_max
 
 .endc
 "}
-C {devices/code_shown.sym} -60 450 0 0 {name=MODEL only_toplevel=true
+C {devices/code_shown.sym} 590 270 0 0 {name=MODEL only_toplevel=true
 format="tcleval( @value )"
 value=".lib cornerMOSlv.lib mos_tt
 .lib cornerCAP.lib cap_typ
@@ -103,3 +103,4 @@ C {iopin.sym} 1280 -340 0 1 {name=p7 lab=vdd
 }
 C {iopin.sym} 1060 -10 0 0 {name=p8 lab=vss
 }
+C {devices/title.sym} 300 420 0 0 {name=l5 author=""}

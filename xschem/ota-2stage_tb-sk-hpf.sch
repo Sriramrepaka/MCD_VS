@@ -69,7 +69,7 @@ C {lab_pin.sym} 330 -310 0 0 {name=p3 sig_type=std_logic lab=v_in}
 C {vsource.sym} 330 -240 0 0 {name=v_in_p value="dc 0.8 ac 1" savecurrent=false}
 C {devices/gnd.sym} 580 -40 0 0 {name=l5 lab=GND}
 C {ota-2stage.sym} 780 -280 0 0 {name=x1}
-C {devices/code_shown.sym} -550 210 0 0 {name=MODEL1 only_toplevel=true
+C {devices/code_shown.sym} -530 120 0 0 {name=MODEL1 only_toplevel=true
 format="tcleval( @value )"
 value=".lib cornerMOSlv.lib mos_tt
 .lib cornerCAP.lib cap_typ
@@ -102,3 +102,4 @@ footprint=1206
 device="ceramic capacitor"}
 C {devices/gnd.sym} 330 -190 0 0 {name=l2 lab=GND}
 C {vsource.sym} 580 -120 0 0 {name=V1 value="dc 0.8" savecurrent=false}
+C {devices/title.sym} -160 290 0 0 {name=l4 author=""}

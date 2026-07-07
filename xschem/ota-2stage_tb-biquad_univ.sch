@@ -236,3 +236,4 @@ C {iopin.sym} 990 -270 0 1 {name=p13 lab=vdd
 C {isource.sym} 290 110 2 0 {name=I4 value=20u}
 C {iopin.sym} 290 160 0 1 {name=p17 lab=vdd
 }
+C {devices/title.sym} -180 410 0 0 {name=l1 author=""}

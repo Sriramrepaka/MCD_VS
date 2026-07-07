@@ -58,12 +58,12 @@ option sparse
 set filetype=ascii
 save all
 
-*op
-*write ota-5t_tb-noise.raw
-*set appendwrite
+op
+write ota-2stage_tb-noise.raw
+set appendwrite
 
 ac dec 101 1k 10MEG
-*write ota-5t_tb-noise.raw
+write ota-2stage_tb-noise.raw
 plot 20*log10(v_out)
 
 noise v(v_out) Vin lin 1000 1MEG 1000MEG 1
@@ -75,13 +75,12 @@ plot inoise_spectrum linplot
 plot onoise_spectrum linplot
 
 setplot noise2
-write ota-5t_tb-noise.raw
+write ota-2stage_tb-noise.raw
 
 .endc
 "}
 C {devices/vsource.sym} 170 -430 0 0 {name=Vdd value=1.5}
 C {devices/gnd.sym} 170 -380 0 0 {name=l3 lab=GND}
-C {devices/title.sym} -190 -130 0 0 {name=l5 author="(c) 2024-2025 Harald Pretl, Apache-2.0 license"}
 C {devices/launcher.sym} 150 -260 0 0 {name=h2
 descr="simulate" 
 tclcommand="xschem save; xschem netlist; xschem simulate"
@@ -110,3 +109,4 @@ value=".lib cornerMOSlv.lib mos_tt
 .lib cornerCAP.lib cap_typ
 .lib cornerRES.lib res_typ
 "}
+C {devices/title.sym} -110 -140 0 0 {name=l5 author=""}

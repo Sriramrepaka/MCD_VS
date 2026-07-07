@@ -264,3 +264,4 @@ print inoise_total
 
 .endc
 "}
+C {devices/title.sym} 140 290 0 0 {name=l8 author=""}

@@ -161,3 +161,4 @@ print crossover_freq
 
 .endc
 "}
+C {devices/title.sym} -330 140 0 0 {name=l4 author=""}

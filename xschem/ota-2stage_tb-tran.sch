@@ -66,14 +66,14 @@ C {devices/lab_wire.sym} -50 20 0 0 {name=p4 sig_type=std_logic lab=v_in}
 C {devices/isource.sym} 270 -90 0 0 {name=I0 value="dc 0 pwl(0 0 1.1u 0 1.2u 20u)"}
 C {devices/spice_probe.sym} 10 20 0 0 {name=p5 attrs=""}
 C {devices/spice_probe.sym} 370 50 0 0 {name=p6 attrs=""}
-C {devices/code_shown.sym} -1230 450 0 0 {name=MODEL1 only_toplevel=true
+C {devices/code_shown.sym} -860 290 0 0 {name=MODEL1 only_toplevel=true
 format="tcleval( @value )"
 value=".lib cornerMOSlv.lib mos_ss
 .lib cornerCAP.lib cap_typ
 .lib cornerRES.lib res_typ
 "}
 C {ota-2stage.sym} 240 60 0 0 {name=x1}
-C {devices/code_shown.sym} -1230 -190 0 0 {name=NGSPICE only_toplevel=true 
+C {devices/code_shown.sym} -860 -190 0 0 {name=NGSPICE only_toplevel=true 
 value="
 .temp 27
 
@@ -82,12 +82,8 @@ value="
 
 .control
 
-* Overwrite Vin from the schematic with the active pulse parameter limits
-* alter Vin PULSE(1.05 1.25 1u 1n 1n 20u 40u)
-
 * Simulates up to 15us
 tran 0.005u 15u
-
 
 plot v_in v_out
 
@@ -101,9 +97,6 @@ print tstart
 print tcross
 print tsettle
 
-* Convert from seconds to microseconds so CACE can log it under your 'us' unit spec!
-let tsettle_us = tsettle * 1e6
-*echo $&tsettle_us > CACE\{simpath\}/CACE\{filename\}_CACE\{N\}.data
-
 .endc
 "}
+C {devices/title.sym} -620 480 0 0 {name=l5 author=""}

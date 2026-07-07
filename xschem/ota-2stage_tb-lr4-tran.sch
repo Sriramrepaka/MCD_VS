@@ -271,3 +271,4 @@ C {devices/vsource.sym} -1730 -130 0 0 {name=Vss value=0}
 C {devices/gnd.sym} -1730 -80 0 0 {name=l1 lab=GND}
 C {iopin.sym} -1840 -210 0 0 {name=p4 lab=vdd}
 C {iopin.sym} -1730 -210 0 0 {name=p1 lab=vss}
+C {devices/title.sym} -1710 80 0 0 {name=l8 author=""}

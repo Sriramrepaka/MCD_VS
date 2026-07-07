@@ -261,3 +261,4 @@ value=0.6p
 footprint=1206
 device="ceramic capacitor"}
 C {vsource.sym} 1240 140 0 0 {name=V2 value="dc 0.8" savecurrent=false}
+C {devices/title.sym} 10 310 0 0 {name=l8 author=""}

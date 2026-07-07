@@ -89,7 +89,7 @@ value=0.9p
 footprint=1206
 device="ceramic capacitor"}
 C {ota-2stage.sym} 910 -120 0 0 {name=x1}
-C {devices/code_shown.sym} -410 370 0 0 {name=MODEL1 only_toplevel=true
+C {devices/code_shown.sym} -370 250 0 0 {name=MODEL1 only_toplevel=true
 format="tcleval( @value )"
 value=".lib cornerMOSlv.lib mos_tt
 .lib cornerCAP.lib cap_typ
@@ -100,3 +100,4 @@ C {iopin.sym} 940 -340 0 0 {name=p2 lab=vdd}
 C {iopin.sym} 890 -300 2 0 {name=p6 lab=vdd}
 C {iopin.sym} 490 240 0 0 {name=p1 lab=vss}
 C {iopin.sym} 910 10 0 0 {name=p7 lab=vss}
+C {devices/title.sym} -60 440 0 0 {name=l4 author=""}
