@@ -60,7 +60,7 @@ value="
 
 .control
 set num_threads=1
-tran 0.1u 280u uic
+tran 0.1u 280u
 
 let vout_limit=CACE\{vin\}*0.99
 meas tran tcross WHEN v(v_out)=vout_limit
