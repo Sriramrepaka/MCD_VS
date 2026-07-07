@@ -1,3 +1,5 @@
 2_idealized_circuits/simulations/
 testbench/simulations/
+xschem/simulations/
+cace/templates/simulations
 _runs
