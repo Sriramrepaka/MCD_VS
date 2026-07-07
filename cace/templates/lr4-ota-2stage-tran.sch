@@ -108,9 +108,9 @@ N -1540 -70 -1540 -50 {
 lab=GND}
 N -1650 -170 -1650 -130 {lab=vdd}
 N -1540 -170 -1540 -130 {lab=vss}
-C {isource.sym} -800 -380 0 0 {name=I0 value="CACE\{ibias\}"}
+C {isource.sym} -800 -380 0 0 {name=I0 value="dc 0 pwl(0 0 1.1u 0 1.2u CACE\{ibias\})"}
 C {lab_pin.sym} -1450 -590 0 0 {name=p3 sig_type=std_logic lab=v_in}
-C {vsource.sym} -1450 -520 0 0 {name=Vin value="dc CACE\{vin\} ac 1" savecurrent=false}
+C {vsource.sym} -1450 -520 0 0 {name=Vin value="dc 0 pwl(0 0 1u 0 1.1u CACE\{vin\})" savecurrent=false}
 C {devices/gnd.sym} -1030 0 0 0 {name=l5 lab=GND}
 C {ota-2stage.sym} -830 -240 0 0 {name=x1}
 C {iopin.sym} -800 -460 0 0 {name=p2 lab=vdd}
@@ -138,7 +138,7 @@ footprint=1206
 device="ceramic capacitor"}
 C {devices/gnd.sym} -1450 -470 0 0 {name=l2 lab=GND}
 C {vsource.sym} -1030 -80 0 0 {name=V1 value="dc CACE\{vin\}" savecurrent=false}
-C {isource.sym} -820 -1000 0 0 {name=I1 value="CACE\{ibias\}"}
+C {isource.sym} -820 -1000 0 0 {name=I1 value="dc 0 pwl(0 0 1.1u 0 1.2u CACE\{ibias\})"}
 C {res.sym} -1220 -900 3 0 {name=R3
 value=37.5MEG
 footprint=1206
@@ -164,7 +164,7 @@ C {ota-2stage.sym} -850 -860 0 0 {name=x2}
 C {iopin.sym} -820 -1080 0 0 {name=p10 lab=vdd}
 C {iopin.sym} -870 -1040 2 0 {name=p11 lab=vdd}
 C {iopin.sym} -850 -730 0 0 {name=p12 lab=vss}
-C {isource.sym} -90 -1000 0 0 {name=I2 value="CACE\{ibias\}"}
+C {isource.sym} -90 -1000 0 0 {name=I2 value="dc 0 pwl(0 0 1.1u 0 1.2u CACE\{ibias\})"}
 C {lab_pin.sym} 60 -860 1 0 {name=p9 sig_type=std_logic lab=v_lpf}
 C {res.sym} -490 -900 3 0 {name=R5
 value=37.5MEG
@@ -191,7 +191,7 @@ C {ota-2stage.sym} -120 -860 0 0 {name=x3}
 C {iopin.sym} -90 -1080 0 0 {name=p13 lab=vdd}
 C {iopin.sym} -140 -1040 2 0 {name=p14 lab=vdd}
 C {iopin.sym} -120 -730 0 0 {name=p15 lab=vss}
-C {isource.sym} -80 -380 0 0 {name=I3 value="CACE\{ibias\}"}
+C {isource.sym} -80 -380 0 0 {name=I3 value="dc 0 pwl(0 0 1.1u 0 1.2u CACE\{ibias\})"}
 C {lab_pin.sym} 60 -240 1 0 {name=p8 sig_type=std_logic lab=v_hpf}
 C {devices/gnd.sym} -310 0 0 0 {name=l7 lab=GND}
 C {ota-2stage.sym} -110 -240 0 0 {name=x4}
