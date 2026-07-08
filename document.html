@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Sriram Repaka">
-<meta name="author" content="Mula Vishnu Dunkari">
+<meta name="author" content="Mula Vishnu Sunkari">
 <meta name="dcterms.date" content="2026-07-08">
 
 <title>Design of a Hybrid Linkwitz-Riley 4 Crossover Filter</title>
@@ -86,10 +86,7 @@ window.Quarto = {
   <li><a href="#filter-specifications" id="toc-filter-specifications" class="nav-link" data-scroll-target="#filter-specifications"><span class="header-section-number">1.1</span> Filter Specifications</a></li>
   <li><a href="#system-architecture" id="toc-system-architecture" class="nav-link" data-scroll-target="#system-architecture"><span class="header-section-number">1.2</span> System Architecture</a></li>
   <li><a href="#mathematical-derivation" id="toc-mathematical-derivation" class="nav-link" data-scroll-target="#mathematical-derivation"><span class="header-section-number">1.3</span> Mathematical Derivation</a></li>
-  </ul></li>
-  <li><a href="#simulate-frequency-array" id="toc-simulate-frequency-array" class="nav-link" data-scroll-target="#simulate-frequency-array"><span class="header-section-number">2</span> Simulate frequency array</a>
-  <ul class="collapse">
-  <li><a href="#component-selection" id="toc-component-selection" class="nav-link" data-scroll-target="#component-selection"><span class="header-section-number">2.1</span> Component Selection</a></li>
+  <li><a href="#component-selection" id="toc-component-selection" class="nav-link" data-scroll-target="#component-selection"><span class="header-section-number">1.4</span> Component Selection</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -115,7 +112,7 @@ window.Quarto = {
           </p>
       </div>
     <div class="quarto-title-meta-contents">
-    <p class="author">Mula Vishnu Dunkari <a href="mailto:msunkari@stud.hs-bremen.de" class="quarto-title-author-email"><i class="bi bi-envelope"></i></a> </p>
+    <p class="author">Mula Vishnu Sunkari <a href="mailto:msunkari@stud.hs-bremen.de" class="quarto-title-author-email"><i class="bi bi-envelope"></i></a> </p>
   </div>
   <div class="quarto-title-meta-contents">
         <p class="affiliation">
@@ -169,16 +166,23 @@ Figure&nbsp;1: Block diagram of the Hybrid Linkwitz-Riley 4 Crossover Filter net
 <p>A standard Linkwitz-Riley 4th-order filter is constructed by cascading two identical 2nd-order Butterworth filters. The transfer function <span class="math inline">\(H(s)\)</span> for the low-pass network can be expressed mathematically as:</p>
 <p><span class="math display">\[H_{LP}(s) = \frac{1}{(s^2 + \sqrt{2}s + 1)^2}\]</span></p>
 <p>Where the voltage gains of both cascading stages must match perfectly to maintain the ideal crossover characteristics.</p>
-<p>import numpy as np import matplotlib.pyplot as plt</p>
+<div id="cell-fig-frequency-response" class="cell" data-execution_count="38">
+<div class="cell-output cell-output-display">
+<div id="fig-frequency-response" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-frequency-response-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="document_files/figure-html/fig-frequency-response-output-1.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-frequency-response-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2: Simulated amplitude response of the High-Pass and Low-Pass filter outputs.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
 </section>
-</section>
-<section id="simulate-frequency-array" class="level1" data-number="2">
-<h1 data-number="2"><span class="header-section-number">2</span> Simulate frequency array</h1>
-<p>freq = np.logspace(1, 4, 500) # Simple ideal LR4 approximation for plotting lp_response = 1 / (1 + (freq / 1000)<strong>4) hp_response = (freq / 1000)</strong>4 / (1 + (freq / 1000)**4)</p>
-<p>plt.figure(figsize=(8, 4.5)) plt.loglog(freq, lp_response, label=‘Low-Pass (Woofer)’, color=‘firebrick’, lw=2) plt.loglog(freq, hp_response, label=‘High-Pass (Tweeter)’, color=‘steelblue’, lw=2) plt.axvline(1000, color=‘gray’, linestyle=‘–’, alpha=0.7, label=‘Crossover (1 kHz)’)</p>
-<p>plt.title(‘Linkwitz-Riley 4th-Order Response’) plt.xlabel(‘Frequency (Hz)’) plt.ylabel(‘Magnitude’) plt.grid(True, which=“both”, ls=“–”, alpha=0.5) plt.legend(loc=‘lower left’) plt.show()</p>
-<section id="component-selection" class="level2" data-number="2.1">
-<h2 data-number="2.1" class="anchored" data-anchor-id="component-selection"><span class="header-section-number">2.1</span> Component Selection</h2>
+<section id="component-selection" class="level2" data-number="1.4">
+<h2 data-number="1.4" class="anchored" data-anchor-id="component-selection"><span class="header-section-number">1.4</span> Component Selection</h2>
 <p>The components chosen for the analog active operational amplifier implementation are summarized below.</p>
 <div id="tbl-components" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure">
