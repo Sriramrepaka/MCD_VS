@@ -8,7 +8,7 @@
 
 <meta name="author" content="Sriram Repaka">
 <meta name="author" content="Mula Vishnu Sunkari">
-<meta name="dcterms.date" content="2026-07-09">
+<meta name="dcterms.date" content="2026-07-10">
 
 <title>Design of a Hybrid Linkwitz-Riley 4 Crossover Filter</title>
 <style>
@@ -91,6 +91,12 @@ window.Quarto = {
   <li><a href="#sizing-a-2-stage-ota" id="toc-sizing-a-2-stage-ota" class="nav-link" data-scroll-target="#sizing-a-2-stage-ota"><span class="header-section-number">2</span> Sizing a 2-Stage OTA</a>
   <ul class="collapse">
   <li><a href="#sizing-the-ota" id="toc-sizing-the-ota" class="nav-link" data-scroll-target="#sizing-the-ota"><span class="header-section-number">2.1</span> Sizing the OTA</a></li>
+  <li><a href="#frequency-response-and-stability-analysis-5t-vs.-2-stage-miller-ota" id="toc-frequency-response-and-stability-analysis-5t-vs.-2-stage-miller-ota" class="nav-link" data-scroll-target="#frequency-response-and-stability-analysis-5t-vs.-2-stage-miller-ota"><span class="header-section-number">2.2</span> Frequency Response and Stability Analysis: 5T vs.&nbsp;2-Stage Miller OTA</a>
+  <ul class="collapse">
+  <li><a href="#t-ota-performance-with-l-5-mutextm" id="toc-t-ota-performance-with-l-5-mutextm" class="nav-link" data-scroll-target="#t-ota-performance-with-l-5-mutextm"><span class="header-section-number">2.2.1</span> 1. 5T OTA Performance with <span class="math inline">\(L = 5\ \mu\text{m}\)</span></a></li>
+  <li><a href="#stage-miller-ota-the-l-5-mutextm-instability" id="toc-stage-miller-ota-the-l-5-mutextm-instability" class="nav-link" data-scroll-target="#stage-miller-ota-the-l-5-mutextm-instability"><span class="header-section-number">2.2.2</span> 2. 2-Stage Miller OTA: The <span class="math inline">\(L = 5\ \mu\text{m}\)</span> Instability</a></li>
+  <li><a href="#optimization-and-resolution-via-l-2-mutextm" id="toc-optimization-and-resolution-via-l-2-mutextm" class="nav-link" data-scroll-target="#optimization-and-resolution-via-l-2-mutextm"><span class="header-section-number">2.2.3</span> 3. Optimization and Resolution via <span class="math inline">\(L = 2\ \mu\text{m}\)</span></a></li>
+  </ul></li>
   </ul></li>
   </ul>
 </nav>
@@ -131,7 +137,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">July 9, 2026</p>
+      <p class="date">July 10, 2026</p>
     </div>
   </div>
   
@@ -260,6 +266,26 @@ Table&nbsp;1: Component selection parameters for the active filter stage.
 <section id="sizing-the-ota" class="level2" data-number="2.1">
 <h2 data-number="2.1" class="anchored" data-anchor-id="sizing-the-ota"><span class="header-section-number">2.1</span> Sizing the OTA</h2>
 <p>There are 4 major aspects of this OTA the input differential pair, pmos current mirrors, output gain PMOS, and tail current NMOS’s. The sizing of these transistors is node using gm/Id methodology.</p>
+</section>
+<section id="frequency-response-and-stability-analysis-5t-vs.-2-stage-miller-ota" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="frequency-response-and-stability-analysis-5t-vs.-2-stage-miller-ota"><span class="header-section-number">2.2</span> Frequency Response and Stability Analysis: 5T vs.&nbsp;2-Stage Miller OTA</h2>
+<section id="t-ota-performance-with-l-5-mutextm" class="level3" data-number="2.2.1">
+<h3 data-number="2.2.1" class="anchored" data-anchor-id="t-ota-performance-with-l-5-mutextm"><span class="header-section-number">2.2.1</span> 1. 5T OTA Performance with <span class="math inline">\(L = 5\ \mu\text{m}\)</span></h3>
+<p>The initial design of a single-stage 5T Operational Transconductance Amplifier (OTA) targeted an audio-frequency <strong>Unity-Gain Bandwidth (UGBW) of 10 MHz</strong>. Using a large channel length of <span class="math inline">\(L = 5\ \mu\text{m}\)</span> was successful in this architecture. Because a 5T OTA is a single-stage topology, its frequency response is dictated by a single dominant pole at the output. Any secondary, non-dominant poles lie far enough beyond the 10 MHz target that they do not impact loop stability.</p>
+</section>
+<section id="stage-miller-ota-the-l-5-mutextm-instability" class="level3" data-number="2.2.2">
+<h3 data-number="2.2.2" class="anchored" data-anchor-id="stage-miller-ota-the-l-5-mutextm-instability"><span class="header-section-number">2.2.2</span> 2. 2-Stage Miller OTA: The <span class="math inline">\(L = 5\ \mu\text{m}\)</span> Instability</h3>
+<p>When expanding the design to a <strong>2-Stage Miller-Compensated OTA</strong> using the same <span class="math inline">\(L = 5\ \mu\text{m}\)</span> for the gain stages, the frequency response exhibited prominent <strong>peaking (“bumps”) at high frequencies</strong>, indicating a severe degradation of Phase Margin and potential circuit instability.</p>
+<p>To diagnose this, the <span class="math inline">\(f_{\text{T}}\)</span> vs.&nbsp;<span class="math inline">\(g_{\text{m}}/I_{\text{D}}\)</span> characteristic plot for the <code>sg13_lv_nmos</code> device was analyzed: * For <span class="math inline">\(L = 5\ \mu\text{m}\)</span>, the transit frequency (<span class="math inline">\(f_{\text{T}}\)</span>) curve is nearly completely flat across the moderate inversion region (<span class="math inline">\(g_{\text{m}}/I_{\text{D}} = 10 \text{ to } 15\text{ S/A}\)</span>), hovering at a very low absolute value. * This flatness demonstrates that at <span class="math inline">\(L = 5\ \mu\text{m}\)</span>, the transistor’s local speed capability is heavily restricted regardless of the biasing condition. * In a 2-stage amplifier, the second gain stage creates a critical non-dominant pole. Because the <span class="math inline">\(L = 5\ \mu\text{m}\)</span> device is fundamentally limited in speed, this non-dominant pole was trapped too close to the target 10 MHz UGBW, leading to the observed high-frequency peaking.</p>
+</section>
+<section id="optimization-and-resolution-via-l-2-mutextm" class="level3" data-number="2.2.3">
+<h3 data-number="2.2.3" class="anchored" data-anchor-id="optimization-and-resolution-via-l-2-mutextm"><span class="header-section-number">2.2.3</span> 3. Optimization and Resolution via <span class="math inline">\(L = 2\ \mu\text{m}\)</span></h3>
+<p>Based on the insights from the <span class="math inline">\(f_{\text{T}}\)</span> plot, the channel length was reduced to <strong><span class="math inline">\(L = 2\ \mu\text{m}\)</span></strong> to shift the device operating point onto a higher, more dynamic speed curve.</p>
+<ul>
+<li><strong>Result:</strong> Decreasing <span class="math inline">\(L\)</span> successfully pushed the non-dominant pole to a significantly higher frequency, well out of the way of the audio bandwidth.</li>
+<li>Combined with a minor increase in the Miller compensation capacitance (<span class="math inline">\(C_{\text{M}}\)</span>) to cleanly split the poles, the high-frequency bumps were completely eliminated. This yielded a smooth, stable open-loop roll-off with a robust phase margin and a well-defined UGBW of 10 MHz.</li>
+</ul>
+</section>
 </section>
 </section>
 
