@@ -128,10 +128,10 @@ window.Quarto = {
   </ul></li>
   <li><a href="#transistor-sizing-and-architecture-for-the-2-stage-miller-ota" id="toc-transistor-sizing-and-architecture-for-the-2-stage-miller-ota" class="nav-link" data-scroll-target="#transistor-sizing-and-architecture-for-the-2-stage-miller-ota"><span class="header-section-number">2.3</span> Transistor Sizing and Architecture for the 2-Stage Miller OTA</a>
   <ul class="collapse">
-  <li><a href="#design-specification-reference-parameters-1" id="toc-design-specification-reference-parameters-1" class="nav-link" data-scroll-target="#design-specification-reference-parameters-1"><span class="header-section-number">2.3.1</span> 1. Design Specification &amp; Reference Parameters</a></li>
-  <li><a href="#sizing-derivations-mathematical-formulations-1" id="toc-sizing-derivations-mathematical-formulations-1" class="nav-link" data-scroll-target="#sizing-derivations-mathematical-formulations-1"><span class="header-section-number">2.3.2</span> 2. Sizing Derivations &amp; Mathematical Formulations</a></li>
-  <li><a href="#sizing-optimization-results" id="toc-sizing-optimization-results" class="nav-link" data-scroll-target="#sizing-optimization-results"><span class="header-section-number">2.3.3</span> 3. Sizing Optimization Results</a></li>
-  <li><a href="#open-loop-dc-gain-performance-evaluation" id="toc-open-loop-dc-gain-performance-evaluation" class="nav-link" data-scroll-target="#open-loop-dc-gain-performance-evaluation"><span class="header-section-number">2.3.4</span> 4. Open-Loop DC Gain &amp; Performance Evaluation</a></li>
+  <li><a href="#design-specification-reference-parameters-1" id="toc-design-specification-reference-parameters-1" class="nav-link" data-scroll-target="#design-specification-reference-parameters-1"><span class="header-section-number">2.3.1</span> Design Specification &amp; Reference Parameters</a></li>
+  <li><a href="#sizing-derivations-mathematical-formulations-1" id="toc-sizing-derivations-mathematical-formulations-1" class="nav-link" data-scroll-target="#sizing-derivations-mathematical-formulations-1"><span class="header-section-number">2.3.2</span> Sizing Derivations &amp; Mathematical Formulations</a></li>
+  <li><a href="#sizing-optimization-results" id="toc-sizing-optimization-results" class="nav-link" data-scroll-target="#sizing-optimization-results"><span class="header-section-number">2.3.3</span> Sizing Optimization Results</a></li>
+  <li><a href="#open-loop-dc-gain-performance-evaluation" id="toc-open-loop-dc-gain-performance-evaluation" class="nav-link" data-scroll-target="#open-loop-dc-gain-performance-evaluation"><span class="header-section-number">2.3.4</span> Open-Loop DC Gain &amp; Performance Evaluation</a></li>
   </ul></li>
   <li><a href="#frequency-response-and-stability-analysis-5t-vs.-2-stage-miller-ota" id="toc-frequency-response-and-stability-analysis-5t-vs.-2-stage-miller-ota" class="nav-link" data-scroll-target="#frequency-response-and-stability-analysis-5t-vs.-2-stage-miller-ota"><span class="header-section-number">2.4</span> Frequency Response and Stability Analysis: 5T vs.&nbsp;2-Stage Miller OTA</a>
   <ul class="collapse">
@@ -554,12 +554,12 @@ Figure&nbsp;4: The 2-stage OTA.
 </div>
 <p>There are 4 major aspects of this OTA the input differential pair, pmos current mirrors, output gain PMOS, and tail current NMOS’s. The sizing of these transistors is done using gm/Id methodology.</p>
 <section id="design-specification-reference-parameters-1" class="level3" data-number="2.3.1">
-<h3 data-number="2.3.1" class="anchored" data-anchor-id="design-specification-reference-parameters-1"><span class="header-section-number">2.3.1</span> 1. Design Specification &amp; Reference Parameters</h3>
+<h3 data-number="2.3.1" class="anchored" data-anchor-id="design-specification-reference-parameters-1"><span class="header-section-number">2.3.1</span> Design Specification &amp; Reference Parameters</h3>
 <p>The core target constraints, technology limits, and initial efficiency definitions guiding the automation loop are outlined in <a href="#tbl-2stage-specs" class="quarto-xref">Table&nbsp;3</a>.</p>
 <div id="tbl-2stage-specs" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-2stage-specs-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;3: Design specifications and biasing conditions for the 2-Stage Miller OTA optimization.
+Table&nbsp;3: Design specifications for the 2-Stage OTA.
 </figcaption>
 <div aria-describedby="tbl-2stage-specs-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <table class="caption-top table">
@@ -579,47 +579,47 @@ Table&nbsp;3: Design specifications and biasing conditions for the 2-Stage Mille
 <tr class="odd">
 <td style="text-align: left;"><strong>Load Capacitance</strong></td>
 <td style="text-align: center;"><span class="math inline">\(C_{\mathrm{load}}\)</span></td>
-<td style="text-align: left;"><span class="math inline">\(1\text{ pF}\)</span>[cite: 3]</td>
+<td style="text-align: left;"><span class="math inline">\(1\text{ pF}\)</span></td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"><strong>Target Bandwidth (-3dB Buffer)</strong></td>
 <td style="text-align: center;"><span class="math inline">\(f_{\mathrm{bw}}\)</span></td>
-<td style="text-align: left;"><span class="math inline">\(10\text{ MHz}\)</span>[cite: 3]</td>
+<td style="text-align: left;"><span class="math inline">\(10\text{ MHz}\)</span></td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;"><strong>Input Pair Efficiency Target</strong></td>
 <td style="text-align: center;"><span class="math inline">\((g_m/I_D)_{1,2}\)</span></td>
-<td style="text-align: left;"><span class="math inline">\(11\text{ V}^{-1}\)</span>[cite: 3]</td>
+<td style="text-align: left;"><span class="math inline">\(11\text{ V}^{-1}\)</span></td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"><strong>Active Load Efficiency Target</strong></td>
 <td style="text-align: center;"><span class="math inline">\((g_m/I_D)_{3,4}\)</span></td>
-<td style="text-align: left;"><span class="math inline">\(7\text{ V}^{-1}\)</span>[cite: 3]</td>
+<td style="text-align: left;"><span class="math inline">\(7\text{ V}^{-1}\)</span></td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;"><strong>CS Driver Efficiency Target</strong></td>
 <td style="text-align: center;"><span class="math inline">\((g_m/I_D)_{5}\)</span></td>
-<td style="text-align: left;"><span class="math inline">\(10\text{ V}^{-1}\)</span>[cite: 3]</td>
+<td style="text-align: left;"><span class="math inline">\(10\text{ V}^{-1}\)</span></td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"><strong>Current Mirror Efficiency Target</strong></td>
 <td style="text-align: center;"><span class="math inline">\((g_m/I_D)_{6,7,8}\)</span></td>
-<td style="text-align: left;"><span class="math inline">\(6\text{ V}^{-1}\)</span>[cite: 3]</td>
+<td style="text-align: left;"><span class="math inline">\(6\text{ V}^{-1}\)</span></td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;"><strong>Assigned Channel Length (All)</strong></td>
 <td style="text-align: center;"><span class="math inline">\(L_{1-8}\)</span></td>
-<td style="text-align: left;"><span class="math inline">\(2\text{ }\mu\text{m}\)</span>[cite: 3]</td>
+<td style="text-align: left;"><span class="math inline">\(2\text{ }\mu\text{m}\)</span></td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"><strong>Target Open-Loop DC Gain</strong></td>
 <td style="text-align: center;"><span class="math inline">\(A_0\)</span></td>
-<td style="text-align: left;"><span class="math inline">\(\ge 60\text{ dB}\)</span>[cite: 3]</td>
+<td style="text-align: left;"><span class="math inline">\(\ge 60\text{ dB}\)</span></td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;"><strong>Core Current Draw Budget</strong></td>
 <td style="text-align: center;"><span class="math inline">\(I_{\mathrm{limit}}\)</span></td>
-<td style="text-align: left;"><span class="math inline">\(\le 30\text{ }\mu\text{A}\)</span>[cite: 3]</td>
+<td style="text-align: left;"><span class="math inline">\(\le 30\text{ }\mu\text{A}\)</span></td>
 </tr>
 </tbody>
 </table>
@@ -629,33 +629,33 @@ Table&nbsp;3: Design specifications and biasing conditions for the 2-Stage Mille
 <hr>
 </section>
 <section id="sizing-derivations-mathematical-formulations-1" class="level3" data-number="2.3.2">
-<h3 data-number="2.3.2" class="anchored" data-anchor-id="sizing-derivations-mathematical-formulations-1"><span class="header-section-number">2.3.2</span> 2. Sizing Derivations &amp; Mathematical Formulations</h3>
-<section id="step-a-compensation-allocation-first-stage-sizing" class="level4" data-number="2.3.2.1">
-<h4 data-number="2.3.2.1" class="anchored" data-anchor-id="step-a-compensation-allocation-first-stage-sizing"><span class="header-section-number">2.3.2.1</span> Step A: Compensation Allocation &amp; First-Stage Sizing</h4>
-<p>To shield the circuit from high-frequency stability decay, a Miller capacitance (<span class="math inline">\(C_\mathrm{M}\)</span>) is introduced relative to the total output load[cite: 3]:</p>
-<p><span class="math display">\[C_\mathrm{M} = 0.5 \cdot C_{\mathrm{load}} = 500\text{ fF}\]</span>[cite: 3]</p>
-<p>The input pair transconductance (<span class="math inline">\(g_{m1,2}\)</span>) calculation incorporates a protective <span class="math inline">\(3\times\)</span> multiplier scaling to safeguard the target bandwidth against local process tracking shifts[cite: 3]:</p>
-<p><span class="math display">\[g_{m1,2,\mathrm{ideal}} = 3 \cdot (2\pi f_{\mathrm{bw}}) \cdot C_\mathrm{M} \approx 0.09425\text{ mS}\]</span>[cite: 3]</p>
-<p>Dividing by the efficiency parameter <span class="math inline">\((g_m/I_D)_{1,2} = 11\)</span>, the branch current yields a total ideal tail allocation of <span class="math inline">\(I_{\mathrm{tail,ideal}} \approx 17.14\text{ }\mu\text{A}\)</span>[cite: 3]. Quantizing this to a regular layout grid (steps of <span class="math inline">\(0.5\text{ }\mu\text{A}\)</span>) locks in our tail profile[cite: 3]:</p>
+<h3 data-number="2.3.2" class="anchored" data-anchor-id="sizing-derivations-mathematical-formulations-1"><span class="header-section-number">2.3.2</span> Sizing Derivations &amp; Mathematical Formulations</h3>
+<section id="compensation-allocation-first-stage-sizing" class="level4" data-number="2.3.2.1">
+<h4 data-number="2.3.2.1" class="anchored" data-anchor-id="compensation-allocation-first-stage-sizing"><span class="header-section-number">2.3.2.1</span> Compensation Allocation &amp; First-Stage Sizing</h4>
+<p>To shield the circuit from high-frequency stability decay, a Miller capacitance (<span class="math inline">\(C_\mathrm{M}\)</span>) is introduced relative to the total output load [nagulapalli2019low]:</p>
+<p><span class="math display">\[C_\mathrm{M} &gt; 0.5 \cdot C_{\mathrm{load}} = 500\text{ fF}\]</span></p>
+<p>The input pair transconductance (<span class="math inline">\(g_{m1,2}\)</span>) calculation incorporates a protective <span class="math inline">\(3\times\)</span> multiplier scaling to safeguard the target bandwidth against local process tracking shifts:</p>
+<p><span class="math display">\[g_{m1,2,\mathrm{ideal}} = 3 \cdot (2\pi f_{\mathrm{bw}}) \cdot C_\mathrm{M} \approx 0.09425\text{ mS}\]</span></p>
+<p>Dividing by the efficiency parameter <span class="math inline">\((g_m/I_D)_{1,2} = 11\)</span>, the branch current yields a total ideal tail allocation of <span class="math inline">\(I_{\mathrm{tail,ideal}} \approx 17.14\text{ }\mu\text{A}\)</span>[cite: 3]. Quantizing this to a regular layout grid (steps of <span class="math inline">\(0.5\text{ }\mu\text{A}\)</span>) locks in our tail profile:</p>
 <ul>
-<li><strong>Tail Current Source (<span class="math inline">\(I_{\mathrm{tail}}\)</span>):</strong> <strong><span class="math inline">\(17.00\text{ }\mu\text{A}\)</span></strong>[cite: 3]</li>
-<li><strong>True Branch Current (<span class="math inline">\(I_{D1,2}\)</span>):</strong> <strong><span class="math inline">\(8.50\text{ }\mu\text{A}\)</span></strong>[cite: 3]</li>
-<li><strong>True Manufactured Transconductance (<span class="math inline">\(g_{m1,2}\)</span>):</strong> <span class="math inline">\(11 \cdot 8.5\text{ }\mu\text{A} = \mathbf{0.09350\text{ mS}}\)</span>[cite: 3]</li>
+<li><strong>Tail Current Source (<span class="math inline">\(I_{\mathrm{tail}}\)</span>):</strong> <strong><span class="math inline">\(17.00\text{ }\mu\text{A}\)</span></strong></li>
+<li><strong>True Branch Current (<span class="math inline">\(I_{D1,2}\)</span>):</strong> <strong><span class="math inline">\(8.50\text{ }\mu\text{A}\)</span></strong></li>
+<li><strong>True Manufactured Transconductance (<span class="math inline">\(g_{m1,2}\)</span>):</strong> <span class="math inline">\(11 \cdot 8.5\text{ }\mu\text{A} = \mathbf{0.09350\text{ mS}}\)</span></li>
 </ul>
 </section>
-<section id="step-b-second-stage-stability-resistor-calibration" class="level4" data-number="2.3.2.2">
-<h4 data-number="2.3.2.2" class="anchored" data-anchor-id="step-b-second-stage-stability-resistor-calibration"><span class="header-section-number">2.3.2.2</span> Step B: Second-Stage Stability &amp; Resistor Calibration</h4>
-<p>To guarantee a robust phase margin, the secondary transconductance stage (<span class="math inline">\(M_5\)</span>) must easily out-pace the target operational bandwidth boundary via an image-sizing coefficient rule[cite: 3]:</p>
-<p><span class="math display">\[g_{m5,\mathrm{req}} = 2.2 \cdot f_{\mathrm{bw}} \cdot 2\pi \cdot C_{\mathrm{load}} \approx 0.13823\text{ mS}\]</span>[cite: 3]</p>
-<p>Dividing this by its distinct parameter <span class="math inline">\((g_m/I_D)_5 = 10\)</span> establishes the analytical current demand <span class="math inline">\(I_{D5,\mathrm{req}} = 13.823\text{ }\mu\text{A}\)</span>[cite: 3]. Mirror scaling constraints align the true current flow down to exactly <strong><span class="math inline">\(10.00\text{ }\mu\text{A}\)</span></strong> based on physical layout sizes[cite: 3]. At this grid point, the driver generates its final small-signal capability:</p>
-<p><span class="math display">\[g_{m5} = (g_m/I_D)_5 \cdot I_{D5} = 10 \cdot 10\text{ }\mu\text{A} = \mathbf{0.10000\text{ mS}}\]</span>[cite: 3]</p>
-<p>The zero-nulling frequency compensation resistance (<span class="math inline">\(R_z\)</span>) is set to cancel the right-half-plane (RHP) zero generated across the Miller framework[cite: 3]:</p>
-<p><span class="math display">\[R_z = \frac{2}{g_{m5}} = \mathbf{20.00\text{ k}\Omega}\]</span>[cite: 3]</p>
+<section id="second-stage-stability-resistor-calibration" class="level4" data-number="2.3.2.2">
+<h4 data-number="2.3.2.2" class="anchored" data-anchor-id="second-stage-stability-resistor-calibration"><span class="header-section-number">2.3.2.2</span> Second-Stage Stability &amp; Resistor Calibration</h4>
+<p>To guarantee a robust phase margin, the secondary transconductance stage (<span class="math inline">\(M_5\)</span>) must easily out-pace the target operational bandwidth boundary via an image-sizing coefficient rule:</p>
+<p><span class="math display">\[g_{m5,\mathrm{req}} = 2.2 \cdot f_{\mathrm{bw}} \cdot 2\pi \cdot C_{\mathrm{load}} \approx 0.13823\text{ mS}\]</span></p>
+<p>Dividing this by its distinct parameter <span class="math inline">\((g_m/I_D)_5 = 10\)</span> establishes the analytical current demand <span class="math inline">\(I_{D5,\mathrm{req}} = 13.823\text{ }\mu\text{A}\)</span>. Mirror scaling constraints align the true current flow down to exactly <strong><span class="math inline">\(10.00\text{ }\mu\text{A}\)</span></strong> based on physical layout sizes. At this grid point, the driver generates its final small-signal capability:</p>
+<p><span class="math display">\[g_{m5} = (g_m/I_D)_5 \cdot I_{D5} = 10 \cdot 10\text{ }\mu\text{A} = \mathbf{0.10000\text{ mS}}\]</span></p>
+<p>The zero-nulling frequency compensation resistance (<span class="math inline">\(R_z\)</span>) is set to cancel the right-half-plane (RHP) zero generated across the Miller framework:</p>
+<p><span class="math display">\[R_z = \frac{2}{g_{m5}} = \mathbf{20.00\text{ k}\Omega}\]</span></p>
 <hr>
 </section>
 </section>
 <section id="sizing-optimization-results" class="level3" data-number="2.3.3">
-<h3 data-number="2.3.3" class="anchored" data-anchor-id="sizing-optimization-results"><span class="header-section-number">2.3.3</span> 3. Sizing Optimization Results</h3>
+<h3 data-number="2.3.3" class="anchored" data-anchor-id="sizing-optimization-results"><span class="header-section-number">2.3.3</span> Sizing Optimization Results</h3>
 <p>The physical layout dimensions established by mapping the grid current data back to the <code>pygmid</code> database lookup functions are structured in <a href="#tbl-2stage-results" class="quarto-xref">Table&nbsp;4</a>.</p>
 <div id="tbl-2stage-results" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure">
@@ -723,7 +723,7 @@ Table&nbsp;4: Final optimized structural dimensions for the 2-Stage Miller OTA.
 <hr>
 </section>
 <section id="open-loop-dc-gain-performance-evaluation" class="level3" data-number="2.3.4">
-<h3 data-number="2.3.4" class="anchored" data-anchor-id="open-loop-dc-gain-performance-evaluation"><span class="header-section-number">2.3.4</span> 4. Open-Loop DC Gain &amp; Performance Evaluation</h3>
+<h3 data-number="2.3.4" class="anchored" data-anchor-id="open-loop-dc-gain-performance-evaluation"><span class="header-section-number">2.3.4</span> Open-Loop DC Gain &amp; Performance Evaluation</h3>
 <p>By splitting the design across cascaded active blocks, the total system gain successfully clears the targets required for robust distortion control. The cumulative performance metrics are detailed in <a href="#tbl-2stage-perf" class="quarto-xref">Table&nbsp;5</a>.</p>
 <div id="tbl-2stage-perf" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure">
@@ -747,43 +747,43 @@ Table&nbsp;5: Performance summary of the 2-Stage Miller OTA configuration.
 <tbody>
 <tr class="odd">
 <td style="text-align: left;"><strong>Stage 1 Gain (<span class="math inline">\(A_1\)</span>)</strong></td>
-<td style="text-align: center;"><strong><span class="math inline">\(31.6\text{ dB}\)</span></strong>[cite: 3]</td>
-<td style="text-align: left;">Primary Voltage Boost[cite: 3]</td>
+<td style="text-align: center;"><strong><span class="math inline">\(31.6\text{ dB}\)</span></strong></td>
+<td style="text-align: left;">Primary Voltage Boost</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"><strong>Stage 2 Gain (<span class="math inline">\(A_2\)</span>)</strong></td>
-<td style="text-align: center;"><strong><span class="math inline">\(34.3\text{ dB}\)</span></strong>[cite: 3]</td>
-<td style="text-align: left;">Secondary Common-Source Boost[cite: 3]</td>
+<td style="text-align: center;"><strong><span class="math inline">\(34.3\text{ dB}\)</span></strong></td>
+<td style="text-align: left;">Secondary Common-Source Boost</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;"><strong>Total Open-Loop Gain (<span class="math inline">\(A_0\)</span>)</strong></td>
-<td style="text-align: center;"><strong><span class="math inline">\(65.9\text{ dB}\)</span></strong>[cite: 3]</td>
-<td style="text-align: left;"><strong>Passed</strong> (<span class="math inline">\(\ge 60\text{ dB}\)</span> Target)[cite: 3]</td>
+<td style="text-align: center;"><strong><span class="math inline">\(65.9\text{ dB}\)</span></strong></td>
+<td style="text-align: left;"><strong>Passed</strong> (<span class="math inline">\(\ge 60\text{ dB}\)</span> Target)</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"><strong>Voltage Gain Error (<span class="math inline">\(\epsilon\)</span>)</strong></td>
-<td style="text-align: center;"><strong><span class="math inline">\(-0.1\%\)</span></strong>[cite: 3]</td>
-<td style="text-align: left;">Minimizes Closed-Loop Tracking Shifts[cite: 3]</td>
+<td style="text-align: center;"><strong><span class="math inline">\(-0.1\%\)</span></strong></td>
+<td style="text-align: left;">Minimizes Closed-Loop Tracking Shifts</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;"><strong>Core Branch Current Draw</strong></td>
-<td style="text-align: center;"><strong><span class="math inline">\(27.00\text{ }\mu\text{A}\)</span></strong>[cite: 3]</td>
-<td style="text-align: left;"><strong>Passed</strong> (<span class="math inline">\(\le 30.00\text{ }\mu\text{A}\)</span> Budget)[cite: 3]</td>
+<td style="text-align: center;"><strong><span class="math inline">\(27.00\text{ }\mu\text{A}\)</span></strong></td>
+<td style="text-align: left;"><strong>Passed</strong> (<span class="math inline">\(\le 30.00\text{ }\mu\text{A}\)</span> Budget)</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"><strong>Peak Power Dissipation</strong></td>
-<td style="text-align: center;"><strong><span class="math inline">\(72.85\text{ }\mu\text{W}\)</span></strong>[cite: 3]</td>
-<td style="text-align: left;">Simulated at <span class="math inline">\(V_{\mathrm{DD,max}} = 1.55\text{ V}\)</span>[cite: 3]</td>
+<td style="text-align: center;"><strong><span class="math inline">\(72.85\text{ }\mu\text{W}\)</span></strong></td>
+<td style="text-align: left;">Simulated at <span class="math inline">\(V_{\mathrm{DD,max}} = 1.55\text{ V}\)</span></td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;"><strong>Effective Miller Load (<span class="math inline">\(C_{\mathrm{M,eff}}\)</span>)</strong></td>
-<td style="text-align: center;"><strong><span class="math inline">\(599.54\text{ fF}\)</span></strong>[cite: 3]</td>
-<td style="text-align: left;">Includes <span class="math inline">\(99.54\text{ fF}\)</span> internal parasitics[cite: 3]</td>
+<td style="text-align: center;"><strong><span class="math inline">\(599.54\text{ fF}\)</span></strong></td>
+<td style="text-align: left;">Includes <span class="math inline">\(99.54\text{ fF}\)</span> internal parasitics</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"><strong>Predicted Layout UGBW</strong></td>
-<td style="text-align: center;"><strong><span class="math inline">\(24.82\text{ MHz}\)</span></strong>[cite: 3]</td>
-<td style="text-align: left;">Exceeds <span class="math inline">\(10\text{ MHz}\)</span> baseline specification[cite: 3]</td>
+<td style="text-align: center;"><strong><span class="math inline">\(24.82\text{ MHz}\)</span></strong></td>
+<td style="text-align: left;">Exceeds <span class="math inline">\(10\text{ MHz}\)</span> baseline specification</td>
 </tr>
 </tbody>
 </table>
