@@ -8,7 +8,7 @@
 
 <meta name="author" content="Sriram Repaka">
 <meta name="author" content="Mula Vishnu Sunkari">
-<meta name="dcterms.date" content="2026-07-12">
+<meta name="dcterms.date" content="2026-07-13">
 
 <title>Design of a Hybrid Linkwitz-Riley 4 Crossover Filter</title>
 <style>
@@ -117,19 +117,30 @@ window.Quarto = {
   <li><a href="#nmos-input-differential-pair-m_1-m_2" id="toc-nmos-input-differential-pair-m_1-m_2" class="nav-link" data-scroll-target="#nmos-input-differential-pair-m_1-m_2"><span class="header-section-number">2.1.1</span> 1. NMOS Input Differential Pair (<span class="math inline">\(M_1, M_2\)</span>)</a></li>
   <li><a href="#pmos-load-m_3-m_4-and-nmos-tail-m_5-m_6-current-mirrors" id="toc-pmos-load-m_3-m_4-and-nmos-tail-m_5-m_6-current-mirrors" class="nav-link" data-scroll-target="#pmos-load-m_3-m_4-and-nmos-tail-m_5-m_6-current-mirrors"><span class="header-section-number">2.1.2</span> 2. PMOS Load (<span class="math inline">\(M_3, M_4\)</span>) and NMOS Tail (<span class="math inline">\(M_5, M_6\)</span>) Current Mirrors</a></li>
   <li><a href="#summary-sizing-targets-and-trade-offs" id="toc-summary-sizing-targets-and-trade-offs" class="nav-link" data-scroll-target="#summary-sizing-targets-and-trade-offs"><span class="header-section-number">2.1.3</span> 3. Summary Sizing Targets and Trade-offs</a></li>
+  <li><a href="#transistor-sizing-and-architecture-for-the-5t-ota" id="toc-transistor-sizing-and-architecture-for-the-5t-ota" class="nav-link" data-scroll-target="#transistor-sizing-and-architecture-for-the-5t-ota"><span class="header-section-number">2.1.4</span> Transistor Sizing and Architecture for the 5T-OTA</a></li>
+  <li><a href="#design-specification-reference-parameters" id="toc-design-specification-reference-parameters" class="nav-link" data-scroll-target="#design-specification-reference-parameters"><span class="header-section-number">2.1.5</span> Design Specification &amp; Reference Parameters</a></li>
+  <li><a href="#sizing-derivations-mathematical-formulations" id="toc-sizing-derivations-mathematical-formulations" class="nav-link" data-scroll-target="#sizing-derivations-mathematical-formulations"><span class="header-section-number">2.1.6</span> Sizing Derivations &amp; Mathematical Formulations</a></li>
   </ul></li>
-  </ul></li>
-  <li><a href="#sizing-a-2-stage-ota" id="toc-sizing-a-2-stage-ota" class="nav-link" data-scroll-target="#sizing-a-2-stage-ota"><span class="header-section-number">3</span> Sizing a 2-Stage OTA</a>
+  <li><a href="#transition-to-a-two-stage-ota-architecture" id="toc-transition-to-a-two-stage-ota-architecture" class="nav-link" data-scroll-target="#transition-to-a-two-stage-ota-architecture"><span class="header-section-number">2.2</span> Transition to a Two-Stage OTA Architecture</a>
   <ul class="collapse">
-  <li><a href="#sizing-the-ota" id="toc-sizing-the-ota" class="nav-link" data-scroll-target="#sizing-the-ota"><span class="header-section-number">3.1</span> Sizing the OTA</a></li>
-  <li><a href="#frequency-response-and-stability-analysis-5t-vs.-2-stage-miller-ota" id="toc-frequency-response-and-stability-analysis-5t-vs.-2-stage-miller-ota" class="nav-link" data-scroll-target="#frequency-response-and-stability-analysis-5t-vs.-2-stage-miller-ota"><span class="header-section-number">3.2</span> Frequency Response and Stability Analysis: 5T vs.&nbsp;2-Stage Miller OTA</a>
+  <li><a href="#why-the-5t-ota-is-insufficient-for-audio" id="toc-why-the-5t-ota-is-insufficient-for-audio" class="nav-link" data-scroll-target="#why-the-5t-ota-is-insufficient-for-audio"><span class="header-section-number">2.2.1</span> Why the 5T-OTA is Insufficient for Audio</a></li>
+  <li><a href="#the-two-stage-gain-equation" id="toc-the-two-stage-gain-equation" class="nav-link" data-scroll-target="#the-two-stage-gain-equation"><span class="header-section-number">2.2.2</span> The Two-Stage Gain Equation</a></li>
+  </ul></li>
+  <li><a href="#transistor-sizing-and-architecture-for-the-2-stage-miller-ota" id="toc-transistor-sizing-and-architecture-for-the-2-stage-miller-ota" class="nav-link" data-scroll-target="#transistor-sizing-and-architecture-for-the-2-stage-miller-ota"><span class="header-section-number">2.3</span> Transistor Sizing and Architecture for the 2-Stage Miller OTA</a>
   <ul class="collapse">
-  <li><a href="#t-ota-performance-with-l-5-mutextm" id="toc-t-ota-performance-with-l-5-mutextm" class="nav-link" data-scroll-target="#t-ota-performance-with-l-5-mutextm"><span class="header-section-number">3.2.1</span> 1. 5T OTA Performance with <span class="math inline">\(L = 5\ \mu\text{m}\)</span></a></li>
-  <li><a href="#stage-miller-ota-the-l-5-mutextm-instability" id="toc-stage-miller-ota-the-l-5-mutextm-instability" class="nav-link" data-scroll-target="#stage-miller-ota-the-l-5-mutextm-instability"><span class="header-section-number">3.2.2</span> 2. 2-Stage Miller OTA: The <span class="math inline">\(L = 5\ \mu\text{m}\)</span> Instability</a></li>
-  <li><a href="#optimization-and-resolution-via-l-2-mutextm" id="toc-optimization-and-resolution-via-l-2-mutextm" class="nav-link" data-scroll-target="#optimization-and-resolution-via-l-2-mutextm"><span class="header-section-number">3.2.3</span> 3. Optimization and Resolution via <span class="math inline">\(L = 2\ \mu\text{m}\)</span></a></li>
+  <li><a href="#design-specification-reference-parameters-1" id="toc-design-specification-reference-parameters-1" class="nav-link" data-scroll-target="#design-specification-reference-parameters-1"><span class="header-section-number">2.3.1</span> 1. Design Specification &amp; Reference Parameters</a></li>
+  <li><a href="#sizing-derivations-mathematical-formulations-1" id="toc-sizing-derivations-mathematical-formulations-1" class="nav-link" data-scroll-target="#sizing-derivations-mathematical-formulations-1"><span class="header-section-number">2.3.2</span> 2. Sizing Derivations &amp; Mathematical Formulations</a></li>
+  <li><a href="#sizing-optimization-results" id="toc-sizing-optimization-results" class="nav-link" data-scroll-target="#sizing-optimization-results"><span class="header-section-number">2.3.3</span> 3. Sizing Optimization Results</a></li>
+  <li><a href="#open-loop-dc-gain-performance-evaluation" id="toc-open-loop-dc-gain-performance-evaluation" class="nav-link" data-scroll-target="#open-loop-dc-gain-performance-evaluation"><span class="header-section-number">2.3.4</span> 4. Open-Loop DC Gain &amp; Performance Evaluation</a></li>
+  </ul></li>
+  <li><a href="#frequency-response-and-stability-analysis-5t-vs.-2-stage-miller-ota" id="toc-frequency-response-and-stability-analysis-5t-vs.-2-stage-miller-ota" class="nav-link" data-scroll-target="#frequency-response-and-stability-analysis-5t-vs.-2-stage-miller-ota"><span class="header-section-number">2.4</span> Frequency Response and Stability Analysis: 5T vs.&nbsp;2-Stage Miller OTA</a>
+  <ul class="collapse">
+  <li><a href="#t-ota-performance-with-l-5-mutextm" id="toc-t-ota-performance-with-l-5-mutextm" class="nav-link" data-scroll-target="#t-ota-performance-with-l-5-mutextm"><span class="header-section-number">2.4.1</span> 1. 5T OTA Performance with <span class="math inline">\(L = 5\ \mu\text{m}\)</span></a></li>
+  <li><a href="#stage-miller-ota-the-l-5-mutextm-instability" id="toc-stage-miller-ota-the-l-5-mutextm-instability" class="nav-link" data-scroll-target="#stage-miller-ota-the-l-5-mutextm-instability"><span class="header-section-number">2.4.2</span> 2. 2-Stage Miller OTA: The <span class="math inline">\(L = 5\ \mu\text{m}\)</span> Instability</a></li>
+  <li><a href="#optimization-and-resolution-via-l-2-mutextm" id="toc-optimization-and-resolution-via-l-2-mutextm" class="nav-link" data-scroll-target="#optimization-and-resolution-via-l-2-mutextm"><span class="header-section-number">2.4.3</span> 3. Optimization and Resolution via <span class="math inline">\(L = 2\ \mu\text{m}\)</span></a></li>
   </ul></li>
   </ul></li>
-  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references"><span class="header-section-number">4</span> References</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references"><span class="header-section-number">3</span> References</a></li>
   </ul>
 </nav>
 </div>
@@ -169,7 +180,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">July 12, 2026</p>
+      <p class="date">July 13, 2026</p>
     </div>
   </div>
   
@@ -401,10 +412,135 @@ To reduce the total output noise contribution of the OTA, the transconductance o
 </tbody>
 </table>
 </section>
+<section id="transistor-sizing-and-architecture-for-the-5t-ota" class="level3" data-number="2.1.4">
+<h3 data-number="2.1.4" class="anchored" data-anchor-id="transistor-sizing-and-architecture-for-the-5t-ota"><span class="header-section-number">2.1.4</span> Transistor Sizing and Architecture for the 5T-OTA</h3>
+<p>To determine the physical dimensions of the transistors within the 5T-OTA architecture, <strong><span class="math inline">\(g_m/I_D\)</span> design methodology</strong> utilizes pre-characterized technology lookup tables</p>
+</section>
+<section id="design-specification-reference-parameters" class="level3" data-number="2.1.5">
+<h3 data-number="2.1.5" class="anchored" data-anchor-id="design-specification-reference-parameters"><span class="header-section-number">2.1.5</span> Design Specification &amp; Reference Parameters</h3>
+<p>The circuit dimensioning is driven by explicit performance targets, including bandwidth, capacitive loading, and transistor geometry constraints. The primary design inputs and initial assumptions are structured in <a href="#tbl-ota-specs" class="quarto-xref">Table&nbsp;2</a>.</p>
+<div id="tbl-ota-specs" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-ota-specs-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;2: Input design parameters and specifications for the 5T-OTA as per sizing document in <span class="citation" data-cites="pretl2026">(<a href="#ref-pretl2026" role="doc-biblioref">Pretl et al. 2026</a>)</span>.
+</figcaption>
+<div aria-describedby="tbl-ota-specs-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 30%">
+<col style="width: 38%">
+<col style="width: 30%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Parameter</th>
+<th style="text-align: center;">Symbol</th>
+<th style="text-align: left;">Initial Value / Target</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>Load Capacitance</strong></td>
+<td style="text-align: center;"><span class="math inline">\(C_{\mathrm{load}}\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(50\text{ fF}\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Target Bandwidth (-3dB Buffer)</strong></td>
+<td style="text-align: center;"><span class="math inline">\(f_{\mathrm{bw}}\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(10\text{ MHz}\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Input Pair Efficiency Target</strong></td>
+<td style="text-align: center;"><span class="math inline">\((g_m/I_D)_{1,2}\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(10\text{ V}^{-1}\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Active Load Efficiency Target</strong></td>
+<td style="text-align: center;"><span class="math inline">\((g_m/I_D)_{3,4}\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(5\text{ V}^{-1}\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Tail Source Efficiency Target</strong></td>
+<td style="text-align: center;"><span class="math inline">\((g_m/I_D)_{5,6}\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(5\text{ V}^{-1}\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Assigned Channel Length (All)</strong></td>
+<td style="text-align: center;"><span class="math inline">\(L_{1-6}\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(5\text{ }\mu\text{m}\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>External Reference Bias Input</strong></td>
+<td style="text-align: center;"><span class="math inline">\(I_{\mathrm{bias,in}}\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(20\text{ }\mu\text{A}\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Maximum Total Current Limit</strong></td>
+<td style="text-align: center;"><span class="math inline">\(I_{\mathrm{total,limit}}\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(10\text{ }\mu\text{A}\)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<hr>
+</section>
+<section id="sizing-derivations-mathematical-formulations" class="level3" data-number="2.1.6">
+<h3 data-number="2.1.6" class="anchored" data-anchor-id="sizing-derivations-mathematical-formulations"><span class="header-section-number">2.1.6</span> Sizing Derivations &amp; Mathematical Formulations</h3>
+<section id="input-pair-transconductance-g_m-extraction" class="level4" data-number="2.1.6.1">
+<h4 data-number="2.1.6.1" class="anchored" data-anchor-id="input-pair-transconductance-g_m-extraction"><span class="header-section-number">2.1.6.1</span> Input Pair Transconductance (<span class="math inline">\(g_m\)</span>) Extraction</h4>
+<p>The required transconductance for the differential input pair (<span class="math inline">\(M_{1/2}\)</span>) is directly tied to the unity-gain bandwidth requirement of the system configuration. To protect against process, voltage, and temperature (PVT) variations, alongside parasitic transistor self-loading, a safety scaling factor of <span class="math inline">\(3\)</span> is introduced into the fundamental bandwidth equation:</p>
+<p><span class="math display">\[g_{m1,2} = f_{\mathrm{bw}} \cdot 3 \cdot 4\pi \cdot C_{\mathrm{load}}\]</span></p>
+<p>Substituting our core specifications (<span class="math inline">\(10\text{ MHz}\)</span> and <span class="math inline">\(50\text{ fF}\)</span>), the script calculates the necessary small-signal capability:</p>
+<p><span class="math display">\[g_{m1,2} = 10\text{ MHz} \cdot 3 \cdot 4\pi \cdot 50\text{ fF} \approx 0.0188\text{ mS}\]</span></p>
+</section>
+<section id="bias-current-evaluation" class="level4" data-number="2.1.6.2">
+<h4 data-number="2.1.6.2" class="anchored" data-anchor-id="bias-current-evaluation"><span class="header-section-number">2.1.6.2</span> Bias Current Evaluation</h4>
+<p>By establishing the transconductance efficiency parameter <span class="math inline">\((g_m/I_D)_{1,2} = 10\)</span>, the single-branch bias current (<span class="math inline">\(I_{D1,2}\)</span>) can be isolated:</p>
+<p><span class="math display">\[I_{D1,2} = \frac{g_{m1,2}}{(g_m/I_D)_{1,2}}\]</span></p>
+<p>The total tail current required from current source <span class="math inline">\(M_5\)</span> corresponds to both operational branches:</p>
+<p><span class="math display">\[I_{\mathrm{total}} = 2 \cdot I_{D1,2} \approx 3.76\text{ }\mu\text{A}\]</span></p>
+<p>To comply with standard layout grids and bias generation modules, this value is rounded up to a clean operational baseline of <strong><span class="math inline">\(4.0\text{ }\mu\text{A}\)</span></strong> (<span class="math inline">\(I_{D1,2} = 2.0\text{ }\mu\text{A}\)</span>).</p>
+</section>
+<section id="gate-voltage-physical-width-mapping" class="level4" data-number="2.1.6.3">
+<h4 data-number="2.1.6.3" class="anchored" data-anchor-id="gate-voltage-physical-width-mapping"><span class="header-section-number">2.1.6.3</span> Gate Voltage &amp; Physical Width Mapping</h4>
+<p>Operating at a fixed bias length (<span class="math inline">\(L = 5\text{ }\mu\text{m}\)</span>), the calculated current and target efficiency points are mapped to the semiconductor technology databases to track their native gate-to-source voltage drops (<span class="math inline">\(V_{\mathrm{GS}}\)</span>):</p>
+<p>Using the technology-specific current density value per micrometer of transistor width (<span class="math inline">\(I_D/W\)</span>) provided by the lookup tables at these operating points, the physical widths (<span class="math inline">\(W\)</span>) are computed via:</p>
+<p><span class="math display">\[W = \frac{I_D}{(I_D/W)}\]</span></p>
+<p>and rounded</p>
+</section>
+<section id="external-bias-current-mirroring-m_6" class="level4" data-number="2.1.6.4">
+<h4 data-number="2.1.6.4" class="anchored" data-anchor-id="external-bias-current-mirroring-m_6"><span class="header-section-number">2.1.6.4</span> External Bias Current Mirroring (<span class="math inline">\(M_6\)</span>)</h4>
+<p>To mirror the incoming off-chip reference current (<span class="math inline">\(20\text{ }\mu\text{A}\)</span>) down to our internal tail target (<span class="math inline">\(4\text{ }\mu\text{A}\)</span>), the geometry of the receiving diode-connected transistor (<span class="math inline">\(M_6\)</span>) is scaled proportionally against the dimensions of <span class="math inline">\(M_5\)</span>:</p>
+<p><span class="math display">\[W_6 = W_{5,\mathrm{round}} \cdot \frac{I_{\mathrm{bias,in}}}{I_{\mathrm{total}}}\]</span></p>
+</section>
+<section id="open-loop-dc-gain-derivation" class="level4" data-number="2.1.6.5">
+<h4 data-number="2.1.6.5" class="anchored" data-anchor-id="open-loop-dc-gain-derivation"><span class="header-section-number">2.1.6.5</span> Open-Loop DC Gain Derivation</h4>
+<p>The open-loop DC voltage gain (<span class="math inline">\(A_0\)</span>) of a single-stage 5T-OTA is defined by the transconductance of the input pair relative to the combined output conductances (<span class="math inline">\(g_{\mathrm{ds}}\)</span>) of both the input transistors and the active loads.</p>
+<p>The total small-signal DC voltage gain is expressed using the following equation:</p>
+<p><span class="math display">\[A_0 = \frac{g_{m1,2}}{g_{\mathrm{ds}1,2} + g_{\mathrm{ds}3,4}}\]</span></p>
+<p>We can use the readly available sizing document to size a basic 5T-OTA, based on the input design parameters the document caculates the sizing for each transistor and other parameters like the gain, noise, power consumption and settling time. A sizing document is available at <span class="citation" data-cites="pretl2026">(<a href="#ref-pretl2026" role="doc-biblioref">Pretl et al. 2026</a>)</span></p>
 </section>
 </section>
-<section id="sizing-a-2-stage-ota" class="level1" data-number="3">
-<h1 data-number="3"><span class="header-section-number">3</span> Sizing a 2-Stage OTA</h1>
+</section>
+<section id="transition-to-a-two-stage-ota-architecture" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="transition-to-a-two-stage-ota-architecture"><span class="header-section-number">2.2</span> Transition to a Two-Stage OTA Architecture</h2>
+<section id="why-the-5t-ota-is-insufficient-for-audio" class="level3" data-number="2.2.1">
+<h3 data-number="2.2.1" class="anchored" data-anchor-id="why-the-5t-ota-is-insufficient-for-audio"><span class="header-section-number">2.2.1</span> Why the 5T-OTA is Insufficient for Audio</h3>
+<p>While the basic 5T-OTA is simple and efficient, it is not suitable for an audio amplifier because its open-loop DC gain is only <strong><span class="math inline">\(34.8\text{ dB}\)</span></strong> (around <span class="math inline">\(55\text{ V/V}\)</span>). High-fidelity audio applications demand significantly more gain to ensure precise signal reproduction, minimize output distortion, and keep gain errors low.</p>
+<p>Because a single transistor stage cannot provide enough amplification on its own, we must transition to a <strong>Two-Stage OTA</strong> architecture as suggested in <span class="citation" data-cites="pretl2026">(<a href="#ref-pretl2026" role="doc-biblioref">Pretl et al. 2026</a>)</span>.</p>
+</section>
+<section id="the-two-stage-gain-equation" class="level3" data-number="2.2.2">
+<h3 data-number="2.2.2" class="anchored" data-anchor-id="the-two-stage-gain-equation"><span class="header-section-number">2.2.2</span> The Two-Stage Gain Equation</h3>
+<p>By cascading a second amplification stage directly after the initial differential stage, the total open-loop gain is multiplied together. The resulting total DC voltage gain is defined by the following equation:</p>
+<p><span class="math display">\[A_{\mathrm{OL, total}} = A_{v1} \cdot A_{v2}\]</span></p>
+<p>Where: <span class="math inline">\(A_{\mathrm{OL, total}}\)</span> is the total open-loop DC gain of the system. <span class="math inline">\(A_{v1}\)</span> is the voltage gain of the first stage (the differential input pair). <span class="math inline">\(A_{v2}\)</span> is the voltage gain of the second stage (the common-source output stage).</p>
+<p>This structural change easily pushes the total gain into the desired range for audio quality, while the added Miller compensation network (<span class="math inline">\(C_\mathrm{M}\)</span> and <span class="math inline">\(R_\mathrm{Z}\)</span>) ensures the entire circuit remains stable.</p>
+</section>
+</section>
+<section id="transistor-sizing-and-architecture-for-the-2-stage-miller-ota" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="transistor-sizing-and-architecture-for-the-2-stage-miller-ota"><span class="header-section-number">2.3</span> Transistor Sizing and Architecture for the 2-Stage Miller OTA</h2>
 <p>Integral part of an Linkwitz-Riley 4 Crossover Filter is an amplifier, and a 2-stage OTA is a good option as it offers high gain and is begginer friendly to design. A 2-stage OTA is essentially an 5-T OTA and a PMOS common source ampliflier cascaded with a Miller compensation capacitor <span class="math inline">\(C_{\text{M}}\)</span> and a Null resistor <span class="math inline">\(R_{\text{Z}}\)</span> as shown in <a href="#fig-2-stage-ota" class="quarto-xref">Figure&nbsp;4</a>.</p>
 <div id="fig-2-stage-ota" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -416,23 +552,259 @@ Figure&nbsp;4: The 2-stage OTA.
 </figcaption>
 </figure>
 </div>
-<section id="sizing-the-ota" class="level2" data-number="3.1">
-<h2 data-number="3.1" class="anchored" data-anchor-id="sizing-the-ota"><span class="header-section-number">3.1</span> Sizing the OTA</h2>
-<p>There are 4 major aspects of this OTA the input differential pair, pmos current mirrors, output gain PMOS, and tail current NMOS’s. The sizing of these transistors is node using gm/Id methodology.</p>
+<p>There are 4 major aspects of this OTA the input differential pair, pmos current mirrors, output gain PMOS, and tail current NMOS’s. The sizing of these transistors is done using gm/Id methodology.</p>
+<section id="design-specification-reference-parameters-1" class="level3" data-number="2.3.1">
+<h3 data-number="2.3.1" class="anchored" data-anchor-id="design-specification-reference-parameters-1"><span class="header-section-number">2.3.1</span> 1. Design Specification &amp; Reference Parameters</h3>
+<p>The core target constraints, technology limits, and initial efficiency definitions guiding the automation loop are outlined in <a href="#tbl-2stage-specs" class="quarto-xref">Table&nbsp;3</a>.</p>
+<div id="tbl-2stage-specs" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-2stage-specs-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;3: Design specifications and biasing conditions for the 2-Stage Miller OTA optimization.
+</figcaption>
+<div aria-describedby="tbl-2stage-specs-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 30%">
+<col style="width: 38%">
+<col style="width: 30%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Parameter</th>
+<th style="text-align: center;">Symbol</th>
+<th style="text-align: left;">Initial Value / Target</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>Load Capacitance</strong></td>
+<td style="text-align: center;"><span class="math inline">\(C_{\mathrm{load}}\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(1\text{ pF}\)</span>[cite: 3]</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Target Bandwidth (-3dB Buffer)</strong></td>
+<td style="text-align: center;"><span class="math inline">\(f_{\mathrm{bw}}\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(10\text{ MHz}\)</span>[cite: 3]</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Input Pair Efficiency Target</strong></td>
+<td style="text-align: center;"><span class="math inline">\((g_m/I_D)_{1,2}\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(11\text{ V}^{-1}\)</span>[cite: 3]</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Active Load Efficiency Target</strong></td>
+<td style="text-align: center;"><span class="math inline">\((g_m/I_D)_{3,4}\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(7\text{ V}^{-1}\)</span>[cite: 3]</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>CS Driver Efficiency Target</strong></td>
+<td style="text-align: center;"><span class="math inline">\((g_m/I_D)_{5}\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(10\text{ V}^{-1}\)</span>[cite: 3]</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Current Mirror Efficiency Target</strong></td>
+<td style="text-align: center;"><span class="math inline">\((g_m/I_D)_{6,7,8}\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(6\text{ V}^{-1}\)</span>[cite: 3]</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Assigned Channel Length (All)</strong></td>
+<td style="text-align: center;"><span class="math inline">\(L_{1-8}\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(2\text{ }\mu\text{m}\)</span>[cite: 3]</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Target Open-Loop DC Gain</strong></td>
+<td style="text-align: center;"><span class="math inline">\(A_0\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(\ge 60\text{ dB}\)</span>[cite: 3]</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Core Current Draw Budget</strong></td>
+<td style="text-align: center;"><span class="math inline">\(I_{\mathrm{limit}}\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(\le 30\text{ }\mu\text{A}\)</span>[cite: 3]</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<hr>
 </section>
-<section id="frequency-response-and-stability-analysis-5t-vs.-2-stage-miller-ota" class="level2" data-number="3.2">
-<h2 data-number="3.2" class="anchored" data-anchor-id="frequency-response-and-stability-analysis-5t-vs.-2-stage-miller-ota"><span class="header-section-number">3.2</span> Frequency Response and Stability Analysis: 5T vs.&nbsp;2-Stage Miller OTA</h2>
-<section id="t-ota-performance-with-l-5-mutextm" class="level3" data-number="3.2.1">
-<h3 data-number="3.2.1" class="anchored" data-anchor-id="t-ota-performance-with-l-5-mutextm"><span class="header-section-number">3.2.1</span> 1. 5T OTA Performance with <span class="math inline">\(L = 5\ \mu\text{m}\)</span></h3>
+<section id="sizing-derivations-mathematical-formulations-1" class="level3" data-number="2.3.2">
+<h3 data-number="2.3.2" class="anchored" data-anchor-id="sizing-derivations-mathematical-formulations-1"><span class="header-section-number">2.3.2</span> 2. Sizing Derivations &amp; Mathematical Formulations</h3>
+<section id="step-a-compensation-allocation-first-stage-sizing" class="level4" data-number="2.3.2.1">
+<h4 data-number="2.3.2.1" class="anchored" data-anchor-id="step-a-compensation-allocation-first-stage-sizing"><span class="header-section-number">2.3.2.1</span> Step A: Compensation Allocation &amp; First-Stage Sizing</h4>
+<p>To shield the circuit from high-frequency stability decay, a Miller capacitance (<span class="math inline">\(C_\mathrm{M}\)</span>) is introduced relative to the total output load[cite: 3]:</p>
+<p><span class="math display">\[C_\mathrm{M} = 0.5 \cdot C_{\mathrm{load}} = 500\text{ fF}\]</span>[cite: 3]</p>
+<p>The input pair transconductance (<span class="math inline">\(g_{m1,2}\)</span>) calculation incorporates a protective <span class="math inline">\(3\times\)</span> multiplier scaling to safeguard the target bandwidth against local process tracking shifts[cite: 3]:</p>
+<p><span class="math display">\[g_{m1,2,\mathrm{ideal}} = 3 \cdot (2\pi f_{\mathrm{bw}}) \cdot C_\mathrm{M} \approx 0.09425\text{ mS}\]</span>[cite: 3]</p>
+<p>Dividing by the efficiency parameter <span class="math inline">\((g_m/I_D)_{1,2} = 11\)</span>, the branch current yields a total ideal tail allocation of <span class="math inline">\(I_{\mathrm{tail,ideal}} \approx 17.14\text{ }\mu\text{A}\)</span>[cite: 3]. Quantizing this to a regular layout grid (steps of <span class="math inline">\(0.5\text{ }\mu\text{A}\)</span>) locks in our tail profile[cite: 3]:</p>
+<ul>
+<li><strong>Tail Current Source (<span class="math inline">\(I_{\mathrm{tail}}\)</span>):</strong> <strong><span class="math inline">\(17.00\text{ }\mu\text{A}\)</span></strong>[cite: 3]</li>
+<li><strong>True Branch Current (<span class="math inline">\(I_{D1,2}\)</span>):</strong> <strong><span class="math inline">\(8.50\text{ }\mu\text{A}\)</span></strong>[cite: 3]</li>
+<li><strong>True Manufactured Transconductance (<span class="math inline">\(g_{m1,2}\)</span>):</strong> <span class="math inline">\(11 \cdot 8.5\text{ }\mu\text{A} = \mathbf{0.09350\text{ mS}}\)</span>[cite: 3]</li>
+</ul>
+</section>
+<section id="step-b-second-stage-stability-resistor-calibration" class="level4" data-number="2.3.2.2">
+<h4 data-number="2.3.2.2" class="anchored" data-anchor-id="step-b-second-stage-stability-resistor-calibration"><span class="header-section-number">2.3.2.2</span> Step B: Second-Stage Stability &amp; Resistor Calibration</h4>
+<p>To guarantee a robust phase margin, the secondary transconductance stage (<span class="math inline">\(M_5\)</span>) must easily out-pace the target operational bandwidth boundary via an image-sizing coefficient rule[cite: 3]:</p>
+<p><span class="math display">\[g_{m5,\mathrm{req}} = 2.2 \cdot f_{\mathrm{bw}} \cdot 2\pi \cdot C_{\mathrm{load}} \approx 0.13823\text{ mS}\]</span>[cite: 3]</p>
+<p>Dividing this by its distinct parameter <span class="math inline">\((g_m/I_D)_5 = 10\)</span> establishes the analytical current demand <span class="math inline">\(I_{D5,\mathrm{req}} = 13.823\text{ }\mu\text{A}\)</span>[cite: 3]. Mirror scaling constraints align the true current flow down to exactly <strong><span class="math inline">\(10.00\text{ }\mu\text{A}\)</span></strong> based on physical layout sizes[cite: 3]. At this grid point, the driver generates its final small-signal capability:</p>
+<p><span class="math display">\[g_{m5} = (g_m/I_D)_5 \cdot I_{D5} = 10 \cdot 10\text{ }\mu\text{A} = \mathbf{0.10000\text{ mS}}\]</span>[cite: 3]</p>
+<p>The zero-nulling frequency compensation resistance (<span class="math inline">\(R_z\)</span>) is set to cancel the right-half-plane (RHP) zero generated across the Miller framework[cite: 3]:</p>
+<p><span class="math display">\[R_z = \frac{2}{g_{m5}} = \mathbf{20.00\text{ k}\Omega}\]</span>[cite: 3]</p>
+<hr>
+</section>
+</section>
+<section id="sizing-optimization-results" class="level3" data-number="2.3.3">
+<h3 data-number="2.3.3" class="anchored" data-anchor-id="sizing-optimization-results"><span class="header-section-number">2.3.3</span> 3. Sizing Optimization Results</h3>
+<p>The physical layout dimensions established by mapping the grid current data back to the <code>pygmid</code> database lookup functions are structured in <a href="#tbl-2stage-results" class="quarto-xref">Table&nbsp;4</a>.</p>
+<div id="tbl-2stage-results" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-2stage-results-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;4: Final optimized structural dimensions for the 2-Stage Miller OTA.
+</figcaption>
+<div aria-describedby="tbl-2stage-results-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 22%">
+<col style="width: 22%">
+<col style="width: 27%">
+<col style="width: 27%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Transistor Group</th>
+<th style="text-align: left;">Geometric Layout Role</th>
+<th style="text-align: center;">Width (<span class="math inline">\(W\)</span>)</th>
+<th style="text-align: center;">Length (<span class="math inline">\(L\)</span>)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong><span class="math inline">\(M_{1/2}\)</span></strong></td>
+<td style="text-align: left;">NMOS Input Differential Pair</td>
+<td style="text-align: center;"><span class="math inline">\(2.5\text{ }\mu\text{m}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(2\text{ }\mu\text{m}\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong><span class="math inline">\(M_{3/4}\)</span></strong></td>
+<td style="text-align: left;">PMOS Active First-Stage Load</td>
+<td style="text-align: center;"><span class="math inline">\(3.5\text{ }\mu\text{m}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(2\text{ }\mu\text{m}\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong><span class="math inline">\(M_5\)</span></strong></td>
+<td style="text-align: left;">PMOS Common-Source Output Driver</td>
+<td style="text-align: center;"><span class="math inline">\(9.5\text{ }\mu\text{m}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(2\text{ }\mu\text{m}\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong><span class="math inline">\(M_6\)</span></strong></td>
+<td style="text-align: left;">NMOS External Reference Bias Input Receiver</td>
+<td style="text-align: center;"><span class="math inline">\(2.0\text{ }\mu\text{m}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(2\text{ }\mu\text{m}\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong><span class="math inline">\(M_7\)</span></strong></td>
+<td style="text-align: left;">NMOS First-Stage Tail Current Mirror</td>
+<td style="text-align: center;"><span class="math inline">\(1.5\text{ }\mu\text{m}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(2\text{ }\mu\text{m}\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong><span class="math inline">\(M_8\)</span></strong></td>
+<td style="text-align: left;">NMOS Second-Stage Output Active Load</td>
+<td style="text-align: center;"><span class="math inline">\(1.0\text{ }\mu\text{m}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(2\text{ }\mu\text{m}\)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<hr>
+</section>
+<section id="open-loop-dc-gain-performance-evaluation" class="level3" data-number="2.3.4">
+<h3 data-number="2.3.4" class="anchored" data-anchor-id="open-loop-dc-gain-performance-evaluation"><span class="header-section-number">2.3.4</span> 4. Open-Loop DC Gain &amp; Performance Evaluation</h3>
+<p>By splitting the design across cascaded active blocks, the total system gain successfully clears the targets required for robust distortion control. The cumulative performance metrics are detailed in <a href="#tbl-2stage-perf" class="quarto-xref">Table&nbsp;5</a>.</p>
+<div id="tbl-2stage-perf" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-2stage-perf-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;5: Performance summary of the 2-Stage Miller OTA configuration.
+</figcaption>
+<div aria-describedby="tbl-2stage-perf-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 30%">
+<col style="width: 38%">
+<col style="width: 30%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Performance Metric</th>
+<th style="text-align: center;">Design Value</th>
+<th style="text-align: left;">Status / Constraint</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>Stage 1 Gain (<span class="math inline">\(A_1\)</span>)</strong></td>
+<td style="text-align: center;"><strong><span class="math inline">\(31.6\text{ dB}\)</span></strong>[cite: 3]</td>
+<td style="text-align: left;">Primary Voltage Boost[cite: 3]</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Stage 2 Gain (<span class="math inline">\(A_2\)</span>)</strong></td>
+<td style="text-align: center;"><strong><span class="math inline">\(34.3\text{ dB}\)</span></strong>[cite: 3]</td>
+<td style="text-align: left;">Secondary Common-Source Boost[cite: 3]</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Total Open-Loop Gain (<span class="math inline">\(A_0\)</span>)</strong></td>
+<td style="text-align: center;"><strong><span class="math inline">\(65.9\text{ dB}\)</span></strong>[cite: 3]</td>
+<td style="text-align: left;"><strong>Passed</strong> (<span class="math inline">\(\ge 60\text{ dB}\)</span> Target)[cite: 3]</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Voltage Gain Error (<span class="math inline">\(\epsilon\)</span>)</strong></td>
+<td style="text-align: center;"><strong><span class="math inline">\(-0.1\%\)</span></strong>[cite: 3]</td>
+<td style="text-align: left;">Minimizes Closed-Loop Tracking Shifts[cite: 3]</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Core Branch Current Draw</strong></td>
+<td style="text-align: center;"><strong><span class="math inline">\(27.00\text{ }\mu\text{A}\)</span></strong>[cite: 3]</td>
+<td style="text-align: left;"><strong>Passed</strong> (<span class="math inline">\(\le 30.00\text{ }\mu\text{A}\)</span> Budget)[cite: 3]</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Peak Power Dissipation</strong></td>
+<td style="text-align: center;"><strong><span class="math inline">\(72.85\text{ }\mu\text{W}\)</span></strong>[cite: 3]</td>
+<td style="text-align: left;">Simulated at <span class="math inline">\(V_{\mathrm{DD,max}} = 1.55\text{ V}\)</span>[cite: 3]</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Effective Miller Load (<span class="math inline">\(C_{\mathrm{M,eff}}\)</span>)</strong></td>
+<td style="text-align: center;"><strong><span class="math inline">\(599.54\text{ fF}\)</span></strong>[cite: 3]</td>
+<td style="text-align: left;">Includes <span class="math inline">\(99.54\text{ fF}\)</span> internal parasitics[cite: 3]</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Predicted Layout UGBW</strong></td>
+<td style="text-align: center;"><strong><span class="math inline">\(24.82\text{ MHz}\)</span></strong>[cite: 3]</td>
+<td style="text-align: left;">Exceeds <span class="math inline">\(10\text{ MHz}\)</span> baseline specification[cite: 3]</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+</section>
+</section>
+<section id="frequency-response-and-stability-analysis-5t-vs.-2-stage-miller-ota" class="level2" data-number="2.4">
+<h2 data-number="2.4" class="anchored" data-anchor-id="frequency-response-and-stability-analysis-5t-vs.-2-stage-miller-ota"><span class="header-section-number">2.4</span> Frequency Response and Stability Analysis: 5T vs.&nbsp;2-Stage Miller OTA</h2>
+<section id="t-ota-performance-with-l-5-mutextm" class="level3" data-number="2.4.1">
+<h3 data-number="2.4.1" class="anchored" data-anchor-id="t-ota-performance-with-l-5-mutextm"><span class="header-section-number">2.4.1</span> 1. 5T OTA Performance with <span class="math inline">\(L = 5\ \mu\text{m}\)</span></h3>
 <p>The initial design of a single-stage 5T Operational Transconductance Amplifier (OTA) targeted an audio-frequency <strong>Unity-Gain Bandwidth (UGBW) of 10 MHz</strong>. Using a large channel length of <span class="math inline">\(L = 5\ \mu\text{m}\)</span> was successful in this architecture. Because a 5T OTA is a single-stage topology, its frequency response is dictated by a single dominant pole at the output. Any secondary, non-dominant poles lie far enough beyond the 10 MHz target that they do not impact loop stability.</p>
 </section>
-<section id="stage-miller-ota-the-l-5-mutextm-instability" class="level3" data-number="3.2.2">
-<h3 data-number="3.2.2" class="anchored" data-anchor-id="stage-miller-ota-the-l-5-mutextm-instability"><span class="header-section-number">3.2.2</span> 2. 2-Stage Miller OTA: The <span class="math inline">\(L = 5\ \mu\text{m}\)</span> Instability</h3>
+<section id="stage-miller-ota-the-l-5-mutextm-instability" class="level3" data-number="2.4.2">
+<h3 data-number="2.4.2" class="anchored" data-anchor-id="stage-miller-ota-the-l-5-mutextm-instability"><span class="header-section-number">2.4.2</span> 2. 2-Stage Miller OTA: The <span class="math inline">\(L = 5\ \mu\text{m}\)</span> Instability</h3>
 <p>When expanding the design to a <strong>2-Stage Miller-Compensated OTA</strong> using the same <span class="math inline">\(L = 5\ \mu\text{m}\)</span> for the gain stages, the frequency response exhibited prominent <strong>peaking (“bumps”) at high frequencies</strong>, indicating a severe degradation of Phase Margin and potential circuit instability.</p>
 <p>To diagnose this, the <span class="math inline">\(f_{\text{T}}\)</span> vs.&nbsp;<span class="math inline">\(g_{\text{m}}/I_{\text{D}}\)</span> characteristic plot for the <code>sg13_lv_nmos</code> device was analyzed: * For <span class="math inline">\(L = 5\ \mu\text{m}\)</span>, the transit frequency (<span class="math inline">\(f_{\text{T}}\)</span>) curve is nearly completely flat across the moderate inversion region (<span class="math inline">\(g_{\text{m}}/I_{\text{D}} = 10 \text{ to } 15\text{ S/A}\)</span>), hovering at a very low absolute value. * This flatness demonstrates that at <span class="math inline">\(L = 5\ \mu\text{m}\)</span>, the transistor’s local speed capability is heavily restricted regardless of the biasing condition. * In a 2-stage amplifier, the second gain stage creates a critical non-dominant pole. Because the <span class="math inline">\(L = 5\ \mu\text{m}\)</span> device is fundamentally limited in speed, this non-dominant pole was trapped too close to the target 10 MHz UGBW, leading to the observed high-frequency peaking.</p>
 </section>
-<section id="optimization-and-resolution-via-l-2-mutextm" class="level3" data-number="3.2.3">
-<h3 data-number="3.2.3" class="anchored" data-anchor-id="optimization-and-resolution-via-l-2-mutextm"><span class="header-section-number">3.2.3</span> 3. Optimization and Resolution via <span class="math inline">\(L = 2\ \mu\text{m}\)</span></h3>
+<section id="optimization-and-resolution-via-l-2-mutextm" class="level3" data-number="2.4.3">
+<h3 data-number="2.4.3" class="anchored" data-anchor-id="optimization-and-resolution-via-l-2-mutextm"><span class="header-section-number">2.4.3</span> 3. Optimization and Resolution via <span class="math inline">\(L = 2\ \mu\text{m}\)</span></h3>
 <p>Based on the insights from the <span class="math inline">\(f_{\text{T}}\)</span> plot, the channel length was reduced to <strong><span class="math inline">\(L = 2\ \mu\text{m}\)</span></strong> to shift the device operating point onto a higher, more dynamic speed curve.</p>
 <ul>
 <li><strong>Result:</strong> Decreasing <span class="math inline">\(L\)</span> successfully pushed the non-dominant pole to a significantly higher frequency, well out of the way of the audio bandwidth.</li>
@@ -441,12 +813,12 @@ Figure&nbsp;4: The 2-stage OTA.
 </section>
 </section>
 </section>
-<section id="references" class="level1 unnumbered" data-number="4">
+<section id="references" class="level1 unnumbered" data-number="3">
 
 
 </section>
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">4 References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">3 References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="list">
 <div id="ref-alberto2025miller" class="csl-entry" role="listitem">
 L., Alberto. 2025. <span>“Understanding Miller Compensation: A Guide to Frequency Stability.”</span> Mis Circuitos, July 1. <a href="https://miscircuitos.com/understanding-miller-compensation-a-guide-to-frequency-stability/">https://miscircuitos.com/understanding-miller-compensation-a-guide-to-frequency-stability/</a>.
 </div>

@@ -87,14 +87,6 @@ print onoise_total
 C {devices/vsource.sym} -10 140 0 0 {name=Vdd value=1.5}
 C {devices/gnd.sym} -10 190 0 0 {name=l3 lab=GND}
 C {devices/title.sym} -370 440 0 0 {name=l5 author="(c) 2024-2025 Harald Pretl, Apache-2.0 license"}
-C {devices/launcher.sym} 150 310 0 0 {name=h2
-descr="simulate" 
-tclcommand="xschem save; xschem netlist; xschem simulate"
-}
-C {devices/launcher.sym} 390 310 0 0 {name=h3
-descr="annotate OP" 
-tclcommand="set show_hidden_texts 1; xschem annotate_op"
-}
 C {devices/lab_pin.sym} -10 90 0 0 {name=p2 sig_type=std_logic lab=v_dd}
 C {devices/vsource.sym} 70 140 0 0 {name=Vss value=0}
 C {devices/gnd.sym} 70 190 0 0 {name=l1 lab=GND}

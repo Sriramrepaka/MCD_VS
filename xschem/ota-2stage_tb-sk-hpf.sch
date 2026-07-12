@@ -56,13 +56,13 @@ ac dec 101 100 0.5MEG
 plot v(v_out)
 plot 20*log10(v(v_out))
 
-* Calculate the exact -3dB cutoff frequency
+* Calculate the exact -6dB cutoff frequency
 meas ac dcgain MAX vmag(v_out) FROM=50k TO=0.5MEG
-let f3db_target = dcgain / 2
-meas ac fbw WHEN vmag(v_out)=f3db_target RISE=1
+let f6db_target = dcgain / 2
+meas ac fc WHEN vmag(v_out)=f6db_target RISE=1
 
 print dcgain
-print fbw
+print fc
 .endc
 "}
 C {lab_pin.sym} 330 -310 0 0 {name=p3 sig_type=std_logic lab=v_in}
