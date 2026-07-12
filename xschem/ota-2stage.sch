@@ -158,7 +158,7 @@ C {ipin.sym} -460 20 0 0 {name=p5 lab=vinn}
 C {ipin.sym} -460 160 0 0 {name=p6 lab=vinp}
 C {sg13g2_pr/rhigh.sym} 350 -60 0 0 {name=RN
 w=1e-6
-l=19.5e-6
+l=17e-6
 model=rhigh
 body=GND
 spiceprefix=X

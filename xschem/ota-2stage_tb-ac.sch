@@ -59,7 +59,7 @@ N 610 -150 620 -150 {lab=v_out}
 N 620 -160 620 -150 {lab=v_out}
 C {devices/code_shown.sym} -530 -280 0 0 {name=NGSPICE only_toplevel=true 
 value="
-.temp 130
+.temp 27
 .control
 option sparse
 save all
@@ -111,7 +111,7 @@ C {isource.sym} 890 -40 2 0 {name=I1 value="dc 0 ac 0"}
 C {ota-2stage.sym} 530 -150 0 0 {name=x1}
 C {devices/code_shown.sym} -530 330 0 0 {name=MODEL1 only_toplevel=true
 format="tcleval( @value )"
-value=".lib cornerMOSlv.lib mos_ss
+value=".lib cornerMOSlv.lib mos_tt
 .lib cornerCAP.lib cap_typ
 .lib cornerRES.lib res_typ
 "}

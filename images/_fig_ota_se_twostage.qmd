@@ -94,7 +94,7 @@ with sd.Drawing(canvas='svg') as d:
     elm.Line().right().length(1).dot(open=True).label(r'$I_\mathrm{out} \text{ or } V_\mathrm{out}$', 'right')
 
     d.here=pos3
-    elm.Line().down().length(1.5).idot()
+    elm.Resistor().down().length(1.5).idot().label(r'$R_\mathrm{Z}$', loc='top')
     elm.Capacitor().right().tox(M5.drain).dot().label(r'$C_\mathrm{M}$')
 
     # vdd line

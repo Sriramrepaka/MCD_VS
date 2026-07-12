@@ -301,7 +301,7 @@ Table&nbsp;1: Component selection parameters for the active filter stage.
 <img src="./images/fig-basic-ota-output-1.svg" class="img-fluid figure-img" style="width:80.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-basic-ota-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;3: The 5-transistor OTA.
+Figure&nbsp;3: The 5-transistor OTA <span class="citation" data-cites="pretl2026">(<a href="#ref-pretl2026" role="doc-biblioref">Pretl et al. 2026</a>)</span>.
 </figcaption>
 </figure>
 </div>
@@ -309,19 +309,19 @@ Figure&nbsp;3: The 5-transistor OTA.
 <section id="nmos-differential-pair-m_1-m_2" class="level3" data-number="2.0.1">
 <h3 data-number="2.0.1" class="anchored" data-anchor-id="nmos-differential-pair-m_1-m_2"><span class="header-section-number">2.0.1</span> NMOS Differential Pair (<span class="math inline">\(M_1, M_2\)</span>)</h3>
 <p>The differential pair serves as the primary “input stage” that senses the incoming voltage signals.</p>
-<p><strong>Function:</strong> <span class="math inline">\(M_1\)</span> and <span class="math inline">\(M_2\)</span> are matched NMOS devices biased by the tail current flowing from <span class="math inline">\(M_5\)</span>. When a differential input voltage is applied across their gates, it is converted into <strong>differential drain currents</strong> governed by the transconductance (<span class="math inline">\(g_{\text{m}}\)</span>) of the transistors.</p>
+<p><strong>Function:</strong> <span class="math inline">\(M_1\)</span> and <span class="math inline">\(M_2\)</span> are matched NMOS devices biased by the tail current flowing from <span class="math inline">\(M_5\)</span>. When a differential input voltage is applied across their gates, it is converted into <strong>differential drain currents</strong> governed by the transconductance (<span class="math inline">\(g_{\text{m}}\)</span>) of the transistors <span class="citation" data-cites="pretl2026">(<a href="#ref-pretl2026" role="doc-biblioref">Pretl et al. 2026</a>)</span>.</p>
 <p><strong>Symmetry:</strong> In an ideal, perfectly matched scenario, if the two input voltages are identical, the tail current (<span class="math inline">\(I_{\text{tail}}\)</span>) splits exactly in half (<span class="math inline">\(I_{\text{tail}}/2\)</span>) down both branches.</p>
 </section>
 <section id="nmos-tail-current-mirror-m_5-m_6" class="level3" data-number="2.0.2">
 <h3 data-number="2.0.2" class="anchored" data-anchor-id="nmos-tail-current-mirror-m_5-m_6"><span class="header-section-number">2.0.2</span> NMOS Tail Current Mirror (<span class="math inline">\(M_5, M_6\)</span>)</h3>
 <p>This stage establishes the stable DC <strong>biasing</strong> environment required for the entire amplifier circuit.</p>
-<p><strong>Function:</strong> Transistors <span class="math inline">\(M_5\)</span> and <span class="math inline">\(M_6\)</span> form a current mirror. An external reference current (<span class="math inline">\(I_{\text{bias}}\)</span>) is fed through the diode-connected transistor <span class="math inline">\(M_6\)</span>, which is then mirrored directly into <span class="math inline">\(M_5\)</span>.</p>
+<p><strong>Function:</strong> Transistors <span class="math inline">\(M_5\)</span> and <span class="math inline">\(M_6\)</span> form a current mirror. An external reference current (<span class="math inline">\(I_{\text{bias}}\)</span>) is fed through the transistor <span class="math inline">\(M_6\)</span>, which is then mirrored directly into <span class="math inline">\(M_5\)</span> <span class="citation" data-cites="pretl2026">(<a href="#ref-pretl2026" role="doc-biblioref">Pretl et al. 2026</a>)</span>.</p>
 <p><strong>The Tail Current:</strong> <span class="math inline">\(M_5\)</span> operates as the <strong>tail current source</strong>, defining the total bias current (<span class="math inline">\(I_{\text{tail}}\)</span>) that passes through the input differential pair. This tail current is a critical design parameter, as it directly sets both the transconductance (<span class="math inline">\(g_{\text{m}}\)</span>) and the overall speed of the amplifier.</p>
 </section>
 <section id="pmos-current-mirror-load-m_3-m_4" class="level3" data-number="2.0.3">
 <h3 data-number="2.0.3" class="anchored" data-anchor-id="pmos-current-mirror-load-m_3-m_4"><span class="header-section-number">2.0.3</span> PMOS Current Mirror Load (<span class="math inline">\(M_3, M_4\)</span>)</h3>
 <p>This final section acts as an active load for the input pair and performs the differential-to-single-ended signal conversion.</p>
-<p><strong>Function:</strong> Transistors <span class="math inline">\(M_3\)</span> and <span class="math inline">\(M_4\)</span> form a PMOS current mirror. The diode-connected <span class="math inline">\(M_3\)</span> senses the changing current flowing through the left branch (<span class="math inline">\(M_1\)</span>) and replicates it over to the right branch via <span class="math inline">\(M_4\)</span>.</p>
+<p><strong>Function:</strong> Transistors <span class="math inline">\(M_3\)</span> and <span class="math inline">\(M_4\)</span> form a PMOS current mirror. The diode-connected <span class="math inline">\(M_3\)</span> senses the changing current flowing through the left branch (<span class="math inline">\(M_1\)</span>) and replicates it over to the right branch via <span class="math inline">\(M_4\)</span> <span class="citation" data-cites="pretl2026">(<a href="#ref-pretl2026" role="doc-biblioref">Pretl et al. 2026</a>)</span>.</p>
 <p><strong>Summing at the Output:</strong> At the single-ended output node, the mirrored current from <span class="math inline">\(M_4\)</span> and the direct current from the right input branch (<span class="math inline">\(M_2\)</span>) are subtracted/summed. When this net signal current is forced into the high-impedance output node, it builds up the final output voltage.</p>
 </section>
 <section id="transistor-sizing-and-g_textmi_textd-selection-strategy" class="level2" data-number="2.1">
@@ -330,7 +330,7 @@ Figure&nbsp;3: The 5-transistor OTA.
 <hr>
 <section id="nmos-input-differential-pair-m_1-m_2" class="level3" data-number="2.1.1">
 <h3 data-number="2.1.1" class="anchored" data-anchor-id="nmos-input-differential-pair-m_1-m_2"><span class="header-section-number">2.1.1</span> 1. NMOS Input Differential Pair (<span class="math inline">\(M_1, M_2\)</span>)</h3>
-<p>For the input stage, a <strong>higher <span class="math inline">\(g_{\text{m}}/I_{\text{D}}\)</span> value</strong>—typically in the range of <strong>10 to 15 V⁻¹</strong>—is chosen to operate the devices in moderate inversion.</p>
+<p>For the input stage, a <strong>higher <span class="math inline">\(g_{\text{m}}/I_{\text{D}}\)</span> value</strong>—typically in the range of <strong>10 to 12 V⁻¹</strong>—is chosen to operate the devices in moderate inversion.</p>
 <dl>
 <dt><strong>Gain and Power Efficiency</strong></dt>
 <dd>
@@ -341,11 +341,10 @@ The primary goal of the input pair is to provide high transconductance (<span cl
 Maximizing the <span class="math inline">\(g_{\text{m}}/I_{\text{D}}\)</span> ratio minimizes the overdrive voltage. This is a critical strategy for reducing the input offset voltage caused by threshold voltage mismatch between <span class="math inline">\(M_1\)</span> and <span class="math inline">\(M_2\)</span>, while simultaneously minimizing the input-referred thermal noise.
 </dd>
 </dl>
-<hr>
 </section>
 <section id="pmos-load-m_3-m_4-and-nmos-tail-m_5-m_6-current-mirrors" class="level3" data-number="2.1.2">
 <h3 data-number="2.1.2" class="anchored" data-anchor-id="pmos-load-m_3-m_4-and-nmos-tail-m_5-m_6-current-mirrors"><span class="header-section-number">2.1.2</span> 2. PMOS Load (<span class="math inline">\(M_3, M_4\)</span>) and NMOS Tail (<span class="math inline">\(M_5, M_6\)</span>) Current Mirrors</h3>
-<p>For the current mirror and load network, a <strong>lower <span class="math inline">\(g_{\text{m}}/I_{\text{D}}\)</span> value</strong>—typically in the range of <strong>5 to 8 V⁻¹</strong>—is chosen to operate the devices in strong inversion.</p>
+<p>For the current mirror and load network, a <strong>lower <span class="math inline">\(g_{\text{m}}/I_{\text{D}}\)</span> value</strong>—typically in the range of <strong>6 to 8 V⁻¹</strong>—is chosen to operate the devices in strong inversion.</p>
 <dl>
 <dt><strong>Current Matching Accuracy</strong></dt>
 <dd>
@@ -406,7 +405,17 @@ To reduce the total output noise contribution of the OTA, the transconductance o
 </section>
 <section id="sizing-a-2-stage-ota" class="level1" data-number="3">
 <h1 data-number="3"><span class="header-section-number">3</span> Sizing a 2-Stage OTA</h1>
-<p>Integral part of an Linkwitz-Riley 4 Crossover Filter is an amplifier, and a 2-stage OTA is a good option as it offers high gain and is begginer friendly to design. A 2-stage OTA is essentially an 5-T OTA and a PMOS common source ampliflier cascaded with a Miller compensation capacitor and a Null resistor.</p>
+<p>Integral part of an Linkwitz-Riley 4 Crossover Filter is an amplifier, and a 2-stage OTA is a good option as it offers high gain and is begginer friendly to design. A 2-stage OTA is essentially an 5-T OTA and a PMOS common source ampliflier cascaded with a Miller compensation capacitor <span class="math inline">\(C_{\text{M}}\)</span> and a Null resistor <span class="math inline">\(R_{\text{Z}}\)</span> as shown in <a href="#fig-2-stage-ota" class="quarto-xref">Figure&nbsp;4</a>.</p>
+<div id="fig-2-stage-ota" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-2-stage-ota-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="./images/fig-ota-se-twostage-output-1.svg" class="img-fluid figure-img" style="width:80.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-2-stage-ota-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;4: The 2-stage OTA.
+</figcaption>
+</figure>
+</div>
 <section id="sizing-the-ota" class="level2" data-number="3.1">
 <h2 data-number="3.1" class="anchored" data-anchor-id="sizing-the-ota"><span class="header-section-number">3.1</span> Sizing the OTA</h2>
 <p>There are 4 major aspects of this OTA the input differential pair, pmos current mirrors, output gain PMOS, and tail current NMOS’s. The sizing of these transistors is node using gm/Id methodology.</p>
@@ -438,11 +447,23 @@ To reduce the total output noise contribution of the OTA, the transconductance o
 </section>
 
 <div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">4 References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-alberto2025miller" class="csl-entry" role="listitem">
+L., Alberto. 2025. <span>“Understanding Miller Compensation: A Guide to Frequency Stability.”</span> Mis Circuitos, July 1. <a href="https://miscircuitos.com/understanding-miller-compensation-a-guide-to-frequency-stability/">https://miscircuitos.com/understanding-miller-compensation-a-guide-to-frequency-stability/</a>.
+</div>
+<div id="ref-lenka2022micro" class="csl-entry" role="listitem">
+Lenka, Trupti Ranjan, Durgamadhab Misra, and Arindam Biswas, eds. 2022. <em>Micro and Nanoelectronics Devices, Circuits and Systems: Select Proceedings of MNDCS 2021</em>. Vol. 781. Lecture Notes in Electrical Engineering. Springer Singapore. <a href="https://doi.org/10.1007/978-981-16-3767-4">https://doi.org/10.1007/978-981-16-3767-4</a>.
+</div>
+<div id="ref-meiners2026lecture" class="csl-entry" role="listitem">
+Meiners, Mirco. 2026. <em>Lecture Notes on Analogue and Mixed-Signal Circuit Design</em>. Hochschule Bremen; Lecture Script, Hochschule Bremen.
+</div>
 <div id="ref-nagulapalli2019low" class="csl-entry" role="listitem">
 Nagulapalli, Rajasekhar, K. Hayatleh, and B. Seetharamulu. 2019. <span>“A Low Power Miller Compensation Technique for Two Stage Op-Amp in 65nm CMOS Technology.”</span> <em>International Conference on Computing, Communication and Networking Technologies (ICCCNT)</em>, July. <a href="https://doi.org/10.1109/ICCCNT45670.2019.8944553">https://doi.org/10.1109/ICCCNT45670.2019.8944553</a>.
 </div>
 <div id="ref-pretl2026" class="csl-entry" role="listitem">
 Pretl, Harald, Michael Koefinger, and Simon Dorrer. 2026. <span>“Analog <span>(Integrated)</span> <span>Circuit</span> <span>Design</span>.”</span> July 8. <a href="https://doi.org/10.5281/zenodo.14387481">https://doi.org/10.5281/zenodo.14387481</a>.
+</div>
+<div id="ref-repakasunkari2026notebooklm" class="csl-entry" role="listitem">
+Repaka, Sriram, and Mula Vishnu Sunkari. 2026. <span>“Principles of Analog Integrated Circuit Design: Project Research and AI Queries Workspace.”</span> Google NotebookLM, July 12. <a href="https://notebooklm.google.com/notebook/85f01d3f-9b45-4491-9ec5-7ac7e00f9fc7">https://notebooklm.google.com/notebook/85f01d3f-9b45-4491-9ec5-7ac7e00f9fc7</a>.
 </div>
 </div></section></div></main>
 <!-- /main column -->
