@@ -8,7 +8,7 @@
 
 <meta name="author" content="Sriram Repaka">
 <meta name="author" content="Mula Vishnu Sunkari">
-<meta name="dcterms.date" content="2026-07-11">
+<meta name="dcterms.date" content="2026-07-12">
 
 <title>Design of a Hybrid Linkwitz-Riley 4 Crossover Filter</title>
 <style>
@@ -26,7 +26,26 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="document_files/libs/clipboard/clipboard.min.js"></script>
@@ -110,6 +129,7 @@ window.Quarto = {
   <li><a href="#optimization-and-resolution-via-l-2-mutextm" id="toc-optimization-and-resolution-via-l-2-mutextm" class="nav-link" data-scroll-target="#optimization-and-resolution-via-l-2-mutextm"><span class="header-section-number">3.2.3</span> 3. Optimization and Resolution via <span class="math inline">\(L = 2\ \mu\text{m}\)</span></a></li>
   </ul></li>
   </ul></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references"><span class="header-section-number">4</span> References</a></li>
   </ul>
 </nav>
 </div>
@@ -149,7 +169,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">July 11, 2026</p>
+      <p class="date">July 12, 2026</p>
     </div>
   </div>
   
@@ -188,7 +208,7 @@ Figure&nbsp;1: Block diagram of the Hybrid Linkwitz-Riley 4 Crossover Filter net
 <p>A standard Linkwitz-Riley 4th-order filter is constructed by cascading two identical 2nd-order Butterworth filters. The transfer function <span class="math inline">\(H(s)\)</span> for the low-pass network can be expressed mathematically as:</p>
 <p><span class="math display">\[H_{LP}(s) = \frac{1}{(s^2 + \sqrt{2}s + 1)^2}\]</span></p>
 <p>Where the voltage gains of both cascading stages must match perfectly to maintain the ideal crossover characteristics.</p>
-<div id="cell-fig-frequency-response" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;panel-layout&quot;,&quot;value&quot;:{&quot;height&quot;:658,&quot;visible&quot;:true,&quot;width&quot;:100}}" data-execution_count="38">
+<div id="cell-fig-frequency-response" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;panel-layout&quot;,&quot;value&quot;:{&quot;height&quot;:658,&quot;visible&quot;:true,&quot;width&quot;:100}}" data-execution_count="22">
 <div class="cell-output cell-output-display">
 <div id="fig-frequency-response" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -274,7 +294,17 @@ Table&nbsp;1: Component selection parameters for the active filter stage.
 </section>
 <section id="principle-of-operation-the-5-transistor-ota-5t-ota" class="level1" data-number="2">
 <h1 data-number="2"><span class="header-section-number">2</span> Principle of Operation: The 5-Transistor OTA (5T-OTA)</h1>
-<p>A 5-transistor operational transconductance amplifier (5T-OTA) is a fundamental analog building block designed to convert a differential input voltage into an output current (<span class="math inline">\(G = I_{\text{out}}/V_{\text{in}}\)</span>). Unlike standard operational amplifiers that ideally feature zero output resistance, an OTA is characterized by a <strong>high output resistance</strong>. In practical integrated circuits, these devices are often loaded capacitively to create high-gain voltage amplifiers.</p>
+<p>A 5-transistor operational transconductance amplifier (5T-OTA) <a href="#fig-basic-ota" class="quarto-xref">Figure&nbsp;3</a> is a fundamental analog building block designed to convert a differential input voltage into an output current (<span class="math inline">\(G = I_{\text{out}}/V_{\text{in}}\)</span>). Unlike standard operational amplifiers that ideally feature zero output resistance, an OTA is characterized by a <strong>high output resistance</strong>. In practical integrated circuits, these devices are often loaded capacitively to create high-gain voltage amplifiers.</p>
+<div id="fig-basic-ota" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-basic-ota-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="./images/fig-basic-ota-output-1.svg" class="img-fluid figure-img" style="width:80.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-basic-ota-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3: The 5-transistor OTA.
+</figcaption>
+</figure>
+</div>
 <p>The internal operation of an NMOS-input 5T-OTA can be broken down into three distinct operational stages:</p>
 <section id="nmos-differential-pair-m_1-m_2" class="level3" data-number="2.0.1">
 <h3 data-number="2.0.1" class="anchored" data-anchor-id="nmos-differential-pair-m_1-m_2"><span class="header-section-number">2.0.1</span> NMOS Differential Pair (<span class="math inline">\(M_1, M_2\)</span>)</h3>
@@ -355,7 +385,7 @@ To reduce the total output noise contribution of the OTA, the transconductance o
 <td style="text-align: left;"><strong>Input Pair (<span class="math inline">\(M_1, M_2\)</span>)</strong></td>
 <td style="text-align: left;">Moderate Inversion</td>
 <td style="text-align: left;">10 to 12 V⁻¹</td>
-<td style="text-align: left;">High gain, low power consumption, minimized offset, and low <span class="math inline">\(V_{\text{ds,sat}}\)</span> headroom usage.</td>
+<td style="text-align: left;">High gain, low power consumption, minimized offset.</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"><strong>PMOS Load (<span class="math inline">\(M_3, M_4\)</span>)</strong></td>
@@ -402,8 +432,19 @@ To reduce the total output noise contribution of the OTA, the transconductance o
 </section>
 </section>
 </section>
+<section id="references" class="level1 unnumbered" data-number="4">
 
-</main>
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">4 References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-nagulapalli2019low" class="csl-entry" role="listitem">
+Nagulapalli, Rajasekhar, K. Hayatleh, and B. Seetharamulu. 2019. <span>“A Low Power Miller Compensation Technique for Two Stage Op-Amp in 65nm CMOS Technology.”</span> <em>International Conference on Computing, Communication and Networking Technologies (ICCCNT)</em>, July. <a href="https://doi.org/10.1109/ICCCNT45670.2019.8944553">https://doi.org/10.1109/ICCCNT45670.2019.8944553</a>.
+</div>
+<div id="ref-pretl2026" class="csl-entry" role="listitem">
+Pretl, Harald, Michael Koefinger, and Simon Dorrer. 2026. <span>“Analog <span>(Integrated)</span> <span>Circuit</span> <span>Design</span>.”</span> July 8. <a href="https://doi.org/10.5281/zenodo.14387481">https://doi.org/10.5281/zenodo.14387481</a>.
+</div>
+</div></section></div></main>
 <!-- /main column -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
