@@ -10,5 +10,5 @@ XM6 ibias ibias vss vss sg13_lv_nmos w=2u l=2u ng=1 m=1 mm_ok=1
 XM7 net3 ibias vss vss sg13_lv_nmos w=1.5u l=2u ng=1 m=1 mm_ok=1
 XM8 vout ibias vss vss sg13_lv_nmos w=1u l=2u ng=1 m=1 mm_ok=1
 XCM vout net4 cap_cmim w=25e-6 l=25e-6 m=1 mm_ok=1
-XRN net2 net4 GND rhigh w=1e-6 l=19.5e-6 m=1 b=0 mm_ok=1
+XRN net2 net4 GND rhigh w=1e-6 l=17e-6 m=1 b=0 mm_ok=1
 .ends

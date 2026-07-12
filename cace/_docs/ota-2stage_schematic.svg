@@ -391,7 +391,7 @@ text {font-family: Sans-Serif;}
 <text fill="#00ccee"  xml:space="preserve" font-size="10.7893" transform="translate(781.816, 351.849)" >vout</text>
 <text fill="#00ccee"  xml:space="preserve" font-size="10.7893" transform="translate(17.7786, 308.23)" >vinn</text>
 <text fill="#00ccee"  xml:space="preserve" font-size="10.7893" transform="translate(17.7786, 396.254)" >vinp</text>
-<text fill="#aaaa00"  xml:space="preserve" font-size="6.53897" transform="translate(571.284, 257.214)" >w/l = 1e-6 / 19.5e-6</text>
+<text fill="#aaaa00"  xml:space="preserve" font-size="6.53897" transform="translate(571.284, 257.214)" >w/l = 1e-6 / 17e-6</text>
 <text fill="#cccccc"  xml:space="preserve" font-size="6.53897" transform="translate(571.284, 249.355)" >rhigh</text>
 <text fill="#cccccc"  xml:space="preserve" font-size="6.53897" transform="translate(571.284, 241.496)" >RN</text>
 <text fill="#aaaa00"  xml:space="preserve" font-size="6.53897" transform="translate(571.284, 278.434)" >R=expr_eng(  ( 1.6e-4 / @w + 1360.0 * ( (@b + 1)* @l + ( 1.081*( @w - 0.04e-6 ) + 0.18e-6 )*@b ) / ( @w - 0.04e-6 ) ) / @m  )</text>
