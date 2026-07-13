@@ -143,10 +143,11 @@ window.Quarto = {
   <li><a href="#ltspice-behavioural-model-schematic" id="toc-ltspice-behavioural-model-schematic" class="nav-link" data-scroll-target="#ltspice-behavioural-model-schematic"><span class="header-section-number">4.1</span> LTspice Behavioural Model Schematic</a>
   <ul class="collapse">
   <li><a href="#mathematical-derivation" id="toc-mathematical-derivation" class="nav-link" data-scroll-target="#mathematical-derivation"><span class="header-section-number">4.1.1</span> Mathematical Derivation</a></li>
+  <li><a href="#transfer-function-and-filter-theory" id="toc-transfer-function-and-filter-theory" class="nav-link" data-scroll-target="#transfer-function-and-filter-theory"><span class="header-section-number">4.1.2</span> Transfer Function and Filter Theory</a></li>
   </ul></li>
-  <li><a href="#transfer-function-and-filter-theory" id="toc-transfer-function-and-filter-theory" class="nav-link" data-scroll-target="#transfer-function-and-filter-theory"><span class="header-section-number">4.2</span> Transfer Function and Filter Theory</a>
+  <li><a href="#component-selection" id="toc-component-selection" class="nav-link" data-scroll-target="#component-selection"><span class="header-section-number">4.2</span> Component Selection</a>
   <ul class="collapse">
-  <li><a href="#component-selection" id="toc-component-selection" class="nav-link" data-scroll-target="#component-selection"><span class="header-section-number">4.2.1</span> Component Selection</a></li>
+  <li><a href="#component-value-verification" id="toc-component-value-verification" class="nav-link" data-scroll-target="#component-value-verification"><span class="header-section-number">4.2.1</span> Component Value Verification</a></li>
   </ul></li>
   <li><a href="#ltspice-ac-frequency-response" id="toc-ltspice-ac-frequency-response" class="nav-link" data-scroll-target="#ltspice-ac-frequency-response"><span class="header-section-number">4.3</span> LTspice AC Frequency Response</a></li>
   </ul></li>
@@ -171,7 +172,7 @@ window.Quarto = {
   </ul></li>
   <li><a href="#transistor-sizing-and-architecture-for-the-2-stage-miller-ota" id="toc-transistor-sizing-and-architecture-for-the-2-stage-miller-ota" class="nav-link" data-scroll-target="#transistor-sizing-and-architecture-for-the-2-stage-miller-ota"><span class="header-section-number">5.6</span> Transistor Sizing and Architecture for the 2-Stage Miller OTA</a>
   <ul class="collapse">
-  <li><a href="#design-space-explorations-component-and-geometry-selection" id="toc-design-space-explorations-component-and-geometry-selection" class="nav-link" data-scroll-target="#design-space-explorations-component-and-geometry-selection"><span class="header-section-number">2.3.1</span> 2. Design Space Explorations: Component and Geometry Selection</a></li>
+  <li><a href="#design-space-explorations-component-and-geometry-selection" id="toc-design-space-explorations-component-and-geometry-selection" class="nav-link" data-scroll-target="#design-space-explorations-component-and-geometry-selection"><span class="header-section-number">5.6.1</span> 2. Design Space Explorations: Component and Geometry Selection</a></li>
   <li><a href="#design-specification-reference-parameters-1" id="toc-design-specification-reference-parameters-1" class="nav-link" data-scroll-target="#design-specification-reference-parameters-1"><span class="header-section-number">5.6.2</span> Design Specification &amp; Reference Parameters</a></li>
   <li><a href="#sizing-derivations-mathematical-formulations-1" id="toc-sizing-derivations-mathematical-formulations-1" class="nav-link" data-scroll-target="#sizing-derivations-mathematical-formulations-1"><span class="header-section-number">5.6.3</span> Sizing Derivations &amp; Mathematical Formulations</a></li>
   <li><a href="#sizing-optimization-results" id="toc-sizing-optimization-results" class="nav-link" data-scroll-target="#sizing-optimization-results"><span class="header-section-number">5.6.4</span> Sizing Optimization Results</a></li>
@@ -179,8 +180,8 @@ window.Quarto = {
   </ul></li>
   <li><a href="#stage-ota-simulation-framework-and-results" id="toc-stage-ota-simulation-framework-and-results" class="nav-link" data-scroll-target="#stage-ota-simulation-framework-and-results"><span class="header-section-number">5.7</span> 2-Stage OTA Simulation Framework and Results</a>
   <ul class="collapse">
-  <li><a href="#simulation-environment-setup" id="toc-simulation-environment-setup" class="nav-link" data-scroll-target="#simulation-environment-setup"><span class="header-section-number">2.4.1</span> Simulation Environment Setup</a></li>
-  <li><a href="#key-simulation-performance-results" id="toc-key-simulation-performance-results" class="nav-link" data-scroll-target="#key-simulation-performance-results"><span class="header-section-number">2.4.2</span> Key Simulation Performance Results</a></li>
+  <li><a href="#simulation-environment-setup" id="toc-simulation-environment-setup" class="nav-link" data-scroll-target="#simulation-environment-setup"><span class="header-section-number">5.7.1</span> Simulation Environment Setup</a></li>
+  <li><a href="#key-simulation-performance-results" id="toc-key-simulation-performance-results" class="nav-link" data-scroll-target="#key-simulation-performance-results"><span class="header-section-number">5.7.2</span> Key Simulation Performance Results</a></li>
   </ul></li>
   </ul></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references"><span class="header-section-number">6</span> References</a></li>
@@ -243,7 +244,7 @@ window.Quarto = {
 <h1 data-number="2"><span class="header-section-number">2</span> Introduction</h1>
 <p>Integrated circuits (ICs) have become indispensable in modern electronic systems owing to their compact form factor and reduced power consumption relative to discrete implementations, like PCBs. In this work, we present the design and implementation of a Hybrid Linkwitz-Riley 4 Crossover Filter filter using open-source tools, such as <strong>Xschem</strong>. The following documentation details the methodologies and development steps undertaken throughout the filter’s implementation.</p>
 <p>This project is part of the Electronics Engineering (M. Sc.) course <em>“Microelectronic Circuit Design (MCD)”</em> at Hochschule Bremen City University of Applied Sciences (HSB).</p>
-<p>The outcomes of this report and the development methodology used to design the filter will be made publicly available on GitHub. Everyone is welcome to use, modify, and share this work freely. This course and project would not have been possible without the excellent open-source tools created by the dedicated community of layout designers, enthusiasts, and developers. Some of the tools used include IC-OSIC-TOOLS, IHP Open PDK, Docker, Xschem, ngspice, LTspice, Quarto, Python, and Git for the version control.</p>
+<p>The outcomes of this report and the development methodology used to design the filter will be made publicly available on GitHub. Everyone is welcome to use, modify, and share this work freely. This course and project would not have been possible without the excellent open-source tools created by the dedicated community of layout designers, enthusiasts, and developers. Some of the tools used include iic-osic-tools, IHP Open PDK, Docker, Xschem, ngspice, LTspice, Quarto, Python, and Git for version control.</p>
 </section>
 <section id="filter-specifications" class="level1" data-number="3">
 <h1 data-number="3"><span class="header-section-number">3</span> Filter Specifications</h1>
@@ -256,7 +257,7 @@ window.Quarto = {
 <div id="tbl-components" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-components-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;1: Component selection parameters for the Linkwitz-Riley four stage filter.
+Table&nbsp;1: Component selection parameters for the Linkwitz-Riley four-stage filter.
 </figcaption>
 <div aria-describedby="tbl-components-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <table class="caption-top table">
@@ -293,12 +294,85 @@ Table&nbsp;1: Component selection parameters for the Linkwitz-Riley four stage f
 </div>
 </figure>
 </div>
-<p>These parameters ensure a narrowband response around 10 kHz with a peak gain of unity at low frequencies and sharp roll-off in the stop-bands.</p>
+<p>These parameters ensure a narrowband response around 10 kHz with a peak gain of unity at low frequencies and a sharp roll-off in the stop-bands.</p>
 </section>
 <section id="behavioural-model-design" class="level1" data-number="4">
 <h1 data-number="4"><span class="header-section-number">4</span> Behavioural Model Design</h1>
 <p>As part of the initial design process, a behavioural model of the operational amplifier was developed and simulated. This model was used to study the basic functionality of the op amp before moving toward a more detailed transistor-level implementation.</p>
 <p>The schematic of the operational amplifier was designed using LTspice, a freely available circuit simulation tool. LTspice was used to build the behavioural representation of the op amp, verify its operation, and observe its response under different simulation conditions. This step helped in understanding the expected behaviour of the circuit and provided a useful reference for the later stages of the filter design.</p>
+<div id="5f5956df-5f64-4fdd-a0c2-d521cd82222e" class="cell" data-execution_count="11">
+<details class="code-fold">
+<summary>Notebook 2-Stage-OTA Sizing</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-overflow-scroll code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># converter</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> mag2db(H):</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="dv">20</span><span class="op">*</span>np.log10(np.<span class="bu">abs</span>(H))</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Low-Pass transfer function</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> HLP(s, w0<span class="op">=</span><span class="dv">2</span><span class="op">*</span>np.pi<span class="op">*</span><span class="dv">1000</span>, Q<span class="op">=</span><span class="dv">10</span>, H0<span class="op">=</span><span class="dv">1</span>):</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> H0 <span class="op">/</span> (<span class="dv">1</span> <span class="op">+</span> s<span class="op">/</span>(w0<span class="op">*</span>Q) <span class="op">+</span> (s<span class="op">/</span>w0)<span class="op">**</span><span class="dv">2</span>)</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Specs</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>f0    <span class="op">=</span> <span class="dv">1000</span>                           <span class="co"># Hz</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>w0    <span class="op">=</span> <span class="dv">2</span><span class="op">*</span>np.pi<span class="op">*</span>f0                     <span class="co"># rad/s</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>freqs <span class="op">=</span> np.linspace(<span class="dv">1</span>, <span class="dv">100</span><span class="op">*</span>f0, <span class="dv">10000</span>)  <span class="co"># 1 Hz to 100 kHz</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>s     <span class="op">=</span> <span class="ot">1j</span><span class="op">*</span><span class="dv">2</span><span class="op">*</span>np.pi<span class="op">*</span>freqs</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>Qs <span class="op">=</span> [<span class="fl">0.5</span>, <span class="fl">0.707</span>, <span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">10</span>]</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>H0_vals <span class="op">=</span> [<span class="fl">0.5</span>, <span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">10</span>]</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Figure 1: LPF for different Qs (H0 = 1)</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">6</span>,<span class="dv">6</span>))</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> Q <span class="kw">in</span> Qs:</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>    H <span class="op">=</span> HLP(s, w0, Q, H0<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>    style <span class="op">=</span> <span class="st">'-'</span> <span class="cf">if</span> Q<span class="op">==</span><span class="dv">10</span> <span class="cf">else</span> <span class="st">'--'</span></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>    plt.semilogx(freqs, mag2db(H), style, label<span class="op">=</span><span class="ss">f'$Q$=</span><span class="sc">{</span>Q<span class="sc">}</span><span class="ss">'</span>)</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'LPF Frequency Response for various $Q$ ($H_0$ = 1)'</span>)</span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Frequency / Hz'</span>)</span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'|H| / dB'</span>)</span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>plt.grid(<span class="va">True</span>)</span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>plt.xlim(<span class="dv">50</span>, <span class="dv">4000</span>)</span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>plt.ylim(<span class="op">-</span><span class="dv">20</span>, <span class="dv">28</span>)</span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a><span class="co">#plt.legend(loc='lower center', ncol=len(Qs), bbox_to_anchor=(0.5, -0.2))</span></span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a><span class="co"># Figure 2: LPF for different H_0 (Q = 0.707)</span></span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">6</span>,<span class="dv">6</span>))</span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> H0 <span class="kw">in</span> H0_vals:</span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>    H <span class="op">=</span> HLP(s, w0, <span class="fl">0.707</span>, H0)</span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>    plt.semilogx(freqs, mag2db(H), <span class="st">'-'</span>, label<span class="op">=</span><span class="ss">f'$H_0$=</span><span class="sc">{</span>H0<span class="sc">}</span><span class="ss">'</span>)</span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'LPF Frequency Response for various $H_0$ (Q = 10)'</span>)</span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Frequency / Hz'</span>)</span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'|H| / dB'</span>)</span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a>plt.grid(<span class="va">True</span>)</span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a>plt.xlim(<span class="dv">50</span>, <span class="dv">4000</span>)</span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a>plt.ylim(<span class="op">-</span><span class="dv">20</span>, <span class="dv">28</span>)</span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a><span class="co">#plt.legend(loc='lower center', ncol=len(H0_vals), bbox_to_anchor=(0.5, -0.2))</span></span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a><span class="co"># plt.show()</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="document_files/figure-html/cell-2-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="document_files/figure-html/cell-2-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
 <section id="ltspice-behavioural-model-schematic" class="level2" data-number="4.1">
 <h2 data-number="4.1" class="anchored" data-anchor-id="ltspice-behavioural-model-schematic"><span class="header-section-number">4.1</span> LTspice Behavioural Model Schematic</h2>
 <div id="fig-LR4-Schematic" class="quarto-float quarto-figure quarto-figure-center anchored">
@@ -318,9 +392,8 @@ Figure&nbsp;1: Behavioural model schematic of the LR4 filter designed in LTspice
 <p><span class="math display">\[H_{LP}(s) = \frac{1}{(s^2 + \sqrt{2}s + 1)^2}\]</span></p>
 <p>Where the voltage gains of both cascading stages must match perfectly to maintain the ideal crossover characteristics.</p>
 </section>
-</section>
-<section id="transfer-function-and-filter-theory" class="level2" data-number="4.2">
-<h2 data-number="4.2" class="anchored" data-anchor-id="transfer-function-and-filter-theory"><span class="header-section-number">4.2</span> Transfer Function and Filter Theory</h2>
+<section id="transfer-function-and-filter-theory" class="level3" data-number="4.1.2">
+<h3 data-number="4.1.2" class="anchored" data-anchor-id="transfer-function-and-filter-theory"><span class="header-section-number">4.1.2</span> Transfer Function and Filter Theory</h3>
 <p>The standard second-order low-pass transfer function is</p>
 <p><span class="math display">\[
 H(s)=\frac{\omega_0^2}{s^2+\frac{\omega_0}{Q}s+\omega_0^2}
@@ -335,8 +408,10 @@ H(s)=\frac{\omega_0^2}{s^2+\frac{\omega_0}{Q}s+\omega_0^2}
 H_{LR4}(s)=H_{BW2}(s)\cdot H_{BW2}(s)
 \]</span></p>
 <p>This produces a fourth-order response with a steeper roll-off compared with the second-order section.</p>
-<section id="component-selection" class="level3" data-number="4.2.1">
-<h3 data-number="4.2.1" class="anchored" data-anchor-id="component-selection"><span class="header-section-number">4.2.1</span> Component Selection</h3>
+</section>
+</section>
+<section id="component-selection" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="component-selection"><span class="header-section-number">4.2</span> Component Selection</h2>
 <p>The components chosen for the analog active operational amplifier implementation are summarized below.</p>
 <div id="tbl-componentsxschem" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure">
@@ -363,21 +438,35 @@ Table&nbsp;2: Component selection parameters for the active filter stage.
 </thead>
 <tbody>
 <tr class="odd">
-<td><span class="math inline">\(R_1, R_2\)</span></td>
-<td><span class="math inline">\(15.91\text{ k}\Omega\)</span></td>
-<td><span class="math inline">\(15.8\text{ k}\Omega\)</span></td>
+<td><span class="math inline">\(R_1, R_2, R_3, R_5, R_6, R_7\)</span></td>
+<td><span class="math inline">\(1.1\text{ k}\Omega\)</span></td>
+<td><span class="math inline">\(1.1\text{ k}\Omega\)</span></td>
 <td><span class="math inline">\(1\%\)</span></td>
 <td>Filter Node Resistors</td>
 </tr>
 <tr class="even">
-<td><span class="math inline">\(C_1, C_2\)</span></td>
+<td><span class="math inline">\(R_4, R_8\)</span></td>
+<td><span class="math inline">\(2.2\text{ k}\Omega\)</span></td>
+<td><span class="math inline">\(2.2\text{ k}\Omega\)</span></td>
+<td><span class="math inline">\(1\%\)</span></td>
+<td>Filter Node Resistors</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(C_1, C_5\)</span></td>
+<td><span class="math inline">\(20\text{ nF}\)</span></td>
+<td><span class="math inline">\(20\text{ nF}\)</span></td>
+<td><span class="math inline">\(5\%\)</span></td>
+<td>Filter Node Capacitors</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(C_2, C_3, C_4, C_6, C_7, C_8\)</span></td>
 <td><span class="math inline">\(10\text{ nF}\)</span></td>
 <td><span class="math inline">\(10\text{ nF}\)</span></td>
 <td><span class="math inline">\(5\%\)</span></td>
 <td>Filter Node Capacitors</td>
 </tr>
 <tr class="odd">
-<td><span class="math inline">\(U_1\)</span></td>
+<td><span class="math inline">\(U_1,U_2,U_3,U_4\)</span></td>
 <td>OPA2134</td>
 <td>OPA2134</td>
 <td>—</td>
@@ -389,6 +478,143 @@ Table&nbsp;2: Component selection parameters for the active filter stage.
 </figure>
 </div>
 <p>As outlined in <a href="#tbl-componentsxschem" class="quarto-xref">Table&nbsp;2</a>, standard resistor values are selected to match the ideal cutoff thresholds as closely as possible.</p>
+<section id="component-value-verification" class="level3" data-number="4.2.1">
+<h3 data-number="4.2.1" class="anchored" data-anchor-id="component-value-verification"><span class="header-section-number">4.2.1</span> Component Value Verification</h3>
+<p>The component values used in the behavioural model must be verified to ensure that the required crossover frequency of approximately <span class="math inline">\(10\,\text{kHz}\)</span> is obtained. The values initially presented in the component table were:</p>
+<p><span class="math display">\[
+R = 15.8\,\text{k}\Omega
+\]</span></p>
+<p>and</p>
+<p><span class="math display">\[
+C = 10\,\text{nF}.
+\]</span></p>
+<p>For a simple resistor-capacitor network, the characteristic frequency is calculated as:</p>
+<p><span class="math display">\[
+f_c = \frac{1}{2\pi RC}.
+\]</span></p>
+<p>Substituting the stated values gives:</p>
+<p><span class="math display">\[
+f_c =
+\frac{1}
+{2\pi(15.8\times10^3)(10\times10^{-9})}
+\approx 1.01\,\text{kHz}.
+\]</span></p>
+<p>Therefore, these component values do not correspond to the specified crossover frequency of <span class="math inline">\(10\,\text{kHz}\)</span>. The component table should instead contain the actual values used in the LTspice schematic.</p>
+<section id="low-pass-section" class="level4" data-number="4.2.1.1">
+<h4 data-number="4.2.1.1" class="anchored" data-anchor-id="low-pass-section"><span class="header-section-number">4.2.1.1</span> Low-Pass Section</h4>
+<p>For the second-order low-pass Sallen–Key stage, the natural frequency is determined using:</p>
+<p><span class="math display">\[
+f_0 =
+\frac{1}
+{2\pi\sqrt{R_1R_2C_1C_2}}.
+\]</span></p>
+<p>The quality factor is calculated as:</p>
+<p><span class="math display">\[
+Q =
+\frac{\sqrt{R_1R_2C_1C_2}}
+{C_2(R_1+R_2)}.
+\]</span></p>
+<p>The component values (<a href="#tbl-componentsxschem" class="quarto-xref">Table&nbsp;2</a>) used in the low-pass section are:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Component</th>
+<th style="text-align: right;">Selected value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\(R_1\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(1.1\,\text{k}\Omega\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="math inline">\(R_2\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(1.1\,\text{k}\Omega\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\(C_1\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(20\,\text{nF}\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="math inline">\(C_2\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(10\,\text{nF}\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>Substituting these values into the frequency equation gives:</p>
+<p><span class="math display">\[
+f_0 =
+\frac{1}
+{2\pi\sqrt{
+(1.1\times10^3)
+(1.1\times10^3)
+(20\times10^{-9})
+(10\times10^{-9})
+}}
+\]</span></p>
+<p><span class="math display">\[
+f_0 \approx 10.23\,\text{kHz}.
+\]</span></p>
+<p>The corresponding quality factor is:</p>
+<p><span class="math display">\[
+Q \approx 0.707.
+\]</span></p>
+<p>This value is equal to the Butterworth quality factor:</p>
+<p><span class="math display">\[
+Q = \frac{1}{\sqrt{2}} \approx 0.707.
+\]</span></p>
+</section>
+<section id="high-pass-section" class="level4" data-number="4.2.1.2">
+<h4 data-number="4.2.1.2" class="anchored" data-anchor-id="high-pass-section"><span class="header-section-number">4.2.1.2</span> High-Pass Section</h4>
+<p>For the second-order high-pass stage, the natural frequency is calculated using:</p>
+<p><span class="math display">\[
+f_0 =
+\frac{1}
+{2\pi\sqrt{R_3R_4C_3C_4}}.
+\]</span></p>
+<p>The quality factor is calculated as:</p>
+<p><span class="math display">\[
+Q =
+\frac{\sqrt{R_3R_4C_3C_4}}
+{R_3(C_3+C_4)}.
+\]</span></p>
+<p>The component values (<a href="#tbl-componentsxschem" class="quarto-xref">Table&nbsp;2</a>) used in the high-pass section are:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Component</th>
+<th style="text-align: right;">Selected value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\(R_3\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(1.1\,\text{k}\Omega\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="math inline">\(R_4\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(2.2\,\text{k}\Omega\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\(C_3\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(10\,\text{nF}\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="math inline">\(C_4\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(10\,\text{nF}\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>Substituting the selected values gives:</p>
+<p><span class="math display">\[
+f_0 \approx 10.23\,\text{kHz}
+\]</span></p>
+<p>and</p>
+<p><span class="math display">\[
+Q \approx 0.707.
+\]</span></p>
+<p>Therefore, both the low-pass and high-pass stages are designed with approximately the same natural frequency and Butterworth quality factor. Cascading two identical second-order stages in each branch produces the required fourth-order Linkwitz–Riley response.</p>
+</section>
 </section>
 </section>
 <section id="ltspice-ac-frequency-response" class="level2" data-number="4.3">
@@ -402,19 +628,6 @@ Table&nbsp;2: Component selection parameters for the active filter stage.
 Figure&nbsp;2: Behavioural model schematic of the LR4 filter designed in LTspice.
 </figcaption>
 </figure>
-</div>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Design Constraint
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Ensure that the operational amplifiers used have a high enough Slew Rate (SR) and Gain-Bandwidth Product (GBW) to avoid distortion in the high-frequency band limits of the audio spectrum.</p>
-</div>
 </div>
 </section>
 </section>
@@ -668,8 +881,8 @@ Figure&nbsp;4: The 2-stage OTA.
 </figure>
 </div>
 <p>There are 4 major aspects of this OTA the input differential pair, pmos current mirrors, output gain PMOS, and tail current NMOS’s. The sizing of these transistors is done using gm/Id methodology.</p>
-<section id="design-space-explorations-component-and-geometry-selection" class="level3" data-number="2.3.1">
-<h3 data-number="2.3.1" class="anchored" data-anchor-id="design-space-explorations-component-and-geometry-selection"><span class="header-section-number">2.3.1</span> 2. Design Space Explorations: Component and Geometry Selection</h3>
+<section id="design-space-explorations-component-and-geometry-selection" class="level3" data-number="5.6.1">
+<h3 data-number="5.6.1" class="anchored" data-anchor-id="design-space-explorations-component-and-geometry-selection"><span class="header-section-number">5.6.1</span> 2. Design Space Explorations: Component and Geometry Selection</h3>
 <p>To transition successfully to the two-stage architecture, two critical component adjustments were made to ensure loop stability and realistic system performance:</p>
 <ul>
 <li><strong>Upgrading <span class="math inline">\(C_{\mathrm{load}}\)</span> to <span class="math inline">\(1\text{ pF}\)</span> (from <span class="math inline">\(50\text{ fF}\)</span>):</strong> A <span class="math inline">\(50\text{ fF}\)</span> load only accounts for tiny, localized on-chip parasitics <span class="citation" data-cites="lenka2022micro">(<a href="#ref-lenka2022micro" role="doc-biblioref">Lenka et al. 2022</a>)</span>. Since this OTA is designed to drive inside an <strong>LR4 active crossover filter</strong> network, <span class="math inline">\(1\text{ pF}\)</span> was chosen to represent realistic load <span class="citation" data-cites="lenka2022micro">(<a href="#ref-lenka2022micro" role="doc-biblioref">Lenka et al. 2022</a>)</span>.</li>
@@ -687,9 +900,9 @@ Figure&nbsp;4: The 2-stage OTA.
 </div>
 <a class="quarto-notebook-link" id="nblink-1" href="gmid\techsweep_sg13_plots_nmos-preview.html#cell-9">Source: MOSFET gm/ID Evaluation Script for IHP SG13G2 NMOS</a></div>
 </section>
-<section id="design-specification-reference-parameters-1" class="level3" data-number="2.3.2">
-<h3 data-number="2.3.2" class="anchored" data-anchor-id="design-specification-reference-parameters-1"><span class="header-section-number">2.3.2</span> Design Specification &amp; Reference Parameters</h3>
-<p>The core target constraints, technology limits, and initial efficiency parameters are given in <a href="#tbl-2stage-specs" class="quarto-xref">Table&nbsp;3</a>.</p>
+<section id="design-specification-reference-parameters-1" class="level3" data-number="5.6.2">
+<h3 data-number="5.6.2" class="anchored" data-anchor-id="design-specification-reference-parameters-1"><span class="header-section-number">5.6.2</span> Design Specification &amp; Reference Parameters</h3>
+<p>The core target constraints, technology limits, and initial efficiency parameters are given in <a href="#tbl-2stage-specs" class="quarto-xref">Table&nbsp;4</a>.</p>
 <div id="tbl-2stage-specs" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-2stage-specs-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -926,7 +1139,7 @@ Table&nbsp;6: Performance summary of the 2-Stage Miller OTA configuration.
 </div>
 <p>The sizing procedure and its calculation are best performed in a Jupyter notebook, as we can easily look up the exact data from the pre-computed tables:</p>
 <div class="callout callout-style-default callout-tip callout-titled" title="Notebook 2-Stage-OTA Sizing">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -935,61 +1148,61 @@ Table&nbsp;6: Performance summary of the 2-Stage Miller OTA configuration.
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="quarto-embed-nb-cell">
 <div id="cc78b91c" class="cell" data-execution_count="2">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Sizing for a 2 Stage OTA</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pygmid <span class="im">import</span> Lookup <span class="im">as</span> lk</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>lv_nmos <span class="op">=</span> lk(<span class="st">'sg13_lv_nmos.mat'</span>)</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>lv_pmos <span class="op">=</span> lk(<span class="st">'sg13_lv_pmos.mat'</span>)</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># list of parameters: VGS, VDS, VSB, L, W, NFING, ID, VT, GM, GMB, GDS, CGG, CGB, CGD, CGS, CDD, CSS, STH, SFL</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># if not specified, minimum L, VDS=max(vgs)/2=0.9 and VSB=0 are used </span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Sizing for a 2 Stage OTA</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pygmid <span class="im">import</span> Lookup <span class="im">as</span> lk</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>lv_nmos <span class="op">=</span> lk(<span class="st">'sg13_lv_nmos.mat'</span>)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>lv_pmos <span class="op">=</span> lk(<span class="st">'sg13_lv_pmos.mat'</span>)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co"># list of parameters: VGS, VDS, VSB, L, W, NFING, ID, VT, GM, GMB, GDS, CGG, CGB, CGD, CGS, CDD, CSS, STH, SFL</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co"># if not specified, minimum L, VDS=max(vgs)/2=0.9 and VSB=0 are used </span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div id="3c089c73" class="cell" data-execution_count="22">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># define the given parameters as taken from the specification table or inital guesses</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>c_load <span class="op">=</span> <span class="fl">1e-12</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co">#c_load = 1e-12</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>gm_id_m12 <span class="op">=</span> <span class="dv">11</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>gm_id_m34 <span class="op">=</span> <span class="dv">7</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>gm_id_m5 <span class="op">=</span> <span class="dv">10</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>gm_id_m678 <span class="op">=</span> <span class="dv">6</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>l_12 <span class="op">=</span> <span class="dv">2</span></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>l_34 <span class="op">=</span> <span class="dv">2</span></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>l_5 <span class="op">=</span> <span class="dv">2</span></span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>l_678 <span class="op">=</span> <span class="dv">2</span></span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>f_bw <span class="op">=</span> <span class="fl">10e6</span> <span class="co"># -3dB bandwidth of the voltage buffer</span></span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>i_total_limit <span class="op">=</span> <span class="fl">30e-6</span></span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>i_bias_in <span class="op">=</span> <span class="fl">20e-6</span></span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>output_voltage <span class="op">=</span> <span class="fl">1.3</span></span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>vin_min <span class="op">=</span> <span class="fl">0.7</span></span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>vin_max <span class="op">=</span> <span class="fl">0.9</span></span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>vdd_min <span class="op">=</span> <span class="fl">1.45</span></span>
-<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>vdd_max <span class="op">=</span> <span class="fl">1.55</span></span>
-<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>gain <span class="op">=</span> <span class="dv">60</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># define the given parameters as taken from the specification table or inital guesses</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>c_load <span class="op">=</span> <span class="fl">1e-12</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co">#c_load = 1e-12</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>gm_id_m12 <span class="op">=</span> <span class="dv">11</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>gm_id_m34 <span class="op">=</span> <span class="dv">7</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>gm_id_m5 <span class="op">=</span> <span class="dv">10</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>gm_id_m678 <span class="op">=</span> <span class="dv">6</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>l_12 <span class="op">=</span> <span class="dv">2</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>l_34 <span class="op">=</span> <span class="dv">2</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>l_5 <span class="op">=</span> <span class="dv">2</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>l_678 <span class="op">=</span> <span class="dv">2</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>f_bw <span class="op">=</span> <span class="fl">10e6</span> <span class="co"># -3dB bandwidth of the voltage buffer</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>i_total_limit <span class="op">=</span> <span class="fl">30e-6</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>i_bias_in <span class="op">=</span> <span class="fl">20e-6</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>output_voltage <span class="op">=</span> <span class="fl">1.3</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>vin_min <span class="op">=</span> <span class="fl">0.7</span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>vin_max <span class="op">=</span> <span class="fl">0.9</span></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>vdd_min <span class="op">=</span> <span class="fl">1.45</span></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>vdd_max <span class="op">=</span> <span class="fl">1.55</span></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>gain <span class="op">=</span> <span class="dv">60</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div id="25a219e6" class="cell" data-execution_count="23">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>c_m_min <span class="op">=</span> <span class="fl">0.22</span><span class="op">*</span>c_load</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Industrial scaling multiplier (6.6x the lower bound) to swallow up local device parasitics</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>c_m <span class="op">=</span> <span class="fl">0.5</span><span class="op">*</span>c_load</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co">#c_m = 150e-16</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co">#c_m = c_m_min</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>c_m_min <span class="op">=</span> <span class="fl">0.22</span><span class="op">*</span>c_load</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Industrial scaling multiplier (6.6x the lower bound) to swallow up local device parasitics</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>c_m <span class="op">=</span> <span class="fl">0.5</span><span class="op">*</span>c_load</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co">#c_m = 150e-16</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co">#c_m = c_m_min</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div id="ac96c216" class="cell" data-execution_count="24">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'</span><span class="ch">\n</span><span class="st">--- Step 2: First Stage Core Sizing ---'</span>)</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>gm_m12_ideal <span class="op">=</span> <span class="dv">3</span><span class="op">*</span>(<span class="dv">2</span> <span class="op">*</span> np.pi <span class="op">*</span> f_bw) <span class="op">*</span> c_m</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>id_m12_ideal <span class="op">=</span> gm_m12_ideal <span class="op">/</span> gm_id_m12</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>i_tail_ideal <span class="op">=</span> <span class="dv">2</span> <span class="op">*</span> id_m12_ideal</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Snapping tail bias current parameter smoothly onto physical layout grid (0.5 µA blocks)</span></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>i_tail <span class="op">=</span> <span class="bu">max</span>(<span class="bu">round</span>(i_tail_ideal <span class="op">/</span> <span class="fl">1e-6</span> <span class="op">*</span> <span class="dv">2</span>) <span class="op">/</span> <span class="dv">2</span> <span class="op">*</span> <span class="fl">1e-6</span>, <span class="fl">0.5e-6</span>)</span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>id_m12 <span class="op">=</span> i_tail <span class="op">/</span> <span class="dv">2</span>   <span class="co"># Re-establish physical branch balance post-quantization</span></span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>gm_m12 <span class="op">=</span> gm_id_m12 <span class="op">*</span> id_m12  <span class="co"># Re-evaluate true manufactured transconductance from grid current</span></span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'Required Analytical gm12 = </span><span class="sc">{</span>gm_m12_ideal<span class="op">*</span><span class="fl">1e3</span><span class="sc">:.5f}</span><span class="ss"> mS'</span>)</span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'Grid Re-aligned I_tail   = </span><span class="sc">{</span>i_tail<span class="op">/</span><span class="fl">1e-6</span><span class="sc">:.2f}</span><span class="ss"> µA'</span>)</span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'True Manufactured gm12   = </span><span class="sc">{</span>gm_m12<span class="op">*</span><span class="fl">1e3</span><span class="sc">:.5f}</span><span class="ss"> mS'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'</span><span class="ch">\n</span><span class="st">--- Step 2: First Stage Core Sizing ---'</span>)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>gm_m12_ideal <span class="op">=</span> <span class="dv">3</span><span class="op">*</span>(<span class="dv">2</span> <span class="op">*</span> np.pi <span class="op">*</span> f_bw) <span class="op">*</span> c_m</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>id_m12_ideal <span class="op">=</span> gm_m12_ideal <span class="op">/</span> gm_id_m12</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>i_tail_ideal <span class="op">=</span> <span class="dv">2</span> <span class="op">*</span> id_m12_ideal</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Snapping tail bias current parameter smoothly onto physical layout grid (0.5 µA blocks)</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>i_tail <span class="op">=</span> <span class="bu">max</span>(<span class="bu">round</span>(i_tail_ideal <span class="op">/</span> <span class="fl">1e-6</span> <span class="op">*</span> <span class="dv">2</span>) <span class="op">/</span> <span class="dv">2</span> <span class="op">*</span> <span class="fl">1e-6</span>, <span class="fl">0.5e-6</span>)</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>id_m12 <span class="op">=</span> i_tail <span class="op">/</span> <span class="dv">2</span>   <span class="co"># Re-establish physical branch balance post-quantization</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>gm_m12 <span class="op">=</span> gm_id_m12 <span class="op">*</span> id_m12  <span class="co"># Re-evaluate true manufactured transconductance from grid current</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'Required Analytical gm12 = </span><span class="sc">{</span>gm_m12_ideal<span class="op">*</span><span class="fl">1e3</span><span class="sc">:.5f}</span><span class="ss"> mS'</span>)</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'Grid Re-aligned I_tail   = </span><span class="sc">{</span>i_tail<span class="op">/</span><span class="fl">1e-6</span><span class="sc">:.2f}</span><span class="ss"> µA'</span>)</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'True Manufactured gm12   = </span><span class="sc">{</span>gm_m12<span class="op">*</span><span class="fl">1e3</span><span class="sc">:.5f}</span><span class="ss"> mS'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 --- Step 2: First Stage Core Sizing ---
@@ -999,13 +1212,13 @@ True Manufactured gm12   = 0.09350 mS</code></pre>
 </div>
 </div>
 <div id="e8007066" class="cell" data-execution_count="25">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'</span><span class="ch">\n</span><span class="st">--- Step 3: Second Stage Stability-Driven Constraints ---'</span>)</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Image Sizing Rule:</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>gm_m5_req <span class="op">=</span> <span class="fl">2.2</span><span class="op">*</span>f_bw<span class="op">*</span><span class="dv">2</span><span class="op">*</span>np.pi<span class="op">*</span>c_load</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'Required Minimum Stage 2 transconductance gm5 = </span><span class="sc">{</span>gm_m5_req<span class="op">*</span><span class="fl">1e3</span><span class="sc">:.5f}</span><span class="ss"> mS'</span>)</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>id_m5_required <span class="op">=</span> gm_m5_req <span class="op">/</span> gm_id_m5</span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'Analytically Required Stage 2 Bias Current    = </span><span class="sc">{</span>id_m5_required<span class="op">/</span><span class="fl">1e-6</span><span class="sc">:.3f}</span><span class="ss"> µA'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'</span><span class="ch">\n</span><span class="st">--- Step 3: Second Stage Stability-Driven Constraints ---'</span>)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Image Sizing Rule:</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>gm_m5_req <span class="op">=</span> <span class="fl">2.2</span><span class="op">*</span>f_bw<span class="op">*</span><span class="dv">2</span><span class="op">*</span>np.pi<span class="op">*</span>c_load</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'Required Minimum Stage 2 transconductance gm5 = </span><span class="sc">{</span>gm_m5_req<span class="op">*</span><span class="fl">1e3</span><span class="sc">:.5f}</span><span class="ss"> mS'</span>)</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>id_m5_required <span class="op">=</span> gm_m5_req <span class="op">/</span> gm_id_m5</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'Analytically Required Stage 2 Bias Current    = </span><span class="sc">{</span>id_m5_required<span class="op">/</span><span class="fl">1e-6</span><span class="sc">:.3f}</span><span class="ss"> µA'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 --- Step 3: Second Stage Stability-Driven Constraints ---
@@ -1014,29 +1227,29 @@ Analytically Required Stage 2 Bias Current    = 13.823 µA</code></pre>
 </div>
 </div>
 <div id="7d8a0d74" class="cell" data-execution_count="26">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># we calculate the first stage  dc gain</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>gm_gds_m12 <span class="op">=</span> lv_nmos.lookup(<span class="st">'GM_GDS'</span>, GM_ID<span class="op">=</span>gm_id_m12, L<span class="op">=</span>l_12, VDS<span class="op">=</span><span class="fl">0.75</span>, VSB<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>gm_gds_m34 <span class="op">=</span> lv_pmos.lookup(<span class="st">'GM_GDS'</span>, GM_ID<span class="op">=</span>gm_id_m34, L<span class="op">=</span>l_34, VDS<span class="op">=</span><span class="fl">0.75</span>, VSB<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>gds_m12 <span class="op">=</span> gm_m12 <span class="op">/</span> gm_gds_m12</span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>gm_m34 <span class="op">=</span> gm_id_m34 <span class="op">*</span> i_tail<span class="op">/</span><span class="dv">2</span></span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>gds_m34 <span class="op">=</span> gm_m34 <span class="op">/</span> gm_gds_m34</span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>a0 <span class="op">=</span> gm_m12 <span class="op">/</span> (gds_m12 <span class="op">+</span> gds_m34)</span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'First stage gain a0 ='</span>, <span class="bu">round</span>(<span class="dv">20</span><span class="op">*</span>np.log10(a0), <span class="dv">1</span>), <span class="st">'dB'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># we calculate the first stage  dc gain</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>gm_gds_m12 <span class="op">=</span> lv_nmos.lookup(<span class="st">'GM_GDS'</span>, GM_ID<span class="op">=</span>gm_id_m12, L<span class="op">=</span>l_12, VDS<span class="op">=</span><span class="fl">0.75</span>, VSB<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>gm_gds_m34 <span class="op">=</span> lv_pmos.lookup(<span class="st">'GM_GDS'</span>, GM_ID<span class="op">=</span>gm_id_m34, L<span class="op">=</span>l_34, VDS<span class="op">=</span><span class="fl">0.75</span>, VSB<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>gds_m12 <span class="op">=</span> gm_m12 <span class="op">/</span> gm_gds_m12</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>gm_m34 <span class="op">=</span> gm_id_m34 <span class="op">*</span> i_tail<span class="op">/</span><span class="dv">2</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>gds_m34 <span class="op">=</span> gm_m34 <span class="op">/</span> gm_gds_m34</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>a0 <span class="op">=</span> gm_m12 <span class="op">/</span> (gds_m12 <span class="op">+</span> gds_m34)</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'First stage gain a0 ='</span>, <span class="bu">round</span>(<span class="dv">20</span><span class="op">*</span>np.log10(a0), <span class="dv">1</span>), <span class="st">'dB'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>First stage gain a0 = 31.6 dB</code></pre>
 </div>
 </div>
 <div id="f850fe4e" class="cell" data-execution_count="27">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># we can now look up the VGS of the MOSFET</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>vgs_m12 <span class="op">=</span> lv_nmos.look_upVGS(GM_ID<span class="op">=</span>gm_id_m12, L<span class="op">=</span>l_12, VDS<span class="op">=</span><span class="fl">0.75</span>, VSB<span class="op">=</span><span class="fl">0.0</span>)</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>vgs_m34 <span class="op">=</span> lv_pmos.look_upVGS(GM_ID<span class="op">=</span>gm_id_m34, L<span class="op">=</span>l_34, VDS<span class="op">=</span><span class="fl">0.75</span>, VSB<span class="op">=</span><span class="fl">0.0</span>) </span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>vgs_m76 <span class="op">=</span> lv_nmos.look_upVGS(GM_ID<span class="op">=</span>gm_id_m678, L<span class="op">=</span>l_678, VDS<span class="op">=</span><span class="fl">0.75</span>, VSB<span class="op">=</span><span class="fl">0.0</span>) </span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'vgs_12 ='</span>, <span class="bu">round</span>(<span class="bu">float</span>(vgs_m12), <span class="dv">3</span>), <span class="st">'V'</span>)</span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'vgs_34 ='</span>, <span class="bu">round</span>(<span class="bu">float</span>(vgs_m34), <span class="dv">3</span>), <span class="st">'V'</span>)</span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'vgs_76 ='</span>, <span class="bu">round</span>(<span class="bu">float</span>(vgs_m76), <span class="dv">3</span>), <span class="st">'V'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># we can now look up the VGS of the MOSFET</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>vgs_m12 <span class="op">=</span> lv_nmos.look_upVGS(GM_ID<span class="op">=</span>gm_id_m12, L<span class="op">=</span>l_12, VDS<span class="op">=</span><span class="fl">0.75</span>, VSB<span class="op">=</span><span class="fl">0.0</span>)</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>vgs_m34 <span class="op">=</span> lv_pmos.look_upVGS(GM_ID<span class="op">=</span>gm_id_m34, L<span class="op">=</span>l_34, VDS<span class="op">=</span><span class="fl">0.75</span>, VSB<span class="op">=</span><span class="fl">0.0</span>) </span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>vgs_m76 <span class="op">=</span> lv_nmos.look_upVGS(GM_ID<span class="op">=</span>gm_id_m678, L<span class="op">=</span>l_678, VDS<span class="op">=</span><span class="fl">0.75</span>, VSB<span class="op">=</span><span class="fl">0.0</span>) </span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'vgs_12 ='</span>, <span class="bu">round</span>(<span class="bu">float</span>(vgs_m12), <span class="dv">3</span>), <span class="st">'V'</span>)</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'vgs_34 ='</span>, <span class="bu">round</span>(<span class="bu">float</span>(vgs_m34), <span class="dv">3</span>), <span class="st">'V'</span>)</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'vgs_76 ='</span>, <span class="bu">round</span>(<span class="bu">float</span>(vgs_m76), <span class="dv">3</span>), <span class="st">'V'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>vgs_12 = 0.37 V
 vgs_34 = 0.617 V
@@ -1044,53 +1257,53 @@ vgs_76 = 0.547 V</code></pre>
 </div>
 </div>
 <div id="4aefb7c9" class="cell" data-execution_count="28">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate all widths</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>id_w_m12 <span class="op">=</span> lv_nmos.lookup(<span class="st">'ID_W'</span>, GM_ID<span class="op">=</span>gm_id_m12, L<span class="op">=</span>l_12, VDS<span class="op">=</span>vgs_m12, VSB<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>w_12 <span class="op">=</span> id_m12 <span class="op">/</span> id_w_m12</span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>w_12_round <span class="op">=</span> <span class="bu">max</span>(<span class="bu">round</span>(w_12<span class="op">*</span><span class="dv">2</span>)<span class="op">/</span><span class="dv">2</span>, <span class="fl">0.5</span>)</span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'M1/2 W ='</span>, <span class="bu">round</span>(w_12, <span class="dv">2</span>), <span class="st">'um, rounded W ='</span>, w_12_round, <span class="st">'um'</span>)</span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>id_m34 <span class="op">=</span> id_m12</span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>id_w_m34 <span class="op">=</span> lv_pmos.lookup(<span class="st">'ID_W'</span>, GM_ID<span class="op">=</span>gm_id_m34, L<span class="op">=</span>l_34, VDS<span class="op">=</span>vgs_m34, VSB<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>w_34 <span class="op">=</span> id_m34 <span class="op">/</span> id_w_m34</span>
-<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>w_34_round <span class="op">=</span> <span class="bu">max</span>(<span class="bu">round</span>(w_34<span class="op">*</span><span class="dv">2</span>)<span class="op">/</span><span class="dv">2</span>, <span class="fl">0.5</span>) </span>
-<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'M3/4 W ='</span>, <span class="bu">round</span>(w_34, <span class="dv">2</span>), <span class="st">'um, rounded W ='</span>, w_34_round, <span class="st">'um'</span>)</span>
-<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>id_w_m7 <span class="op">=</span> lv_nmos.lookup(<span class="st">'ID_W'</span>, GM_ID<span class="op">=</span>gm_id_m678, L<span class="op">=</span>l_678, VDS<span class="op">=</span>vgs_m76, VSB<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>w_7 <span class="op">=</span> i_tail <span class="op">/</span> id_w_m7</span>
-<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>w_7_round <span class="op">=</span> <span class="bu">max</span>(<span class="bu">round</span>(w_7<span class="op">*</span><span class="dv">2</span>)<span class="op">/</span><span class="dv">2</span>, <span class="fl">0.5</span>)</span>
-<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'M7 W ='</span>, <span class="bu">round</span>(w_7, <span class="dv">2</span>), <span class="st">'um, rounded W ='</span>, w_7_round, <span class="st">'um'</span>)</span>
-<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a>w_6 <span class="op">=</span> w_7_round <span class="op">*</span> i_bias_in <span class="op">/</span> i_tail</span>
-<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a>w_6_round <span class="op">=</span> <span class="bu">max</span>(<span class="bu">round</span>(w_6<span class="op">*</span><span class="dv">2</span>)<span class="op">/</span><span class="dv">2</span>, <span class="fl">0.5</span>)</span>
-<span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'M6 W ='</span>, <span class="bu">round</span>(w_6_round, <span class="dv">2</span>), <span class="st">'um'</span>)</span>
-<span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-22"><a href="#cb12-22" aria-hidden="true" tabindex="-1"></a><span class="co"># ==============================================================================</span></span>
-<span id="cb12-23"><a href="#cb12-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Sizing for Second Stage: M8 and M5</span></span>
-<span id="cb12-24"><a href="#cb12-24" aria-hidden="true" tabindex="-1"></a><span class="co"># ==============================================================================</span></span>
-<span id="cb12-25"><a href="#cb12-25" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'</span><span class="ch">\n</span><span class="st">--- Second Stage Sizing ---'</span>)</span>
-<span id="cb12-26"><a href="#cb12-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-27"><a href="#cb12-27" aria-hidden="true" tabindex="-1"></a><span class="co"># Step A: Size M8 (Stage 2 NMOS Load Mirror) using id_m5_required</span></span>
-<span id="cb12-28"><a href="#cb12-28" aria-hidden="true" tabindex="-1"></a>id_w_m8 <span class="op">=</span> lv_nmos.lookup(<span class="st">'ID_W'</span>, GM_ID<span class="op">=</span>gm_id_m678, L<span class="op">=</span>l_678, VDS<span class="op">=</span><span class="fl">0.75</span>, VSB<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb12-29"><a href="#cb12-29" aria-hidden="true" tabindex="-1"></a>w_8 <span class="op">=</span> id_m5_required <span class="op">/</span> id_w_m8</span>
-<span id="cb12-30"><a href="#cb12-30" aria-hidden="true" tabindex="-1"></a>w_8_round <span class="op">=</span> <span class="bu">max</span>(<span class="bu">round</span>(w_8 <span class="op">*</span> <span class="dv">2</span>) <span class="op">/</span> <span class="dv">2</span>, <span class="fl">0.5</span>)</span>
-<span id="cb12-31"><a href="#cb12-31" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'M8 W ='</span>, <span class="bu">round</span>(w_8, <span class="dv">2</span>), <span class="st">'um, rounded W ='</span>, w_8_round, <span class="st">'um'</span>)</span>
-<span id="cb12-32"><a href="#cb12-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-33"><a href="#cb12-33" aria-hidden="true" tabindex="-1"></a><span class="co"># Step B: Realign true mirrored current to layout grid constraints</span></span>
-<span id="cb12-34"><a href="#cb12-34" aria-hidden="true" tabindex="-1"></a>mirror_ratio_m8_m6 <span class="op">=</span> w_8_round <span class="op">/</span> w_6_round</span>
-<span id="cb12-35"><a href="#cb12-35" aria-hidden="true" tabindex="-1"></a>id_m5 <span class="op">=</span> i_bias_in <span class="op">*</span> mirror_ratio_m8_m6</span>
-<span id="cb12-36"><a href="#cb12-36" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'True Mirrored Stage 2 Current (id_m5) = </span><span class="sc">{</span>id_m5<span class="op">/</span><span class="fl">1e-6</span><span class="sc">:.3f}</span><span class="ss"> µA'</span>)</span>
-<span id="cb12-37"><a href="#cb12-37" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-38"><a href="#cb12-38" aria-hidden="true" tabindex="-1"></a><span class="co"># Step C: Re-calculate actual physical gm5 and size M5 (PMOS Driver)</span></span>
-<span id="cb12-39"><a href="#cb12-39" aria-hidden="true" tabindex="-1"></a>gm_m5 <span class="op">=</span> gm_id_m5 <span class="op">*</span> id_m5</span>
-<span id="cb12-40"><a href="#cb12-40" aria-hidden="true" tabindex="-1"></a>id_w_m5 <span class="op">=</span> lv_pmos.lookup(<span class="st">'ID_W'</span>, GM_ID<span class="op">=</span>gm_id_m5, L<span class="op">=</span>l_5, VDS<span class="op">=</span><span class="fl">0.75</span>, VSB<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb12-41"><a href="#cb12-41" aria-hidden="true" tabindex="-1"></a>w_5 <span class="op">=</span> id_m5 <span class="op">/</span> id_w_m5</span>
-<span id="cb12-42"><a href="#cb12-42" aria-hidden="true" tabindex="-1"></a>w_5_round <span class="op">=</span> <span class="bu">max</span>(<span class="bu">round</span>(w_5 <span class="op">*</span> <span class="dv">2</span>) <span class="op">/</span> <span class="dv">2</span>, <span class="fl">0.5</span>)</span>
-<span id="cb12-43"><a href="#cb12-43" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'M5 W ='</span>, <span class="bu">round</span>(w_5, <span class="dv">2</span>), <span class="st">'um, rounded W ='</span>, w_5_round, <span class="st">'um'</span>)</span>
-<span id="cb12-44"><a href="#cb12-44" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-45"><a href="#cb12-45" aria-hidden="true" tabindex="-1"></a><span class="co"># Step D: Complete the flow with your Zero-Nulling Resistor value</span></span>
-<span id="cb12-46"><a href="#cb12-46" aria-hidden="true" tabindex="-1"></a>rz <span class="op">=</span> <span class="dv">2</span> <span class="op">/</span> gm_m5</span>
-<span id="cb12-47"><a href="#cb12-47" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'Textbook Zero-Nulling Resistor Rz = </span><span class="sc">{</span>rz<span class="op">/</span><span class="fl">1e3</span><span class="sc">:.2f}</span><span class="ss"> kΩ'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate all widths</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>id_w_m12 <span class="op">=</span> lv_nmos.lookup(<span class="st">'ID_W'</span>, GM_ID<span class="op">=</span>gm_id_m12, L<span class="op">=</span>l_12, VDS<span class="op">=</span>vgs_m12, VSB<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>w_12 <span class="op">=</span> id_m12 <span class="op">/</span> id_w_m12</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>w_12_round <span class="op">=</span> <span class="bu">max</span>(<span class="bu">round</span>(w_12<span class="op">*</span><span class="dv">2</span>)<span class="op">/</span><span class="dv">2</span>, <span class="fl">0.5</span>)</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'M1/2 W ='</span>, <span class="bu">round</span>(w_12, <span class="dv">2</span>), <span class="st">'um, rounded W ='</span>, w_12_round, <span class="st">'um'</span>)</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>id_m34 <span class="op">=</span> id_m12</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>id_w_m34 <span class="op">=</span> lv_pmos.lookup(<span class="st">'ID_W'</span>, GM_ID<span class="op">=</span>gm_id_m34, L<span class="op">=</span>l_34, VDS<span class="op">=</span>vgs_m34, VSB<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>w_34 <span class="op">=</span> id_m34 <span class="op">/</span> id_w_m34</span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>w_34_round <span class="op">=</span> <span class="bu">max</span>(<span class="bu">round</span>(w_34<span class="op">*</span><span class="dv">2</span>)<span class="op">/</span><span class="dv">2</span>, <span class="fl">0.5</span>) </span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'M3/4 W ='</span>, <span class="bu">round</span>(w_34, <span class="dv">2</span>), <span class="st">'um, rounded W ='</span>, w_34_round, <span class="st">'um'</span>)</span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>id_w_m7 <span class="op">=</span> lv_nmos.lookup(<span class="st">'ID_W'</span>, GM_ID<span class="op">=</span>gm_id_m678, L<span class="op">=</span>l_678, VDS<span class="op">=</span>vgs_m76, VSB<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>w_7 <span class="op">=</span> i_tail <span class="op">/</span> id_w_m7</span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>w_7_round <span class="op">=</span> <span class="bu">max</span>(<span class="bu">round</span>(w_7<span class="op">*</span><span class="dv">2</span>)<span class="op">/</span><span class="dv">2</span>, <span class="fl">0.5</span>)</span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'M7 W ='</span>, <span class="bu">round</span>(w_7, <span class="dv">2</span>), <span class="st">'um, rounded W ='</span>, w_7_round, <span class="st">'um'</span>)</span>
+<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a>w_6 <span class="op">=</span> w_7_round <span class="op">*</span> i_bias_in <span class="op">/</span> i_tail</span>
+<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a>w_6_round <span class="op">=</span> <span class="bu">max</span>(<span class="bu">round</span>(w_6<span class="op">*</span><span class="dv">2</span>)<span class="op">/</span><span class="dv">2</span>, <span class="fl">0.5</span>)</span>
+<span id="cb13-20"><a href="#cb13-20" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'M6 W ='</span>, <span class="bu">round</span>(w_6_round, <span class="dv">2</span>), <span class="st">'um'</span>)</span>
+<span id="cb13-21"><a href="#cb13-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-22"><a href="#cb13-22" aria-hidden="true" tabindex="-1"></a><span class="co"># ==============================================================================</span></span>
+<span id="cb13-23"><a href="#cb13-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Sizing for Second Stage: M8 and M5</span></span>
+<span id="cb13-24"><a href="#cb13-24" aria-hidden="true" tabindex="-1"></a><span class="co"># ==============================================================================</span></span>
+<span id="cb13-25"><a href="#cb13-25" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'</span><span class="ch">\n</span><span class="st">--- Second Stage Sizing ---'</span>)</span>
+<span id="cb13-26"><a href="#cb13-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-27"><a href="#cb13-27" aria-hidden="true" tabindex="-1"></a><span class="co"># Step A: Size M8 (Stage 2 NMOS Load Mirror) using id_m5_required</span></span>
+<span id="cb13-28"><a href="#cb13-28" aria-hidden="true" tabindex="-1"></a>id_w_m8 <span class="op">=</span> lv_nmos.lookup(<span class="st">'ID_W'</span>, GM_ID<span class="op">=</span>gm_id_m678, L<span class="op">=</span>l_678, VDS<span class="op">=</span><span class="fl">0.75</span>, VSB<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb13-29"><a href="#cb13-29" aria-hidden="true" tabindex="-1"></a>w_8 <span class="op">=</span> id_m5_required <span class="op">/</span> id_w_m8</span>
+<span id="cb13-30"><a href="#cb13-30" aria-hidden="true" tabindex="-1"></a>w_8_round <span class="op">=</span> <span class="bu">max</span>(<span class="bu">round</span>(w_8 <span class="op">*</span> <span class="dv">2</span>) <span class="op">/</span> <span class="dv">2</span>, <span class="fl">0.5</span>)</span>
+<span id="cb13-31"><a href="#cb13-31" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'M8 W ='</span>, <span class="bu">round</span>(w_8, <span class="dv">2</span>), <span class="st">'um, rounded W ='</span>, w_8_round, <span class="st">'um'</span>)</span>
+<span id="cb13-32"><a href="#cb13-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-33"><a href="#cb13-33" aria-hidden="true" tabindex="-1"></a><span class="co"># Step B: Realign true mirrored current to layout grid constraints</span></span>
+<span id="cb13-34"><a href="#cb13-34" aria-hidden="true" tabindex="-1"></a>mirror_ratio_m8_m6 <span class="op">=</span> w_8_round <span class="op">/</span> w_6_round</span>
+<span id="cb13-35"><a href="#cb13-35" aria-hidden="true" tabindex="-1"></a>id_m5 <span class="op">=</span> i_bias_in <span class="op">*</span> mirror_ratio_m8_m6</span>
+<span id="cb13-36"><a href="#cb13-36" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'True Mirrored Stage 2 Current (id_m5) = </span><span class="sc">{</span>id_m5<span class="op">/</span><span class="fl">1e-6</span><span class="sc">:.3f}</span><span class="ss"> µA'</span>)</span>
+<span id="cb13-37"><a href="#cb13-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-38"><a href="#cb13-38" aria-hidden="true" tabindex="-1"></a><span class="co"># Step C: Re-calculate actual physical gm5 and size M5 (PMOS Driver)</span></span>
+<span id="cb13-39"><a href="#cb13-39" aria-hidden="true" tabindex="-1"></a>gm_m5 <span class="op">=</span> gm_id_m5 <span class="op">*</span> id_m5</span>
+<span id="cb13-40"><a href="#cb13-40" aria-hidden="true" tabindex="-1"></a>id_w_m5 <span class="op">=</span> lv_pmos.lookup(<span class="st">'ID_W'</span>, GM_ID<span class="op">=</span>gm_id_m5, L<span class="op">=</span>l_5, VDS<span class="op">=</span><span class="fl">0.75</span>, VSB<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb13-41"><a href="#cb13-41" aria-hidden="true" tabindex="-1"></a>w_5 <span class="op">=</span> id_m5 <span class="op">/</span> id_w_m5</span>
+<span id="cb13-42"><a href="#cb13-42" aria-hidden="true" tabindex="-1"></a>w_5_round <span class="op">=</span> <span class="bu">max</span>(<span class="bu">round</span>(w_5 <span class="op">*</span> <span class="dv">2</span>) <span class="op">/</span> <span class="dv">2</span>, <span class="fl">0.5</span>)</span>
+<span id="cb13-43"><a href="#cb13-43" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'M5 W ='</span>, <span class="bu">round</span>(w_5, <span class="dv">2</span>), <span class="st">'um, rounded W ='</span>, w_5_round, <span class="st">'um'</span>)</span>
+<span id="cb13-44"><a href="#cb13-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-45"><a href="#cb13-45" aria-hidden="true" tabindex="-1"></a><span class="co"># Step D: Complete the flow with your Zero-Nulling Resistor value</span></span>
+<span id="cb13-46"><a href="#cb13-46" aria-hidden="true" tabindex="-1"></a>rz <span class="op">=</span> <span class="dv">2</span> <span class="op">/</span> gm_m5</span>
+<span id="cb13-47"><a href="#cb13-47" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'Textbook Zero-Nulling Resistor Rz = </span><span class="sc">{</span>rz<span class="op">/</span><span class="fl">1e3</span><span class="sc">:.2f}</span><span class="ss"> kΩ'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>M1/2 W = 2.7 um, rounded W = 2.5 um
 M3/4 W = 3.55 um, rounded W = 3.5 um
@@ -1105,32 +1318,32 @@ Textbook Zero-Nulling Resistor Rz = 20.00 kΩ</code></pre>
 </div>
 </div>
 <div id="f15a2d36" class="cell" data-execution_count="29">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ==============================================================================</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 5. Total Open-Loop DC Gain Evaluation</span></span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="co"># ==============================================================================</span></span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'</span><span class="ch">\n</span><span class="st">--- Total DC Gain Evaluation ---'</span>)</span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Second stage gain evaluation</span></span>
-<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract the intrinsic gain of the PMOS Common-Source driver (M5)</span></span>
-<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>gm_gds_m5 <span class="op">=</span> lv_pmos.lookup(<span class="st">'GM_GDS'</span>, GM_ID<span class="op">=</span>gm_id_m5, L<span class="op">=</span>l_5, VDS<span class="op">=</span><span class="fl">0.75</span>, VSB<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>gds_m5    <span class="op">=</span> gm_m5 <span class="op">/</span> gm_gds_m5</span>
-<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract the output conductance density of the NMOS mirror load (M8)</span></span>
-<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>gds_id_m8 <span class="op">=</span> lv_nmos.lookup(<span class="st">'GDS_ID'</span>, GM_ID<span class="op">=</span>gm_id_m678, L<span class="op">=</span>l_678, VDS<span class="op">=</span><span class="fl">0.75</span>, VSB<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>gds_m8    <span class="op">=</span> gds_id_m8 <span class="op">*</span> id_m5</span>
-<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute Stage 2 Gain</span></span>
-<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a>a1 <span class="op">=</span> gm_m5 <span class="op">/</span> (gds_m5 <span class="op">+</span> gds_m8)</span>
-<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute Total Open-Loop Gain</span></span>
-<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a>a0_total <span class="op">=</span> a0 <span class="op">*</span> a1</span>
-<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'Stage 1 Open-Loop Gain (A1) = </span><span class="sc">{</span><span class="dv">20</span><span class="op">*</span>np<span class="sc">.</span>log10(a0)<span class="sc">:.1f}</span><span class="ss"> dB'</span>)</span>
-<span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'Stage 2 Open-Loop Gain (A2) = </span><span class="sc">{</span><span class="dv">20</span><span class="op">*</span>np<span class="sc">.</span>log10(a1)<span class="sc">:.1f}</span><span class="ss"> dB'</span>)</span>
-<span id="cb14-23"><a href="#cb14-23" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'Total Open-Loop Gain (A0)   = </span><span class="sc">{</span><span class="dv">20</span><span class="op">*</span>np<span class="sc">.</span>log10(a0_total)<span class="sc">:.1f}</span><span class="ss"> dB'</span>)</span>
-<span id="cb14-24"><a href="#cb14-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-25"><a href="#cb14-25" aria-hidden="true" tabindex="-1"></a>gain_error <span class="op">=</span> a0_total <span class="op">/</span> (<span class="dv">1</span> <span class="op">+</span> a0_total)</span>
-<span id="cb14-26"><a href="#cb14-26" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'voltage gain error ='</span>, <span class="bu">round</span>((gain_error<span class="op">-</span><span class="dv">1</span>)<span class="op">*</span><span class="dv">100</span>, <span class="dv">1</span>), <span class="st">'%'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ==============================================================================</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 5. Total Open-Loop DC Gain Evaluation</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="co"># ==============================================================================</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'</span><span class="ch">\n</span><span class="st">--- Total DC Gain Evaluation ---'</span>)</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Second stage gain evaluation</span></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract the intrinsic gain of the PMOS Common-Source driver (M5)</span></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>gm_gds_m5 <span class="op">=</span> lv_pmos.lookup(<span class="st">'GM_GDS'</span>, GM_ID<span class="op">=</span>gm_id_m5, L<span class="op">=</span>l_5, VDS<span class="op">=</span><span class="fl">0.75</span>, VSB<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>gds_m5    <span class="op">=</span> gm_m5 <span class="op">/</span> gm_gds_m5</span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract the output conductance density of the NMOS mirror load (M8)</span></span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>gds_id_m8 <span class="op">=</span> lv_nmos.lookup(<span class="st">'GDS_ID'</span>, GM_ID<span class="op">=</span>gm_id_m678, L<span class="op">=</span>l_678, VDS<span class="op">=</span><span class="fl">0.75</span>, VSB<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>gds_m8    <span class="op">=</span> gds_id_m8 <span class="op">*</span> id_m5</span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute Stage 2 Gain</span></span>
+<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a>a1 <span class="op">=</span> gm_m5 <span class="op">/</span> (gds_m5 <span class="op">+</span> gds_m8)</span>
+<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute Total Open-Loop Gain</span></span>
+<span id="cb15-19"><a href="#cb15-19" aria-hidden="true" tabindex="-1"></a>a0_total <span class="op">=</span> a0 <span class="op">*</span> a1</span>
+<span id="cb15-20"><a href="#cb15-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-21"><a href="#cb15-21" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'Stage 1 Open-Loop Gain (A1) = </span><span class="sc">{</span><span class="dv">20</span><span class="op">*</span>np<span class="sc">.</span>log10(a0)<span class="sc">:.1f}</span><span class="ss"> dB'</span>)</span>
+<span id="cb15-22"><a href="#cb15-22" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'Stage 2 Open-Loop Gain (A2) = </span><span class="sc">{</span><span class="dv">20</span><span class="op">*</span>np<span class="sc">.</span>log10(a1)<span class="sc">:.1f}</span><span class="ss"> dB'</span>)</span>
+<span id="cb15-23"><a href="#cb15-23" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'Total Open-Loop Gain (A0)   = </span><span class="sc">{</span><span class="dv">20</span><span class="op">*</span>np<span class="sc">.</span>log10(a0_total)<span class="sc">:.1f}</span><span class="ss"> dB'</span>)</span>
+<span id="cb15-24"><a href="#cb15-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-25"><a href="#cb15-25" aria-hidden="true" tabindex="-1"></a>gain_error <span class="op">=</span> a0_total <span class="op">/</span> (<span class="dv">1</span> <span class="op">+</span> a0_total)</span>
+<span id="cb15-26"><a href="#cb15-26" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'voltage gain error ='</span>, <span class="bu">round</span>((gain_error<span class="op">-</span><span class="dv">1</span>)<span class="op">*</span><span class="dv">100</span>, <span class="dv">1</span>), <span class="st">'%'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 --- Total DC Gain Evaluation ---
@@ -1141,82 +1354,82 @@ voltage gain error = -0.1 %</code></pre>
 </div>
 </div>
 <div id="d7efc406" class="cell" data-execution_count="30">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ==============================================================================</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 6. Node Parasitic Extraction, Actual UGBW, and Final Summary</span></span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="co"># ==============================================================================</span></span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'--- Node Parasitic Extraction &amp; Actual UGBW ---'</span>)</span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Look up frequency-dependent parasitic caps</span></span>
-<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>gm_cgs_m12  <span class="op">=</span> lv_nmos.lookup(<span class="st">'GM_CGS'</span>, GM_ID<span class="op">=</span>gm_id_m12, L<span class="op">=</span>l_12,  VDS<span class="op">=</span><span class="fl">0.75</span>, VSB<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>gm_cdd_m12  <span class="op">=</span> lv_nmos.lookup(<span class="st">'GM_CDD'</span>, GM_ID<span class="op">=</span>gm_id_m12, L<span class="op">=</span>l_12,  VDS<span class="op">=</span><span class="fl">0.75</span>, VSB<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>gm_cdd_m34  <span class="op">=</span> lv_pmos.lookup(<span class="st">'GM_CDD'</span>, GM_ID<span class="op">=</span>gm_id_m34, L<span class="op">=</span>l_34,  VDS<span class="op">=</span><span class="fl">0.75</span>, VSB<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a><span class="co"># NEW: Look up the gate-capacitance of the M5 driver</span></span>
-<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>gm_cgg_m5   <span class="op">=</span> lv_pmos.lookup(<span class="st">'GM_CGG'</span>, GM_ID<span class="op">=</span>gm_id_m5,   L<span class="op">=</span>l_5,   VDS<span class="op">=</span><span class="fl">0.75</span>, VSB<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>gm_w_m34 <span class="op">=</span> lv_pmos.lookup(<span class="st">'GM_W'</span>, GM_ID<span class="op">=</span>gm_id_m34, L<span class="op">=</span>l_34, VDS<span class="op">=</span><span class="fl">0.75</span>, VSB<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a>gm_m34   <span class="op">=</span> gm_w_m34 <span class="op">*</span> w_34_round</span>
-<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a><span class="co"># NEW: Add the M5 gate load to the total internal node parasitic calculation</span></span>
-<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a>c_para_internal <span class="op">=</span> <span class="bu">abs</span>(gm_m12 <span class="op">/</span> gm_cgs_m12) <span class="op">+</span> <span class="bu">abs</span>(gm_m12 <span class="op">/</span> gm_cdd_m12) <span class="op">+</span> <span class="bu">abs</span>(gm_m34 <span class="op">/</span> gm_cdd_m34) <span class="op">+</span> <span class="bu">abs</span>(gm_m5 <span class="op">/</span> gm_cgg_m5)</span>
-<span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a><span class="co"># The effective Miller capacitance includes this parallel parasitic loading</span></span>
-<span id="cb16-21"><a href="#cb16-21" aria-hidden="true" tabindex="-1"></a>c_m_eff <span class="op">=</span> c_m <span class="op">+</span> c_para_internal</span>
-<span id="cb16-22"><a href="#cb16-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-23"><a href="#cb16-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the actual physical UGBW roll-off from the true c_m_eff</span></span>
-<span id="cb16-24"><a href="#cb16-24" aria-hidden="true" tabindex="-1"></a>f_bw_actual <span class="op">=</span> gm_m12 <span class="op">/</span> (<span class="dv">2</span> <span class="op">*</span> np.pi <span class="op">*</span> c_m_eff)</span>
-<span id="cb16-25"><a href="#cb16-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-26"><a href="#cb16-26" aria-hidden="true" tabindex="-1"></a>t_slew <span class="op">=</span> c_m_eff<span class="op">*</span>output_voltage <span class="op">/</span> i_tail</span>
-<span id="cb16-27"><a href="#cb16-27" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'slewing time ='</span>, <span class="bu">round</span>(t_slew<span class="op">/</span><span class="fl">1e-6</span>, <span class="dv">3</span>), <span class="st">'µs'</span>)</span>
-<span id="cb16-28"><a href="#cb16-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-29"><a href="#cb16-29" aria-hidden="true" tabindex="-1"></a>tau <span class="op">=</span> <span class="dv">1</span> <span class="op">/</span> (<span class="dv">2</span> <span class="op">*</span> np.pi <span class="op">*</span> f_bw_actual)</span>
-<span id="cb16-30"><a href="#cb16-30" aria-hidden="true" tabindex="-1"></a>t_settle <span class="op">=</span> <span class="dv">5</span> <span class="op">*</span> tau</span>
-<span id="cb16-31"><a href="#cb16-31" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'settling time ='</span>, <span class="bu">round</span>(t_settle<span class="op">/</span><span class="fl">1e-6</span>, <span class="dv">3</span>), <span class="st">'µs'</span>)</span>
-<span id="cb16-32"><a href="#cb16-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-33"><a href="#cb16-33" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'Internal Node Parasitic Load = </span><span class="sc">{</span>c_para_internal<span class="op">/</span><span class="fl">1e-15</span><span class="sc">:.2f}</span><span class="ss"> fF and of which m5 </span><span class="sc">{</span><span class="bu">abs</span>(gm_m5 <span class="op">/</span> gm_cgg_m5)<span class="op">/</span><span class="fl">1e-15</span><span class="sc">}</span><span class="ss">'</span>)</span>
-<span id="cb16-34"><a href="#cb16-34" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'Effective Miller Capacitance = </span><span class="sc">{</span>c_m_eff<span class="op">/</span><span class="fl">1e-15</span><span class="sc">:.2f}</span><span class="ss"> fF'</span>)</span>
-<span id="cb16-35"><a href="#cb16-35" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-36"><a href="#cb16-36" aria-hidden="true" tabindex="-1"></a>i_total_rail <span class="op">=</span> i_bias_in <span class="op">+</span> i_tail <span class="op">+</span> id_m5</span>
-<span id="cb16-37"><a href="#cb16-37" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-38"><a href="#cb16-38" aria-hidden="true" tabindex="-1"></a><span class="co"># Power calculation at the minimum and maximum VDD limits</span></span>
-<span id="cb16-39"><a href="#cb16-39" aria-hidden="true" tabindex="-1"></a>power_dissipation_min <span class="op">=</span> i_total_rail <span class="op">*</span> vdd_min</span>
-<span id="cb16-40"><a href="#cb16-40" aria-hidden="true" tabindex="-1"></a>power_dissipation_max <span class="op">=</span> i_total_rail <span class="op">*</span> vdd_max</span>
-<span id="cb16-41"><a href="#cb16-41" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Total Current from VDD Rail = </span><span class="sc">{</span>i_total_rail<span class="op">/</span><span class="fl">1e-6</span><span class="sc">:.2f}</span><span class="ss"> µA"</span>)</span>
-<span id="cb16-42"><a href="#cb16-42" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-43"><a href="#cb16-43" aria-hidden="true" tabindex="-1"></a><span class="co"># ==============================================================================</span></span>
-<span id="cb16-44"><a href="#cb16-44" aria-hidden="true" tabindex="-1"></a><span class="co"># 7. Final Industrial Sizing Blueprint Summary Printout</span></span>
-<span id="cb16-45"><a href="#cb16-45" aria-hidden="true" tabindex="-1"></a><span class="co"># ==============================================================================</span></span>
-<span id="cb16-46"><a href="#cb16-46" aria-hidden="true" tabindex="-1"></a>cap_density <span class="op">=</span> <span class="fl">1.5e-15</span></span>
-<span id="cb16-47"><a href="#cb16-47" aria-hidden="true" tabindex="-1"></a>w_cm_approx <span class="op">=</span> np.sqrt(c_m <span class="op">/</span> cap_density)</span>
-<span id="cb16-48"><a href="#cb16-48" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-49"><a href="#cb16-49" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'</span><span class="ch">\n</span><span class="st">============================================================'</span>)</span>
-<span id="cb16-50"><a href="#cb16-50" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'  Textbook-Aligned Industrial 2-Stage Miller OTA Blueprint'</span>)</span>
-<span id="cb16-51"><a href="#cb16-51" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'============================================================'</span>)</span>
-<span id="cb16-52"><a href="#cb16-52" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'</span><span class="ch">\n</span><span class="st">Manufactured Device Sizes:'</span>)</span>
-<span id="cb16-53"><a href="#cb16-53" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'  M1/2  W = </span><span class="sc">{</span>w_12_round<span class="sc">}</span><span class="ss"> µm,  L = </span><span class="sc">{</span>l_12<span class="sc">}</span><span class="ss"> µm   [NMOS Input Pair]'</span>)</span>
-<span id="cb16-54"><a href="#cb16-54" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'  M3/4  W = </span><span class="sc">{</span>w_34_round<span class="sc">}</span><span class="ss"> µm,  L = </span><span class="sc">{</span>l_34<span class="sc">}</span><span class="ss"> µm   [PMOS Active Load]'</span>)</span>
-<span id="cb16-55"><a href="#cb16-55" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'  M5    W = </span><span class="sc">{</span>w_5_round<span class="sc">}</span><span class="ss"> µm,  L = </span><span class="sc">{</span>l_5<span class="sc">}</span><span class="ss"> µm   [PMOS CS Driver]'</span>)</span>
-<span id="cb16-56"><a href="#cb16-56" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'  M6    W = </span><span class="sc">{</span>w_6_round<span class="sc">}</span><span class="ss"> µm,  L = </span><span class="sc">{</span>l_678<span class="sc">}</span><span class="ss"> µm   [NMOS Ref Mirror]'</span>)</span>
-<span id="cb16-57"><a href="#cb16-57" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'  M7    W = </span><span class="sc">{</span>w_7_round<span class="sc">}</span><span class="ss"> µm,  L = </span><span class="sc">{</span>l_678<span class="sc">}</span><span class="ss"> µm   [NMOS Tail Mirror]'</span>)</span>
-<span id="cb16-58"><a href="#cb16-58" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'  M8    W = </span><span class="sc">{</span>w_8_round<span class="sc">}</span><span class="ss"> µm,  L = </span><span class="sc">{</span>l_678<span class="sc">}</span><span class="ss"> µm   [NMOS Load Mirror]'</span>)</span>
-<span id="cb16-59"><a href="#cb16-59" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-60"><a href="#cb16-60" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'</span><span class="ch">\n</span><span class="st">Passives Allocation:'</span>)</span>
-<span id="cb16-61"><a href="#cb16-61" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'  Miller Cap Cm       = </span><span class="sc">{</span>c_m<span class="op">/</span><span class="fl">1e-15</span><span class="sc">:.1f}</span><span class="ss"> fF (</span><span class="sc">{</span>w_cm_approx<span class="sc">:.1f}</span><span class="ss"> x </span><span class="sc">{</span>w_cm_approx<span class="sc">:.1f}</span><span class="ss"> µm MOM cap)'</span>)</span>
-<span id="cb16-62"><a href="#cb16-62" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'  Nulling Resistor Rz = </span><span class="sc">{</span>rz<span class="op">/</span><span class="fl">1e3</span><span class="sc">:.2f}</span><span class="ss"> kΩ'</span>)</span>
-<span id="cb16-63"><a href="#cb16-63" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-64"><a href="#cb16-64" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'</span><span class="ch">\n</span><span class="st">Evaluated Performance Metrics:'</span>)</span>
-<span id="cb16-65"><a href="#cb16-65" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'  Target Specification UGBW = </span><span class="sc">{</span>f_bw<span class="op">/</span><span class="fl">1e6</span><span class="sc">:.2f}</span><span class="ss"> MHz'</span>)</span>
-<span id="cb16-66"><a href="#cb16-66" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'  Actual Predicted UGBW     = </span><span class="sc">{</span>f_bw_actual<span class="op">/</span><span class="fl">1e6</span><span class="sc">:.2f}</span><span class="ss"> MHz (including layout parasitics)'</span>)</span>
-<span id="cb16-67"><a href="#cb16-67" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'  Stage 1 Open-Loop Gain A1 = </span><span class="sc">{</span><span class="dv">20</span><span class="op">*</span>np<span class="sc">.</span>log10(a0)<span class="sc">:.1f}</span><span class="ss"> dB'</span>)</span>
-<span id="cb16-68"><a href="#cb16-68" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'  Stage 2 Open-Loop Gain A2 = </span><span class="sc">{</span><span class="dv">20</span><span class="op">*</span>np<span class="sc">.</span>log10(a1)<span class="sc">:.1f}</span><span class="ss"> dB'</span>)</span>
-<span id="cb16-69"><a href="#cb16-69" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'  Total Open-Loop Gain A0   = </span><span class="sc">{</span><span class="dv">20</span><span class="op">*</span>np<span class="sc">.</span>log10(a0_total)<span class="sc">:.1f}</span><span class="ss"> dB (Specification: &gt;= </span><span class="sc">{</span>gain<span class="sc">}</span><span class="ss"> dB)'</span>)</span>
-<span id="cb16-70"><a href="#cb16-70" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-71"><a href="#cb16-71" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'</span><span class="ch">\n</span><span class="st">Current Consumption Budget:'</span>)</span>
-<span id="cb16-72"><a href="#cb16-72" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'  Stage 1 Tail Branch (I_tail) = </span><span class="sc">{</span>i_tail<span class="op">/</span><span class="fl">1e-6</span><span class="sc">:.2f}</span><span class="ss"> µA'</span>)</span>
-<span id="cb16-73"><a href="#cb16-73" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'  Stage 2 Core Branch (Id_M5)  = </span><span class="sc">{</span>id_m5<span class="op">/</span><span class="fl">1e-6</span><span class="sc">:.2f}</span><span class="ss"> µA'</span>)</span>
-<span id="cb16-74"><a href="#cb16-74" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'  Total Net Core Current Draw  = </span><span class="sc">{</span>(i_tail <span class="op">+</span> id_m5)<span class="op">/</span><span class="fl">1e-6</span><span class="sc">:.2f}</span><span class="ss"> µA (Limit Budget: &lt;= </span><span class="sc">{</span>i_total_limit<span class="op">/</span><span class="fl">1e-6</span><span class="sc">:.2f}</span><span class="ss"> µA)'</span>)</span>
-<span id="cb16-75"><a href="#cb16-75" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"  Power Dissipation (at VDD = </span><span class="sc">{</span>vdd_max<span class="sc">}</span><span class="ss">V) = </span><span class="sc">{</span>power_dissipation_max<span class="op">*</span><span class="fl">1e6</span><span class="sc">:.2f}</span><span class="ss"> µW"</span>)</span>
-<span id="cb16-76"><a href="#cb16-76" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'============================================================'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ==============================================================================</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 6. Node Parasitic Extraction, Actual UGBW, and Final Summary</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="co"># ==============================================================================</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'--- Node Parasitic Extraction &amp; Actual UGBW ---'</span>)</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Look up frequency-dependent parasitic caps</span></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>gm_cgs_m12  <span class="op">=</span> lv_nmos.lookup(<span class="st">'GM_CGS'</span>, GM_ID<span class="op">=</span>gm_id_m12, L<span class="op">=</span>l_12,  VDS<span class="op">=</span><span class="fl">0.75</span>, VSB<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>gm_cdd_m12  <span class="op">=</span> lv_nmos.lookup(<span class="st">'GM_CDD'</span>, GM_ID<span class="op">=</span>gm_id_m12, L<span class="op">=</span>l_12,  VDS<span class="op">=</span><span class="fl">0.75</span>, VSB<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>gm_cdd_m34  <span class="op">=</span> lv_pmos.lookup(<span class="st">'GM_CDD'</span>, GM_ID<span class="op">=</span>gm_id_m34, L<span class="op">=</span>l_34,  VDS<span class="op">=</span><span class="fl">0.75</span>, VSB<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a><span class="co"># NEW: Look up the gate-capacitance of the M5 driver</span></span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>gm_cgg_m5   <span class="op">=</span> lv_pmos.lookup(<span class="st">'GM_CGG'</span>, GM_ID<span class="op">=</span>gm_id_m5,   L<span class="op">=</span>l_5,   VDS<span class="op">=</span><span class="fl">0.75</span>, VSB<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a>gm_w_m34 <span class="op">=</span> lv_pmos.lookup(<span class="st">'GM_W'</span>, GM_ID<span class="op">=</span>gm_id_m34, L<span class="op">=</span>l_34, VDS<span class="op">=</span><span class="fl">0.75</span>, VSB<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a>gm_m34   <span class="op">=</span> gm_w_m34 <span class="op">*</span> w_34_round</span>
+<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-17"><a href="#cb17-17" aria-hidden="true" tabindex="-1"></a><span class="co"># NEW: Add the M5 gate load to the total internal node parasitic calculation</span></span>
+<span id="cb17-18"><a href="#cb17-18" aria-hidden="true" tabindex="-1"></a>c_para_internal <span class="op">=</span> <span class="bu">abs</span>(gm_m12 <span class="op">/</span> gm_cgs_m12) <span class="op">+</span> <span class="bu">abs</span>(gm_m12 <span class="op">/</span> gm_cdd_m12) <span class="op">+</span> <span class="bu">abs</span>(gm_m34 <span class="op">/</span> gm_cdd_m34) <span class="op">+</span> <span class="bu">abs</span>(gm_m5 <span class="op">/</span> gm_cgg_m5)</span>
+<span id="cb17-19"><a href="#cb17-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-20"><a href="#cb17-20" aria-hidden="true" tabindex="-1"></a><span class="co"># The effective Miller capacitance includes this parallel parasitic loading</span></span>
+<span id="cb17-21"><a href="#cb17-21" aria-hidden="true" tabindex="-1"></a>c_m_eff <span class="op">=</span> c_m <span class="op">+</span> c_para_internal</span>
+<span id="cb17-22"><a href="#cb17-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-23"><a href="#cb17-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the actual physical UGBW roll-off from the true c_m_eff</span></span>
+<span id="cb17-24"><a href="#cb17-24" aria-hidden="true" tabindex="-1"></a>f_bw_actual <span class="op">=</span> gm_m12 <span class="op">/</span> (<span class="dv">2</span> <span class="op">*</span> np.pi <span class="op">*</span> c_m_eff)</span>
+<span id="cb17-25"><a href="#cb17-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-26"><a href="#cb17-26" aria-hidden="true" tabindex="-1"></a>t_slew <span class="op">=</span> c_m_eff<span class="op">*</span>output_voltage <span class="op">/</span> i_tail</span>
+<span id="cb17-27"><a href="#cb17-27" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'slewing time ='</span>, <span class="bu">round</span>(t_slew<span class="op">/</span><span class="fl">1e-6</span>, <span class="dv">3</span>), <span class="st">'µs'</span>)</span>
+<span id="cb17-28"><a href="#cb17-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-29"><a href="#cb17-29" aria-hidden="true" tabindex="-1"></a>tau <span class="op">=</span> <span class="dv">1</span> <span class="op">/</span> (<span class="dv">2</span> <span class="op">*</span> np.pi <span class="op">*</span> f_bw_actual)</span>
+<span id="cb17-30"><a href="#cb17-30" aria-hidden="true" tabindex="-1"></a>t_settle <span class="op">=</span> <span class="dv">5</span> <span class="op">*</span> tau</span>
+<span id="cb17-31"><a href="#cb17-31" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'settling time ='</span>, <span class="bu">round</span>(t_settle<span class="op">/</span><span class="fl">1e-6</span>, <span class="dv">3</span>), <span class="st">'µs'</span>)</span>
+<span id="cb17-32"><a href="#cb17-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-33"><a href="#cb17-33" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'Internal Node Parasitic Load = </span><span class="sc">{</span>c_para_internal<span class="op">/</span><span class="fl">1e-15</span><span class="sc">:.2f}</span><span class="ss"> fF and of which m5 </span><span class="sc">{</span><span class="bu">abs</span>(gm_m5 <span class="op">/</span> gm_cgg_m5)<span class="op">/</span><span class="fl">1e-15</span><span class="sc">}</span><span class="ss">'</span>)</span>
+<span id="cb17-34"><a href="#cb17-34" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'Effective Miller Capacitance = </span><span class="sc">{</span>c_m_eff<span class="op">/</span><span class="fl">1e-15</span><span class="sc">:.2f}</span><span class="ss"> fF'</span>)</span>
+<span id="cb17-35"><a href="#cb17-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-36"><a href="#cb17-36" aria-hidden="true" tabindex="-1"></a>i_total_rail <span class="op">=</span> i_bias_in <span class="op">+</span> i_tail <span class="op">+</span> id_m5</span>
+<span id="cb17-37"><a href="#cb17-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-38"><a href="#cb17-38" aria-hidden="true" tabindex="-1"></a><span class="co"># Power calculation at the minimum and maximum VDD limits</span></span>
+<span id="cb17-39"><a href="#cb17-39" aria-hidden="true" tabindex="-1"></a>power_dissipation_min <span class="op">=</span> i_total_rail <span class="op">*</span> vdd_min</span>
+<span id="cb17-40"><a href="#cb17-40" aria-hidden="true" tabindex="-1"></a>power_dissipation_max <span class="op">=</span> i_total_rail <span class="op">*</span> vdd_max</span>
+<span id="cb17-41"><a href="#cb17-41" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Total Current from VDD Rail = </span><span class="sc">{</span>i_total_rail<span class="op">/</span><span class="fl">1e-6</span><span class="sc">:.2f}</span><span class="ss"> µA"</span>)</span>
+<span id="cb17-42"><a href="#cb17-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-43"><a href="#cb17-43" aria-hidden="true" tabindex="-1"></a><span class="co"># ==============================================================================</span></span>
+<span id="cb17-44"><a href="#cb17-44" aria-hidden="true" tabindex="-1"></a><span class="co"># 7. Final Industrial Sizing Blueprint Summary Printout</span></span>
+<span id="cb17-45"><a href="#cb17-45" aria-hidden="true" tabindex="-1"></a><span class="co"># ==============================================================================</span></span>
+<span id="cb17-46"><a href="#cb17-46" aria-hidden="true" tabindex="-1"></a>cap_density <span class="op">=</span> <span class="fl">1.5e-15</span></span>
+<span id="cb17-47"><a href="#cb17-47" aria-hidden="true" tabindex="-1"></a>w_cm_approx <span class="op">=</span> np.sqrt(c_m <span class="op">/</span> cap_density)</span>
+<span id="cb17-48"><a href="#cb17-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-49"><a href="#cb17-49" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'</span><span class="ch">\n</span><span class="st">============================================================'</span>)</span>
+<span id="cb17-50"><a href="#cb17-50" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'  Textbook-Aligned Industrial 2-Stage Miller OTA Blueprint'</span>)</span>
+<span id="cb17-51"><a href="#cb17-51" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'============================================================'</span>)</span>
+<span id="cb17-52"><a href="#cb17-52" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'</span><span class="ch">\n</span><span class="st">Manufactured Device Sizes:'</span>)</span>
+<span id="cb17-53"><a href="#cb17-53" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'  M1/2  W = </span><span class="sc">{</span>w_12_round<span class="sc">}</span><span class="ss"> µm,  L = </span><span class="sc">{</span>l_12<span class="sc">}</span><span class="ss"> µm   [NMOS Input Pair]'</span>)</span>
+<span id="cb17-54"><a href="#cb17-54" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'  M3/4  W = </span><span class="sc">{</span>w_34_round<span class="sc">}</span><span class="ss"> µm,  L = </span><span class="sc">{</span>l_34<span class="sc">}</span><span class="ss"> µm   [PMOS Active Load]'</span>)</span>
+<span id="cb17-55"><a href="#cb17-55" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'  M5    W = </span><span class="sc">{</span>w_5_round<span class="sc">}</span><span class="ss"> µm,  L = </span><span class="sc">{</span>l_5<span class="sc">}</span><span class="ss"> µm   [PMOS CS Driver]'</span>)</span>
+<span id="cb17-56"><a href="#cb17-56" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'  M6    W = </span><span class="sc">{</span>w_6_round<span class="sc">}</span><span class="ss"> µm,  L = </span><span class="sc">{</span>l_678<span class="sc">}</span><span class="ss"> µm   [NMOS Ref Mirror]'</span>)</span>
+<span id="cb17-57"><a href="#cb17-57" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'  M7    W = </span><span class="sc">{</span>w_7_round<span class="sc">}</span><span class="ss"> µm,  L = </span><span class="sc">{</span>l_678<span class="sc">}</span><span class="ss"> µm   [NMOS Tail Mirror]'</span>)</span>
+<span id="cb17-58"><a href="#cb17-58" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'  M8    W = </span><span class="sc">{</span>w_8_round<span class="sc">}</span><span class="ss"> µm,  L = </span><span class="sc">{</span>l_678<span class="sc">}</span><span class="ss"> µm   [NMOS Load Mirror]'</span>)</span>
+<span id="cb17-59"><a href="#cb17-59" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-60"><a href="#cb17-60" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'</span><span class="ch">\n</span><span class="st">Passives Allocation:'</span>)</span>
+<span id="cb17-61"><a href="#cb17-61" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'  Miller Cap Cm       = </span><span class="sc">{</span>c_m<span class="op">/</span><span class="fl">1e-15</span><span class="sc">:.1f}</span><span class="ss"> fF (</span><span class="sc">{</span>w_cm_approx<span class="sc">:.1f}</span><span class="ss"> x </span><span class="sc">{</span>w_cm_approx<span class="sc">:.1f}</span><span class="ss"> µm MOM cap)'</span>)</span>
+<span id="cb17-62"><a href="#cb17-62" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'  Nulling Resistor Rz = </span><span class="sc">{</span>rz<span class="op">/</span><span class="fl">1e3</span><span class="sc">:.2f}</span><span class="ss"> kΩ'</span>)</span>
+<span id="cb17-63"><a href="#cb17-63" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-64"><a href="#cb17-64" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'</span><span class="ch">\n</span><span class="st">Evaluated Performance Metrics:'</span>)</span>
+<span id="cb17-65"><a href="#cb17-65" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'  Target Specification UGBW = </span><span class="sc">{</span>f_bw<span class="op">/</span><span class="fl">1e6</span><span class="sc">:.2f}</span><span class="ss"> MHz'</span>)</span>
+<span id="cb17-66"><a href="#cb17-66" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'  Actual Predicted UGBW     = </span><span class="sc">{</span>f_bw_actual<span class="op">/</span><span class="fl">1e6</span><span class="sc">:.2f}</span><span class="ss"> MHz (including layout parasitics)'</span>)</span>
+<span id="cb17-67"><a href="#cb17-67" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'  Stage 1 Open-Loop Gain A1 = </span><span class="sc">{</span><span class="dv">20</span><span class="op">*</span>np<span class="sc">.</span>log10(a0)<span class="sc">:.1f}</span><span class="ss"> dB'</span>)</span>
+<span id="cb17-68"><a href="#cb17-68" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'  Stage 2 Open-Loop Gain A2 = </span><span class="sc">{</span><span class="dv">20</span><span class="op">*</span>np<span class="sc">.</span>log10(a1)<span class="sc">:.1f}</span><span class="ss"> dB'</span>)</span>
+<span id="cb17-69"><a href="#cb17-69" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'  Total Open-Loop Gain A0   = </span><span class="sc">{</span><span class="dv">20</span><span class="op">*</span>np<span class="sc">.</span>log10(a0_total)<span class="sc">:.1f}</span><span class="ss"> dB (Specification: &gt;= </span><span class="sc">{</span>gain<span class="sc">}</span><span class="ss"> dB)'</span>)</span>
+<span id="cb17-70"><a href="#cb17-70" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-71"><a href="#cb17-71" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'</span><span class="ch">\n</span><span class="st">Current Consumption Budget:'</span>)</span>
+<span id="cb17-72"><a href="#cb17-72" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'  Stage 1 Tail Branch (I_tail) = </span><span class="sc">{</span>i_tail<span class="op">/</span><span class="fl">1e-6</span><span class="sc">:.2f}</span><span class="ss"> µA'</span>)</span>
+<span id="cb17-73"><a href="#cb17-73" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'  Stage 2 Core Branch (Id_M5)  = </span><span class="sc">{</span>id_m5<span class="op">/</span><span class="fl">1e-6</span><span class="sc">:.2f}</span><span class="ss"> µA'</span>)</span>
+<span id="cb17-74"><a href="#cb17-74" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'  Total Net Core Current Draw  = </span><span class="sc">{</span>(i_tail <span class="op">+</span> id_m5)<span class="op">/</span><span class="fl">1e-6</span><span class="sc">:.2f}</span><span class="ss"> µA (Limit Budget: &lt;= </span><span class="sc">{</span>i_total_limit<span class="op">/</span><span class="fl">1e-6</span><span class="sc">:.2f}</span><span class="ss"> µA)'</span>)</span>
+<span id="cb17-75"><a href="#cb17-75" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"  Power Dissipation (at VDD = </span><span class="sc">{</span>vdd_max<span class="sc">}</span><span class="ss">V) = </span><span class="sc">{</span>power_dissipation_max<span class="op">*</span><span class="fl">1e6</span><span class="sc">:.2f}</span><span class="ss"> µW"</span>)</span>
+<span id="cb17-76"><a href="#cb17-76" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'============================================================'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>--- Node Parasitic Extraction &amp; Actual UGBW ---
 slewing time = 0.046 µs
@@ -1279,11 +1492,11 @@ Current Consumption Budget:
 </ol>
 <hr>
 </section>
-<section id="key-simulation-performance-results" class="level3" data-number="2.4.2">
-<h3 data-number="2.4.2" class="anchored" data-anchor-id="key-simulation-performance-results"><span class="header-section-number">2.4.2</span> Key Simulation Performance Results</h3>
+<section id="key-simulation-performance-results" class="level3" data-number="5.7.2">
+<h3 data-number="5.7.2" class="anchored" data-anchor-id="key-simulation-performance-results"><span class="header-section-number">5.7.2</span> Key Simulation Performance Results</h3>
 <p>The simulation runs verified that the optimized pole-splitting configuration successfully resolves the high-frequency stability challenges encountered in early design cycles.</p>
-<section id="small-signal-ac-response" class="level4" data-number="2.4.2.1">
-<h4 data-number="2.4.2.1" class="anchored" data-anchor-id="small-signal-ac-response"><span class="header-section-number">2.4.2.1</span> 1. Small-Signal AC Response</h4>
+<section id="small-signal-ac-response" class="level4" data-number="5.7.2.1">
+<h4 data-number="5.7.2.1" class="anchored" data-anchor-id="small-signal-ac-response"><span class="header-section-number">5.7.2.1</span> 1. Small-Signal AC Response</h4>
 <p>The AC characterization plots confirm an exceptionally clean frequency roll-off profile:</p>
 <ul>
 <li><strong>Unity-Gain Bandwidth (<span class="math inline">\(\text{UGBW}\)</span>):</strong> The simulated crossover frequency measures safely <strong>above the <span class="math inline">\(10\text{ MHz}\)</span> minimum requirement</strong>.</li>
@@ -1299,7 +1512,8 @@ Current Consumption Budget:
 </section>
 </section>
 </section>
-<section id="references" class="level1 unnumbered" data-number="3">
+</section>
+<section id="references" class="level1 unnumbered" data-number="6">
 
 
 </section>
