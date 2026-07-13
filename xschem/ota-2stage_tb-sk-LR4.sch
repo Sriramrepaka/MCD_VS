@@ -6,9 +6,9 @@ S {}
 F {}
 E {}
 N 750 -130 750 -100 {lab=#net1}
-N -190 -190 -190 -170 {
+N -80 140 -80 160 {
 lab=GND}
-N -80 -190 -80 -170 {
+N 30 140 30 160 {
 lab=GND}
 N 100 -270 100 -250 {lab=GND}
 N 100 -380 100 -330 {lab=v_in}
@@ -17,10 +17,10 @@ N 390 -320 390 -60 {lab=#net2}
 N 640 -320 840 -320 {lab=#net3}
 N 840 -320 840 -20 {lab=#net3}
 N 820 -20 820 210 {lab=#net3}
-N -190 -300 -190 -250 {lab=vdd}
+N -80 30 -80 80 {lab=vdd}
 N 750 -240 750 -190 {lab=vdd}
 N 700 -200 700 -100 {lab=vdd}
-N -80 -300 -80 -250 {lab=vss}
+N 30 30 30 80 {lab=vss}
 N 720 60 720 110 {lab=vss}
 N 600 20 640 20 {lab=#net3}
 N 600 20 600 210 {lab=#net3}
@@ -109,11 +109,11 @@ N 1540 -20 1560 -20 {lab=v_hpf}
 N 910 -60 910 -20 {lab=#net3}
 N 910 -60 1030 -60 {lab=#net3}
 C {isource.sym} 750 -160 0 0 {name=I0 value=20u}
-C {devices/vsource.sym} -190 -220 0 0 {name=Vdd value=1.5}
-C {devices/gnd.sym} -190 -170 0 0 {name=l3 lab=GND}
-C {devices/vsource.sym} -80 -220 0 0 {name=Vss value=0}
-C {devices/gnd.sym} -80 -170 0 0 {name=l1 lab=GND}
-C {code_shown.sym} -730 -1120 0 0 {name=NGSPICE only_toplevel=true value="
+C {devices/vsource.sym} -80 110 0 0 {name=Vdd value=1.5}
+C {devices/gnd.sym} -80 160 0 0 {name=l3 lab=GND}
+C {devices/vsource.sym} 30 110 0 0 {name=Vss value=0}
+C {devices/gnd.sym} 30 160 0 0 {name=l1 lab=GND}
+C {code_shown.sym} -790 -1060 0 0 {name=NGSPICE only_toplevel=true value="
 .temp 27
 .control
 option sparse
@@ -129,9 +129,15 @@ let SUM = 20*log10(mag(v(v_lpf) + v(v_hpf)))
 let DIF = 20*log10(mag(v(v_lpf) - v(v_hpf)))
 plot LPF HPF SUM DIF title 'Frequency Responce'
 
+set hcopydevtype=svg
+hardcopy lr4_frequency_response.svg LPF HPF SUM DIF
+
 let LPF_PHASE = vp(v_lpf)
 let HPF_PHASE = vp(v_hpf)
 plot LPF_PHASE HPF_PHASE title 'Phase Responce'
+
+set hcopydevtype=svg
+hardcopy lr4_phase_response.svg LPF_PHASE HPF_PHASE
 
 * Measure the exact maximum DC gain of the Low-Pass section
 meas ac max_gain MAX vmag(v_lpf) FROM=100 TO=1k
@@ -176,10 +182,10 @@ value=".lib cornerMOSlv.lib mos_tt
 .lib cornerCAP.lib cap_typ
 .lib cornerRES.lib res_typ
 "}
-C {iopin.sym} -190 -300 0 0 {name=p4 lab=vdd}
+C {iopin.sym} -80 30 0 0 {name=p4 lab=vdd}
 C {iopin.sym} 750 -240 0 0 {name=p2 lab=vdd}
 C {iopin.sym} 700 -200 2 0 {name=p6 lab=vdd}
-C {iopin.sym} -80 -300 0 0 {name=p1 lab=vss}
+C {iopin.sym} 30 30 0 0 {name=p1 lab=vss}
 C {iopin.sym} 720 110 0 0 {name=p7 lab=vss}
 C {res.sym} 610 -320 1 0 {name=R1
 value=18.7MEG

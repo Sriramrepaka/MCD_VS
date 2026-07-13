@@ -70,6 +70,8 @@ set appendwrite
 ac dec 101 1k 100MEG
 write ota-5t_tb-ac.raw
 plot 20*log10(v_out)
+set hcopydevtype=svg
+hardcopy ota-2stage_tb-ac-result.svg 20*log(v_out)
 
 meas ac dcgain MAX vmag(v_out) FROM=10 TO=10k
 let f3db = dcgain/sqrt(2)
@@ -86,7 +88,7 @@ print onoise_total
 "}
 C {devices/vsource.sym} -10 140 0 0 {name=Vdd value=1.5}
 C {devices/gnd.sym} -10 190 0 0 {name=l3 lab=GND}
-C {devices/title.sym} -370 440 0 0 {name=l5 author="(c) 2024-2025 Harald Pretl, Apache-2.0 license"}
+C {devices/title.sym} -370 440 0 0 {name=l5 author=""}
 C {devices/lab_pin.sym} -10 90 0 0 {name=p2 sig_type=std_logic lab=v_dd}
 C {devices/vsource.sym} 70 140 0 0 {name=Vss value=0}
 C {devices/gnd.sym} 70 190 0 0 {name=l1 lab=GND}

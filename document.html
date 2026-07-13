@@ -8,7 +8,7 @@
 
 <meta name="author" content="Sriram Repaka">
 <meta name="author" content="Mula Vishnu Sunkari">
-<meta name="dcterms.date" content="2026-07-13">
+<meta name="dcterms.date" content="2026-07-14">
 
 <title>Design of a Hybrid Linkwitz-Riley 4 Crossover Filter</title>
 <style>
@@ -173,6 +173,7 @@ window.Quarto = {
   <li><a href="#transistor-sizing-and-architecture-for-the-2-stage-miller-ota" id="toc-transistor-sizing-and-architecture-for-the-2-stage-miller-ota" class="nav-link" data-scroll-target="#transistor-sizing-and-architecture-for-the-2-stage-miller-ota"><span class="header-section-number">5.6</span> Transistor Sizing and Architecture for the 2-Stage Miller OTA</a>
   <ul class="collapse">
   <li><a href="#design-space-explorations-component-and-geometry-selection" id="toc-design-space-explorations-component-and-geometry-selection" class="nav-link" data-scroll-target="#design-space-explorations-component-and-geometry-selection"><span class="header-section-number">5.6.1</span> 2. Design Space Explorations: Component and Geometry Selection</a></li>
+  <li><a href="#design-space-explorations-component-and-geometry-selection" id="toc-design-space-explorations-component-and-geometry-selection" class="nav-link" data-scroll-target="#design-space-explorations-component-and-geometry-selection"><span class="header-section-number">5.6.1</span> 2. Design Space Explorations: Component and Geometry Selection</a></li>
   <li><a href="#design-specification-reference-parameters-1" id="toc-design-specification-reference-parameters-1" class="nav-link" data-scroll-target="#design-specification-reference-parameters-1"><span class="header-section-number">5.6.2</span> Design Specification &amp; Reference Parameters</a></li>
   <li><a href="#sizing-derivations-mathematical-formulations-1" id="toc-sizing-derivations-mathematical-formulations-1" class="nav-link" data-scroll-target="#sizing-derivations-mathematical-formulations-1"><span class="header-section-number">5.6.3</span> Sizing Derivations &amp; Mathematical Formulations</a></li>
   <li><a href="#sizing-optimization-results" id="toc-sizing-optimization-results" class="nav-link" data-scroll-target="#sizing-optimization-results"><span class="header-section-number">5.6.4</span> Sizing Optimization Results</a></li>
@@ -182,9 +183,28 @@ window.Quarto = {
   <ul class="collapse">
   <li><a href="#simulation-environment-setup" id="toc-simulation-environment-setup" class="nav-link" data-scroll-target="#simulation-environment-setup"><span class="header-section-number">5.7.1</span> Simulation Environment Setup</a></li>
   <li><a href="#key-simulation-performance-results" id="toc-key-simulation-performance-results" class="nav-link" data-scroll-target="#key-simulation-performance-results"><span class="header-section-number">5.7.2</span> Key Simulation Performance Results</a></li>
+  <li><a href="#simulation-environment-setup" id="toc-simulation-environment-setup" class="nav-link" data-scroll-target="#simulation-environment-setup"><span class="header-section-number">5.7.1</span> Simulation Environment Setup</a></li>
+  <li><a href="#key-simulation-performance-results" id="toc-key-simulation-performance-results" class="nav-link" data-scroll-target="#key-simulation-performance-results"><span class="header-section-number">5.7.2</span> Key Simulation Performance Results</a></li>
+  </ul></li>
+  <li><a href="#sallen-key-low-pass-filter-integration" id="toc-sallen-key-low-pass-filter-integration" class="nav-link" data-scroll-target="#sallen-key-low-pass-filter-integration"><span class="header-section-number">5.8</span> Sallen-Key Low-Pass Filter Integration</a>
+  <ul class="collapse">
+  <li><a href="#passive-network-synthesis-load-matching" id="toc-passive-network-synthesis-load-matching" class="nav-link" data-scroll-target="#passive-network-synthesis-load-matching"><span class="header-section-number">5.8.1</span> Passive Network Synthesis &amp; Load Matching</a></li>
+  <li><a href="#filter-characterization-results" id="toc-filter-characterization-results" class="nav-link" data-scroll-target="#filter-characterization-results"><span class="header-section-number">5.8.2</span> Filter Characterization Results</a></li>
   </ul></li>
   </ul></li>
-  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references"><span class="header-section-number">6</span> References</a></li>
+  <li><a href="#linkwitzriley-fourth-order-lr4-crossover-filter" id="toc-linkwitzriley-fourth-order-lr4-crossover-filter" class="nav-link" data-scroll-target="#linkwitzriley-fourth-order-lr4-crossover-filter"><span class="header-section-number">6</span> Linkwitz–Riley Fourth-Order (LR4) Crossover Filter</a>
+  <ul class="collapse">
+  <li><a href="#component-values-for-the-linkwitzriley-crossover" id="toc-component-values-for-the-linkwitzriley-crossover" class="nav-link" data-scroll-target="#component-values-for-the-linkwitzriley-crossover"><span class="header-section-number">6.0.1</span> Component values for the Linkwitz–Riley crossover</a></li>
+  <li><a href="#simulation-environment-setup-1" id="toc-simulation-environment-setup-1" class="nav-link" data-scroll-target="#simulation-environment-setup-1"><span class="header-section-number">6.0.2</span> Simulation Environment Setup</a></li>
+  </ul></li>
+  <li><a href="#process-voltage-temperature-pvt-and-monte-carlo-mc-verification" id="toc-process-voltage-temperature-pvt-and-monte-carlo-mc-verification" class="nav-link" data-scroll-target="#process-voltage-temperature-pvt-and-monte-carlo-mc-verification"><span class="header-section-number">7</span> Process, Voltage, Temperature (PVT) and Monte Carlo (MC) Verification</a>
+  <ul class="collapse">
+  <li><a href="#methodology-and-objectives-why-it-is-required" id="toc-methodology-and-objectives-why-it-is-required" class="nav-link" data-scroll-target="#methodology-and-objectives-why-it-is-required"><span class="header-section-number">7.0.1</span> Methodology and Objectives (Why it is Required)</a></li>
+  <li><a href="#implementation-framework-how-it-is-executed" id="toc-implementation-framework-how-it-is-executed" class="nav-link" data-scroll-target="#implementation-framework-how-it-is-executed"><span class="header-section-number">7.0.2</span> Implementation Framework (How it is Executed)</a></li>
+  <li><a href="#pvt-simulation-analysis" id="toc-pvt-simulation-analysis" class="nav-link" data-scroll-target="#pvt-simulation-analysis"><span class="header-section-number">8.71.1</span> PVT Simulation Analysis</a></li>
+  <li><a href="#monte-carlo-simulation-analysis" id="toc-monte-carlo-simulation-analysis" class="nav-link" data-scroll-target="#monte-carlo-simulation-analysis"><span class="header-section-number">8.71.2</span> Monte Carlo Simulation Analysis</a></li>
+  </ul></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references"><span class="header-section-number">9</span> References</a></li>
   </ul>
 <div class="quarto-alternate-notebooks"><h2>Notebooks</h2><ul><li><a href="gmid\techsweep_sg13_plots_nmos-preview.html"><i class="bi bi-journal-code"></i>MOSFET gm/ID Evaluation Script for IHP SG13G2 NMOS</a></li><li><a href="gmid\sizing_2_stage_ota-preview.html"><i class="bi bi-journal-code"></i>Sizing for a 2 Stage OTA</a></li></ul></div></nav>
 </div>
@@ -224,7 +244,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">July 13, 2026</p>
+      <p class="date">July 14, 2026</p>
     </div>
   </div>
   
@@ -883,6 +903,8 @@ Figure&nbsp;4: The 2-stage OTA.
 <p>There are 4 major aspects of this OTA the input differential pair, pmos current mirrors, output gain PMOS, and tail current NMOS’s. The sizing of these transistors is done using gm/Id methodology.</p>
 <section id="design-space-explorations-component-and-geometry-selection" class="level3" data-number="5.6.1">
 <h3 data-number="5.6.1" class="anchored" data-anchor-id="design-space-explorations-component-and-geometry-selection"><span class="header-section-number">5.6.1</span> 2. Design Space Explorations: Component and Geometry Selection</h3>
+<section id="design-space-explorations-component-and-geometry-selection" class="level3" data-number="5.6.1">
+<h3 data-number="5.6.1" class="anchored" data-anchor-id="design-space-explorations-component-and-geometry-selection"><span class="header-section-number">5.6.1</span> 2. Design Space Explorations: Component and Geometry Selection</h3>
 <p>To transition successfully to the two-stage architecture, two critical component adjustments were made to ensure loop stability and realistic system performance:</p>
 <ul>
 <li><strong>Upgrading <span class="math inline">\(C_{\mathrm{load}}\)</span> to <span class="math inline">\(1\text{ pF}\)</span> (from <span class="math inline">\(50\text{ fF}\)</span>):</strong> A <span class="math inline">\(50\text{ fF}\)</span> load only accounts for tiny, localized on-chip parasitics <span class="citation" data-cites="lenka2022micro">(<a href="#ref-lenka2022micro" role="doc-biblioref">Lenka et al. 2022</a>)</span>. Since this OTA is designed to drive inside an <strong>LR4 active crossover filter</strong> network, <span class="math inline">\(1\text{ pF}\)</span> was chosen to represent realistic load <span class="citation" data-cites="lenka2022micro">(<a href="#ref-lenka2022micro" role="doc-biblioref">Lenka et al. 2022</a>)</span>.</li>
@@ -900,6 +922,9 @@ Figure&nbsp;4: The 2-stage OTA.
 </div>
 <a class="quarto-notebook-link" id="nblink-1" href="gmid\techsweep_sg13_plots_nmos-preview.html#cell-9">Source: MOSFET gm/ID Evaluation Script for IHP SG13G2 NMOS</a></div>
 </section>
+<section id="design-specification-reference-parameters-1" class="level3" data-number="5.6.2">
+<h3 data-number="5.6.2" class="anchored" data-anchor-id="design-specification-reference-parameters-1"><span class="header-section-number">5.6.2</span> Design Specification &amp; Reference Parameters</h3>
+<p>The core target constraints, technology limits, and initial efficiency parameters are given in <a href="#tbl-2stage-specs" class="quarto-xref">Table&nbsp;4</a>.</p>
 <section id="design-specification-reference-parameters-1" class="level3" data-number="5.6.2">
 <h3 data-number="5.6.2" class="anchored" data-anchor-id="design-specification-reference-parameters-1"><span class="header-section-number">5.6.2</span> Design Specification &amp; Reference Parameters</h3>
 <p>The core target constraints, technology limits, and initial efficiency parameters are given in <a href="#tbl-2stage-specs" class="quarto-xref">Table&nbsp;4</a>.</p>
@@ -1480,21 +1505,35 @@ Current Consumption Budget:
 <p>To validate the analytical sizing derivations and empirical stability optimizations, the design was constructed and verified inside the <strong>Xschem</strong> schematic capture environment utilizing the <strong>IHP SG13G2</strong> open-source PDK.</p>
 <section id="simulation-environment-setup" class="level3" data-number="5.7.1">
 <h3 data-number="5.7.1" class="anchored" data-anchor-id="simulation-environment-setup"><span class="header-section-number">5.7.1</span> Simulation Environment Setup</h3>
-<p>The core amplifier design is encapsulated within a hierarchical block structure:</p>
+<p>The core amplifier design and its folders are in a folder :</p>
 <ul>
-<li><strong><code>ota-2stage.sch</code> &amp; <code>ota-2stage.sym</code>:</strong> The fundamental cell schematic and corresponding symbol containing the optimized geometric sizing (e.g., <span class="math inline">\(L = 2\text{ }\mu\text{m}\)</span>, <span class="math inline">\(C_{\mathrm{M}} = 0.9\text{ pF}\)</span>, and <span class="math inline">\(R_{\mathrm{z}} = 24\text{ k}\Omega\)</span>).</li>
+<li><strong><code>ota-2stage.sch</code> &amp; <code>ota-2stage.sym</code>:</strong> The fundamental schematic and corresponding symbol containing the optimized geometric sizing (e.g., <span class="math inline">\(L = 2\text{ }\mu\text{m}\)</span>, <span class="math inline">\(C_{\mathrm{M}} = 0.9\text{ pF}\)</span>, and <span class="math inline">\(R_{\mathrm{z}} = 24\text{ k}\Omega\)</span>).</li>
 </ul>
 <p>To evaluate the design against all primary performance metrics, three separate testbenches were built in the same workspace folder:</p>
 <ol type="1">
-<li><strong><code>ota-2stage_tb-ac.sch</code>:</strong> Small-signal AC analysis to characterize open-loop DC gain (<span class="math inline">\(A_0\)</span>), Phase Margin (<span class="math inline">\(\text{PM}\)</span>), and Unity-Gain Bandwidth (<span class="math inline">\(\text{UGBW}\)</span>).</li>
-<li><strong><code>ota-2stage_tb-trans.sch</code>:</strong> Transient analysis to verify step-response behavior, settling time, and large-signal slew-rate limitations under a realistic <span class="math inline">\(1\text{ pF}\)</span> load.</li>
-<li><strong><code>ota-2stage_tb-noise.sch</code>:</strong> Noise spectrum evaluation to quantify the input-referred thermal and flicker (<span class="math inline">\(1/f\)</span>) noise floor.</li>
+<li><strong><code>ota-2stage_tb-ac.sch</code>:</strong> Small-signal AC analysis to characterize closed-loop DC gain (<span class="math inline">\(A_0\)</span>), and Unity-Gain Bandwidth (<span class="math inline">\(f_bw\)</span>) as shown in <a href="#fig-2-stage-ac-response" class="quarto-xref">Figure&nbsp;5</a>.</li>
+<li><strong><code>ota-2stage_tb-trans.sch</code>:</strong> Transient analysis to verify step-response behavior and settling time.</li>
+<li><strong><code>ota-2stage_tb-noise.sch</code>:</strong> Noise spectrum evaluation to look as noise parameters.</li>
 </ol>
+<div id="fig-2-stage-ac-response" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-2-stage-ac-response-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="./xschem/ota-2stage_tb-ac.svg" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-2-stage-ac-response-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5: 2-Stage OTA AC response testbench.
+</figcaption>
+</figure>
+</div>
 <hr>
 </section>
 <section id="key-simulation-performance-results" class="level3" data-number="5.7.2">
 <h3 data-number="5.7.2" class="anchored" data-anchor-id="key-simulation-performance-results"><span class="header-section-number">5.7.2</span> Key Simulation Performance Results</h3>
+<section id="key-simulation-performance-results" class="level3" data-number="5.7.2">
+<h3 data-number="5.7.2" class="anchored" data-anchor-id="key-simulation-performance-results"><span class="header-section-number">5.7.2</span> Key Simulation Performance Results</h3>
 <p>The simulation runs verified that the optimized pole-splitting configuration successfully resolves the high-frequency stability challenges encountered in early design cycles.</p>
+<section id="small-signal-ac-response" class="level4" data-number="5.7.2.1">
+<h4 data-number="5.7.2.1" class="anchored" data-anchor-id="small-signal-ac-response"><span class="header-section-number">5.7.2.1</span> 1. Small-Signal AC Response</h4>
 <section id="small-signal-ac-response" class="level4" data-number="5.7.2.1">
 <h4 data-number="5.7.2.1" class="anchored" data-anchor-id="small-signal-ac-response"><span class="header-section-number">5.7.2.1</span> 1. Small-Signal AC Response</h4>
 <p>The AC characterization plots confirm an exceptionally clean frequency roll-off profile:</p>
@@ -1502,23 +1541,1170 @@ Current Consumption Budget:
 <li><strong>Unity-Gain Bandwidth (<span class="math inline">\(\text{UGBW}\)</span>):</strong> The simulated crossover frequency measures safely <strong>above the <span class="math inline">\(10\text{ MHz}\)</span> minimum requirement</strong>.</li>
 <li><strong>Loop Stability:</strong> Thanks to the Left-Half Plane (LHP) zero tracking added by the <span class="math inline">\(24\text{ k}\Omega\)</span> nulling resistor, the phase response exhibits no peak degradation or peaking anomalies near the roll-off frequency. The phase margin settles into a stable, well-damped region, ensuring no risk of ringing or oscillation.</li>
 </ul>
+<div id="fig-2-stage-ac-response-result" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-2-stage-ac-response-result-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="./xschem/simulations/ota-2stage_tb-ac-result.svg" class="img-fluid figure-img" style="width:80.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-2-stage-ac-response-result-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6: 2-Stage OTA AC response.
+</figcaption>
+</figure>
+</div>
 </section>
 <section id="transient-and-noise-fidelity" class="level4" data-number="5.7.2.2">
 <h4 data-number="5.7.2.2" class="anchored" data-anchor-id="transient-and-noise-fidelity"><span class="header-section-number">5.7.2.2</span> 2. Transient and Noise Fidelity</h4>
 <ul>
 <li>The transient step response simulation (<code>ota-2stage_tb-trans.sch</code>) shows a well-behaved, symmetric settling behavior with minimal overshoot.</li>
-<li>The noise simulation (<code>ota-2stage_tb-noise.sch</code>) verifies that the input-referred noise voltage is kept low within the audio band.</li>
+<li>The noise simulation (<code>ota-2stage_tb-noise.sch</code>) verifies that the input-referred noise voltage is kept low.</li>
 </ul>
 </section>
 </section>
 </section>
+<section id="sallen-key-low-pass-filter-integration" class="level2" data-number="5.8">
+<h2 data-number="5.8" class="anchored" data-anchor-id="sallen-key-low-pass-filter-integration"><span class="header-section-number">5.8</span> Sallen-Key Low-Pass Filter Integration</h2>
+<p>To evaluate the 2-stage Miller OTA within its intended system environment, it was integrated into a 2nd-order Sallen-Key Active Low-Pass Filter (LPF). The target design metric requires a strict <strong><span class="math inline">\(-6\text{ dB}\)</span> i.e <span class="math inline">\(Q\)</span> = 0.5 cutoff frequency (<span class="math inline">\(f_{\mathrm{c}}\)</span>) at exactly <span class="math inline">\(10\text{ kHz}\)</span></strong>.</p>
+<section id="passive-network-synthesis-load-matching" class="level3" data-number="5.8.1">
+<h3 data-number="5.8.1" class="anchored" data-anchor-id="passive-network-synthesis-load-matching"><span class="header-section-number">5.8.1</span> Passive Network Synthesis &amp; Load Matching</h3>
+<p>Initial design attempts using standard textbook equal-component formulas yielded impractical. To synthesize realistic on-chip values, the <strong>Okawa-Denshi Active Filter Design Tool</strong> <span class="citation" data-cites="okawa_sallen_key">(<a href="#ref-okawa_sallen_key" role="doc-biblioref">Okawa Electric Design 2026</a>)</span> was utilized to compute a custom component matrix.</p>
+<p>By setting the targeted performance constraints (<span class="math inline">\(f_{\mathrm{c}} = 10\text{ kHz}\)</span>) and intentionally mapping the capacitor values to align with the OTA’s engineered load limit (<span class="math inline">\(C_{\mathrm{load}} = 1\text{ pF}\)</span>), the network parameters were locked in:</p>
+<ul>
+<li><strong>Input-Assigned Capacitors:</strong> <span class="math inline">\(C_1 = 0.9\text{ pF}\)</span>, <span class="math inline">\(C_2 = 0.4\text{ pF}\)</span></li>
+<li><strong>Synthesized Tool Resistors:</strong> <span class="math inline">\(R_1 = 68\text{ M}\Omega\)</span>, <span class="math inline">\(R_2 = 10\text{ M}\Omega\)</span></li>
+</ul>
 </section>
-<section id="references" class="level1 unnumbered" data-number="6">
+<section id="filter-characterization-results" class="level3" data-number="5.8.2">
+<h3 data-number="5.8.2" class="anchored" data-anchor-id="filter-characterization-results"><span class="header-section-number">5.8.2</span> Filter Characterization Results</h3>
+<p>With the synthesized asymmetric resistor network implemented in the Xschem testbench , the active filter architecture functions exactly as intended:</p>
+<ul>
+<li><strong>Frequency Tuning:</strong> The transfer function successfully achieves a stable attenuation slope with the desired <span class="math inline">\(-6\text{ dB}\)</span> cross-over breakpoint localized around <strong><span class="math inline">\(10\text{ kHz}\)</span></strong>.</li>
+</ul>
+<div class="callout callout-style-default callout-note callout-titled" title="Verification Testbench Workspace">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Verification Testbench Workspace
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>All verification testbenches are localized within the <code>./xschem</code> workspace directory. Each setup used the exact same core <code>ota-2stage.sym</code> symbol, relying on the asymmetric impedance matching profiles calculated from the Okawa-Denshi design tool <span class="citation" data-cites="okawa_sallen_key">(<a href="#ref-okawa_sallen_key" role="doc-biblioref">Okawa Electric Design 2026</a>)</span>:</p>
+<p><code>ota-2stage_tb-sk-lpf.sch</code>, <code>ota-2stage_tb-sk-hpf.sch</code>, <code>ota-2stage_tb-lr2.sch</code> and <code>ota-2stage_tb-biquad.sch</code></p>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="linkwitzriley-fourth-order-lr4-crossover-filter" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> Linkwitz–Riley Fourth-Order (LR4) Crossover Filter</h1>
+<p>In addition to the two-stage OTA design, a fourth-order Linkwitz–Riley (LR4) crossover filter was implemented to investigate higher-order active filter design. The Linkwitz–Riley crossover is widely used in audio applications because it provides a flat summed frequency response when the low-pass and high-pass outputs are combined.</p>
+<p>An LR4 crossover is obtained by cascading two identical second-order Butterworth filter sections. Since a second-order Butterworth filter has a quality factor</p>
+<p><span class="math display">\[Q = \frac{1}{\sqrt{2}}\approx0.707\]</span></p>
+<p>each stage was implemented using a Sallen–Key topology with a cutoff frequency of 10 kHz. The output of the first stage was connected directly to the input of the second stage, resulting in a fourth-order response.</p>
+<p>The same design procedure was followed for both the low-pass and high-pass branches. A common input signal was applied to both branches, and the individual frequency responses were simulated.</p>
+<p>The resulting LR4 crossover exhibits the following characteristics:</p>
+<ul>
+<li>Fourth-order response (80 dB/decade roll-off)</li>
+<li>Cutoff frequency of 10 kHz</li>
+<li>−6 dB gain at the crossover frequency</li>
+<li>Flat summed response when the low-pass and high-pass outputs are combined</li>
+</ul>
+<p>The component values are again derived from <span class="citation" data-cites="okawa_sallen_key">(<a href="#ref-okawa_sallen_key" role="doc-biblioref">Okawa Electric Design 2026</a>)</span> tool and the values used are shown in the table below.</p>
+<section id="component-values-for-the-linkwitzriley-crossover" class="level3" data-number="6.0.1">
+<h3 data-number="6.0.1" class="anchored" data-anchor-id="component-values-for-the-linkwitzriley-crossover"><span class="header-section-number">6.0.1</span> Component values for the Linkwitz–Riley crossover</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 17%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Component</th>
+<th style="text-align: right;">Stage 1 LPF</th>
+<th style="text-align: right;">Stage 2 LPF</th>
+<th style="text-align: right;">Stage 1 HPF</th>
+<th style="text-align: right;">Stage 2 HPF</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>R1</td>
+<td style="text-align: right;">37.5 M<span class="math inline">\(\Omega\)</span></td>
+<td style="text-align: right;">37.5 M<span class="math inline">\(\Omega\)</span></td>
+<td style="text-align: right;">18.7 M<span class="math inline">\(\Omega\)</span></td>
+<td style="text-align: right;">18.7 M<span class="math inline">\(\Omega\)</span></td>
+</tr>
+<tr class="even">
+<td>R2</td>
+<td style="text-align: right;">37.5 M<span class="math inline">\(\Omega\)</span></td>
+<td style="text-align: right;">37.5 M<span class="math inline">\(\Omega\)</span></td>
+<td style="text-align: right;">37.4 M<span class="math inline">\(\Omega\)</span></td>
+<td style="text-align: right;">37.4 M<span class="math inline">\(\Omega\)</span></td>
+</tr>
+<tr class="odd">
+<td>C1</td>
+<td style="text-align: right;">0.6 pF</td>
+<td style="text-align: right;">0.6 pF</td>
+<td style="text-align: right;">0.6 pF</td>
+<td style="text-align: right;">0.6 pF</td>
+</tr>
+<tr class="even">
+<td>C2</td>
+<td style="text-align: right;">0.3 pF</td>
+<td style="text-align: right;">0.3 pF</td>
+<td style="text-align: right;">0.6 pF</td>
+<td style="text-align: right;">0.6 pF</td>
+</tr>
+<tr class="odd">
+<td>Cutoff Frequency</td>
+<td style="text-align: right;">10 kHz</td>
+<td style="text-align: right;">10 kHz</td>
+<td style="text-align: right;">10 kHz</td>
+<td style="text-align: right;">10 kHz</td>
+</tr>
+<tr class="even">
+<td>Quality Factor (Q)</td>
+<td style="text-align: right;">0.707</td>
+<td style="text-align: right;">0.707</td>
+<td style="text-align: right;">0.707</td>
+<td style="text-align: right;">0.707</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="simulation-environment-setup-1" class="level3" data-number="6.0.2">
+<h3 data-number="6.0.2" class="anchored" data-anchor-id="simulation-environment-setup-1"><span class="header-section-number">6.0.2</span> Simulation Environment Setup</h3>
+<p>The core filter design is implemented in testbench schematic using the <code>ota-2stage.sym</code> we made before is present in <code>ota-2stage_tb-sk-LR4.sch</code> which is shown below in figure <a href="#fig-2-stage-LR4-tb" class="quarto-xref">Figure&nbsp;7</a></p>
+<div id="fig-2-stage-LR4-tb" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-2-stage-LR4-tb-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="./xschem/ota-2stage_tb-sk-LR4.svg" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-2-stage-LR4-tb-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7: 4th-order Linkwitz–Riley crossover filter testbench
+</figcaption>
+</figure>
+</div>
+<p>The following are the frequency and phase response of the simulated hybrid LR4 testbench.</p>
+<div id="fig-2-stage-LR4-freq-res" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-2-stage-LR4-freq-res-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="./xschem/simulations/lr4_frequency_response.svg" class="img-fluid figure-img" style="width:70.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-2-stage-LR4-freq-res-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;8: 4th-order Linkwitz–Riley crossover filter frequency response
+</figcaption>
+</figure>
+</div>
+<div id="fig-2-stage-LR4-tb-ph-res" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-2-stage-LR4-tb-ph-res-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="./xschem/simulations/lr4_phase_response.svg" class="img-fluid figure-img" style="width:70.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-2-stage-LR4-tb-ph-res-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;9: 4th-order Linkwitz–Riley crossover filter Phase response
+</figcaption>
+</figure>
+</div>
+</section>
+</section>
+<section id="process-voltage-temperature-pvt-and-monte-carlo-mc-verification" class="level1" data-number="7">
+<h1 data-number="7"><span class="header-section-number">7</span> Process, Voltage, Temperature (PVT) and Monte Carlo (MC) Verification</h1>
+<section id="methodology-and-objectives-why-it-is-required" class="level3" data-number="7.0.1">
+<h3 data-number="7.0.1" class="anchored" data-anchor-id="methodology-and-objectives-why-it-is-required"><span class="header-section-number">7.0.1</span> Methodology and Objectives (Why it is Required)</h3>
+<p>A nominal circuit simulation operating solely at typical-typical (TT) manufacturing process parameters, fixed nominal supply voltages, and a constant room temperature (<span class="math inline">\(27^\circ\text{C}\)</span>) provides an incomplete representation of real-world silicon performance. To guarantee high-yield manufacturability and operational robustness, the design must be validated against random environmental fluctuations and process parameters:</p>
+<ol type="1">
+<li><strong>Environmental and Operational Variations (Voltage and Temperature):</strong> Power supply networks experience dynamic regulation tolerances, and environmental operating temperatures shift based on load and ambient conditions. The circuit must preserve properties across these extreme shifts.</li>
+<li><strong>Systemic Manufacturing Excursions (Process Corners):</strong> Standard wafer fabrication introduces predictable deviations in threshold voltages (<span class="math inline">\(V_{\text{th}}\)</span>), oxide thicknesses (<span class="math inline">\(t_{\text{ox}}\)</span>), and carrier mobilities (<span class="math inline">\(\mu\)</span>). Foundries quantify these boundaries through five discrete device corners: <strong>TT</strong> (Typical-Typical), <strong>SS</strong> (Slow-Slow), <strong>SF</strong> (Slow-Fast), <strong>FS</strong> (Fast-Slow), and <strong>FF</strong> (Fast-Fast).</li>
+<li><strong>Random Local Mismatch (Monte Carlo):</strong> Distinct from macroscopic wafer-to-wafer process variations, adjacent transistors on the same die experience microscopic, localized geometric differences (such as edge roughness or local dopant fluctuations). This mismatch induces random offsets, altering matching-critical parameters like input-pair symmetry, open-loop gain uniformity, and filter pole stability.</li>
+</ol>
+<p>Evaluating every combination of these variables creates a vast, multi-dimensional simulation space that must be systematically evaluated against pass/fail design metrics.</p>
+</section>
+<section id="implementation-framework-how-it-is-executed" class="level3" data-number="7.0.2">
+<h3 data-number="7.0.2" class="anchored"><span class="header-section-number">7.0.2</span> Implementation Framework (How it is Executed)</h3>
+<p>To efficiently execute this extensive matrix without relying on manual, error-prone testbench modifications, the verification architecture utilizes <strong>CACE (Circuit Automatic Characterization Engine)</strong>.</p>
+<p>CACE acts as an automated simulation runner that structures, parallelizes, and sweeps the design space via a unified, programmatically driven pipeline:</p>
+<div class="callout callout-style-default callout-warning callout-titled" title="Running CACE Simulation">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Warning</span>Running CACE Simulation
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The CACE simulation run can be started with</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="ex">cace</span> cace/lpf-ota-2stage.yaml</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The simulation results are then placed into the <code>cace/_docs</code> folder. If in addition to the default Markdown report an HTML output is needed for easier review then using Pandoc it can be easily converted and viewed with with</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="ex">cace/cace_view.sh</span> cace/_docs/ota-2stage_schematic.md</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+<p>After a successful run, a documentation is automatically generated. The result of a full run of this 2 stage ota is presented here:</p>
+<div id="nte-2-stage-ota-cace-result" class="callout callout-style-default callout-note callout-titled" title="CACE Summary for 2-Stage-OTA and LR4 filter">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note&nbsp;1: CACE Summary for 2-Stage-OTA and LR4 filter
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="top-scrollbar-wrapper" style="overflow-x: auto; overflow-y: hidden; width: 100%;" onscroll="document.getElementById('cace-content-wrapper').scrollLeft = this.scrollLeft;">
+<!-- This empty div matches the wide content size to force the scrollbar to appear -->
+<div style="width: 250%; height: 1px;">
+
+</div>
+</div>
+<!-- 2. The Main Content Container (Bottom Scrollbar) -->
+<div id="cace-content-wrapper" style="overflow-x: auto; max-width: 100%;" onscroll="document.getElementsByClassName('top-scrollbar-wrapper')[0].scrollLeft = this.scrollLeft;">
+<section id="cace-summary-for-ota-2stage" class="level1" data-number="8">
+<h1 data-number="8"><span class="header-section-number">8</span> CACE Summary for ota-2stage</h1>
+<p><strong>netlist source</strong>: schematic</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 15%">
+<col style="width: 15%">
+<col style="width: 11%">
+<col style="width: 7%">
+<col style="width: 9%">
+<col style="width: 7%">
+<col style="width: 9%">
+<col style="width: 7%">
+<col style="width: 9%">
+<col style="width: 6%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Parameter</th>
+<th style="text-align: left;">Tool</th>
+<th style="text-align: left;">Result</th>
+<th style="text-align: right;">Min Limit</th>
+<th style="text-align: right;">Min Value</th>
+<th style="text-align: right;">Typ Target</th>
+<th style="text-align: right;">Typ Value</th>
+<th style="text-align: right;">Max Limit</th>
+<th style="text-align: right;">Max Value</th>
+<th style="text-align: center;">Status</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Output voltage ratio</td>
+<td style="text-align: left;">ngspice</td>
+<td style="text-align: left;">gain</td>
+<td style="text-align: right;">0.97 V/V</td>
+<td style="text-align: right;">1.003 V/V</td>
+<td style="text-align: right;">any</td>
+<td style="text-align: right;">1.004 V/V</td>
+<td style="text-align: right;">1.03 V/V</td>
+<td style="text-align: right;">1.007 V/V</td>
+<td style="text-align: center;">Pass ✅</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Bandwidth</td>
+<td style="text-align: left;">ngspice</td>
+<td style="text-align: left;">bw</td>
+<td style="text-align: right;">10e6 Hz</td>
+<td style="text-align: right;">10622800.000 Hz</td>
+<td style="text-align: right;">any</td>
+<td style="text-align: right;">18524800.000 Hz</td>
+<td style="text-align: right;">any</td>
+<td style="text-align: right;">35621100.000 Hz</td>
+<td style="text-align: center;">Pass ✅</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Output voltage ratio (MC)</td>
+<td style="text-align: left;">ngspice</td>
+<td style="text-align: left;">gain_mc</td>
+<td style="text-align: right;">any</td>
+<td style="text-align: right;">1.003 V/V</td>
+<td style="text-align: right;">any</td>
+<td style="text-align: right;">1.004 V/V</td>
+<td style="text-align: right;">any</td>
+<td style="text-align: right;">1.004 V/V</td>
+<td style="text-align: center;">Pass ✅</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Bandwidth (MC)</td>
+<td style="text-align: left;">ngspice</td>
+<td style="text-align: left;">bw_mc</td>
+<td style="text-align: right;">10e6 Hz</td>
+<td style="text-align: right;">17893700.000 Hz</td>
+<td style="text-align: right;">any</td>
+<td style="text-align: right;">18574000.000 Hz</td>
+<td style="text-align: right;">any</td>
+<td style="text-align: right;">19314700.000 Hz</td>
+<td style="text-align: center;">Pass ✅</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Output noise</td>
+<td style="text-align: left;">ngspice</td>
+<td style="text-align: left;">noise</td>
+<td style="text-align: right;">any</td>
+<td style="text-align: right;">0.171 mV</td>
+<td style="text-align: right;">any</td>
+<td style="text-align: right;">0.182 mV</td>
+<td style="text-align: right;">1 mV</td>
+<td style="text-align: right;">0.217 mV</td>
+<td style="text-align: center;">Pass ✅</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Settling time</td>
+<td style="text-align: left;">ngspice</td>
+<td style="text-align: left;">tsettle</td>
+<td style="text-align: right;">any</td>
+<td style="text-align: right;">0.177 us</td>
+<td style="text-align: right;">any</td>
+<td style="text-align: right;">0.189 us</td>
+<td style="text-align: right;">10 us</td>
+<td style="text-align: right;">0.199 us</td>
+<td style="text-align: center;">Pass ✅</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Passband Gain LPF</td>
+<td style="text-align: left;">ngspice</td>
+<td style="text-align: left;">gain</td>
+<td style="text-align: right;">0.95 V/V</td>
+<td style="text-align: right;">1.002 V/V</td>
+<td style="text-align: right;">any</td>
+<td style="text-align: right;">1.003 V/V</td>
+<td style="text-align: right;">1.03 V/V</td>
+<td style="text-align: right;">1.006 V/V</td>
+<td style="text-align: center;">Pass ✅</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Cutoff Frequency LPF (-3dB)</td>
+<td style="text-align: left;">ngspice</td>
+<td style="text-align: left;">fc</td>
+<td style="text-align: right;">9.5e3 Hz</td>
+<td style="text-align: right;">9841.100 Hz</td>
+<td style="text-align: right;">10.0e3 Hz</td>
+<td style="text-align: right;">9926.370 Hz</td>
+<td style="text-align: right;">10.5e3 Hz</td>
+<td style="text-align: right;">10430.500 Hz</td>
+<td style="text-align: center;">Pass ✅</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Passband Gain LPF (MC)</td>
+<td style="text-align: left;">ngspice</td>
+<td style="text-align: left;">gain_mc</td>
+<td style="text-align: right;">any</td>
+<td style="text-align: right;">1.001 V/V</td>
+<td style="text-align: right;">any</td>
+<td style="text-align: right;">1.003 V/V</td>
+<td style="text-align: right;">any</td>
+<td style="text-align: right;">1.004 V/V</td>
+<td style="text-align: center;">Pass ✅</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Cutoff Frequency LPF (MC)</td>
+<td style="text-align: left;">ngspice</td>
+<td style="text-align: left;">fc_mc</td>
+<td style="text-align: right;">9.5e3 Hz</td>
+<td style="text-align: right;">9917.100 Hz</td>
+<td style="text-align: right;">10e3 Hz</td>
+<td style="text-align: right;">9928.145 Hz</td>
+<td style="text-align: right;">10.5e3 Hz</td>
+<td style="text-align: right;">9935.940 Hz</td>
+<td style="text-align: center;">Pass ✅</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Output noise LPF</td>
+<td style="text-align: left;">ngspice</td>
+<td style="text-align: left;">noise</td>
+<td style="text-align: right;">any</td>
+<td style="text-align: right;">0.150 mV</td>
+<td style="text-align: right;">any</td>
+<td style="text-align: right;">0.172 mV</td>
+<td style="text-align: right;">5.0 mV</td>
+<td style="text-align: right;">0.220 mV</td>
+<td style="text-align: center;">Pass ✅</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Settling time LPF</td>
+<td style="text-align: left;">ngspice</td>
+<td style="text-align: left;">tsettle</td>
+<td style="text-align: right;">any</td>
+<td style="text-align: right;">46.271 us</td>
+<td style="text-align: right;">150 us</td>
+<td style="text-align: right;">49.571 us</td>
+<td style="text-align: right;">400 us</td>
+<td style="text-align: right;">52.504 us</td>
+<td style="text-align: center;">Pass ✅</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Passband Gain LR4 LPF</td>
+<td style="text-align: left;">ngspice</td>
+<td style="text-align: left;">gain_lpf</td>
+<td style="text-align: right;">0.95 V/V</td>
+<td style="text-align: right;">1.003 V/V</td>
+<td style="text-align: right;">any</td>
+<td style="text-align: right;">1.007 V/V</td>
+<td style="text-align: right;">1.15 V/V</td>
+<td style="text-align: right;">1.129 V/V</td>
+<td style="text-align: center;">Pass ✅</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Passband Gain LR4 HPF</td>
+<td style="text-align: left;">ngspice</td>
+<td style="text-align: left;">gain_hpf</td>
+<td style="text-align: right;">0.95 V/V</td>
+<td style="text-align: right;">0.964 V/V</td>
+<td style="text-align: right;">any</td>
+<td style="text-align: right;">0.982 V/V</td>
+<td style="text-align: right;">1.15 V/V</td>
+<td style="text-align: right;">1.088 V/V</td>
+<td style="text-align: center;">Pass ✅</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Cutoff Frequency LPF (-3dB)</td>
+<td style="text-align: left;">ngspice</td>
+<td style="text-align: left;">fc_lpf</td>
+<td style="text-align: right;">9.4e3 Hz</td>
+<td style="text-align: right;">9842.690 Hz</td>
+<td style="text-align: right;">10.0e3 Hz</td>
+<td style="text-align: right;">9926.940 Hz</td>
+<td style="text-align: right;">10.5e3 Hz</td>
+<td style="text-align: right;">10477.200 Hz</td>
+<td style="text-align: center;">Pass ✅</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Cutoff Frequency HPF (-3dB)</td>
+<td style="text-align: left;">ngspice</td>
+<td style="text-align: left;">fc_hpf</td>
+<td style="text-align: right;">9.4e3 Hz</td>
+<td style="text-align: right;">9418.250 Hz</td>
+<td style="text-align: right;">10.0e3 Hz</td>
+<td style="text-align: right;">9925.680 Hz</td>
+<td style="text-align: right;">10.5e3 Hz</td>
+<td style="text-align: right;">9949.830 Hz</td>
+<td style="text-align: center;">Pass ✅</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Phase Mismatch LPR4</td>
+<td style="text-align: left;">ngspice</td>
+<td style="text-align: left;">phase_error</td>
+<td style="text-align: right;">0 °</td>
+<td style="text-align: right;">0.006 °</td>
+<td style="text-align: right;">0 °</td>
+<td style="text-align: right;">0.007 °</td>
+<td style="text-align: right;">5 °</td>
+<td style="text-align: right;">0.008 °</td>
+<td style="text-align: center;">Pass ✅</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Output noise LR4 LPF</td>
+<td style="text-align: left;">ngspice</td>
+<td style="text-align: left;">noise_lpf</td>
+<td style="text-align: right;">any</td>
+<td style="text-align: right;">0.181 mV</td>
+<td style="text-align: right;">any</td>
+<td style="text-align: right;">0.208 mV</td>
+<td style="text-align: right;">5.0 mV</td>
+<td style="text-align: right;">0.277 mV</td>
+<td style="text-align: center;">Pass ✅</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Output noise LR4 HPF</td>
+<td style="text-align: left;">ngspice</td>
+<td style="text-align: left;">noise_hpf</td>
+<td style="text-align: right;">any</td>
+<td style="text-align: right;">0.193 mV</td>
+<td style="text-align: right;">any</td>
+<td style="text-align: right;">0.222 mV</td>
+<td style="text-align: right;">5.0 mV</td>
+<td style="text-align: right;">0.292 mV</td>
+<td style="text-align: center;">Pass ✅</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Settling time LR4 LPF</td>
+<td style="text-align: left;">ngspice</td>
+<td style="text-align: left;">tsettle_lpf</td>
+<td style="text-align: right;">any</td>
+<td style="text-align: right;">143.978 us</td>
+<td style="text-align: right;">150 us</td>
+<td style="text-align: right;">147.826 us</td>
+<td style="text-align: right;">280 us</td>
+<td style="text-align: right;">149.604 us</td>
+<td style="text-align: center;">Pass ✅</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Settling time LR4 HPF</td>
+<td style="text-align: left;">ngspice</td>
+<td style="text-align: left;">tsettle_hpf</td>
+<td style="text-align: right;">any</td>
+<td style="text-align: right;">39.067 us</td>
+<td style="text-align: right;">150 us</td>
+<td style="text-align: right;">39.551 us</td>
+<td style="text-align: right;">280 us</td>
+<td style="text-align: right;">41.721 us</td>
+<td style="text-align: center;">Pass ✅</td>
+</tr>
+</tbody>
+</table>
+<section id="plots" class="level2" data-number="8.1">
+<h2 data-number="8.1" class="anchored" data-anchor-id="plots"><span class="header-section-number">8.1</span> Plots</h2>
+</section>
+<section id="gain_vs_temp" class="level2" data-number="8.2">
+<h2 data-number="8.2" class="anchored" data-anchor-id="gain_vs_temp"><span class="header-section-number">8.2</span> gain_vs_temp</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./cace/_docs/ota-2stage/schematic/gain_vs_temp.png" class="img-fluid figure-img"></p>
+<figcaption>gain_vs_temp</figcaption>
+</figure>
+</div>
+</section>
+<section id="gain_vs_vin" class="level2" data-number="8.3">
+<h2 data-number="8.3" class="anchored" data-anchor-id="gain_vs_vin"><span class="header-section-number">8.3</span> gain_vs_vin</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./cace/_docs/ota-2stage/schematic/gain_vs_vin.png" class="img-fluid figure-img"></p>
+<figcaption>gain_vs_vin</figcaption>
+</figure>
+</div>
+</section>
+<section id="gain_vs_vdd" class="level2" data-number="8.4">
+<h2 data-number="8.4" class="anchored" data-anchor-id="gain_vs_vdd"><span class="header-section-number">8.4</span> gain_vs_vdd</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./cace/_docs/ota-2stage/schematic/gain_vs_vdd.png" class="img-fluid figure-img"></p>
+<figcaption>gain_vs_vdd</figcaption>
+</figure>
+</div>
+</section>
+<section id="gain_vs_corner" class="level2" data-number="8.5">
+<h2 data-number="8.5" class="anchored" data-anchor-id="gain_vs_corner"><span class="header-section-number">8.5</span> gain_vs_corner</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./cace/_docs/ota-2stage/schematic/gain_vs_corner.png" class="img-fluid figure-img"></p>
+<figcaption>gain_vs_corner</figcaption>
+</figure>
+</div>
+</section>
+<section id="bw_vs_temp" class="level2" data-number="8.6">
+<h2 data-number="8.6" class="anchored" data-anchor-id="bw_vs_temp"><span class="header-section-number">8.6</span> bw_vs_temp</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./cace/_docs/ota-2stage/schematic/bw_vs_temp.png" class="img-fluid figure-img"></p>
+<figcaption>bw_vs_temp</figcaption>
+</figure>
+</div>
+</section>
+<section id="bw_vs_vin" class="level2" data-number="8.7">
+<h2 data-number="8.7" class="anchored" data-anchor-id="bw_vs_vin"><span class="header-section-number">8.7</span> bw_vs_vin</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./cace/_docs/ota-2stage/schematic/bw_vs_vin.png" class="img-fluid figure-img"></p>
+<figcaption>bw_vs_vin</figcaption>
+</figure>
+</div>
+</section>
+<section id="bw_vs_vdd" class="level2" data-number="8.8">
+<h2 data-number="8.8" class="anchored" data-anchor-id="bw_vs_vdd"><span class="header-section-number">8.8</span> bw_vs_vdd</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./cace/_docs/ota-2stage/schematic/bw_vs_vdd.png" class="img-fluid figure-img"></p>
+<figcaption>bw_vs_vdd</figcaption>
+</figure>
+</div>
+</section>
+<section id="bw_vs_corner" class="level2" data-number="8.9">
+<h2 data-number="8.9" class="anchored" data-anchor-id="bw_vs_corner"><span class="header-section-number">8.9</span> bw_vs_corner</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./cace/_docs/ota-2stage/schematic/bw_vs_corner.png" class="img-fluid figure-img"></p>
+<figcaption>bw_vs_corner</figcaption>
+</figure>
+</div>
+</section>
+<section id="gain_mc" class="level2" data-number="8.10">
+<h2 data-number="8.10" class="anchored" data-anchor-id="gain_mc"><span class="header-section-number">8.10</span> gain_mc</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./cace/_docs/ota-2stage/schematic/gain_mc.png" class="img-fluid figure-img"></p>
+<figcaption>gain_mc</figcaption>
+</figure>
+</div>
+</section>
+<section id="bw_mc" class="level2" data-number="8.11">
+<h2 data-number="8.11" class="anchored" data-anchor-id="bw_mc"><span class="header-section-number">8.11</span> bw_mc</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./cace/_docs/ota-2stage/schematic/bw_mc.png" class="img-fluid figure-img"></p>
+<figcaption>bw_mc</figcaption>
+</figure>
+</div>
+</section>
+<section id="noise_vs_temp" class="level2" data-number="8.12">
+<h2 data-number="8.12" class="anchored" data-anchor-id="noise_vs_temp"><span class="header-section-number">8.12</span> noise_vs_temp</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./cace/_docs/ota-2stage/schematic/noise_vs_temp.png" class="img-fluid figure-img"></p>
+<figcaption>noise_vs_temp</figcaption>
+</figure>
+</div>
+</section>
+<section id="noise_vs_vin" class="level2" data-number="8.13">
+<h2 data-number="8.13" class="anchored" data-anchor-id="noise_vs_vin"><span class="header-section-number">8.13</span> noise_vs_vin</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./cace/_docs/ota-2stage/schematic/noise_vs_vin.png" class="img-fluid figure-img"></p>
+<figcaption>noise_vs_vin</figcaption>
+</figure>
+</div>
+</section>
+<section id="noise_vs_vdd" class="level2" data-number="8.14">
+<h2 data-number="8.14" class="anchored" data-anchor-id="noise_vs_vdd"><span class="header-section-number">8.14</span> noise_vs_vdd</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./cace/_docs/ota-2stage/schematic/noise_vs_vdd.png" class="img-fluid figure-img"></p>
+<figcaption>noise_vs_vdd</figcaption>
+</figure>
+</div>
+</section>
+<section id="noise_vs_corner" class="level2" data-number="8.15">
+<h2 data-number="8.15" class="anchored" data-anchor-id="noise_vs_corner"><span class="header-section-number">8.15</span> noise_vs_corner</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./cace/_docs/ota-2stage/schematic/noise_vs_corner.png" class="img-fluid figure-img"></p>
+<figcaption>noise_vs_corner</figcaption>
+</figure>
+</div>
+</section>
+<section id="settling_vs_temp" class="level2" data-number="8.16">
+<h2 data-number="8.16" class="anchored" data-anchor-id="settling_vs_temp"><span class="header-section-number">8.16</span> settling_vs_temp</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./cace/_docs/ota-2stage/schematic/settling_vs_temp.png" class="img-fluid figure-img"></p>
+<figcaption>settling_vs_temp</figcaption>
+</figure>
+</div>
+</section>
+<section id="settling_vs_vin" class="level2" data-number="8.17">
+<h2 data-number="8.17" class="anchored" data-anchor-id="settling_vs_vin"><span class="header-section-number">8.17</span> settling_vs_vin</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./cace/_docs/ota-2stage/schematic/settling_vs_vin.png" class="img-fluid figure-img"></p>
+<figcaption>settling_vs_vin</figcaption>
+</figure>
+</div>
+</section>
+<section id="settling_vs_vdd" class="level2" data-number="8.18">
+<h2 data-number="8.18" class="anchored" data-anchor-id="settling_vs_vdd"><span class="header-section-number">8.18</span> settling_vs_vdd</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./cace/_docs/ota-2stage/schematic/settling_vs_vdd.png" class="img-fluid figure-img"></p>
+<figcaption>settling_vs_vdd</figcaption>
+</figure>
+</div>
+</section>
+<section id="settling_vs_corner" class="level2" data-number="8.19">
+<h2 data-number="8.19" class="anchored" data-anchor-id="settling_vs_corner"><span class="header-section-number">8.19</span> settling_vs_corner</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./cace/_docs/ota-2stage/schematic/settling_vs_corner.png" class="img-fluid figure-img"></p>
+<figcaption>settling_vs_corner</figcaption>
+</figure>
+</div>
+</section>
+<section id="gain_vs_temp_lpf" class="level2" data-number="8.20">
+<h2 data-number="8.20" class="anchored" data-anchor-id="gain_vs_temp_lpf"><span class="header-section-number">8.20</span> gain_vs_temp_lpf</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./cace/_docs/ota-2stage/schematic/gain_vs_temp_lpf.png" class="img-fluid figure-img"></p>
+<figcaption>gain_vs_temp_lpf</figcaption>
+</figure>
+</div>
+</section>
+<section id="gain_vs_vin_lpf" class="level2" data-number="8.21">
+<h2 data-number="8.21" class="anchored" data-anchor-id="gain_vs_vin_lpf"><span class="header-section-number">8.21</span> gain_vs_vin_lpf</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./cace/_docs/ota-2stage/schematic/gain_vs_vin_lpf.png" class="img-fluid figure-img"></p>
+<figcaption>gain_vs_vin_lpf</figcaption>
+</figure>
+</div>
+</section>
+<section id="gain_vs_vdd_lpf" class="level2" data-number="8.22">
+<h2 data-number="8.22" class="anchored" data-anchor-id="gain_vs_vdd_lpf"><span class="header-section-number">8.22</span> gain_vs_vdd_lpf</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./cace/_docs/ota-2stage/schematic/gain_vs_vdd_lpf.png" class="img-fluid figure-img"></p>
+<figcaption>gain_vs_vdd_lpf</figcaption>
+</figure>
+</div>
+</section>
+<section id="gain_vs_corner_lpf" class="level2" data-number="8.23">
+<h2 data-number="8.23" class="anchored" data-anchor-id="gain_vs_corner_lpf"><span class="header-section-number">8.23</span> gain_vs_corner_lpf</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./cace/_docs/ota-2stage/schematic/gain_vs_corner_lpf.png" class="img-fluid figure-img"></p>
+<figcaption>gain_vs_corner_lpf</figcaption>
+</figure>
+</div>
+</section>
+<section id="fc_vs_temp_lpf" class="level2" data-number="8.24">
+<h2 data-number="8.24" class="anchored" data-anchor-id="fc_vs_temp_lpf"><span class="header-section-number">8.24</span> fc_vs_temp_lpf</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./cace/_docs/ota-2stage/schematic/fc_vs_temp_lpf.png" class="img-fluid figure-img"></p>
+<figcaption>fc_vs_temp_lpf</figcaption>
+</figure>
+</div>
+</section>
+<section id="fc_vs_vin_lpf" class="level2" data-number="8.25">
+<h2 data-number="8.25" class="anchored" data-anchor-id="fc_vs_vin_lpf"><span class="header-section-number">8.25</span> fc_vs_vin_lpf</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./cace/_docs/ota-2stage/schematic/fc_vs_vin_lpf.png" class="img-fluid figure-img"></p>
+<figcaption>fc_vs_vin_lpf</figcaption>
+</figure>
+</div>
+</section>
+<section id="fc_vs_vdd_lpf" class="level2" data-number="8.26">
+<h2 data-number="8.26" class="anchored" data-anchor-id="fc_vs_vdd_lpf"><span class="header-section-number">8.26</span> fc_vs_vdd_lpf</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./cace/_docs/ota-2stage/schematic/fc_vs_vdd_lpf.png" class="img-fluid figure-img"></p>
+<figcaption>fc_vs_vdd_lpf</figcaption>
+</figure>
+</div>
+</section>
+<section id="fc_vs_corner_lpf" class="level2" data-number="8.27">
+<h2 data-number="8.27" class="anchored" data-anchor-id="fc_vs_corner_lpf"><span class="header-section-number">8.27</span> fc_vs_corner_lpf</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./cace/_docs/ota-2stage/schematic/fc_vs_corner_lpf.png" class="img-fluid figure-img"></p>
+<figcaption>fc_vs_corner_lpf</figcaption>
+</figure>
+</div>
+</section>
+<section id="gain_mc_lpf" class="level2" data-number="8.28">
+<h2 data-number="8.28" class="anchored" data-anchor-id="gain_mc_lpf"><span class="header-section-number">8.28</span> gain_mc_lpf</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./cace/_docs/ota-2stage/schematic/gain_mc_lpf.png" class="img-fluid figure-img"></p>
+<figcaption>gain_mc_lpf</figcaption>
+</figure>
+</div>
+</section>
+<section id="fc_mc_lpf" class="level2" data-number="8.29">
+<h2 data-number="8.29" class="anchored" data-anchor-id="fc_mc_lpf"><span class="header-section-number">8.29</span> fc_mc_lpf</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./cace/_docs/ota-2stage/schematic/fc_mc_lpf.png" class="img-fluid figure-img"></p>
+<figcaption>fc_mc_lpf</figcaption>
+</figure>
+</div>
+</section>
+<section id="noise_vs_temp_lpf" class="level2" data-number="8.30">
+<h2 data-number="8.30" class="anchored" data-anchor-id="noise_vs_temp_lpf"><span class="header-section-number">8.30</span> noise_vs_temp_lpf</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./cace/_docs/ota-2stage/schematic/noise_vs_temp_lpf.png" class="img-fluid figure-img"></p>
+<figcaption>noise_vs_temp_lpf</figcaption>
+</figure>
+</div>
+</section>
+<section id="noise_vs_vin_lpf" class="level2" data-number="8.31">
+<h2 data-number="8.31" class="anchored" data-anchor-id="noise_vs_vin_lpf"><span class="header-section-number">8.31</span> noise_vs_vin_lpf</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./cace/_docs/ota-2stage/schematic/noise_vs_vin_lpf.png" class="img-fluid figure-img"></p>
+<figcaption>noise_vs_vin_lpf</figcaption>
+</figure>
+</div>
+</section>
+<section id="noise_vs_vdd_lpf" class="level2" data-number="8.32">
+<h2 data-number="8.32" class="anchored" data-anchor-id="noise_vs_vdd_lpf"><span class="header-section-number">8.32</span> noise_vs_vdd_lpf</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./cace/_docs/ota-2stage/schematic/noise_vs_vdd_lpf.png" class="img-fluid figure-img"></p>
+<figcaption>noise_vs_vdd_lpf</figcaption>
+</figure>
+</div>
+</section>
+<section id="noise_vs_corner_lpf" class="level2" data-number="8.33">
+<h2 data-number="8.33" class="anchored" data-anchor-id="noise_vs_corner_lpf"><span class="header-section-number">8.33</span> noise_vs_corner_lpf</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./cace/_docs/ota-2stage/schematic/noise_vs_corner_lpf.png" class="img-fluid figure-img"></p>
+<figcaption>noise_vs_corner_lpf</figcaption>
+</figure>
+</div>
+</section>
+<section id="settling_vs_temp_lpf" class="level2" data-number="8.34">
+<h2 data-number="8.34" class="anchored" data-anchor-id="settling_vs_temp_lpf"><span class="header-section-number">8.34</span> settling_vs_temp_lpf</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./cace/_docs/ota-2stage/schematic/settling_vs_temp_lpf.png" class="img-fluid figure-img"></p>
+<figcaption>settling_vs_temp_lpf</figcaption>
+</figure>
+</div>
+</section>
+<section id="settling_vs_vin_lpf" class="level2" data-number="8.35">
+<h2 data-number="8.35" class="anchored" data-anchor-id="settling_vs_vin_lpf"><span class="header-section-number">8.35</span> settling_vs_vin_lpf</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./cace/_docs/ota-2stage/schematic/settling_vs_vin_lpf.png" class="img-fluid figure-img"></p>
+<figcaption>settling_vs_vin_lpf</figcaption>
+</figure>
+</div>
+</section>
+<section id="settling_vs_vdd_lpf" class="level2" data-number="8.36">
+<h2 data-number="8.36" class="anchored" data-anchor-id="settling_vs_vdd_lpf"><span class="header-section-number">8.36</span> settling_vs_vdd_lpf</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./cace/_docs/ota-2stage/schematic/settling_vs_vdd_lpf.png" class="img-fluid figure-img"></p>
+<figcaption>settling_vs_vdd_lpf</figcaption>
+</figure>
+</div>
+</section>
+<section id="settling_vs_corner_lpf" class="level2" data-number="8.37">
+<h2 data-number="8.37" class="anchored" data-anchor-id="settling_vs_corner_lpf"><span class="header-section-number">8.37</span> settling_vs_corner_lpf</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./cace/_docs/ota-2stage/schematic/settling_vs_corner_lpf.png" class="img-fluid figure-img"></p>
+<figcaption>settling_vs_corner_lpf</figcaption>
+</figure>
+</div>
+</section>
+<section id="gain_vs_temp_lr4_lpf" class="level2" data-number="8.38">
+<h2 data-number="8.38" class="anchored" data-anchor-id="gain_vs_temp_lr4_lpf"><span class="header-section-number">8.38</span> gain_vs_temp_lr4_lpf</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./cace/_docs/ota-2stage/schematic/gain_vs_temp_lr4_lpf.png" class="img-fluid figure-img"></p>
+<figcaption>gain_vs_temp_lr4_lpf</figcaption>
+</figure>
+</div>
+</section>
+<section id="gain_vs_vin_lr4_lpf" class="level2" data-number="8.39">
+<h2 data-number="8.39" class="anchored" data-anchor-id="gain_vs_vin_lr4_lpf"><span class="header-section-number">8.39</span> gain_vs_vin_lr4_lpf</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./cace/_docs/ota-2stage/schematic/gain_vs_vin_lr4_lpf.png" class="img-fluid figure-img"></p>
+<figcaption>gain_vs_vin_lr4_lpf</figcaption>
+</figure>
+</div>
+</section>
+<section id="gain_vs_vdd_lr4_lpf" class="level2" data-number="8.40">
+<h2 data-number="8.40" class="anchored" data-anchor-id="gain_vs_vdd_lr4_lpf"><span class="header-section-number">8.40</span> gain_vs_vdd_lr4_lpf</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./cace/_docs/ota-2stage/schematic/gain_vs_vdd_lr4_lpf.png" class="img-fluid figure-img"></p>
+<figcaption>gain_vs_vdd_lr4_lpf</figcaption>
+</figure>
+</div>
+</section>
+<section id="gain_vs_corner_lr4_lpf" class="level2" data-number="8.41">
+<h2 data-number="8.41" class="anchored" data-anchor-id="gain_vs_corner_lr4_lpf"><span class="header-section-number">8.41</span> gain_vs_corner_lr4_lpf</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./cace/_docs/ota-2stage/schematic/gain_vs_corner_lr4_lpf.png" class="img-fluid figure-img"></p>
+<figcaption>gain_vs_corner_lr4_lpf</figcaption>
+</figure>
+</div>
+</section>
+<section id="fc_vs_temp_lr4_lpf" class="level2" data-number="8.42">
+<h2 data-number="8.42" class="anchored" data-anchor-id="fc_vs_temp_lr4_lpf"><span class="header-section-number">8.42</span> fc_vs_temp_lr4_lpf</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./cace/_docs/ota-2stage/schematic/fc_vs_temp_lr4_lpf.png" class="img-fluid figure-img"></p>
+<figcaption>fc_vs_temp_lr4_lpf</figcaption>
+</figure>
+</div>
+</section>
+<section id="fc_vs_vin_lr4_lpf" class="level2" data-number="8.43">
+<h2 data-number="8.43" class="anchored" data-anchor-id="fc_vs_vin_lr4_lpf"><span class="header-section-number">8.43</span> fc_vs_vin_lr4_lpf</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./cace/_docs/ota-2stage/schematic/fc_vs_vin_lr4_lpf.png" class="img-fluid figure-img"></p>
+<figcaption>fc_vs_vin_lr4_lpf</figcaption>
+</figure>
+</div>
+</section>
+<section id="fc_vs_vdd_lr4_lpf" class="level2" data-number="8.44">
+<h2 data-number="8.44" class="anchored" data-anchor-id="fc_vs_vdd_lr4_lpf"><span class="header-section-number">8.44</span> fc_vs_vdd_lr4_lpf</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./cace/_docs/ota-2stage/schematic/fc_vs_vdd_lr4_lpf.png" class="img-fluid figure-img"></p>
+<figcaption>fc_vs_vdd_lr4_lpf</figcaption>
+</figure>
+</div>
+</section>
+<section id="fc_vs_corner_lr4_lpf" class="level2" data-number="8.45">
+<h2 data-number="8.45" class="anchored" data-anchor-id="fc_vs_corner_lr4_lpf"><span class="header-section-number">8.45</span> fc_vs_corner_lr4_lpf</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./cace/_docs/ota-2stage/schematic/fc_vs_corner_lr4_lpf.png" class="img-fluid figure-img"></p>
+<figcaption>fc_vs_corner_lr4_lpf</figcaption>
+</figure>
+</div>
+</section>
+<section id="gain_vs_temp_lr4_hpf" class="level2" data-number="8.46">
+<h2 data-number="8.46" class="anchored" data-anchor-id="gain_vs_temp_lr4_hpf"><span class="header-section-number">8.46</span> gain_vs_temp_lr4_hpf</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./cace/_docs/ota-2stage/schematic/gain_vs_temp_lr4_hpf.png" class="img-fluid figure-img"></p>
+<figcaption>gain_vs_temp_lr4_hpf</figcaption>
+</figure>
+</div>
+</section>
+<section id="gain_vs_vin_lr4_hpf" class="level2" data-number="8.47">
+<h2 data-number="8.47" class="anchored" data-anchor-id="gain_vs_vin_lr4_hpf"><span class="header-section-number">8.47</span> gain_vs_vin_lr4_hpf</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./cace/_docs/ota-2stage/schematic/gain_vs_vin_lr4_hpf.png" class="img-fluid figure-img"></p>
+<figcaption>gain_vs_vin_lr4_hpf</figcaption>
+</figure>
+</div>
+</section>
+<section id="gain_vs_vdd_lr4_hpf" class="level2" data-number="8.48">
+<h2 data-number="8.48" class="anchored" data-anchor-id="gain_vs_vdd_lr4_hpf"><span class="header-section-number">8.48</span> gain_vs_vdd_lr4_hpf</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./cace/_docs/ota-2stage/schematic/gain_vs_vdd_lr4_hpf.png" class="img-fluid figure-img"></p>
+<figcaption>gain_vs_vdd_lr4_hpf</figcaption>
+</figure>
+</div>
+</section>
+<section id="gain_vs_corner_lr4_hpf" class="level2" data-number="8.49">
+<h2 data-number="8.49" class="anchored" data-anchor-id="gain_vs_corner_lr4_hpf"><span class="header-section-number">8.49</span> gain_vs_corner_lr4_hpf</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./cace/_docs/ota-2stage/schematic/gain_vs_corner_lr4_hpf.png" class="img-fluid figure-img"></p>
+<figcaption>gain_vs_corner_lr4_hpf</figcaption>
+</figure>
+</div>
+</section>
+<section id="fc_vs_temp_lr4_hpf" class="level2" data-number="8.50">
+<h2 data-number="8.50" class="anchored" data-anchor-id="fc_vs_temp_lr4_hpf"><span class="header-section-number">8.50</span> fc_vs_temp_lr4_hpf</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./cace/_docs/ota-2stage/schematic/fc_vs_temp_lr4_hpf.png" class="img-fluid figure-img"></p>
+<figcaption>fc_vs_temp_lr4_hpf</figcaption>
+</figure>
+</div>
+</section>
+<section id="fc_vs_vin_lr4_hpf" class="level2" data-number="8.51">
+<h2 data-number="8.51" class="anchored" data-anchor-id="fc_vs_vin_lr4_hpf"><span class="header-section-number">8.51</span> fc_vs_vin_lr4_hpf</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./cace/_docs/ota-2stage/schematic/fc_vs_vin_lr4_hpf.png" class="img-fluid figure-img"></p>
+<figcaption>fc_vs_vin_lr4_hpf</figcaption>
+</figure>
+</div>
+</section>
+<section id="fc_vs_vdd_lr4_hpf" class="level2" data-number="8.52">
+<h2 data-number="8.52" class="anchored" data-anchor-id="fc_vs_vdd_lr4_hpf"><span class="header-section-number">8.52</span> fc_vs_vdd_lr4_hpf</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./cace/_docs/ota-2stage/schematic/fc_vs_vdd_lr4_hpf.png" class="img-fluid figure-img"></p>
+<figcaption>fc_vs_vdd_lr4_hpf</figcaption>
+</figure>
+</div>
+</section>
+<section id="fc_vs_corner_lr4_hpf" class="level2" data-number="8.53">
+<h2 data-number="8.53" class="anchored" data-anchor-id="fc_vs_corner_lr4_hpf"><span class="header-section-number">8.53</span> fc_vs_corner_lr4_hpf</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./cace/_docs/ota-2stage/schematic/fc_vs_corner_lr4_hpf.png" class="img-fluid figure-img"></p>
+<figcaption>fc_vs_corner_lr4_hpf</figcaption>
+</figure>
+</div>
+</section>
+<section id="phase_error_vs_temp" class="level2" data-number="8.54">
+<h2 data-number="8.54" class="anchored" data-anchor-id="phase_error_vs_temp"><span class="header-section-number">8.54</span> phase_error_vs_temp</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./cace/_docs/ota-2stage/schematic/phase_error_vs_temp.png" class="img-fluid figure-img"></p>
+<figcaption>phase_error_vs_temp</figcaption>
+</figure>
+</div>
+</section>
+<section id="phase_error_vs_corner" class="level2" data-number="8.55">
+<h2 data-number="8.55" class="anchored" data-anchor-id="phase_error_vs_corner"><span class="header-section-number">8.55</span> phase_error_vs_corner</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./cace/_docs/ota-2stage/schematic/phase_error_vs_corner.png" class="img-fluid figure-img"></p>
+<figcaption>phase_error_vs_corner</figcaption>
+</figure>
+</div>
+</section>
+<section id="noise_vs_temp_lpf-1" class="level2" data-number="8.56">
+<h2 data-number="8.56" class="anchored" data-anchor-id="noise_vs_temp_lpf-1"><span class="header-section-number">8.56</span> noise_vs_temp_lpf</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./cace/_docs/ota-2stage/schematic/noise_vs_temp_lpf.png" class="img-fluid figure-img"></p>
+<figcaption>noise_vs_temp_lpf</figcaption>
+</figure>
+</div>
+</section>
+<section id="noise_vs_vin_lpf-1" class="level2" data-number="8.57">
+<h2 data-number="8.57" class="anchored" data-anchor-id="noise_vs_vin_lpf-1"><span class="header-section-number">8.57</span> noise_vs_vin_lpf</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./cace/_docs/ota-2stage/schematic/noise_vs_vin_lpf.png" class="img-fluid figure-img"></p>
+<figcaption>noise_vs_vin_lpf</figcaption>
+</figure>
+</div>
+</section>
+<section id="noise_vs_vdd_lpf-1" class="level2" data-number="8.58">
+<h2 data-number="8.58" class="anchored" data-anchor-id="noise_vs_vdd_lpf-1"><span class="header-section-number">8.58</span> noise_vs_vdd_lpf</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./cace/_docs/ota-2stage/schematic/noise_vs_vdd_lpf.png" class="img-fluid figure-img"></p>
+<figcaption>noise_vs_vdd_lpf</figcaption>
+</figure>
+</div>
+</section>
+<section id="noise_vs_corner_lpf-1" class="level2" data-number="8.59">
+<h2 data-number="8.59" class="anchored" data-anchor-id="noise_vs_corner_lpf-1"><span class="header-section-number">8.59</span> noise_vs_corner_lpf</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./cace/_docs/ota-2stage/schematic/noise_vs_corner_lpf.png" class="img-fluid figure-img"></p>
+<figcaption>noise_vs_corner_lpf</figcaption>
+</figure>
+</div>
+</section>
+<section id="noise_vs_temp_hpf" class="level2" data-number="8.60">
+<h2 data-number="8.60" class="anchored" data-anchor-id="noise_vs_temp_hpf"><span class="header-section-number">8.60</span> noise_vs_temp_hpf</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./cace/_docs/ota-2stage/schematic/noise_vs_temp_hpf.png" class="img-fluid figure-img"></p>
+<figcaption>noise_vs_temp_hpf</figcaption>
+</figure>
+</div>
+</section>
+<section id="noise_vs_vin_hpf" class="level2" data-number="8.61">
+<h2 data-number="8.61" class="anchored" data-anchor-id="noise_vs_vin_hpf"><span class="header-section-number">8.61</span> noise_vs_vin_hpf</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./cace/_docs/ota-2stage/schematic/noise_vs_vin_hpf.png" class="img-fluid figure-img"></p>
+<figcaption>noise_vs_vin_hpf</figcaption>
+</figure>
+</div>
+</section>
+<section id="noise_vs_vdd_hpf" class="level2" data-number="8.62">
+<h2 data-number="8.62" class="anchored" data-anchor-id="noise_vs_vdd_hpf"><span class="header-section-number">8.62</span> noise_vs_vdd_hpf</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./cace/_docs/ota-2stage/schematic/noise_vs_vdd_hpf.png" class="img-fluid figure-img"></p>
+<figcaption>noise_vs_vdd_hpf</figcaption>
+</figure>
+</div>
+</section>
+<section id="noise_vs_corner_hpf" class="level2" data-number="8.63">
+<h2 data-number="8.63" class="anchored" data-anchor-id="noise_vs_corner_hpf"><span class="header-section-number">8.63</span> noise_vs_corner_hpf</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./cace/_docs/ota-2stage/schematic/noise_vs_corner_hpf.png" class="img-fluid figure-img"></p>
+<figcaption>noise_vs_corner_hpf</figcaption>
+</figure>
+</div>
+</section>
+<section id="settling_vs_temp_lr4_lpf" class="level2" data-number="8.64">
+<h2 data-number="8.64" class="anchored" data-anchor-id="settling_vs_temp_lr4_lpf"><span class="header-section-number">8.64</span> settling_vs_temp_lr4_lpf</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./cace/_docs/ota-2stage/schematic/settling_vs_temp_lr4_lpf.png" class="img-fluid figure-img"></p>
+<figcaption>settling_vs_temp_lr4_lpf</figcaption>
+</figure>
+</div>
+</section>
+<section id="settling_vs_vin_lr4_lpf" class="level2" data-number="8.65">
+<h2 data-number="8.65" class="anchored" data-anchor-id="settling_vs_vin_lr4_lpf"><span class="header-section-number">8.65</span> settling_vs_vin_lr4_lpf</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./cace/_docs/ota-2stage/schematic/settling_vs_vin_lr4_lpf.png" class="img-fluid figure-img"></p>
+<figcaption>settling_vs_vin_lr4_lpf</figcaption>
+</figure>
+</div>
+</section>
+<section id="settling_vs_vdd_lr4_lpf" class="level2" data-number="8.66">
+<h2 data-number="8.66" class="anchored" data-anchor-id="settling_vs_vdd_lr4_lpf"><span class="header-section-number">8.66</span> settling_vs_vdd_lr4_lpf</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./cace/_docs/ota-2stage/schematic/settling_vs_vdd_lr4_lpf.png" class="img-fluid figure-img"></p>
+<figcaption>settling_vs_vdd_lr4_lpf</figcaption>
+</figure>
+</div>
+</section>
+<section id="settling_vs_corner_lr4_lpf" class="level2" data-number="8.67">
+<h2 data-number="8.67" class="anchored" data-anchor-id="settling_vs_corner_lr4_lpf"><span class="header-section-number">8.67</span> settling_vs_corner_lr4_lpf</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./cace/_docs/ota-2stage/schematic/settling_vs_corner_lr4_lpf.png" class="img-fluid figure-img"></p>
+<figcaption>settling_vs_corner_lr4_lpf</figcaption>
+</figure>
+</div>
+</section>
+<section id="settling_vs_temp_lr4_hpf" class="level2" data-number="8.68">
+<h2 data-number="8.68" class="anchored" data-anchor-id="settling_vs_temp_lr4_hpf"><span class="header-section-number">8.68</span> settling_vs_temp_lr4_hpf</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./cace/_docs/ota-2stage/schematic/settling_vs_temp_lr4_hpf.png" class="img-fluid figure-img"></p>
+<figcaption>settling_vs_temp_lr4_hpf</figcaption>
+</figure>
+</div>
+</section>
+<section id="settling_vs_vin_lr4_hpf" class="level2" data-number="8.69">
+<h2 data-number="8.69" class="anchored" data-anchor-id="settling_vs_vin_lr4_hpf"><span class="header-section-number">8.69</span> settling_vs_vin_lr4_hpf</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./cace/_docs/ota-2stage/schematic/settling_vs_vin_lr4_hpf.png" class="img-fluid figure-img"></p>
+<figcaption>settling_vs_vin_lr4_hpf</figcaption>
+</figure>
+</div>
+</section>
+<section id="settling_vs_vdd_lr4_hpf" class="level2" data-number="8.70">
+<h2 data-number="8.70" class="anchored" data-anchor-id="settling_vs_vdd_lr4_hpf"><span class="header-section-number">8.70</span> settling_vs_vdd_lr4_hpf</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./cace/_docs/ota-2stage/schematic/settling_vs_vdd_lr4_hpf.png" class="img-fluid figure-img"></p>
+<figcaption>settling_vs_vdd_lr4_hpf</figcaption>
+</figure>
+</div>
+</section>
+<section id="settling_vs_corner_lr4_hpf" class="level2" data-number="8.71">
+<h2 data-number="8.71" class="anchored" data-anchor-id="settling_vs_corner_lr4_hpf"><span class="header-section-number">8.71</span> settling_vs_corner_lr4_hpf</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./cace/_docs/ota-2stage/schematic/settling_vs_corner_lr4_hpf.png" class="img-fluid figure-img"></p>
+<figcaption>settling_vs_corner_lr4_hpf</figcaption>
+</figure>
+</div>
+</section>
+</section>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="pvt-simulation-analysis" class="level3" data-number="8.71.1">
+<h3 data-number="8.71.1" class="anchored" data-anchor-id="pvt-simulation-analysis"><span class="header-section-number">8.71.1</span> PVT Simulation Analysis</h3>
+<p>Looking at the CACE report in <a href="#nte-2-stage-ota-cace-result" class="quarto-xref">Note&nbsp;1</a>, we see that (luckily) the specification is met for all parameters. This is great news! We now have a design that we carefully simulated across PVT and other corners and that is ready for layout.</p>
+</section>
+<section id="monte-carlo-simulation-analysis" class="level3" data-number="8.71.2">
+<h3 data-number="8.71.2" class="anchored" data-anchor-id="monte-carlo-simulation-analysis"><span class="header-section-number">8.71.2</span> Monte Carlo Simulation Analysis</h3>
+<p>Looking at the CACE report in <a href="#nte-2-stage-ota-cace-result" class="quarto-xref">Note&nbsp;1</a>, we see that the output voltage specification is not met. We should now go back and change the transistor sizing (increasing <span class="math inline">\(L\)</span> while keeping the <span class="math inline">\(g_m/I_D\)</span> values). Likely we will find that some performance parameters are now deteriorating due to the increased MOSFET dimensions, and we need to iterate until all performance metrics are met in the presence of transistor mismatch.</p>
+<p>It is not unusual that the power consumption now increases, as we have to increase the size of the MOSFETs for matching, and these larger MOSFETs increase the parasitic capacitances which in turn lead to larger power consumption to keep the required bandwidth by increasing the <span class="math inline">\(g_m\)</span>.</p>
+</section>
+</section>
+<section id="references" class="level1 unnumbered" data-number="9">
 
 
 </section>
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">6 References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">9 References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="list">
 <div id="ref-alberto2025miller" class="csl-entry" role="listitem">
 L., Alberto. 2025. <span>“Understanding Miller Compensation: A Guide to Frequency Stability.”</span> Mis Circuitos, July 1. <a href="https://miscircuitos.com/understanding-miller-compensation-a-guide-to-frequency-stability/">https://miscircuitos.com/understanding-miller-compensation-a-guide-to-frequency-stability/</a>.
 </div>
@@ -1532,7 +2718,7 @@ Meiners, Mirco. 2026. <em>Lecture Notes on Analogue and Mixed-Signal Circuit Des
 Nagulapalli, Rajasekhar, K. Hayatleh, and B. Seetharamulu. 2019. <span>“A Low Power Miller Compensation Technique for Two Stage Op-Amp in 65nm CMOS Technology.”</span> <em>International Conference on Computing, Communication and Networking Technologies (ICCCNT)</em>, July. <a href="https://doi.org/10.1109/ICCCNT45670.2019.8944553">https://doi.org/10.1109/ICCCNT45670.2019.8944553</a>.
 </div>
 <div id="ref-okawa_sallen_key" class="csl-entry" role="listitem">
-Okawa Electric Design. n.d. <em>Sallen-<span>K</span>ey <span>L</span>ow-Pass <span>F</span>ilter <span>D</span>esign <span>T</span>ool</em>. <a href="http://sim.okawa-denshi.jp/en/OPseikiLowkeisan.htm" class="uri">Http://sim.okawa-denshi.jp/en/OPseikiLowkeisan.htm</a>.
+Okawa Electric Design. 2026. <em>Sallen-<span>K</span>ey <span>L</span>ow-Pass <span>F</span>ilter <span>D</span>esign <span>T</span>ool</em>. <a href="http://sim.okawa-denshi.jp/en/OPseikiLowkeisan.htm" class="uri">Http://sim.okawa-denshi.jp/en/OPseikiLowkeisan.htm</a>.
 </div>
 <div id="ref-pretl2026" class="csl-entry" role="listitem">
 Pretl, Harald, Michael Koefinger, and Simon Dorrer. 2026. <span>“Analog <span>(Integrated)</span> <span>Circuit</span> <span>Design</span>.”</span> July 8. <a href="https://doi.org/10.5281/zenodo.14387481">https://doi.org/10.5281/zenodo.14387481</a>.
