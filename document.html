@@ -173,7 +173,6 @@ window.Quarto = {
   <li><a href="#transistor-sizing-and-architecture-for-the-2-stage-miller-ota" id="toc-transistor-sizing-and-architecture-for-the-2-stage-miller-ota" class="nav-link" data-scroll-target="#transistor-sizing-and-architecture-for-the-2-stage-miller-ota"><span class="header-section-number">5.6</span> Transistor Sizing and Architecture for the 2-Stage Miller OTA</a>
   <ul class="collapse">
   <li><a href="#design-space-explorations-component-and-geometry-selection" id="toc-design-space-explorations-component-and-geometry-selection" class="nav-link" data-scroll-target="#design-space-explorations-component-and-geometry-selection"><span class="header-section-number">5.6.1</span> 2. Design Space Explorations: Component and Geometry Selection</a></li>
-  <li><a href="#design-space-explorations-component-and-geometry-selection" id="toc-design-space-explorations-component-and-geometry-selection" class="nav-link" data-scroll-target="#design-space-explorations-component-and-geometry-selection"><span class="header-section-number">5.6.1</span> 2. Design Space Explorations: Component and Geometry Selection</a></li>
   <li><a href="#design-specification-reference-parameters-1" id="toc-design-specification-reference-parameters-1" class="nav-link" data-scroll-target="#design-specification-reference-parameters-1"><span class="header-section-number">5.6.2</span> Design Specification &amp; Reference Parameters</a></li>
   <li><a href="#sizing-derivations-mathematical-formulations-1" id="toc-sizing-derivations-mathematical-formulations-1" class="nav-link" data-scroll-target="#sizing-derivations-mathematical-formulations-1"><span class="header-section-number">5.6.3</span> Sizing Derivations &amp; Mathematical Formulations</a></li>
   <li><a href="#sizing-optimization-results" id="toc-sizing-optimization-results" class="nav-link" data-scroll-target="#sizing-optimization-results"><span class="header-section-number">5.6.4</span> Sizing Optimization Results</a></li>
@@ -181,8 +180,6 @@ window.Quarto = {
   </ul></li>
   <li><a href="#stage-ota-simulation-framework-and-results" id="toc-stage-ota-simulation-framework-and-results" class="nav-link" data-scroll-target="#stage-ota-simulation-framework-and-results"><span class="header-section-number">5.7</span> 2-Stage OTA Simulation Framework and Results</a>
   <ul class="collapse">
-  <li><a href="#simulation-environment-setup" id="toc-simulation-environment-setup" class="nav-link" data-scroll-target="#simulation-environment-setup"><span class="header-section-number">5.7.1</span> Simulation Environment Setup</a></li>
-  <li><a href="#key-simulation-performance-results" id="toc-key-simulation-performance-results" class="nav-link" data-scroll-target="#key-simulation-performance-results"><span class="header-section-number">5.7.2</span> Key Simulation Performance Results</a></li>
   <li><a href="#simulation-environment-setup" id="toc-simulation-environment-setup" class="nav-link" data-scroll-target="#simulation-environment-setup"><span class="header-section-number">5.7.1</span> Simulation Environment Setup</a></li>
   <li><a href="#key-simulation-performance-results" id="toc-key-simulation-performance-results" class="nav-link" data-scroll-target="#key-simulation-performance-results"><span class="header-section-number">5.7.2</span> Key Simulation Performance Results</a></li>
   </ul></li>
@@ -204,7 +201,8 @@ window.Quarto = {
   <li><a href="#pvt-simulation-analysis" id="toc-pvt-simulation-analysis" class="nav-link" data-scroll-target="#pvt-simulation-analysis"><span class="header-section-number">8.71.1</span> PVT Simulation Analysis</a></li>
   <li><a href="#monte-carlo-simulation-analysis" id="toc-monte-carlo-simulation-analysis" class="nav-link" data-scroll-target="#monte-carlo-simulation-analysis"><span class="header-section-number">8.71.2</span> Monte Carlo Simulation Analysis</a></li>
   </ul></li>
-  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references"><span class="header-section-number">9</span> References</a></li>
+  <li><a href="#declaration-of-generative-ai-assistance" id="toc-declaration-of-generative-ai-assistance" class="nav-link" data-scroll-target="#declaration-of-generative-ai-assistance"><span class="header-section-number">9</span> Declaration of Generative AI Assistance</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references"><span class="header-section-number">10</span> References</a></li>
   </ul>
 <div class="quarto-alternate-notebooks"><h2>Notebooks</h2><ul><li><a href="gmid\techsweep_sg13_plots_nmos-preview.html"><i class="bi bi-journal-code"></i>MOSFET gm/ID Evaluation Script for IHP SG13G2 NMOS</a></li><li><a href="gmid\sizing_2_stage_ota-preview.html"><i class="bi bi-journal-code"></i>Sizing for a 2 Stage OTA</a></li></ul></div></nav>
 </div>
@@ -903,8 +901,6 @@ Figure&nbsp;4: The 2-stage OTA.
 <p>There are 4 major aspects of this OTA the input differential pair, pmos current mirrors, output gain PMOS, and tail current NMOS’s. The sizing of these transistors is done using gm/Id methodology.</p>
 <section id="design-space-explorations-component-and-geometry-selection" class="level3" data-number="5.6.1">
 <h3 data-number="5.6.1" class="anchored" data-anchor-id="design-space-explorations-component-and-geometry-selection"><span class="header-section-number">5.6.1</span> 2. Design Space Explorations: Component and Geometry Selection</h3>
-<section id="design-space-explorations-component-and-geometry-selection" class="level3" data-number="5.6.1">
-<h3 data-number="5.6.1" class="anchored" data-anchor-id="design-space-explorations-component-and-geometry-selection"><span class="header-section-number">5.6.1</span> 2. Design Space Explorations: Component and Geometry Selection</h3>
 <p>To transition successfully to the two-stage architecture, two critical component adjustments were made to ensure loop stability and realistic system performance:</p>
 <ul>
 <li><strong>Upgrading <span class="math inline">\(C_{\mathrm{load}}\)</span> to <span class="math inline">\(1\text{ pF}\)</span> (from <span class="math inline">\(50\text{ fF}\)</span>):</strong> A <span class="math inline">\(50\text{ fF}\)</span> load only accounts for tiny, localized on-chip parasitics <span class="citation" data-cites="lenka2022micro">(<a href="#ref-lenka2022micro" role="doc-biblioref">Lenka et al. 2022</a>)</span>. Since this OTA is designed to drive inside an <strong>LR4 active crossover filter</strong> network, <span class="math inline">\(1\text{ pF}\)</span> was chosen to represent realistic load <span class="citation" data-cites="lenka2022micro">(<a href="#ref-lenka2022micro" role="doc-biblioref">Lenka et al. 2022</a>)</span>.</li>
@@ -922,9 +918,6 @@ Figure&nbsp;4: The 2-stage OTA.
 </div>
 <a class="quarto-notebook-link" id="nblink-1" href="gmid\techsweep_sg13_plots_nmos-preview.html#cell-9">Source: MOSFET gm/ID Evaluation Script for IHP SG13G2 NMOS</a></div>
 </section>
-<section id="design-specification-reference-parameters-1" class="level3" data-number="5.6.2">
-<h3 data-number="5.6.2" class="anchored" data-anchor-id="design-specification-reference-parameters-1"><span class="header-section-number">5.6.2</span> Design Specification &amp; Reference Parameters</h3>
-<p>The core target constraints, technology limits, and initial efficiency parameters are given in <a href="#tbl-2stage-specs" class="quarto-xref">Table&nbsp;4</a>.</p>
 <section id="design-specification-reference-parameters-1" class="level3" data-number="5.6.2">
 <h3 data-number="5.6.2" class="anchored" data-anchor-id="design-specification-reference-parameters-1"><span class="header-section-number">5.6.2</span> Design Specification &amp; Reference Parameters</h3>
 <p>The core target constraints, technology limits, and initial efficiency parameters are given in <a href="#tbl-2stage-specs" class="quarto-xref">Table&nbsp;4</a>.</p>
@@ -1529,11 +1522,7 @@ Figure&nbsp;5: 2-Stage OTA AC response testbench.
 </section>
 <section id="key-simulation-performance-results" class="level3" data-number="5.7.2">
 <h3 data-number="5.7.2" class="anchored" data-anchor-id="key-simulation-performance-results"><span class="header-section-number">5.7.2</span> Key Simulation Performance Results</h3>
-<section id="key-simulation-performance-results" class="level3" data-number="5.7.2">
-<h3 data-number="5.7.2" class="anchored" data-anchor-id="key-simulation-performance-results"><span class="header-section-number">5.7.2</span> Key Simulation Performance Results</h3>
 <p>The simulation runs verified that the optimized pole-splitting configuration successfully resolves the high-frequency stability challenges encountered in early design cycles.</p>
-<section id="small-signal-ac-response" class="level4" data-number="5.7.2.1">
-<h4 data-number="5.7.2.1" class="anchored" data-anchor-id="small-signal-ac-response"><span class="header-section-number">5.7.2.1</span> 1. Small-Signal AC Response</h4>
 <section id="small-signal-ac-response" class="level4" data-number="5.7.2.1">
 <h4 data-number="5.7.2.1" class="anchored" data-anchor-id="small-signal-ac-response"><span class="header-section-number">5.7.2.1</span> 1. Small-Signal AC Response</h4>
 <p>The AC characterization plots confirm an exceptionally clean frequency roll-off profile:</p>
@@ -1739,14 +1728,14 @@ Figure&nbsp;9: 4th-order Linkwitz–Riley crossover filter Phase response
 </div>
 <div class="callout-body-container callout-body">
 <p>The CACE simulation run can be started with</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="ex">cace</span> cace/lpf-ota-2stage.yaml</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="ex">cace</span> cace/lpf-ota-2stage.yaml</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>The simulation results are then placed into the <code>cace/_docs</code> folder. If in addition to the default Markdown report an HTML output is needed for easier review then using Pandoc it can be easily converted and viewed with with</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="ex">cace/cace_view.sh</span> cace/_docs/ota-2stage_schematic.md</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="ex">cace/cace_view.sh</span> cace/_docs/ota-2stage_schematic.md</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 <p>After a successful run, a documentation is automatically generated. The result of a full run of this 2 stage ota is presented here:</p>
 <div id="nte-2-stage-ota-cace-result" class="callout callout-style-default callout-note callout-titled" title="CACE Summary for 2-Stage-OTA and LR4 filter">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -1755,7 +1744,7 @@ Note&nbsp;1: CACE Summary for 2-Stage-OTA and LR4 filter
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="top-scrollbar-wrapper" style="overflow-x: auto; overflow-y: hidden; width: 100%;" onscroll="document.getElementById('cace-content-wrapper').scrollLeft = this.scrollLeft;">
 <!-- This empty div matches the wide content size to force the scrollbar to appear -->
@@ -2699,12 +2688,21 @@ Note&nbsp;1: CACE Summary for 2-Stage-OTA and LR4 filter
 <p>It is not unusual that the power consumption now increases, as we have to increase the size of the MOSFETs for matching, and these larger MOSFETs increase the parasitic capacitances which in turn lead to larger power consumption to keep the required bandwidth by increasing the <span class="math inline">\(g_m\)</span>.</p>
 </section>
 </section>
-<section id="references" class="level1 unnumbered" data-number="9">
+<section id="declaration-of-generative-ai-assistance" class="level1" data-number="9">
+<h1 data-number="9"><span class="header-section-number">9</span> Declaration of Generative AI Assistance</h1>
+<p>In accordance with academic integrity and transparency guidelines, the following generative AI tools were utilized during the development and documentation of this project:</p>
+<ul>
+<li><strong>NotebookLM (Google):</strong> Employed as an interactive literature-analysis and educational tool to support the conceptual understanding of the two-stage Operational Transconductance Amplifier (OTA) topology and to assist in verifying the mathematical formulations governing transconductance (<span class="math inline">\(g_m\)</span>) Miller capacitance <span class="math inline">\(C_M\)</span> and Null resistor <span class="math inline">\(R_Z\)</span> calculations <span class="citation" data-cites="repakasunkari2026notebooklm">(<a href="#ref-repakasunkari2026notebooklm" role="doc-biblioref">Repaka and Sunkari 2026</a>)</span>.</li>
+<li><strong>Large Language Models (LLMs):</strong> Utilized strictly as editing and writing assistants to perform text paraphrasing, sentence restructuring, and grammar corrections to ensure high-quality, professional technical communication.</li>
+</ul>
+<p>All primary circuit design, schematics in Xschem, simulation configurations, and engineering decision-making remain the original work of the authors.</p>
+</section>
+<section id="references" class="level1 unnumbered" data-number="10">
 
 
 </section>
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">9 References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">10 References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="list">
 <div id="ref-alberto2025miller" class="csl-entry" role="listitem">
 L., Alberto. 2025. <span>“Understanding Miller Compensation: A Guide to Frequency Stability.”</span> Mis Circuitos, July 1. <a href="https://miscircuitos.com/understanding-miller-compensation-a-guide-to-frequency-stability/">https://miscircuitos.com/understanding-miller-compensation-a-guide-to-frequency-stability/</a>.
 </div>
