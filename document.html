@@ -26,41 +26,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 /* CSS for citations */
 div.csl-bib-body { }
 div.csl-entry {
@@ -135,49 +100,57 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction"><span class="header-section-number">1</span> Introduction</a>
+  <li><a href="#abstract" id="toc-abstract" class="nav-link active" data-scroll-target="#abstract"><span class="header-section-number">1</span> Abstract</a></li>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction"><span class="header-section-number">2</span> Introduction</a></li>
+  <li><a href="#filter-specifications" id="toc-filter-specifications" class="nav-link" data-scroll-target="#filter-specifications"><span class="header-section-number">3</span> Filter Specifications</a></li>
+  <li><a href="#behavioural-model-design" id="toc-behavioural-model-design" class="nav-link" data-scroll-target="#behavioural-model-design"><span class="header-section-number">4</span> Behavioural Model Design</a>
   <ul class="collapse">
-  <li><a href="#filter-specifications" id="toc-filter-specifications" class="nav-link" data-scroll-target="#filter-specifications"><span class="header-section-number">1.1</span> Filter Specifications</a></li>
-  <li><a href="#system-architecture" id="toc-system-architecture" class="nav-link" data-scroll-target="#system-architecture"><span class="header-section-number">1.2</span> System Architecture</a></li>
-  <li><a href="#mathematical-derivation" id="toc-mathematical-derivation" class="nav-link" data-scroll-target="#mathematical-derivation"><span class="header-section-number">1.3</span> Mathematical Derivation</a></li>
-  <li><a href="#component-selection" id="toc-component-selection" class="nav-link" data-scroll-target="#component-selection"><span class="header-section-number">1.4</span> Component Selection</a></li>
-  </ul></li>
-  <li><a href="#principle-of-operation-the-5-transistor-ota-5t-ota" id="toc-principle-of-operation-the-5-transistor-ota-5t-ota" class="nav-link" data-scroll-target="#principle-of-operation-the-5-transistor-ota-5t-ota"><span class="header-section-number">2</span> Principle of Operation: The 5-Transistor OTA (5T-OTA)</a>
+  <li><a href="#ltspice-behavioural-model-schematic" id="toc-ltspice-behavioural-model-schematic" class="nav-link" data-scroll-target="#ltspice-behavioural-model-schematic"><span class="header-section-number">4.1</span> LTspice Behavioural Model Schematic</a>
   <ul class="collapse">
-  <li><a href="#nmos-differential-pair-m_1-m_2" id="toc-nmos-differential-pair-m_1-m_2" class="nav-link" data-scroll-target="#nmos-differential-pair-m_1-m_2"><span class="header-section-number">2.0.1</span> NMOS Differential Pair (<span class="math inline">\(M_1, M_2\)</span>)</a></li>
-  <li><a href="#nmos-tail-current-mirror-m_5-m_6" id="toc-nmos-tail-current-mirror-m_5-m_6" class="nav-link" data-scroll-target="#nmos-tail-current-mirror-m_5-m_6"><span class="header-section-number">2.0.2</span> NMOS Tail Current Mirror (<span class="math inline">\(M_5, M_6\)</span>)</a></li>
-  <li><a href="#pmos-current-mirror-load-m_3-m_4" id="toc-pmos-current-mirror-load-m_3-m_4" class="nav-link" data-scroll-target="#pmos-current-mirror-load-m_3-m_4"><span class="header-section-number">2.0.3</span> PMOS Current Mirror Load (<span class="math inline">\(M_3, M_4\)</span>)</a></li>
-  <li><a href="#transistor-sizing-and-g_textmi_textd-selection-strategy" id="toc-transistor-sizing-and-g_textmi_textd-selection-strategy" class="nav-link" data-scroll-target="#transistor-sizing-and-g_textmi_textd-selection-strategy"><span class="header-section-number">2.1</span> Transistor Sizing and <span class="math inline">\(g_{\text{m}}/I_{\text{D}}\)</span> Selection Strategy</a>
+  <li><a href="#mathematical-derivation" id="toc-mathematical-derivation" class="nav-link" data-scroll-target="#mathematical-derivation"><span class="header-section-number">4.1.1</span> Mathematical Derivation</a></li>
+  </ul></li>
+  <li><a href="#transfer-function-and-filter-theory" id="toc-transfer-function-and-filter-theory" class="nav-link" data-scroll-target="#transfer-function-and-filter-theory"><span class="header-section-number">4.2</span> Transfer Function and Filter Theory</a>
   <ul class="collapse">
-  <li><a href="#nmos-input-differential-pair-m_1-m_2" id="toc-nmos-input-differential-pair-m_1-m_2" class="nav-link" data-scroll-target="#nmos-input-differential-pair-m_1-m_2"><span class="header-section-number">2.1.1</span> 1. NMOS Input Differential Pair (<span class="math inline">\(M_1, M_2\)</span>)</a></li>
-  <li><a href="#pmos-load-m_3-m_4-and-nmos-tail-m_5-m_6-current-mirrors" id="toc-pmos-load-m_3-m_4-and-nmos-tail-m_5-m_6-current-mirrors" class="nav-link" data-scroll-target="#pmos-load-m_3-m_4-and-nmos-tail-m_5-m_6-current-mirrors"><span class="header-section-number">2.1.2</span> 2. PMOS Load (<span class="math inline">\(M_3, M_4\)</span>) and NMOS Tail (<span class="math inline">\(M_5, M_6\)</span>) Current Mirrors</a></li>
-  <li><a href="#summary-sizing-targets-and-trade-offs" id="toc-summary-sizing-targets-and-trade-offs" class="nav-link" data-scroll-target="#summary-sizing-targets-and-trade-offs"><span class="header-section-number">2.1.3</span> 3. Summary Sizing Targets and Trade-offs</a></li>
-  <li><a href="#transistor-sizing-and-architecture-for-the-5t-ota" id="toc-transistor-sizing-and-architecture-for-the-5t-ota" class="nav-link" data-scroll-target="#transistor-sizing-and-architecture-for-the-5t-ota"><span class="header-section-number">2.1.4</span> Transistor Sizing and Architecture for the 5T-OTA</a></li>
-  <li><a href="#design-specification-reference-parameters" id="toc-design-specification-reference-parameters" class="nav-link" data-scroll-target="#design-specification-reference-parameters"><span class="header-section-number">2.1.5</span> Design Specification &amp; Reference Parameters</a></li>
-  <li><a href="#sizing-derivations-mathematical-formulations" id="toc-sizing-derivations-mathematical-formulations" class="nav-link" data-scroll-target="#sizing-derivations-mathematical-formulations"><span class="header-section-number">2.1.6</span> Sizing Derivations &amp; Mathematical Formulations</a></li>
+  <li><a href="#component-selection" id="toc-component-selection" class="nav-link" data-scroll-target="#component-selection"><span class="header-section-number">4.2.1</span> Component Selection</a></li>
   </ul></li>
-  <li><a href="#transition-to-a-two-stage-ota-architecture" id="toc-transition-to-a-two-stage-ota-architecture" class="nav-link" data-scroll-target="#transition-to-a-two-stage-ota-architecture"><span class="header-section-number">2.2</span> Transition to a Two-Stage OTA Architecture</a>
+  <li><a href="#ltspice-ac-frequency-response" id="toc-ltspice-ac-frequency-response" class="nav-link" data-scroll-target="#ltspice-ac-frequency-response"><span class="header-section-number">4.3</span> LTspice AC Frequency Response</a></li>
+  </ul></li>
+  <li><a href="#principle-of-operation-the-5-transistor-ota-5t-ota" id="toc-principle-of-operation-the-5-transistor-ota-5t-ota" class="nav-link" data-scroll-target="#principle-of-operation-the-5-transistor-ota-5t-ota"><span class="header-section-number">5</span> Principle of Operation: The 5-Transistor OTA (5T-OTA)</a>
   <ul class="collapse">
-  <li><a href="#why-the-5t-ota-is-insufficient-for-audio" id="toc-why-the-5t-ota-is-insufficient-for-audio" class="nav-link" data-scroll-target="#why-the-5t-ota-is-insufficient-for-audio"><span class="header-section-number">2.2.1</span> Why the 5T-OTA is Insufficient for Audio</a></li>
-  <li><a href="#the-two-stage-gain-equation" id="toc-the-two-stage-gain-equation" class="nav-link" data-scroll-target="#the-two-stage-gain-equation"><span class="header-section-number">2.2.2</span> The Two-Stage Gain Equation</a></li>
-  </ul></li>
-  <li><a href="#transistor-sizing-and-architecture-for-the-2-stage-miller-ota" id="toc-transistor-sizing-and-architecture-for-the-2-stage-miller-ota" class="nav-link" data-scroll-target="#transistor-sizing-and-architecture-for-the-2-stage-miller-ota"><span class="header-section-number">2.3</span> Transistor Sizing and Architecture for the 2-Stage Miller OTA</a>
+  <li><a href="#nmos-differential-pair-m_1-m_2" id="toc-nmos-differential-pair-m_1-m_2" class="nav-link" data-scroll-target="#nmos-differential-pair-m_1-m_2"><span class="header-section-number">5.0.1</span> NMOS Differential Pair (<span class="math inline">\(M_1, M_2\)</span>)</a></li>
+  <li><a href="#nmos-tail-current-mirror-m_5-m_6" id="toc-nmos-tail-current-mirror-m_5-m_6" class="nav-link" data-scroll-target="#nmos-tail-current-mirror-m_5-m_6"><span class="header-section-number">5.0.2</span> NMOS Tail Current Mirror (<span class="math inline">\(M_5, M_6\)</span>)</a></li>
+  <li><a href="#pmos-current-mirror-load-m_3-m_4" id="toc-pmos-current-mirror-load-m_3-m_4" class="nav-link" data-scroll-target="#pmos-current-mirror-load-m_3-m_4"><span class="header-section-number">5.0.3</span> PMOS Current Mirror Load (<span class="math inline">\(M_3, M_4\)</span>)</a></li>
+  <li><a href="#transistor-sizing-and-g_textmi_textd-selection-strategy" id="toc-transistor-sizing-and-g_textmi_textd-selection-strategy" class="nav-link" data-scroll-target="#transistor-sizing-and-g_textmi_textd-selection-strategy"><span class="header-section-number">5.1</span> Transistor Sizing and <span class="math inline">\(g_{\text{m}}/I_{\text{D}}\)</span> Selection Strategy</a>
   <ul class="collapse">
-  <li><a href="#design-space-explorations-component-and-geometry-selection" id="toc-design-space-explorations-component-and-geometry-selection" class="nav-link" data-scroll-target="#design-space-explorations-component-and-geometry-selection"><span class="header-section-number">2.3.1</span> 2. Design Space Explorations: Component and Geometry Selection</a></li>
-  <li><a href="#design-specification-reference-parameters-1" id="toc-design-specification-reference-parameters-1" class="nav-link" data-scroll-target="#design-specification-reference-parameters-1"><span class="header-section-number">2.3.2</span> Design Specification &amp; Reference Parameters</a></li>
-  <li><a href="#sizing-derivations-mathematical-formulations-1" id="toc-sizing-derivations-mathematical-formulations-1" class="nav-link" data-scroll-target="#sizing-derivations-mathematical-formulations-1"><span class="header-section-number">2.3.3</span> Sizing Derivations &amp; Mathematical Formulations</a></li>
-  <li><a href="#sizing-optimization-results" id="toc-sizing-optimization-results" class="nav-link" data-scroll-target="#sizing-optimization-results"><span class="header-section-number">2.3.4</span> Sizing Optimization Results</a></li>
-  <li><a href="#open-loop-dc-gain-performance-evaluation" id="toc-open-loop-dc-gain-performance-evaluation" class="nav-link" data-scroll-target="#open-loop-dc-gain-performance-evaluation"><span class="header-section-number">2.3.5</span> Open-Loop DC Gain &amp; Performance Evaluation</a></li>
+  <li><a href="#nmos-input-differential-pair-m_1-m_2" id="toc-nmos-input-differential-pair-m_1-m_2" class="nav-link" data-scroll-target="#nmos-input-differential-pair-m_1-m_2"><span class="header-section-number">5.1.1</span> 1. NMOS Input Differential Pair (<span class="math inline">\(M_1, M_2\)</span>)</a></li>
+  <li><a href="#pmos-load-m_3-m_4-and-nmos-tail-m_5-m_6-current-mirrors" id="toc-pmos-load-m_3-m_4-and-nmos-tail-m_5-m_6-current-mirrors" class="nav-link" data-scroll-target="#pmos-load-m_3-m_4-and-nmos-tail-m_5-m_6-current-mirrors"><span class="header-section-number">5.1.2</span> 2. PMOS Load (<span class="math inline">\(M_3, M_4\)</span>) and NMOS Tail (<span class="math inline">\(M_5, M_6\)</span>) Current Mirrors</a></li>
+  <li><a href="#summary-sizing-targets-and-trade-offs" id="toc-summary-sizing-targets-and-trade-offs" class="nav-link" data-scroll-target="#summary-sizing-targets-and-trade-offs"><span class="header-section-number">5.1.3</span> 3. Summary Sizing Targets and Trade-offs</a></li>
+  <li><a href="#transistor-sizing-and-architecture-for-the-5t-ota" id="toc-transistor-sizing-and-architecture-for-the-5t-ota" class="nav-link" data-scroll-target="#transistor-sizing-and-architecture-for-the-5t-ota"><span class="header-section-number">5.1.4</span> Transistor Sizing and Architecture for the 5T-OTA</a></li>
+  <li><a href="#design-specification-reference-parameters" id="toc-design-specification-reference-parameters" class="nav-link" data-scroll-target="#design-specification-reference-parameters"><span class="header-section-number">5.1.5</span> Design Specification &amp; Reference Parameters</a></li>
+  <li><a href="#sizing-derivations-mathematical-formulations" id="toc-sizing-derivations-mathematical-formulations" class="nav-link" data-scroll-target="#sizing-derivations-mathematical-formulations"><span class="header-section-number">5.1.6</span> Sizing Derivations &amp; Mathematical Formulations</a></li>
   </ul></li>
-  <li><a href="#stage-ota-simulation-framework-and-results" id="toc-stage-ota-simulation-framework-and-results" class="nav-link" data-scroll-target="#stage-ota-simulation-framework-and-results"><span class="header-section-number">2.4</span> 2-Stage OTA Simulation Framework and Results</a>
+  <li><a href="#transition-to-a-two-stage-ota-architecture" id="toc-transition-to-a-two-stage-ota-architecture" class="nav-link" data-scroll-target="#transition-to-a-two-stage-ota-architecture"><span class="header-section-number">5.2</span> Transition to a Two-Stage OTA Architecture</a>
   <ul class="collapse">
-  <li><a href="#simulation-environment-setup" id="toc-simulation-environment-setup" class="nav-link" data-scroll-target="#simulation-environment-setup"><span class="header-section-number">2.4.1</span> Simulation Environment Setup</a></li>
-  <li><a href="#key-simulation-performance-results" id="toc-key-simulation-performance-results" class="nav-link" data-scroll-target="#key-simulation-performance-results"><span class="header-section-number">2.4.2</span> Key Simulation Performance Results</a></li>
+  <li><a href="#why-the-5t-ota-is-insufficient-for-audio" id="toc-why-the-5t-ota-is-insufficient-for-audio" class="nav-link" data-scroll-target="#why-the-5t-ota-is-insufficient-for-audio"><span class="header-section-number">5.2.1</span> Why the 5T-OTA is Insufficient for Audio</a></li>
+  <li><a href="#the-two-stage-gain-equation" id="toc-the-two-stage-gain-equation" class="nav-link" data-scroll-target="#the-two-stage-gain-equation"><span class="header-section-number">5.2.2</span> The Two-Stage Gain Equation</a></li>
+  </ul></li>
+  <li><a href="#transistor-sizing-and-architecture-for-the-2-stage-miller-ota" id="toc-transistor-sizing-and-architecture-for-the-2-stage-miller-ota" class="nav-link" data-scroll-target="#transistor-sizing-and-architecture-for-the-2-stage-miller-ota"><span class="header-section-number">5.3</span> Transistor Sizing and Architecture for the 2-Stage Miller OTA</a>
+  <ul class="collapse">
+  <li><a href="#design-specification-reference-parameters-1" id="toc-design-specification-reference-parameters-1" class="nav-link" data-scroll-target="#design-specification-reference-parameters-1"><span class="header-section-number">5.3.1</span> Design Specification &amp; Reference Parameters</a></li>
+  <li><a href="#sizing-derivations-mathematical-formulations-1" id="toc-sizing-derivations-mathematical-formulations-1" class="nav-link" data-scroll-target="#sizing-derivations-mathematical-formulations-1"><span class="header-section-number">5.3.2</span> Sizing Derivations &amp; Mathematical Formulations</a></li>
+  <li><a href="#sizing-optimization-results" id="toc-sizing-optimization-results" class="nav-link" data-scroll-target="#sizing-optimization-results"><span class="header-section-number">5.3.3</span> Sizing Optimization Results</a></li>
+  <li><a href="#open-loop-dc-gain-performance-evaluation" id="toc-open-loop-dc-gain-performance-evaluation" class="nav-link" data-scroll-target="#open-loop-dc-gain-performance-evaluation"><span class="header-section-number">5.3.4</span> Open-Loop DC Gain &amp; Performance Evaluation</a></li>
+  </ul></li>
+  <li><a href="#frequency-response-and-stability-analysis-5t-vs.-2-stage-miller-ota" id="toc-frequency-response-and-stability-analysis-5t-vs.-2-stage-miller-ota" class="nav-link" data-scroll-target="#frequency-response-and-stability-analysis-5t-vs.-2-stage-miller-ota"><span class="header-section-number">5.4</span> Frequency Response and Stability Analysis: 5T vs.&nbsp;2-Stage Miller OTA</a>
+  <ul class="collapse">
+  <li><a href="#t-ota-performance-with-l-5-mutextm" id="toc-t-ota-performance-with-l-5-mutextm" class="nav-link" data-scroll-target="#t-ota-performance-with-l-5-mutextm"><span class="header-section-number">5.4.1</span> 1. 5T OTA Performance with <span class="math inline">\(L = 5\ \mu\text{m}\)</span></a></li>
+  <li><a href="#stage-miller-ota-the-l-5-mutextm-instability" id="toc-stage-miller-ota-the-l-5-mutextm-instability" class="nav-link" data-scroll-target="#stage-miller-ota-the-l-5-mutextm-instability"><span class="header-section-number">5.4.2</span> 2. 2-Stage Miller OTA: The <span class="math inline">\(L = 5\ \mu\text{m}\)</span> Instability</a></li>
+  <li><a href="#optimization-and-resolution-via-l-2-mutextm" id="toc-optimization-and-resolution-via-l-2-mutextm" class="nav-link" data-scroll-target="#optimization-and-resolution-via-l-2-mutextm"><span class="header-section-number">5.4.3</span> 3. Optimization and Resolution via <span class="math inline">\(L = 2\ \mu\text{m}\)</span></a></li>
   </ul></li>
   </ul></li>
-  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references"><span class="header-section-number">3</span> References</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references"><span class="header-section-number">6</span> References</a></li>
   </ul>
-<div class="quarto-alternate-notebooks"><h2>Notebooks</h2><ul><li><a href="gmid\techsweep_sg13_plots_nmos-preview.html"><i class="bi bi-journal-code"></i>MOSFET gm/ID Evaluation Script for IHP SG13G2 NMOS</a></li><li><a href="gmid\sizing_2_stage_ota-preview.html"><i class="bi bi-journal-code"></i>Sizing for a 2 Stage OTA</a></li></ul></div></nav>
+</nav>
 </div>
 <main class="content" id="quarto-document-content">
 
@@ -227,57 +200,115 @@ window.Quarto = {
 </header>
 
 
-<section id="introduction" class="level1" data-number="1">
-<h1 data-number="1"><span class="header-section-number">1</span> Introduction</h1>
-<p>This section provides an overview of the 4th-order Linkwitz-Riley (LR4) crossover filter. The hybrid approach combines both analog active circuitry and digital processing elements to achieve a flat amplitude response at the crossover frequency.</p>
-<section id="filter-specifications" class="level2" data-number="1.1">
-<h2 data-number="1.1" class="anchored" data-anchor-id="filter-specifications"><span class="header-section-number">1.1</span> Filter Specifications</h2>
-<p>The primary design targets for this hybrid crossover network include: * <strong>Crossover Frequency (<span class="math inline">\(f_c\)</span>):</strong> <span class="math inline">\(1\text{ kHz}\)</span> * <strong>Filter Order:</strong> 4th-order (<span class="math inline">\(24\text{ dB/octave}\)</span> attenuation slope) * <strong>Phase Response:</strong> <span class="math inline">\(0^\circ\)</span> relative phase shift between outputs at crossover</p>
+<section id="abstract" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Abstract</h1>
+<p>In this development report the design process of the Hybrid Linkwitz-Riley 4 crossover Filter is described. The development was done in a docker image for integrated circuit design, which is part of an open-source kit. The subject of this development report is the design of a crossover filter, including the filter characterization and several steps of circuit design. Furthermore, the layout process is also part of this documentation. Additionally, the experiences with the open source development environment are shared as well. The filter was designed by the use of the IHP sg13g2 PDK. <a href="https://github.com/Sriramrepaka/MCD_VS.git">GitHub Repo</a></p>
 </section>
-<section id="system-architecture" class="level2" data-number="1.2">
-<h2 data-number="1.2" class="anchored" data-anchor-id="system-architecture"><span class="header-section-number">1.2</span> System Architecture</h2>
-<p>The overall architecture of the hybrid crossover network splits the audio spectrum into high-pass (tweeter) and low-pass (woofer) bands.</p>
-<div id="fig-block-diagram" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-block-diagram-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="./images/test_img.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-block-diagram-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;1: Block diagram of the Hybrid Linkwitz-Riley 4 Crossover Filter network.
-</figcaption>
-</figure>
-</div>
-<p>As seen in <a href="#fig-block-diagram" class="quarto-xref">Figure&nbsp;1</a>, the input signal is buffered before entering the active filter stages.</p>
+<section id="introduction" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Introduction</h1>
+<p>Integrated circuits (ICs) have become indispensable in modern electronic systems owing to their compact form factor and reduced power consumption relative to discrete implementations, like PCBs. In this work, we present the design and implementation of a Hybrid Linkwitz-Riley 4 Crossover Filter filter using open-source tools, such as <strong>Xschem</strong>. The following documentation details the methodologies and development steps undertaken throughout the filter’s implementation.</p>
+<p>This project is part of the Electronics Engineering (M. Sc.) course <em>“Microelectronic Circuit Design (MCD)”</em> at Hochschule Bremen City University of Applied Sciences (HSB).</p>
+<p>The outcomes of this report and the development methodology used to design the filter will be made publicly available on GitHub. Everyone is welcome to use, modify, and share this work freely. This course and project would not have been possible without the excellent open-source tools created by the dedicated community of layout designers, enthusiasts, and developers. Some of the tools used include IC-OSIC-TOOLS, IHP Open PDK, Docker, Xschem, ngspice, LTspice, Quarto, Python, and Git for the version control.</p>
 </section>
-<section id="mathematical-derivation" class="level2" data-number="1.3">
-<h2 data-number="1.3" class="anchored" data-anchor-id="mathematical-derivation"><span class="header-section-number">1.3</span> Mathematical Derivation</h2>
-<p>A standard Linkwitz-Riley 4th-order filter is constructed by cascading two identical 2nd-order Butterworth filters. The transfer function <span class="math inline">\(H(s)\)</span> for the low-pass network can be expressed mathematically as:</p>
-<p><span class="math display">\[H_{LP}(s) = \frac{1}{(s^2 + \sqrt{2}s + 1)^2}\]</span></p>
-<p>Where the voltage gains of both cascading stages must match perfectly to maintain the ideal crossover characteristics.</p>
-<div id="cell-fig-frequency-response" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;panel-layout&quot;,&quot;value&quot;:{&quot;height&quot;:658,&quot;visible&quot;:true,&quot;width&quot;:100}}" data-execution_count="22">
-<div class="cell-output cell-output-display">
-<div id="fig-frequency-response" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-frequency-response-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="document_files/figure-html/fig-frequency-response-output-1.png" class="img-fluid figure-img">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-frequency-response-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;2: Simulated amplitude response of the High-Pass and Low-Pass filter outputs.
-</figcaption>
-</figure>
-</div>
-</div>
-</div>
-</section>
-<section id="component-selection" class="level2" data-number="1.4">
-<h2 data-number="1.4" class="anchored" data-anchor-id="component-selection"><span class="header-section-number">1.4</span> Component Selection</h2>
-<p>The components chosen for the analog active operational amplifier implementation are summarized below.</p>
+<section id="filter-specifications" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Filter Specifications</h1>
+<p>The filter consists of four distinct topology types, each realized using operational amplifiers (OpAmps):</p>
+<ul>
+<li><strong>Low-Pass (LP)</strong></li>
+<li><strong>High-Pass (HP)</strong></li>
+</ul>
+<p>In this project, a fully integrated second-order Hybrid Linkwitz-Riley 4 Crossover Filter is designed, whose key specifications are given in <a href="#tbl-components" class="quarto-xref">Table&nbsp;1</a> :</p>
 <div id="tbl-components" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-components-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;1: Component selection parameters for the active filter stage.
+Table&nbsp;1: Component selection parameters for the Linkwitz-Riley four stage filter.
 </figcaption>
 <div aria-describedby="tbl-components-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Parameter</th>
+<th>Symbol</th>
+<th>Target Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Center Frequency</strong>(Center frequency of the narrowband response)</td>
+<td><span class="math inline">\(f_0\)</span></td>
+<td>10 KHz</td>
+</tr>
+<tr class="even">
+<td><strong>Quality Factor</strong>(Determines selectivity and sharpness)</td>
+<td><span class="math inline">\(Q\)</span></td>
+<td>0.707(Butterworth Response)</td>
+</tr>
+<tr class="odd">
+<td><strong>DC Pass-Band Gain</strong>(Peak gain of unity at low frequencies)</td>
+<td><span class="math inline">\(H_0\)</span></td>
+<td>~1</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p>These parameters ensure a narrowband response around 10 kHz with a peak gain of unity at low frequencies and sharp roll-off in the stop-bands.</p>
+</section>
+<section id="behavioural-model-design" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> Behavioural Model Design</h1>
+<p>As part of the initial design process, a behavioural model of the operational amplifier was developed and simulated. This model was used to study the basic functionality of the op amp before moving toward a more detailed transistor-level implementation.</p>
+<p>The schematic of the operational amplifier was designed using LTspice, a freely available circuit simulation tool. LTspice was used to build the behavioural representation of the op amp, verify its operation, and observe its response under different simulation conditions. This step helped in understanding the expected behaviour of the circuit and provided a useful reference for the later stages of the filter design.</p>
+<section id="ltspice-behavioural-model-schematic" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="ltspice-behavioural-model-schematic"><span class="header-section-number">4.1</span> LTspice Behavioural Model Schematic</h2>
+<div id="fig-LR4-Schematic" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-LR4-Schematic-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/LR4B_SCHEMATIC.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-LR4-Schematic-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: Behavioural model schematic of the LR4 filter designed in LTspice.
+</figcaption>
+</figure>
+</div>
+<p>The behavioural model of the four stage Linkwitz Riley filter was designed and simulated in LTspice. The schematic <a href="#fig-LR4-Schematic" class="quarto-xref">Figure&nbsp;1</a> consists of an AC voltage source, four active filter stages, and behavioural operational amplifier models. The input signal is applied using the voltage source <code>V1</code>, which is defined with an AC magnitude of 1 V. This allows the frequency response of the circuit to be directly observed in dB during AC analysis.</p>
+<section id="mathematical-derivation" class="level3" data-number="4.1.1">
+<h3 data-number="4.1.1" class="anchored" data-anchor-id="mathematical-derivation"><span class="header-section-number">4.1.1</span> Mathematical Derivation</h3>
+<p>A standard Linkwitz-Riley 4th-order filter is constructed by cascading two identical 2nd-order Butterworth filters. The transfer function <span class="math inline">\(H(s)\)</span> for the low-pass network can be expressed mathematically as:</p>
+<p><span class="math display">\[H_{LP}(s) = \frac{1}{(s^2 + \sqrt{2}s + 1)^2}\]</span></p>
+<p>Where the voltage gains of both cascading stages must match perfectly to maintain the ideal crossover characteristics.</p>
+</section>
+</section>
+<section id="transfer-function-and-filter-theory" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="transfer-function-and-filter-theory"><span class="header-section-number">4.2</span> Transfer Function and Filter Theory</h2>
+<p>The standard second-order low-pass transfer function is</p>
+<p><span class="math display">\[
+H(s)=\frac{\omega_0^2}{s^2+\frac{\omega_0}{Q}s+\omega_0^2}
+\]</span></p>
+<p>where <span class="math inline">\(\omega_0\)</span> is the natural angular frequency and <span class="math inline">\(Q\)</span> is the quality factor.</p>
+<p>The angular frequency is related to the cutoff frequency by</p>
+<p><span class="math display">\[
+\omega_0 = 2\pi f_c
+\]</span></p>
+<p>A fourth-order Linkwitz-Riley response can be obtained by cascading two identical second-order Butterworth sections. Therefore, the LR4 transfer function is</p>
+<p><span class="math display">\[
+H_{LR4}(s)=H_{BW2}(s)\cdot H_{BW2}(s)
+\]</span></p>
+<p>This produces a fourth-order response with a steeper roll-off compared with the second-order section.</p>
+<section id="component-selection" class="level3" data-number="4.2.1">
+<h3 data-number="4.2.1" class="anchored" data-anchor-id="component-selection"><span class="header-section-number">4.2.1</span> Component Selection</h3>
+<p>The components chosen for the analog active operational amplifier implementation are summarized below.</p>
+<div id="tbl-componentsxschem" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-componentsxschem-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;2: Component selection parameters for the active filter stage.
+</figcaption>
+<div aria-describedby="tbl-componentsxschem-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <table class="caption-top table">
 <colgroup>
 <col style="width: 18%">
@@ -322,7 +353,21 @@ Table&nbsp;1: Component selection parameters for the active filter stage.
 </div>
 </figure>
 </div>
-<p>As outlined in <a href="#tbl-components" class="quarto-xref">Table&nbsp;1</a>, standard resistor values are selected to match the ideal cutoff thresholds as closely as possible.</p>
+<p>As outlined in <a href="#tbl-componentsxschem" class="quarto-xref">Table&nbsp;2</a>, standard resistor values are selected to match the ideal cutoff thresholds as closely as possible.</p>
+</section>
+</section>
+<section id="ltspice-ac-frequency-response" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="ltspice-ac-frequency-response"><span class="header-section-number">4.3</span> LTspice AC Frequency Response</h2>
+<div id="fig-LR4-Result" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-LR4-Result-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/LR4B_RESULT.png" class="img-fluid figure-img" style="width:80.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-LR4-Result-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2: Behavioural model schematic of the LR4 filter designed in LTspice.
+</figcaption>
+</figure>
+</div>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -338,8 +383,8 @@ Table&nbsp;1: Component selection parameters for the active filter stage.
 </div>
 </section>
 </section>
-<section id="principle-of-operation-the-5-transistor-ota-5t-ota" class="level1" data-number="2">
-<h1 data-number="2"><span class="header-section-number">2</span> Principle of Operation: The 5-Transistor OTA (5T-OTA)</h1>
+<section id="principle-of-operation-the-5-transistor-ota-5t-ota" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> Principle of Operation: The 5-Transistor OTA (5T-OTA)</h1>
 <p>A 5-transistor operational transconductance amplifier (5T-OTA) <a href="#fig-basic-ota" class="quarto-xref">Figure&nbsp;3</a> is a fundamental analog building block designed to convert a differential input voltage into an output current (<span class="math inline">\(G = I_{\text{out}}/V_{\text{in}}\)</span>). Unlike standard operational amplifiers that ideally feature zero output resistance, an OTA is characterized by a <strong>high output resistance</strong>. In practical integrated circuits, these devices are often loaded capacitively to create high-gain voltage amplifiers.</p>
 <div id="fig-basic-ota" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -352,30 +397,30 @@ Figure&nbsp;3: The 5-transistor OTA <span class="citation" data-cites="pretl2026
 </figure>
 </div>
 <p>The internal operation of an NMOS-input 5T-OTA can be broken down into three distinct operational stages:</p>
-<section id="nmos-differential-pair-m_1-m_2" class="level3" data-number="2.0.1">
-<h3 data-number="2.0.1" class="anchored" data-anchor-id="nmos-differential-pair-m_1-m_2"><span class="header-section-number">2.0.1</span> NMOS Differential Pair (<span class="math inline">\(M_1, M_2\)</span>)</h3>
+<section id="nmos-differential-pair-m_1-m_2" class="level3" data-number="5.0.1">
+<h3 data-number="5.0.1" class="anchored" data-anchor-id="nmos-differential-pair-m_1-m_2"><span class="header-section-number">5.0.1</span> NMOS Differential Pair (<span class="math inline">\(M_1, M_2\)</span>)</h3>
 <p>The differential pair serves as the primary “input stage” that senses the incoming voltage signals.</p>
 <p><strong>Function:</strong> <span class="math inline">\(M_1\)</span> and <span class="math inline">\(M_2\)</span> are matched NMOS devices biased by the tail current flowing from <span class="math inline">\(M_5\)</span>. When a differential input voltage is applied across their gates, it is converted into <strong>differential drain currents</strong> governed by the transconductance (<span class="math inline">\(g_{\text{m}}\)</span>) of the transistors <span class="citation" data-cites="pretl2026">(<a href="#ref-pretl2026" role="doc-biblioref">Pretl et al. 2026</a>)</span>.</p>
 <p><strong>Symmetry:</strong> In an ideal, perfectly matched scenario, if the two input voltages are identical, the tail current (<span class="math inline">\(I_{\text{tail}}\)</span>) splits exactly in half (<span class="math inline">\(I_{\text{tail}}/2\)</span>) down both branches.</p>
 </section>
-<section id="nmos-tail-current-mirror-m_5-m_6" class="level3" data-number="2.0.2">
-<h3 data-number="2.0.2" class="anchored" data-anchor-id="nmos-tail-current-mirror-m_5-m_6"><span class="header-section-number">2.0.2</span> NMOS Tail Current Mirror (<span class="math inline">\(M_5, M_6\)</span>)</h3>
+<section id="nmos-tail-current-mirror-m_5-m_6" class="level3" data-number="5.0.2">
+<h3 data-number="5.0.2" class="anchored" data-anchor-id="nmos-tail-current-mirror-m_5-m_6"><span class="header-section-number">5.0.2</span> NMOS Tail Current Mirror (<span class="math inline">\(M_5, M_6\)</span>)</h3>
 <p>This stage establishes the stable DC <strong>biasing</strong> environment required for the entire amplifier circuit.</p>
 <p><strong>Function:</strong> Transistors <span class="math inline">\(M_5\)</span> and <span class="math inline">\(M_6\)</span> form a current mirror. An external reference current (<span class="math inline">\(I_{\text{bias}}\)</span>) is fed through the transistor <span class="math inline">\(M_6\)</span>, which is then mirrored directly into <span class="math inline">\(M_5\)</span> <span class="citation" data-cites="pretl2026">(<a href="#ref-pretl2026" role="doc-biblioref">Pretl et al. 2026</a>)</span>.</p>
 <p><strong>The Tail Current:</strong> <span class="math inline">\(M_5\)</span> operates as the <strong>tail current source</strong>, defining the total bias current (<span class="math inline">\(I_{\text{tail}}\)</span>) that passes through the input differential pair. This tail current is a critical design parameter, as it directly sets both the transconductance (<span class="math inline">\(g_{\text{m}}\)</span>) and the overall speed of the amplifier.</p>
 </section>
-<section id="pmos-current-mirror-load-m_3-m_4" class="level3" data-number="2.0.3">
-<h3 data-number="2.0.3" class="anchored" data-anchor-id="pmos-current-mirror-load-m_3-m_4"><span class="header-section-number">2.0.3</span> PMOS Current Mirror Load (<span class="math inline">\(M_3, M_4\)</span>)</h3>
+<section id="pmos-current-mirror-load-m_3-m_4" class="level3" data-number="5.0.3">
+<h3 data-number="5.0.3" class="anchored" data-anchor-id="pmos-current-mirror-load-m_3-m_4"><span class="header-section-number">5.0.3</span> PMOS Current Mirror Load (<span class="math inline">\(M_3, M_4\)</span>)</h3>
 <p>This final section acts as an active load for the input pair and performs the differential-to-single-ended signal conversion.</p>
 <p><strong>Function:</strong> Transistors <span class="math inline">\(M_3\)</span> and <span class="math inline">\(M_4\)</span> form a PMOS current mirror. The diode-connected <span class="math inline">\(M_3\)</span> senses the changing current flowing through the left branch (<span class="math inline">\(M_1\)</span>) and replicates it over to the right branch via <span class="math inline">\(M_4\)</span> <span class="citation" data-cites="pretl2026">(<a href="#ref-pretl2026" role="doc-biblioref">Pretl et al. 2026</a>)</span>.</p>
 <p><strong>Summing at the Output:</strong> At the single-ended output node, the mirrored current from <span class="math inline">\(M_4\)</span> and the direct current from the right input branch (<span class="math inline">\(M_2\)</span>) are subtracted/summed. When this net signal current is forced into the high-impedance output node, it builds up the final output voltage.</p>
 </section>
-<section id="transistor-sizing-and-g_textmi_textd-selection-strategy" class="level2" data-number="2.1">
-<h2 data-number="2.1" class="anchored" data-anchor-id="transistor-sizing-and-g_textmi_textd-selection-strategy"><span class="header-section-number">2.1</span> Transistor Sizing and <span class="math inline">\(g_{\text{m}}/I_{\text{D}}\)</span> Selection Strategy</h2>
+<section id="transistor-sizing-and-g_textmi_textd-selection-strategy" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="transistor-sizing-and-g_textmi_textd-selection-strategy"><span class="header-section-number">5.1</span> Transistor Sizing and <span class="math inline">\(g_{\text{m}}/I_{\text{D}}\)</span> Selection Strategy</h2>
 <p>In a 5T-OTA, selecting the device sizes involves balancing fundamental trade-offs between speed, power efficiency, noise, and matching. Rather than applying a uniform <span class="math inline">\(g_{\text{m}}/I_{\text{D}}\)</span> ratio across all devices, each sub-block is targeted with a specific transconductance efficiency to maximize overall circuit performance.</p>
 <hr>
-<section id="nmos-input-differential-pair-m_1-m_2" class="level3" data-number="2.1.1">
-<h3 data-number="2.1.1" class="anchored" data-anchor-id="nmos-input-differential-pair-m_1-m_2"><span class="header-section-number">2.1.1</span> 1. NMOS Input Differential Pair (<span class="math inline">\(M_1, M_2\)</span>)</h3>
+<section id="nmos-input-differential-pair-m_1-m_2" class="level3" data-number="5.1.1">
+<h3 data-number="5.1.1" class="anchored" data-anchor-id="nmos-input-differential-pair-m_1-m_2"><span class="header-section-number">5.1.1</span> 1. NMOS Input Differential Pair (<span class="math inline">\(M_1, M_2\)</span>)</h3>
 <p>For the input stage, a <strong>higher <span class="math inline">\(g_{\text{m}}/I_{\text{D}}\)</span> value</strong>—typically in the range of <strong>10 to 12 V⁻¹</strong>—is chosen to operate the devices in moderate inversion.</p>
 <dl>
 <dt><strong>Gain and Power Efficiency</strong></dt>
@@ -388,8 +433,8 @@ Maximizing the <span class="math inline">\(g_{\text{m}}/I_{\text{D}}\)</span> ra
 </dd>
 </dl>
 </section>
-<section id="pmos-load-m_3-m_4-and-nmos-tail-m_5-m_6-current-mirrors" class="level3" data-number="2.1.2">
-<h3 data-number="2.1.2" class="anchored" data-anchor-id="pmos-load-m_3-m_4-and-nmos-tail-m_5-m_6-current-mirrors"><span class="header-section-number">2.1.2</span> 2. PMOS Load (<span class="math inline">\(M_3, M_4\)</span>) and NMOS Tail (<span class="math inline">\(M_5, M_6\)</span>) Current Mirrors</h3>
+<section id="pmos-load-m_3-m_4-and-nmos-tail-m_5-m_6-current-mirrors" class="level3" data-number="5.1.2">
+<h3 data-number="5.1.2" class="anchored" data-anchor-id="pmos-load-m_3-m_4-and-nmos-tail-m_5-m_6-current-mirrors"><span class="header-section-number">5.1.2</span> 2. PMOS Load (<span class="math inline">\(M_3, M_4\)</span>) and NMOS Tail (<span class="math inline">\(M_5, M_6\)</span>) Current Mirrors</h3>
 <p>For the current mirror and load network, a <strong>lower <span class="math inline">\(g_{\text{m}}/I_{\text{D}}\)</span> value</strong>—typically in the range of <strong>6 to 8 V⁻¹</strong>—is chosen to operate the devices in strong inversion.</p>
 <dl>
 <dt><strong>Current Matching Accuracy</strong></dt>
@@ -407,8 +452,8 @@ To reduce the total output noise contribution of the OTA, the transconductance o
 </dl>
 <hr>
 </section>
-<section id="summary-sizing-targets-and-trade-offs" class="level3" data-number="2.1.3">
-<h3 data-number="2.1.3" class="anchored" data-anchor-id="summary-sizing-targets-and-trade-offs"><span class="header-section-number">2.1.3</span> 3. Summary Sizing Targets and Trade-offs</h3>
+<section id="summary-sizing-targets-and-trade-offs" class="level3" data-number="5.1.3">
+<h3 data-number="5.1.3" class="anchored" data-anchor-id="summary-sizing-targets-and-trade-offs"><span class="header-section-number">5.1.3</span> 3. Summary Sizing Targets and Trade-offs</h3>
 <p>The table below outlines the final targeted <span class="math inline">\(g_{\text{m}}/I_{\text{D}}\)</span> configuration and the core trade-offs managing the 5T-OTA architecture, further narrowing the no of combinations. To streamline the simulation and optimization phase, the design space was restricted to tight <span class="math inline">\(g_{\text{m}}/I_{\text{D}}\)</span> windows. This dramatically reduces the number of design permutations and sweeps required during circuit characterization.</p>
 <table class="caption-top table">
 <colgroup>
@@ -447,17 +492,17 @@ To reduce the total output noise contribution of the OTA, the transconductance o
 </tbody>
 </table>
 </section>
-<section id="transistor-sizing-and-architecture-for-the-5t-ota" class="level3" data-number="2.1.4">
-<h3 data-number="2.1.4" class="anchored" data-anchor-id="transistor-sizing-and-architecture-for-the-5t-ota"><span class="header-section-number">2.1.4</span> Transistor Sizing and Architecture for the 5T-OTA</h3>
+<section id="transistor-sizing-and-architecture-for-the-5t-ota" class="level3" data-number="5.1.4">
+<h3 data-number="5.1.4" class="anchored" data-anchor-id="transistor-sizing-and-architecture-for-the-5t-ota"><span class="header-section-number">5.1.4</span> Transistor Sizing and Architecture for the 5T-OTA</h3>
 <p>To determine the physical dimensions of the transistors within the 5T-OTA architecture, <strong><span class="math inline">\(g_m/I_D\)</span> design methodology</strong> utilizes pre-characterized technology lookup tables</p>
 </section>
-<section id="design-specification-reference-parameters" class="level3" data-number="2.1.5">
-<h3 data-number="2.1.5" class="anchored" data-anchor-id="design-specification-reference-parameters"><span class="header-section-number">2.1.5</span> Design Specification &amp; Reference Parameters</h3>
-<p>The circuit dimensioning is driven by explicit performance targets, including bandwidth, capacitive loading, and transistor geometry constraints. The primary design inputs and initial assumptions are structured in <a href="#tbl-ota-specs" class="quarto-xref">Table&nbsp;2</a>.</p>
+<section id="design-specification-reference-parameters" class="level3" data-number="5.1.5">
+<h3 data-number="5.1.5" class="anchored" data-anchor-id="design-specification-reference-parameters"><span class="header-section-number">5.1.5</span> Design Specification &amp; Reference Parameters</h3>
+<p>The circuit dimensioning is driven by explicit performance targets, including bandwidth, capacitive loading, and transistor geometry constraints. The primary design inputs and initial assumptions are structured in <a href="#tbl-ota-specs" class="quarto-xref">Table&nbsp;3</a>.</p>
 <div id="tbl-ota-specs" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-ota-specs-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;2: Input design parameters and specifications for the 5T-OTA as per sizing document in <span class="citation" data-cites="pretl2026">(<a href="#ref-pretl2026" role="doc-biblioref">Pretl et al. 2026</a>)</span>.
+Table&nbsp;3: Input design parameters and specifications for the 5T-OTA as per sizing document in <span class="citation" data-cites="pretl2026">(<a href="#ref-pretl2026" role="doc-biblioref">Pretl et al. 2026</a>)</span>.
 </figcaption>
 <div aria-describedby="tbl-ota-specs-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <table class="caption-top table">
@@ -521,37 +566,37 @@ Table&nbsp;2: Input design parameters and specifications for the 5T-OTA as per s
 </div>
 <hr>
 </section>
-<section id="sizing-derivations-mathematical-formulations" class="level3" data-number="2.1.6">
-<h3 data-number="2.1.6" class="anchored" data-anchor-id="sizing-derivations-mathematical-formulations"><span class="header-section-number">2.1.6</span> Sizing Derivations &amp; Mathematical Formulations</h3>
-<section id="input-pair-transconductance-g_m-extraction" class="level4" data-number="2.1.6.1">
-<h4 data-number="2.1.6.1" class="anchored" data-anchor-id="input-pair-transconductance-g_m-extraction"><span class="header-section-number">2.1.6.1</span> Input Pair Transconductance (<span class="math inline">\(g_m\)</span>) Extraction</h4>
+<section id="sizing-derivations-mathematical-formulations" class="level3" data-number="5.1.6">
+<h3 data-number="5.1.6" class="anchored" data-anchor-id="sizing-derivations-mathematical-formulations"><span class="header-section-number">5.1.6</span> Sizing Derivations &amp; Mathematical Formulations</h3>
+<section id="input-pair-transconductance-g_m-extraction" class="level4" data-number="5.1.6.1">
+<h4 data-number="5.1.6.1" class="anchored" data-anchor-id="input-pair-transconductance-g_m-extraction"><span class="header-section-number">5.1.6.1</span> Input Pair Transconductance (<span class="math inline">\(g_m\)</span>) Extraction</h4>
 <p>The required transconductance for the differential input pair (<span class="math inline">\(M_{1/2}\)</span>) is directly tied to the unity-gain bandwidth requirement of the system configuration. To protect against process, voltage, and temperature (PVT) variations, alongside parasitic transistor self-loading, a safety scaling factor of <span class="math inline">\(3\)</span> is introduced into the fundamental bandwidth equation:</p>
 <p><span class="math display">\[g_{m1,2} = f_{\mathrm{bw}} \cdot 3 \cdot 4\pi \cdot C_{\mathrm{load}}\]</span></p>
 <p>Substituting our core specifications (<span class="math inline">\(10\text{ MHz}\)</span> and <span class="math inline">\(50\text{ fF}\)</span>), the script calculates the necessary small-signal capability:</p>
 <p><span class="math display">\[g_{m1,2} = 10\text{ MHz} \cdot 3 \cdot 4\pi \cdot 50\text{ fF} \approx 0.0188\text{ mS}\]</span></p>
 </section>
-<section id="bias-current-evaluation" class="level4" data-number="2.1.6.2">
-<h4 data-number="2.1.6.2" class="anchored" data-anchor-id="bias-current-evaluation"><span class="header-section-number">2.1.6.2</span> Bias Current Evaluation</h4>
+<section id="bias-current-evaluation" class="level4" data-number="5.1.6.2">
+<h4 data-number="5.1.6.2" class="anchored" data-anchor-id="bias-current-evaluation"><span class="header-section-number">5.1.6.2</span> Bias Current Evaluation</h4>
 <p>By establishing the transconductance efficiency parameter <span class="math inline">\((g_m/I_D)_{1,2} = 10\)</span>, the single-branch bias current (<span class="math inline">\(I_{D1,2}\)</span>) can be isolated:</p>
 <p><span class="math display">\[I_{D1,2} = \frac{g_{m1,2}}{(g_m/I_D)_{1,2}}\]</span></p>
 <p>The total tail current required from current source <span class="math inline">\(M_5\)</span> corresponds to both operational branches:</p>
 <p><span class="math display">\[I_{\mathrm{total}} = 2 \cdot I_{D1,2} \approx 3.76\text{ }\mu\text{A}\]</span></p>
 <p>To comply with standard layout grids and bias generation modules, this value is rounded up to a clean operational baseline of <strong><span class="math inline">\(4.0\text{ }\mu\text{A}\)</span></strong> (<span class="math inline">\(I_{D1,2} = 2.0\text{ }\mu\text{A}\)</span>).</p>
 </section>
-<section id="gate-voltage-physical-width-mapping" class="level4" data-number="2.1.6.3">
-<h4 data-number="2.1.6.3" class="anchored" data-anchor-id="gate-voltage-physical-width-mapping"><span class="header-section-number">2.1.6.3</span> Gate Voltage &amp; Physical Width Mapping</h4>
+<section id="gate-voltage-physical-width-mapping" class="level4" data-number="5.1.6.3">
+<h4 data-number="5.1.6.3" class="anchored" data-anchor-id="gate-voltage-physical-width-mapping"><span class="header-section-number">5.1.6.3</span> Gate Voltage &amp; Physical Width Mapping</h4>
 <p>Operating at a fixed bias length (<span class="math inline">\(L = 5\text{ }\mu\text{m}\)</span>), the calculated current and target efficiency points are mapped to the semiconductor technology databases to track their native gate-to-source voltage drops (<span class="math inline">\(V_{\mathrm{GS}}\)</span>):</p>
 <p>Using the technology-specific current density value per micrometer of transistor width (<span class="math inline">\(I_D/W\)</span>) provided by the lookup tables at these operating points, the physical widths (<span class="math inline">\(W\)</span>) are computed via:</p>
 <p><span class="math display">\[W = \frac{I_D}{(I_D/W)}\]</span></p>
 <p>and rounded</p>
 </section>
-<section id="external-bias-current-mirroring-m_6" class="level4" data-number="2.1.6.4">
-<h4 data-number="2.1.6.4" class="anchored" data-anchor-id="external-bias-current-mirroring-m_6"><span class="header-section-number">2.1.6.4</span> External Bias Current Mirroring (<span class="math inline">\(M_6\)</span>)</h4>
+<section id="external-bias-current-mirroring-m_6" class="level4" data-number="5.1.6.4">
+<h4 data-number="5.1.6.4" class="anchored" data-anchor-id="external-bias-current-mirroring-m_6"><span class="header-section-number">5.1.6.4</span> External Bias Current Mirroring (<span class="math inline">\(M_6\)</span>)</h4>
 <p>To mirror the incoming off-chip reference current (<span class="math inline">\(20\text{ }\mu\text{A}\)</span>) down to our internal tail target (<span class="math inline">\(4\text{ }\mu\text{A}\)</span>), the geometry of the receiving diode-connected transistor (<span class="math inline">\(M_6\)</span>) is scaled proportionally against the dimensions of <span class="math inline">\(M_5\)</span>:</p>
 <p><span class="math display">\[W_6 = W_{5,\mathrm{round}} \cdot \frac{I_{\mathrm{bias,in}}}{I_{\mathrm{total}}}\]</span></p>
 </section>
-<section id="open-loop-dc-gain-derivation" class="level4" data-number="2.1.6.5">
-<h4 data-number="2.1.6.5" class="anchored" data-anchor-id="open-loop-dc-gain-derivation"><span class="header-section-number">2.1.6.5</span> Open-Loop DC Gain Derivation</h4>
+<section id="open-loop-dc-gain-derivation" class="level4" data-number="5.1.6.5">
+<h4 data-number="5.1.6.5" class="anchored" data-anchor-id="open-loop-dc-gain-derivation"><span class="header-section-number">5.1.6.5</span> Open-Loop DC Gain Derivation</h4>
 <p>The open-loop DC voltage gain (<span class="math inline">\(A_0\)</span>) of a single-stage 5T-OTA is defined by the transconductance of the input pair relative to the combined output conductances (<span class="math inline">\(g_{\mathrm{ds}}\)</span>) of both the input transistors and the active loads.</p>
 <p>The total small-signal DC voltage gain is expressed using the following equation:</p>
 <p><span class="math display">\[A_0 = \frac{g_{m1,2}}{g_{\mathrm{ds}1,2} + g_{\mathrm{ds}3,4}}\]</span></p>
@@ -559,23 +604,23 @@ Table&nbsp;2: Input design parameters and specifications for the 5T-OTA as per s
 </section>
 </section>
 </section>
-<section id="transition-to-a-two-stage-ota-architecture" class="level2" data-number="2.2">
-<h2 data-number="2.2" class="anchored" data-anchor-id="transition-to-a-two-stage-ota-architecture"><span class="header-section-number">2.2</span> Transition to a Two-Stage OTA Architecture</h2>
-<section id="why-the-5t-ota-is-insufficient-for-audio" class="level3" data-number="2.2.1">
-<h3 data-number="2.2.1" class="anchored" data-anchor-id="why-the-5t-ota-is-insufficient-for-audio"><span class="header-section-number">2.2.1</span> Why the 5T-OTA is Insufficient for Audio</h3>
+<section id="transition-to-a-two-stage-ota-architecture" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="transition-to-a-two-stage-ota-architecture"><span class="header-section-number">5.2</span> Transition to a Two-Stage OTA Architecture</h2>
+<section id="why-the-5t-ota-is-insufficient-for-audio" class="level3" data-number="5.2.1">
+<h3 data-number="5.2.1" class="anchored" data-anchor-id="why-the-5t-ota-is-insufficient-for-audio"><span class="header-section-number">5.2.1</span> Why the 5T-OTA is Insufficient for Audio</h3>
 <p>While the basic 5T-OTA is simple and efficient, it is not suitable for an audio amplifier because its open-loop DC gain is only <strong><span class="math inline">\(34.8\text{ dB}\)</span></strong> (around <span class="math inline">\(55\text{ V/V}\)</span>). High-fidelity audio applications demand significantly more gain to ensure precise signal reproduction, minimize output distortion, and keep gain errors low.</p>
 <p>Because a single transistor stage cannot provide enough amplification on its own, we must transition to a <strong>Two-Stage OTA</strong> architecture as suggested in <span class="citation" data-cites="pretl2026">(<a href="#ref-pretl2026" role="doc-biblioref">Pretl et al. 2026</a>)</span>.</p>
 </section>
-<section id="the-two-stage-gain-equation" class="level3" data-number="2.2.2">
-<h3 data-number="2.2.2" class="anchored" data-anchor-id="the-two-stage-gain-equation"><span class="header-section-number">2.2.2</span> The Two-Stage Gain Equation</h3>
+<section id="the-two-stage-gain-equation" class="level3" data-number="5.2.2">
+<h3 data-number="5.2.2" class="anchored" data-anchor-id="the-two-stage-gain-equation"><span class="header-section-number">5.2.2</span> The Two-Stage Gain Equation</h3>
 <p>By cascading a second amplification stage directly after the initial differential stage, the total open-loop gain is multiplied together. The resulting total DC voltage gain is defined by the following equation:</p>
 <p><span class="math display">\[A_{\mathrm{OL, total}} = A_{v1} \cdot A_{v2}\]</span></p>
 <p>Where: <span class="math inline">\(A_{\mathrm{OL, total}}\)</span> is the total open-loop DC gain of the system. <span class="math inline">\(A_{v1}\)</span> is the voltage gain of the first stage (the differential input pair). <span class="math inline">\(A_{v2}\)</span> is the voltage gain of the second stage (the common-source output stage).</p>
 <p>This structural change easily pushes the total gain into the desired range for audio quality, while the added Miller compensation network (<span class="math inline">\(C_\mathrm{M}\)</span> and <span class="math inline">\(R_\mathrm{Z}\)</span>) ensures the entire circuit remains stable.</p>
 </section>
 </section>
-<section id="transistor-sizing-and-architecture-for-the-2-stage-miller-ota" class="level2" data-number="2.3">
-<h2 data-number="2.3" class="anchored" data-anchor-id="transistor-sizing-and-architecture-for-the-2-stage-miller-ota"><span class="header-section-number">2.3</span> Transistor Sizing and Architecture for the 2-Stage Miller OTA</h2>
+<section id="transistor-sizing-and-architecture-for-the-2-stage-miller-ota" class="level2" data-number="5.3">
+<h2 data-number="5.3" class="anchored" data-anchor-id="transistor-sizing-and-architecture-for-the-2-stage-miller-ota"><span class="header-section-number">5.3</span> Transistor Sizing and Architecture for the 2-Stage Miller OTA</h2>
 <p>Integral part of an Linkwitz-Riley 4 Crossover Filter is an amplifier, and a 2-stage OTA is a good option as it offers high gain and is begginer friendly to design. A 2-stage OTA is essentially an 5-T OTA and a PMOS common source ampliflier cascaded with a Miller compensation capacitor <span class="math inline">\(C_{\text{M}}\)</span> and a Null resistor <span class="math inline">\(R_{\text{Z}}\)</span> as shown in <a href="#fig-2-stage-ota" class="quarto-xref">Figure&nbsp;4</a>.</p>
 <div id="fig-2-stage-ota" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -588,32 +633,13 @@ Figure&nbsp;4: The 2-stage OTA.
 </figure>
 </div>
 <p>There are 4 major aspects of this OTA the input differential pair, pmos current mirrors, output gain PMOS, and tail current NMOS’s. The sizing of these transistors is done using gm/Id methodology.</p>
-<section id="design-space-explorations-component-and-geometry-selection" class="level3" data-number="2.3.1">
-<h3 data-number="2.3.1" class="anchored" data-anchor-id="design-space-explorations-component-and-geometry-selection"><span class="header-section-number">2.3.1</span> 2. Design Space Explorations: Component and Geometry Selection</h3>
-<p>To transition successfully to the two-stage architecture, two critical component adjustments were made to ensure loop stability and realistic system performance:</p>
-<ul>
-<li><strong>Upgrading <span class="math inline">\(C_{\mathrm{load}}\)</span> to <span class="math inline">\(1\text{ pF}\)</span> (from <span class="math inline">\(50\text{ fF}\)</span>):</strong> A <span class="math inline">\(50\text{ fF}\)</span> load only accounts for tiny, localized on-chip parasitics <span class="citation" data-cites="lenka2022micro">(<a href="#ref-lenka2022micro" role="doc-biblioref">Lenka et al. 2022</a>)</span>. Since this OTA is designed to drive inside an <strong>LR4 active crossover filter</strong> network, <span class="math inline">\(1\text{ pF}\)</span> was chosen to represent realistic load <span class="citation" data-cites="lenka2022micro">(<a href="#ref-lenka2022micro" role="doc-biblioref">Lenka et al. 2022</a>)</span>.</li>
-<li><strong>Scaling Down <span class="math inline">\(L\)</span> to <span class="math inline">\(2\text{ }\mu\text{m}\)</span> (from <span class="math inline">\(5\text{ }\mu\text{m}\)</span>):</strong> Initial designs using <span class="math inline">\(L = 5\text{ }\mu\text{m}\)</span> suffered from severe high-frequency oscillations near the roll-off frequency. The provided technology plot reveals that an <span class="math inline">\(L = 5\text{ }\mu\text{m}\)</span> device features an extremely low transit frequency (<span class="math inline">\(f_{\mathrm{T}} &lt; 1\text{ GHz}\)</span>) as shown in the plot below. By scaling to <span class="math inline">\(L = 2\text{ }\mu\text{m}\)</span>, the internal device <span class="math inline">\(f_{\mathrm{T}}\)</span> is pushed much higher (towards the <span class="math inline">\(2\text{ to } 3\text{ GHz}\)</span> range as shown in the plot below at L=1), pushing parasitic non-dominant poles safely past our operating bandwidth and eliminating the oscillations.</li>
-</ul>
-<div class="quarto-embed-nb-cell">
-<div id="cell-9" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2024-08-02T08:03:08.636920Z&quot;,&quot;start_time&quot;:&quot;2024-08-02T08:03:08.496476Z&quot;}}" data-tags="[&quot;fig-nmos-ft-vs-gmid-vs-l&quot;]" data-execution_count="18">
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="document_files/figure-html/.-gmid-techsweep_sg13_plots_nmos-cell-10-output-1.png" class="img-fluid figure-img"></p>
-</figure>
-</div>
-</div>
-</div>
-<a class="quarto-notebook-link" id="nblink-1" href="gmid\techsweep_sg13_plots_nmos-preview.html#cell-9">Source: MOSFET gm/ID Evaluation Script for IHP SG13G2 NMOS</a></div>
-</section>
-<section id="design-specification-reference-parameters-1" class="level3" data-number="2.3.2">
-<h3 data-number="2.3.2" class="anchored" data-anchor-id="design-specification-reference-parameters-1"><span class="header-section-number">2.3.2</span> Design Specification &amp; Reference Parameters</h3>
-<p>The core target constraints, technology limits, and initial efficiency parameters are given in <a href="#tbl-2stage-specs" class="quarto-xref">Table&nbsp;3</a>.</p>
+<section id="design-specification-reference-parameters-1" class="level3" data-number="5.3.1">
+<h3 data-number="5.3.1" class="anchored" data-anchor-id="design-specification-reference-parameters-1"><span class="header-section-number">5.3.1</span> Design Specification &amp; Reference Parameters</h3>
+<p>The core target constraints, technology limits, and initial efficiency definitions guiding the automation loop are outlined in <a href="#tbl-2stage-specs" class="quarto-xref">Table&nbsp;4</a>.</p>
 <div id="tbl-2stage-specs" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-2stage-specs-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;3: Design specifications for the 2-Stage OTA.
+Table&nbsp;4: Design specifications for the 2-Stage OTA.
 </figcaption>
 <div aria-describedby="tbl-2stage-specs-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <table class="caption-top table">
@@ -682,10 +708,10 @@ Table&nbsp;3: Design specifications for the 2-Stage OTA.
 </div>
 <hr>
 </section>
-<section id="sizing-derivations-mathematical-formulations-1" class="level3" data-number="2.3.3">
-<h3 data-number="2.3.3" class="anchored" data-anchor-id="sizing-derivations-mathematical-formulations-1"><span class="header-section-number">2.3.3</span> Sizing Derivations &amp; Mathematical Formulations</h3>
-<section id="compensation-allocation-first-stage-sizing" class="level4" data-number="2.3.3.1">
-<h4 data-number="2.3.3.1" class="anchored" data-anchor-id="compensation-allocation-first-stage-sizing"><span class="header-section-number">2.3.3.1</span> Compensation Allocation &amp; First-Stage Sizing</h4>
+<section id="sizing-derivations-mathematical-formulations-1" class="level3" data-number="5.3.2">
+<h3 data-number="5.3.2" class="anchored" data-anchor-id="sizing-derivations-mathematical-formulations-1"><span class="header-section-number">5.3.2</span> Sizing Derivations &amp; Mathematical Formulations</h3>
+<section id="compensation-allocation-first-stage-sizing" class="level4" data-number="5.3.2.1">
+<h4 data-number="5.3.2.1" class="anchored" data-anchor-id="compensation-allocation-first-stage-sizing"><span class="header-section-number">5.3.2.1</span> Compensation Allocation &amp; First-Stage Sizing</h4>
 <p>To shield the circuit from high-frequency stability decay, a Miller capacitance (<span class="math inline">\(C_\mathrm{M}\)</span>) is introduced relative to the total output load [nagulapalli2019low]:</p>
 <p><span class="math display">\[C_\mathrm{M} &gt; 0.5 \cdot C_{\mathrm{load}} = 500\text{ fF}\]</span></p>
 <p>The input pair transconductance (<span class="math inline">\(g_{m1,2}\)</span>) calculation incorporates a protective <span class="math inline">\(3\times\)</span> multiplier scaling to safeguard the target bandwidth against local process tracking shifts:</p>
@@ -697,8 +723,8 @@ Table&nbsp;3: Design specifications for the 2-Stage OTA.
 <li><strong>True Manufactured Transconductance (<span class="math inline">\(g_{m1,2}\)</span>):</strong> <span class="math inline">\(11 \cdot 8.5\text{ }\mu\text{A} = \mathbf{0.09350\text{ mS}}\)</span></li>
 </ul>
 </section>
-<section id="second-stage-stability-resistor-calibration" class="level4" data-number="2.3.3.2">
-<h4 data-number="2.3.3.2" class="anchored" data-anchor-id="second-stage-stability-resistor-calibration"><span class="header-section-number">2.3.3.2</span> Second-Stage Stability &amp; Resistor Calibration</h4>
+<section id="second-stage-stability-resistor-calibration" class="level4" data-number="5.3.2.2">
+<h4 data-number="5.3.2.2" class="anchored" data-anchor-id="second-stage-stability-resistor-calibration"><span class="header-section-number">5.3.2.2</span> Second-Stage Stability &amp; Resistor Calibration</h4>
 <p>To guarantee a robust phase margin, the secondary transconductance stage (<span class="math inline">\(M_5\)</span>) must easily out-pace the target operational bandwidth boundary via an image-sizing coefficient rule:</p>
 <p><span class="math display">\[g_{m5,\mathrm{req}} = 2.2 \cdot f_{\mathrm{bw}} \cdot 2\pi \cdot C_{\mathrm{load}} \approx 0.13823\text{ mS}\]</span></p>
 <p>Dividing this by its distinct parameter <span class="math inline">\((g_m/I_D)_5 = 10\)</span> establishes the analytical current demand <span class="math inline">\(I_{D5,\mathrm{req}} = 13.823\text{ }\mu\text{A}\)</span>. Mirror scaling constraints align the true current flow down to exactly <strong><span class="math inline">\(10.00\text{ }\mu\text{A}\)</span></strong> based on physical layout sizes. At this grid point, the driver generates its final small-signal capability:</p>
@@ -708,13 +734,13 @@ Table&nbsp;3: Design specifications for the 2-Stage OTA.
 <hr>
 </section>
 </section>
-<section id="sizing-optimization-results" class="level3" data-number="2.3.4">
-<h3 data-number="2.3.4" class="anchored" data-anchor-id="sizing-optimization-results"><span class="header-section-number">2.3.4</span> Sizing Optimization Results</h3>
-<p>The physical layout dimensions established by mapping the grid current data back to the <code>pygmid</code> database lookup functions are structured in <a href="#tbl-2stage-results" class="quarto-xref">Table&nbsp;4</a>.</p>
+<section id="sizing-optimization-results" class="level3" data-number="5.3.3">
+<h3 data-number="5.3.3" class="anchored" data-anchor-id="sizing-optimization-results"><span class="header-section-number">5.3.3</span> Sizing Optimization Results</h3>
+<p>The physical layout dimensions established by mapping the grid current data back to the <code>pygmid</code> database lookup functions are structured in <a href="#tbl-2stage-results" class="quarto-xref">Table&nbsp;5</a>.</p>
 <div id="tbl-2stage-results" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-2stage-results-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;4: Final optimized structural dimensions for the 2-Stage Miller OTA.
+Table&nbsp;5: Final optimized structural dimensions for the 2-Stage Miller OTA.
 </figcaption>
 <div aria-describedby="tbl-2stage-results-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <table class="caption-top table">
@@ -776,13 +802,13 @@ Table&nbsp;4: Final optimized structural dimensions for the 2-Stage Miller OTA.
 </div>
 <hr>
 </section>
-<section id="open-loop-dc-gain-performance-evaluation" class="level3" data-number="2.3.5">
-<h3 data-number="2.3.5" class="anchored" data-anchor-id="open-loop-dc-gain-performance-evaluation"><span class="header-section-number">2.3.5</span> Open-Loop DC Gain &amp; Performance Evaluation</h3>
-<p>By splitting the design across cascaded active blocks, the total system gain successfully clears the targets required. The cumulative performance metrics are detailed in <a href="#tbl-2stage-perf" class="quarto-xref">Table&nbsp;5</a>.</p>
+<section id="open-loop-dc-gain-performance-evaluation" class="level3" data-number="5.3.4">
+<h3 data-number="5.3.4" class="anchored" data-anchor-id="open-loop-dc-gain-performance-evaluation"><span class="header-section-number">5.3.4</span> Open-Loop DC Gain &amp; Performance Evaluation</h3>
+<p>By splitting the design across cascaded active blocks, the total system gain successfully clears the targets required for robust distortion control. The cumulative performance metrics are detailed in <a href="#tbl-2stage-perf" class="quarto-xref">Table&nbsp;6</a>.</p>
 <div id="tbl-2stage-perf" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-2stage-perf-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;5: Performance summary of the 2-Stage Miller OTA configuration.
+Table&nbsp;6: Performance summary of the 2-Stage Miller OTA configuration.
 </figcaption>
 <div aria-describedby="tbl-2stage-perf-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <table class="caption-top table">
@@ -844,388 +870,35 @@ Table&nbsp;5: Performance summary of the 2-Stage Miller OTA configuration.
 </div>
 </figure>
 </div>
-<p>The sizing procedure and its calculation are best performed in a Jupyter notebook, as we can easily look up the exact data from the pre-computed tables:</p>
-<div class="callout callout-style-default callout-tip callout-titled" title="Notebook 2-Stage-OTA Sizing">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Notebook 2-Stage-OTA Sizing
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-2" class="callout-2-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<div class="quarto-embed-nb-cell">
-<div id="cc78b91c" class="cell" data-execution_count="2">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Sizing for a 2 Stage OTA</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pygmid <span class="im">import</span> Lookup <span class="im">as</span> lk</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>lv_nmos <span class="op">=</span> lk(<span class="st">'sg13_lv_nmos.mat'</span>)</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>lv_pmos <span class="op">=</span> lk(<span class="st">'sg13_lv_pmos.mat'</span>)</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># list of parameters: VGS, VDS, VSB, L, W, NFING, ID, VT, GM, GMB, GDS, CGG, CGB, CGD, CGS, CDD, CSS, STH, SFL</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># if not specified, minimum L, VDS=max(vgs)/2=0.9 and VSB=0 are used </span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<div id="3c089c73" class="cell" data-execution_count="22">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># define the given parameters as taken from the specification table or inital guesses</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>c_load <span class="op">=</span> <span class="fl">1e-12</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co">#c_load = 1e-12</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>gm_id_m12 <span class="op">=</span> <span class="dv">11</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>gm_id_m34 <span class="op">=</span> <span class="dv">7</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>gm_id_m5 <span class="op">=</span> <span class="dv">10</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>gm_id_m678 <span class="op">=</span> <span class="dv">6</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>l_12 <span class="op">=</span> <span class="dv">2</span></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>l_34 <span class="op">=</span> <span class="dv">2</span></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>l_5 <span class="op">=</span> <span class="dv">2</span></span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>l_678 <span class="op">=</span> <span class="dv">2</span></span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>f_bw <span class="op">=</span> <span class="fl">10e6</span> <span class="co"># -3dB bandwidth of the voltage buffer</span></span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>i_total_limit <span class="op">=</span> <span class="fl">30e-6</span></span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>i_bias_in <span class="op">=</span> <span class="fl">20e-6</span></span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>output_voltage <span class="op">=</span> <span class="fl">1.3</span></span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>vin_min <span class="op">=</span> <span class="fl">0.7</span></span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>vin_max <span class="op">=</span> <span class="fl">0.9</span></span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>vdd_min <span class="op">=</span> <span class="fl">1.45</span></span>
-<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>vdd_max <span class="op">=</span> <span class="fl">1.55</span></span>
-<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>gain <span class="op">=</span> <span class="dv">60</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<div id="25a219e6" class="cell" data-execution_count="23">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>c_m_min <span class="op">=</span> <span class="fl">0.22</span><span class="op">*</span>c_load</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Industrial scaling multiplier (6.6x the lower bound) to swallow up local device parasitics</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>c_m <span class="op">=</span> <span class="fl">0.5</span><span class="op">*</span>c_load</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co">#c_m = 150e-16</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co">#c_m = c_m_min</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<div id="ac96c216" class="cell" data-execution_count="24">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'</span><span class="ch">\n</span><span class="st">--- Step 2: First Stage Core Sizing ---'</span>)</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>gm_m12_ideal <span class="op">=</span> <span class="dv">3</span><span class="op">*</span>(<span class="dv">2</span> <span class="op">*</span> np.pi <span class="op">*</span> f_bw) <span class="op">*</span> c_m</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>id_m12_ideal <span class="op">=</span> gm_m12_ideal <span class="op">/</span> gm_id_m12</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>i_tail_ideal <span class="op">=</span> <span class="dv">2</span> <span class="op">*</span> id_m12_ideal</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Snapping tail bias current parameter smoothly onto physical layout grid (0.5 µA blocks)</span></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>i_tail <span class="op">=</span> <span class="bu">max</span>(<span class="bu">round</span>(i_tail_ideal <span class="op">/</span> <span class="fl">1e-6</span> <span class="op">*</span> <span class="dv">2</span>) <span class="op">/</span> <span class="dv">2</span> <span class="op">*</span> <span class="fl">1e-6</span>, <span class="fl">0.5e-6</span>)</span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>id_m12 <span class="op">=</span> i_tail <span class="op">/</span> <span class="dv">2</span>   <span class="co"># Re-establish physical branch balance post-quantization</span></span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>gm_m12 <span class="op">=</span> gm_id_m12 <span class="op">*</span> id_m12  <span class="co"># Re-evaluate true manufactured transconductance from grid current</span></span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'Required Analytical gm12 = </span><span class="sc">{</span>gm_m12_ideal<span class="op">*</span><span class="fl">1e3</span><span class="sc">:.5f}</span><span class="ss"> mS'</span>)</span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'Grid Re-aligned I_tail   = </span><span class="sc">{</span>i_tail<span class="op">/</span><span class="fl">1e-6</span><span class="sc">:.2f}</span><span class="ss"> µA'</span>)</span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'True Manufactured gm12   = </span><span class="sc">{</span>gm_m12<span class="op">*</span><span class="fl">1e3</span><span class="sc">:.5f}</span><span class="ss"> mS'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>
---- Step 2: First Stage Core Sizing ---
-Required Analytical gm12 = 0.09425 mS
-Grid Re-aligned I_tail   = 17.00 µA
-True Manufactured gm12   = 0.09350 mS</code></pre>
-</div>
-</div>
-<div id="e8007066" class="cell" data-execution_count="25">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'</span><span class="ch">\n</span><span class="st">--- Step 3: Second Stage Stability-Driven Constraints ---'</span>)</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Image Sizing Rule:</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>gm_m5_req <span class="op">=</span> <span class="fl">2.2</span><span class="op">*</span>f_bw<span class="op">*</span><span class="dv">2</span><span class="op">*</span>np.pi<span class="op">*</span>c_load</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'Required Minimum Stage 2 transconductance gm5 = </span><span class="sc">{</span>gm_m5_req<span class="op">*</span><span class="fl">1e3</span><span class="sc">:.5f}</span><span class="ss"> mS'</span>)</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>id_m5_required <span class="op">=</span> gm_m5_req <span class="op">/</span> gm_id_m5</span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'Analytically Required Stage 2 Bias Current    = </span><span class="sc">{</span>id_m5_required<span class="op">/</span><span class="fl">1e-6</span><span class="sc">:.3f}</span><span class="ss"> µA'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>
---- Step 3: Second Stage Stability-Driven Constraints ---
-Required Minimum Stage 2 transconductance gm5 = 0.13823 mS
-Analytically Required Stage 2 Bias Current    = 13.823 µA</code></pre>
-</div>
-</div>
-<div id="7d8a0d74" class="cell" data-execution_count="26">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># we calculate the first stage  dc gain</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>gm_gds_m12 <span class="op">=</span> lv_nmos.lookup(<span class="st">'GM_GDS'</span>, GM_ID<span class="op">=</span>gm_id_m12, L<span class="op">=</span>l_12, VDS<span class="op">=</span><span class="fl">0.75</span>, VSB<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>gm_gds_m34 <span class="op">=</span> lv_pmos.lookup(<span class="st">'GM_GDS'</span>, GM_ID<span class="op">=</span>gm_id_m34, L<span class="op">=</span>l_34, VDS<span class="op">=</span><span class="fl">0.75</span>, VSB<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>gds_m12 <span class="op">=</span> gm_m12 <span class="op">/</span> gm_gds_m12</span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>gm_m34 <span class="op">=</span> gm_id_m34 <span class="op">*</span> i_tail<span class="op">/</span><span class="dv">2</span></span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>gds_m34 <span class="op">=</span> gm_m34 <span class="op">/</span> gm_gds_m34</span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>a0 <span class="op">=</span> gm_m12 <span class="op">/</span> (gds_m12 <span class="op">+</span> gds_m34)</span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'First stage gain a0 ='</span>, <span class="bu">round</span>(<span class="dv">20</span><span class="op">*</span>np.log10(a0), <span class="dv">1</span>), <span class="st">'dB'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>First stage gain a0 = 31.6 dB</code></pre>
-</div>
-</div>
-<div id="f850fe4e" class="cell" data-execution_count="27">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># we can now look up the VGS of the MOSFET</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>vgs_m12 <span class="op">=</span> lv_nmos.look_upVGS(GM_ID<span class="op">=</span>gm_id_m12, L<span class="op">=</span>l_12, VDS<span class="op">=</span><span class="fl">0.75</span>, VSB<span class="op">=</span><span class="fl">0.0</span>)</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>vgs_m34 <span class="op">=</span> lv_pmos.look_upVGS(GM_ID<span class="op">=</span>gm_id_m34, L<span class="op">=</span>l_34, VDS<span class="op">=</span><span class="fl">0.75</span>, VSB<span class="op">=</span><span class="fl">0.0</span>) </span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>vgs_m76 <span class="op">=</span> lv_nmos.look_upVGS(GM_ID<span class="op">=</span>gm_id_m678, L<span class="op">=</span>l_678, VDS<span class="op">=</span><span class="fl">0.75</span>, VSB<span class="op">=</span><span class="fl">0.0</span>) </span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'vgs_12 ='</span>, <span class="bu">round</span>(<span class="bu">float</span>(vgs_m12), <span class="dv">3</span>), <span class="st">'V'</span>)</span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'vgs_34 ='</span>, <span class="bu">round</span>(<span class="bu">float</span>(vgs_m34), <span class="dv">3</span>), <span class="st">'V'</span>)</span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'vgs_76 ='</span>, <span class="bu">round</span>(<span class="bu">float</span>(vgs_m76), <span class="dv">3</span>), <span class="st">'V'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>vgs_12 = 0.37 V
-vgs_34 = 0.617 V
-vgs_76 = 0.547 V</code></pre>
-</div>
-</div>
-<div id="4aefb7c9" class="cell" data-execution_count="28">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate all widths</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>id_w_m12 <span class="op">=</span> lv_nmos.lookup(<span class="st">'ID_W'</span>, GM_ID<span class="op">=</span>gm_id_m12, L<span class="op">=</span>l_12, VDS<span class="op">=</span>vgs_m12, VSB<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>w_12 <span class="op">=</span> id_m12 <span class="op">/</span> id_w_m12</span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>w_12_round <span class="op">=</span> <span class="bu">max</span>(<span class="bu">round</span>(w_12<span class="op">*</span><span class="dv">2</span>)<span class="op">/</span><span class="dv">2</span>, <span class="fl">0.5</span>)</span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'M1/2 W ='</span>, <span class="bu">round</span>(w_12, <span class="dv">2</span>), <span class="st">'um, rounded W ='</span>, w_12_round, <span class="st">'um'</span>)</span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>id_m34 <span class="op">=</span> id_m12</span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>id_w_m34 <span class="op">=</span> lv_pmos.lookup(<span class="st">'ID_W'</span>, GM_ID<span class="op">=</span>gm_id_m34, L<span class="op">=</span>l_34, VDS<span class="op">=</span>vgs_m34, VSB<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>w_34 <span class="op">=</span> id_m34 <span class="op">/</span> id_w_m34</span>
-<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>w_34_round <span class="op">=</span> <span class="bu">max</span>(<span class="bu">round</span>(w_34<span class="op">*</span><span class="dv">2</span>)<span class="op">/</span><span class="dv">2</span>, <span class="fl">0.5</span>) </span>
-<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'M3/4 W ='</span>, <span class="bu">round</span>(w_34, <span class="dv">2</span>), <span class="st">'um, rounded W ='</span>, w_34_round, <span class="st">'um'</span>)</span>
-<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>id_w_m7 <span class="op">=</span> lv_nmos.lookup(<span class="st">'ID_W'</span>, GM_ID<span class="op">=</span>gm_id_m678, L<span class="op">=</span>l_678, VDS<span class="op">=</span>vgs_m76, VSB<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>w_7 <span class="op">=</span> i_tail <span class="op">/</span> id_w_m7</span>
-<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>w_7_round <span class="op">=</span> <span class="bu">max</span>(<span class="bu">round</span>(w_7<span class="op">*</span><span class="dv">2</span>)<span class="op">/</span><span class="dv">2</span>, <span class="fl">0.5</span>)</span>
-<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'M7 W ='</span>, <span class="bu">round</span>(w_7, <span class="dv">2</span>), <span class="st">'um, rounded W ='</span>, w_7_round, <span class="st">'um'</span>)</span>
-<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a>w_6 <span class="op">=</span> w_7_round <span class="op">*</span> i_bias_in <span class="op">/</span> i_tail</span>
-<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a>w_6_round <span class="op">=</span> <span class="bu">max</span>(<span class="bu">round</span>(w_6<span class="op">*</span><span class="dv">2</span>)<span class="op">/</span><span class="dv">2</span>, <span class="fl">0.5</span>)</span>
-<span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'M6 W ='</span>, <span class="bu">round</span>(w_6_round, <span class="dv">2</span>), <span class="st">'um'</span>)</span>
-<span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-22"><a href="#cb12-22" aria-hidden="true" tabindex="-1"></a><span class="co"># ==============================================================================</span></span>
-<span id="cb12-23"><a href="#cb12-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Sizing for Second Stage: M8 and M5</span></span>
-<span id="cb12-24"><a href="#cb12-24" aria-hidden="true" tabindex="-1"></a><span class="co"># ==============================================================================</span></span>
-<span id="cb12-25"><a href="#cb12-25" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'</span><span class="ch">\n</span><span class="st">--- Second Stage Sizing ---'</span>)</span>
-<span id="cb12-26"><a href="#cb12-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-27"><a href="#cb12-27" aria-hidden="true" tabindex="-1"></a><span class="co"># Step A: Size M8 (Stage 2 NMOS Load Mirror) using id_m5_required</span></span>
-<span id="cb12-28"><a href="#cb12-28" aria-hidden="true" tabindex="-1"></a>id_w_m8 <span class="op">=</span> lv_nmos.lookup(<span class="st">'ID_W'</span>, GM_ID<span class="op">=</span>gm_id_m678, L<span class="op">=</span>l_678, VDS<span class="op">=</span><span class="fl">0.75</span>, VSB<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb12-29"><a href="#cb12-29" aria-hidden="true" tabindex="-1"></a>w_8 <span class="op">=</span> id_m5_required <span class="op">/</span> id_w_m8</span>
-<span id="cb12-30"><a href="#cb12-30" aria-hidden="true" tabindex="-1"></a>w_8_round <span class="op">=</span> <span class="bu">max</span>(<span class="bu">round</span>(w_8 <span class="op">*</span> <span class="dv">2</span>) <span class="op">/</span> <span class="dv">2</span>, <span class="fl">0.5</span>)</span>
-<span id="cb12-31"><a href="#cb12-31" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'M8 W ='</span>, <span class="bu">round</span>(w_8, <span class="dv">2</span>), <span class="st">'um, rounded W ='</span>, w_8_round, <span class="st">'um'</span>)</span>
-<span id="cb12-32"><a href="#cb12-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-33"><a href="#cb12-33" aria-hidden="true" tabindex="-1"></a><span class="co"># Step B: Realign true mirrored current to layout grid constraints</span></span>
-<span id="cb12-34"><a href="#cb12-34" aria-hidden="true" tabindex="-1"></a>mirror_ratio_m8_m6 <span class="op">=</span> w_8_round <span class="op">/</span> w_6_round</span>
-<span id="cb12-35"><a href="#cb12-35" aria-hidden="true" tabindex="-1"></a>id_m5 <span class="op">=</span> i_bias_in <span class="op">*</span> mirror_ratio_m8_m6</span>
-<span id="cb12-36"><a href="#cb12-36" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'True Mirrored Stage 2 Current (id_m5) = </span><span class="sc">{</span>id_m5<span class="op">/</span><span class="fl">1e-6</span><span class="sc">:.3f}</span><span class="ss"> µA'</span>)</span>
-<span id="cb12-37"><a href="#cb12-37" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-38"><a href="#cb12-38" aria-hidden="true" tabindex="-1"></a><span class="co"># Step C: Re-calculate actual physical gm5 and size M5 (PMOS Driver)</span></span>
-<span id="cb12-39"><a href="#cb12-39" aria-hidden="true" tabindex="-1"></a>gm_m5 <span class="op">=</span> gm_id_m5 <span class="op">*</span> id_m5</span>
-<span id="cb12-40"><a href="#cb12-40" aria-hidden="true" tabindex="-1"></a>id_w_m5 <span class="op">=</span> lv_pmos.lookup(<span class="st">'ID_W'</span>, GM_ID<span class="op">=</span>gm_id_m5, L<span class="op">=</span>l_5, VDS<span class="op">=</span><span class="fl">0.75</span>, VSB<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb12-41"><a href="#cb12-41" aria-hidden="true" tabindex="-1"></a>w_5 <span class="op">=</span> id_m5 <span class="op">/</span> id_w_m5</span>
-<span id="cb12-42"><a href="#cb12-42" aria-hidden="true" tabindex="-1"></a>w_5_round <span class="op">=</span> <span class="bu">max</span>(<span class="bu">round</span>(w_5 <span class="op">*</span> <span class="dv">2</span>) <span class="op">/</span> <span class="dv">2</span>, <span class="fl">0.5</span>)</span>
-<span id="cb12-43"><a href="#cb12-43" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'M5 W ='</span>, <span class="bu">round</span>(w_5, <span class="dv">2</span>), <span class="st">'um, rounded W ='</span>, w_5_round, <span class="st">'um'</span>)</span>
-<span id="cb12-44"><a href="#cb12-44" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-45"><a href="#cb12-45" aria-hidden="true" tabindex="-1"></a><span class="co"># Step D: Complete the flow with your Zero-Nulling Resistor value</span></span>
-<span id="cb12-46"><a href="#cb12-46" aria-hidden="true" tabindex="-1"></a>rz <span class="op">=</span> <span class="dv">2</span> <span class="op">/</span> gm_m5</span>
-<span id="cb12-47"><a href="#cb12-47" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'Textbook Zero-Nulling Resistor Rz = </span><span class="sc">{</span>rz<span class="op">/</span><span class="fl">1e3</span><span class="sc">:.2f}</span><span class="ss"> kΩ'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>M1/2 W = 2.7 um, rounded W = 2.5 um
-M3/4 W = 3.55 um, rounded W = 3.5 um
-M7 W = 1.25 um, rounded W = 1.5 um
-M6 W = 2.0 um
-
---- Second Stage Sizing ---
-M8 W = 1.01 um, rounded W = 1.0 um
-True Mirrored Stage 2 Current (id_m5) = 10.000 µA
-M5 W = 9.27 um, rounded W = 9.5 um
-Textbook Zero-Nulling Resistor Rz = 20.00 kΩ</code></pre>
-</div>
-</div>
-<div id="f15a2d36" class="cell" data-execution_count="29">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ==============================================================================</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 5. Total Open-Loop DC Gain Evaluation</span></span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="co"># ==============================================================================</span></span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'</span><span class="ch">\n</span><span class="st">--- Total DC Gain Evaluation ---'</span>)</span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Second stage gain evaluation</span></span>
-<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract the intrinsic gain of the PMOS Common-Source driver (M5)</span></span>
-<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>gm_gds_m5 <span class="op">=</span> lv_pmos.lookup(<span class="st">'GM_GDS'</span>, GM_ID<span class="op">=</span>gm_id_m5, L<span class="op">=</span>l_5, VDS<span class="op">=</span><span class="fl">0.75</span>, VSB<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>gds_m5    <span class="op">=</span> gm_m5 <span class="op">/</span> gm_gds_m5</span>
-<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract the output conductance density of the NMOS mirror load (M8)</span></span>
-<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>gds_id_m8 <span class="op">=</span> lv_nmos.lookup(<span class="st">'GDS_ID'</span>, GM_ID<span class="op">=</span>gm_id_m678, L<span class="op">=</span>l_678, VDS<span class="op">=</span><span class="fl">0.75</span>, VSB<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>gds_m8    <span class="op">=</span> gds_id_m8 <span class="op">*</span> id_m5</span>
-<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute Stage 2 Gain</span></span>
-<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a>a1 <span class="op">=</span> gm_m5 <span class="op">/</span> (gds_m5 <span class="op">+</span> gds_m8)</span>
-<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute Total Open-Loop Gain</span></span>
-<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a>a0_total <span class="op">=</span> a0 <span class="op">*</span> a1</span>
-<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'Stage 1 Open-Loop Gain (A1) = </span><span class="sc">{</span><span class="dv">20</span><span class="op">*</span>np<span class="sc">.</span>log10(a0)<span class="sc">:.1f}</span><span class="ss"> dB'</span>)</span>
-<span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'Stage 2 Open-Loop Gain (A2) = </span><span class="sc">{</span><span class="dv">20</span><span class="op">*</span>np<span class="sc">.</span>log10(a1)<span class="sc">:.1f}</span><span class="ss"> dB'</span>)</span>
-<span id="cb14-23"><a href="#cb14-23" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'Total Open-Loop Gain (A0)   = </span><span class="sc">{</span><span class="dv">20</span><span class="op">*</span>np<span class="sc">.</span>log10(a0_total)<span class="sc">:.1f}</span><span class="ss"> dB'</span>)</span>
-<span id="cb14-24"><a href="#cb14-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-25"><a href="#cb14-25" aria-hidden="true" tabindex="-1"></a>gain_error <span class="op">=</span> a0_total <span class="op">/</span> (<span class="dv">1</span> <span class="op">+</span> a0_total)</span>
-<span id="cb14-26"><a href="#cb14-26" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'voltage gain error ='</span>, <span class="bu">round</span>((gain_error<span class="op">-</span><span class="dv">1</span>)<span class="op">*</span><span class="dv">100</span>, <span class="dv">1</span>), <span class="st">'%'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>
---- Total DC Gain Evaluation ---
-Stage 1 Open-Loop Gain (A1) = 31.6 dB
-Stage 2 Open-Loop Gain (A2) = 34.3 dB
-Total Open-Loop Gain (A0)   = 65.9 dB
-voltage gain error = -0.1 %</code></pre>
-</div>
-</div>
-<div id="d7efc406" class="cell" data-execution_count="30">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ==============================================================================</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 6. Node Parasitic Extraction, Actual UGBW, and Final Summary</span></span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="co"># ==============================================================================</span></span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'--- Node Parasitic Extraction &amp; Actual UGBW ---'</span>)</span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Look up frequency-dependent parasitic caps</span></span>
-<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>gm_cgs_m12  <span class="op">=</span> lv_nmos.lookup(<span class="st">'GM_CGS'</span>, GM_ID<span class="op">=</span>gm_id_m12, L<span class="op">=</span>l_12,  VDS<span class="op">=</span><span class="fl">0.75</span>, VSB<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>gm_cdd_m12  <span class="op">=</span> lv_nmos.lookup(<span class="st">'GM_CDD'</span>, GM_ID<span class="op">=</span>gm_id_m12, L<span class="op">=</span>l_12,  VDS<span class="op">=</span><span class="fl">0.75</span>, VSB<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>gm_cdd_m34  <span class="op">=</span> lv_pmos.lookup(<span class="st">'GM_CDD'</span>, GM_ID<span class="op">=</span>gm_id_m34, L<span class="op">=</span>l_34,  VDS<span class="op">=</span><span class="fl">0.75</span>, VSB<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a><span class="co"># NEW: Look up the gate-capacitance of the M5 driver</span></span>
-<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>gm_cgg_m5   <span class="op">=</span> lv_pmos.lookup(<span class="st">'GM_CGG'</span>, GM_ID<span class="op">=</span>gm_id_m5,   L<span class="op">=</span>l_5,   VDS<span class="op">=</span><span class="fl">0.75</span>, VSB<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>gm_w_m34 <span class="op">=</span> lv_pmos.lookup(<span class="st">'GM_W'</span>, GM_ID<span class="op">=</span>gm_id_m34, L<span class="op">=</span>l_34, VDS<span class="op">=</span><span class="fl">0.75</span>, VSB<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a>gm_m34   <span class="op">=</span> gm_w_m34 <span class="op">*</span> w_34_round</span>
-<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a><span class="co"># NEW: Add the M5 gate load to the total internal node parasitic calculation</span></span>
-<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a>c_para_internal <span class="op">=</span> <span class="bu">abs</span>(gm_m12 <span class="op">/</span> gm_cgs_m12) <span class="op">+</span> <span class="bu">abs</span>(gm_m12 <span class="op">/</span> gm_cdd_m12) <span class="op">+</span> <span class="bu">abs</span>(gm_m34 <span class="op">/</span> gm_cdd_m34) <span class="op">+</span> <span class="bu">abs</span>(gm_m5 <span class="op">/</span> gm_cgg_m5)</span>
-<span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a><span class="co"># The effective Miller capacitance includes this parallel parasitic loading</span></span>
-<span id="cb16-21"><a href="#cb16-21" aria-hidden="true" tabindex="-1"></a>c_m_eff <span class="op">=</span> c_m <span class="op">+</span> c_para_internal</span>
-<span id="cb16-22"><a href="#cb16-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-23"><a href="#cb16-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the actual physical UGBW roll-off from the true c_m_eff</span></span>
-<span id="cb16-24"><a href="#cb16-24" aria-hidden="true" tabindex="-1"></a>f_bw_actual <span class="op">=</span> gm_m12 <span class="op">/</span> (<span class="dv">2</span> <span class="op">*</span> np.pi <span class="op">*</span> c_m_eff)</span>
-<span id="cb16-25"><a href="#cb16-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-26"><a href="#cb16-26" aria-hidden="true" tabindex="-1"></a>t_slew <span class="op">=</span> c_m_eff<span class="op">*</span>output_voltage <span class="op">/</span> i_tail</span>
-<span id="cb16-27"><a href="#cb16-27" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'slewing time ='</span>, <span class="bu">round</span>(t_slew<span class="op">/</span><span class="fl">1e-6</span>, <span class="dv">3</span>), <span class="st">'µs'</span>)</span>
-<span id="cb16-28"><a href="#cb16-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-29"><a href="#cb16-29" aria-hidden="true" tabindex="-1"></a>tau <span class="op">=</span> <span class="dv">1</span> <span class="op">/</span> (<span class="dv">2</span> <span class="op">*</span> np.pi <span class="op">*</span> f_bw_actual)</span>
-<span id="cb16-30"><a href="#cb16-30" aria-hidden="true" tabindex="-1"></a>t_settle <span class="op">=</span> <span class="dv">5</span> <span class="op">*</span> tau</span>
-<span id="cb16-31"><a href="#cb16-31" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'settling time ='</span>, <span class="bu">round</span>(t_settle<span class="op">/</span><span class="fl">1e-6</span>, <span class="dv">3</span>), <span class="st">'µs'</span>)</span>
-<span id="cb16-32"><a href="#cb16-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-33"><a href="#cb16-33" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'Internal Node Parasitic Load = </span><span class="sc">{</span>c_para_internal<span class="op">/</span><span class="fl">1e-15</span><span class="sc">:.2f}</span><span class="ss"> fF and of which m5 </span><span class="sc">{</span><span class="bu">abs</span>(gm_m5 <span class="op">/</span> gm_cgg_m5)<span class="op">/</span><span class="fl">1e-15</span><span class="sc">}</span><span class="ss">'</span>)</span>
-<span id="cb16-34"><a href="#cb16-34" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'Effective Miller Capacitance = </span><span class="sc">{</span>c_m_eff<span class="op">/</span><span class="fl">1e-15</span><span class="sc">:.2f}</span><span class="ss"> fF'</span>)</span>
-<span id="cb16-35"><a href="#cb16-35" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-36"><a href="#cb16-36" aria-hidden="true" tabindex="-1"></a>i_total_rail <span class="op">=</span> i_bias_in <span class="op">+</span> i_tail <span class="op">+</span> id_m5</span>
-<span id="cb16-37"><a href="#cb16-37" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-38"><a href="#cb16-38" aria-hidden="true" tabindex="-1"></a><span class="co"># Power calculation at the minimum and maximum VDD limits</span></span>
-<span id="cb16-39"><a href="#cb16-39" aria-hidden="true" tabindex="-1"></a>power_dissipation_min <span class="op">=</span> i_total_rail <span class="op">*</span> vdd_min</span>
-<span id="cb16-40"><a href="#cb16-40" aria-hidden="true" tabindex="-1"></a>power_dissipation_max <span class="op">=</span> i_total_rail <span class="op">*</span> vdd_max</span>
-<span id="cb16-41"><a href="#cb16-41" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Total Current from VDD Rail = </span><span class="sc">{</span>i_total_rail<span class="op">/</span><span class="fl">1e-6</span><span class="sc">:.2f}</span><span class="ss"> µA"</span>)</span>
-<span id="cb16-42"><a href="#cb16-42" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-43"><a href="#cb16-43" aria-hidden="true" tabindex="-1"></a><span class="co"># ==============================================================================</span></span>
-<span id="cb16-44"><a href="#cb16-44" aria-hidden="true" tabindex="-1"></a><span class="co"># 7. Final Industrial Sizing Blueprint Summary Printout</span></span>
-<span id="cb16-45"><a href="#cb16-45" aria-hidden="true" tabindex="-1"></a><span class="co"># ==============================================================================</span></span>
-<span id="cb16-46"><a href="#cb16-46" aria-hidden="true" tabindex="-1"></a>cap_density <span class="op">=</span> <span class="fl">1.5e-15</span></span>
-<span id="cb16-47"><a href="#cb16-47" aria-hidden="true" tabindex="-1"></a>w_cm_approx <span class="op">=</span> np.sqrt(c_m <span class="op">/</span> cap_density)</span>
-<span id="cb16-48"><a href="#cb16-48" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-49"><a href="#cb16-49" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'</span><span class="ch">\n</span><span class="st">============================================================'</span>)</span>
-<span id="cb16-50"><a href="#cb16-50" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'  Textbook-Aligned Industrial 2-Stage Miller OTA Blueprint'</span>)</span>
-<span id="cb16-51"><a href="#cb16-51" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'============================================================'</span>)</span>
-<span id="cb16-52"><a href="#cb16-52" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'</span><span class="ch">\n</span><span class="st">Manufactured Device Sizes:'</span>)</span>
-<span id="cb16-53"><a href="#cb16-53" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'  M1/2  W = </span><span class="sc">{</span>w_12_round<span class="sc">}</span><span class="ss"> µm,  L = </span><span class="sc">{</span>l_12<span class="sc">}</span><span class="ss"> µm   [NMOS Input Pair]'</span>)</span>
-<span id="cb16-54"><a href="#cb16-54" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'  M3/4  W = </span><span class="sc">{</span>w_34_round<span class="sc">}</span><span class="ss"> µm,  L = </span><span class="sc">{</span>l_34<span class="sc">}</span><span class="ss"> µm   [PMOS Active Load]'</span>)</span>
-<span id="cb16-55"><a href="#cb16-55" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'  M5    W = </span><span class="sc">{</span>w_5_round<span class="sc">}</span><span class="ss"> µm,  L = </span><span class="sc">{</span>l_5<span class="sc">}</span><span class="ss"> µm   [PMOS CS Driver]'</span>)</span>
-<span id="cb16-56"><a href="#cb16-56" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'  M6    W = </span><span class="sc">{</span>w_6_round<span class="sc">}</span><span class="ss"> µm,  L = </span><span class="sc">{</span>l_678<span class="sc">}</span><span class="ss"> µm   [NMOS Ref Mirror]'</span>)</span>
-<span id="cb16-57"><a href="#cb16-57" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'  M7    W = </span><span class="sc">{</span>w_7_round<span class="sc">}</span><span class="ss"> µm,  L = </span><span class="sc">{</span>l_678<span class="sc">}</span><span class="ss"> µm   [NMOS Tail Mirror]'</span>)</span>
-<span id="cb16-58"><a href="#cb16-58" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'  M8    W = </span><span class="sc">{</span>w_8_round<span class="sc">}</span><span class="ss"> µm,  L = </span><span class="sc">{</span>l_678<span class="sc">}</span><span class="ss"> µm   [NMOS Load Mirror]'</span>)</span>
-<span id="cb16-59"><a href="#cb16-59" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-60"><a href="#cb16-60" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'</span><span class="ch">\n</span><span class="st">Passives Allocation:'</span>)</span>
-<span id="cb16-61"><a href="#cb16-61" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'  Miller Cap Cm       = </span><span class="sc">{</span>c_m<span class="op">/</span><span class="fl">1e-15</span><span class="sc">:.1f}</span><span class="ss"> fF (</span><span class="sc">{</span>w_cm_approx<span class="sc">:.1f}</span><span class="ss"> x </span><span class="sc">{</span>w_cm_approx<span class="sc">:.1f}</span><span class="ss"> µm MOM cap)'</span>)</span>
-<span id="cb16-62"><a href="#cb16-62" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'  Nulling Resistor Rz = </span><span class="sc">{</span>rz<span class="op">/</span><span class="fl">1e3</span><span class="sc">:.2f}</span><span class="ss"> kΩ'</span>)</span>
-<span id="cb16-63"><a href="#cb16-63" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-64"><a href="#cb16-64" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'</span><span class="ch">\n</span><span class="st">Evaluated Performance Metrics:'</span>)</span>
-<span id="cb16-65"><a href="#cb16-65" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'  Target Specification UGBW = </span><span class="sc">{</span>f_bw<span class="op">/</span><span class="fl">1e6</span><span class="sc">:.2f}</span><span class="ss"> MHz'</span>)</span>
-<span id="cb16-66"><a href="#cb16-66" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'  Actual Predicted UGBW     = </span><span class="sc">{</span>f_bw_actual<span class="op">/</span><span class="fl">1e6</span><span class="sc">:.2f}</span><span class="ss"> MHz (including layout parasitics)'</span>)</span>
-<span id="cb16-67"><a href="#cb16-67" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'  Stage 1 Open-Loop Gain A1 = </span><span class="sc">{</span><span class="dv">20</span><span class="op">*</span>np<span class="sc">.</span>log10(a0)<span class="sc">:.1f}</span><span class="ss"> dB'</span>)</span>
-<span id="cb16-68"><a href="#cb16-68" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'  Stage 2 Open-Loop Gain A2 = </span><span class="sc">{</span><span class="dv">20</span><span class="op">*</span>np<span class="sc">.</span>log10(a1)<span class="sc">:.1f}</span><span class="ss"> dB'</span>)</span>
-<span id="cb16-69"><a href="#cb16-69" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'  Total Open-Loop Gain A0   = </span><span class="sc">{</span><span class="dv">20</span><span class="op">*</span>np<span class="sc">.</span>log10(a0_total)<span class="sc">:.1f}</span><span class="ss"> dB (Specification: &gt;= </span><span class="sc">{</span>gain<span class="sc">}</span><span class="ss"> dB)'</span>)</span>
-<span id="cb16-70"><a href="#cb16-70" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-71"><a href="#cb16-71" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'</span><span class="ch">\n</span><span class="st">Current Consumption Budget:'</span>)</span>
-<span id="cb16-72"><a href="#cb16-72" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'  Stage 1 Tail Branch (I_tail) = </span><span class="sc">{</span>i_tail<span class="op">/</span><span class="fl">1e-6</span><span class="sc">:.2f}</span><span class="ss"> µA'</span>)</span>
-<span id="cb16-73"><a href="#cb16-73" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'  Stage 2 Core Branch (Id_M5)  = </span><span class="sc">{</span>id_m5<span class="op">/</span><span class="fl">1e-6</span><span class="sc">:.2f}</span><span class="ss"> µA'</span>)</span>
-<span id="cb16-74"><a href="#cb16-74" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'  Total Net Core Current Draw  = </span><span class="sc">{</span>(i_tail <span class="op">+</span> id_m5)<span class="op">/</span><span class="fl">1e-6</span><span class="sc">:.2f}</span><span class="ss"> µA (Limit Budget: &lt;= </span><span class="sc">{</span>i_total_limit<span class="op">/</span><span class="fl">1e-6</span><span class="sc">:.2f}</span><span class="ss"> µA)'</span>)</span>
-<span id="cb16-75"><a href="#cb16-75" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"  Power Dissipation (at VDD = </span><span class="sc">{</span>vdd_max<span class="sc">}</span><span class="ss">V) = </span><span class="sc">{</span>power_dissipation_max<span class="op">*</span><span class="fl">1e6</span><span class="sc">:.2f}</span><span class="ss"> µW"</span>)</span>
-<span id="cb16-76"><a href="#cb16-76" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'============================================================'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>--- Node Parasitic Extraction &amp; Actual UGBW ---
-slewing time = 0.046 µs
-settling time = 0.032 µs
-Internal Node Parasitic Load = 99.54 fF and of which m5 80.75863693703191
-Effective Miller Capacitance = 599.54 fF
-Total Current from VDD Rail = 47.00 µA
-
-============================================================
-  Textbook-Aligned Industrial 2-Stage Miller OTA Blueprint
-============================================================
-
-Manufactured Device Sizes:
-  M1/2  W = 2.5 µm,  L = 2 µm   [NMOS Input Pair]
-  M3/4  W = 3.5 µm,  L = 2 µm   [PMOS Active Load]
-  M5    W = 9.5 µm,  L = 2 µm   [PMOS CS Driver]
-  M6    W = 2.0 µm,  L = 2 µm   [NMOS Ref Mirror]
-  M7    W = 1.5 µm,  L = 2 µm   [NMOS Tail Mirror]
-  M8    W = 1.0 µm,  L = 2 µm   [NMOS Load Mirror]
-
-Passives Allocation:
-  Miller Cap Cm       = 500.0 fF (18.3 x 18.3 µm MOM cap)
-  Nulling Resistor Rz = 20.00 kΩ
-
-Evaluated Performance Metrics:
-  Target Specification UGBW = 10.00 MHz
-  Actual Predicted UGBW     = 24.82 MHz (including layout parasitics)
-  Stage 1 Open-Loop Gain A1 = 31.6 dB
-  Stage 2 Open-Loop Gain A2 = 34.3 dB
-  Total Open-Loop Gain A0   = 65.9 dB (Specification: &gt;= 60 dB)
-
-Current Consumption Budget:
-  Stage 1 Tail Branch (I_tail) = 17.00 µA
-  Stage 2 Core Branch (Id_M5)  = 10.00 µA
-  Total Net Core Current Draw  = 27.00 µA (Limit Budget: &lt;= 30.00 µA)
-  Power Dissipation (at VDD = 1.55V) = 72.85 µW
-============================================================</code></pre>
-</div>
-</div>
-<a class="quarto-notebook-link" id="nblink-2" href="gmid\sizing_2_stage_ota-preview.html#cc78b91c">Source: Sizing for a 2 Stage OTA</a></div>
-</div>
-</div>
-</div>
 </section>
 </section>
-<section id="stage-ota-simulation-framework-and-results" class="level2" data-number="2.4">
-<h2 data-number="2.4" class="anchored" data-anchor-id="stage-ota-simulation-framework-and-results"><span class="header-section-number">2.4</span> 2-Stage OTA Simulation Framework and Results</h2>
-<p>To validate the analytical sizing derivations and empirical stability optimizations, the design was constructed and verified inside the <strong>Xschem</strong> schematic capture environment utilizing the <strong>IHP SG13G2</strong> open-source PDK.</p>
-<section id="simulation-environment-setup" class="level3" data-number="2.4.1">
-<h3 data-number="2.4.1" class="anchored" data-anchor-id="simulation-environment-setup"><span class="header-section-number">2.4.1</span> Simulation Environment Setup</h3>
-<p>The core amplifier design is encapsulated within a hierarchical block structure:</p>
+<section id="frequency-response-and-stability-analysis-5t-vs.-2-stage-miller-ota" class="level2" data-number="5.4">
+<h2 data-number="5.4" class="anchored" data-anchor-id="frequency-response-and-stability-analysis-5t-vs.-2-stage-miller-ota"><span class="header-section-number">5.4</span> Frequency Response and Stability Analysis: 5T vs.&nbsp;2-Stage Miller OTA</h2>
+<section id="t-ota-performance-with-l-5-mutextm" class="level3" data-number="5.4.1">
+<h3 data-number="5.4.1" class="anchored" data-anchor-id="t-ota-performance-with-l-5-mutextm"><span class="header-section-number">5.4.1</span> 1. 5T OTA Performance with <span class="math inline">\(L = 5\ \mu\text{m}\)</span></h3>
+<p>The initial design of a single-stage 5T Operational Transconductance Amplifier (OTA) targeted an audio-frequency <strong>Unity-Gain Bandwidth (UGBW) of 10 MHz</strong>. Using a large channel length of <span class="math inline">\(L = 5\ \mu\text{m}\)</span> was successful in this architecture. Because a 5T OTA is a single-stage topology, its frequency response is dictated by a single dominant pole at the output. Any secondary, non-dominant poles lie far enough beyond the 10 MHz target that they do not impact loop stability.</p>
+</section>
+<section id="stage-miller-ota-the-l-5-mutextm-instability" class="level3" data-number="5.4.2">
+<h3 data-number="5.4.2" class="anchored" data-anchor-id="stage-miller-ota-the-l-5-mutextm-instability"><span class="header-section-number">5.4.2</span> 2. 2-Stage Miller OTA: The <span class="math inline">\(L = 5\ \mu\text{m}\)</span> Instability</h3>
+<p>When expanding the design to a <strong>2-Stage Miller-Compensated OTA</strong> using the same <span class="math inline">\(L = 5\ \mu\text{m}\)</span> for the gain stages, the frequency response exhibited prominent <strong>peaking (“bumps”) at high frequencies</strong>, indicating a severe degradation of Phase Margin and potential circuit instability.</p>
+<p>To diagnose this, the <span class="math inline">\(f_{\text{T}}\)</span> vs.&nbsp;<span class="math inline">\(g_{\text{m}}/I_{\text{D}}\)</span> characteristic plot for the <code>sg13_lv_nmos</code> device was analyzed: * For <span class="math inline">\(L = 5\ \mu\text{m}\)</span>, the transit frequency (<span class="math inline">\(f_{\text{T}}\)</span>) curve is nearly completely flat across the moderate inversion region (<span class="math inline">\(g_{\text{m}}/I_{\text{D}} = 10 \text{ to } 15\text{ S/A}\)</span>), hovering at a very low absolute value. * This flatness demonstrates that at <span class="math inline">\(L = 5\ \mu\text{m}\)</span>, the transistor’s local speed capability is heavily restricted regardless of the biasing condition. * In a 2-stage amplifier, the second gain stage creates a critical non-dominant pole. Because the <span class="math inline">\(L = 5\ \mu\text{m}\)</span> device is fundamentally limited in speed, this non-dominant pole was trapped too close to the target 10 MHz UGBW, leading to the observed high-frequency peaking.</p>
+</section>
+<section id="optimization-and-resolution-via-l-2-mutextm" class="level3" data-number="5.4.3">
+<h3 data-number="5.4.3" class="anchored" data-anchor-id="optimization-and-resolution-via-l-2-mutextm"><span class="header-section-number">5.4.3</span> 3. Optimization and Resolution via <span class="math inline">\(L = 2\ \mu\text{m}\)</span></h3>
+<p>Based on the insights from the <span class="math inline">\(f_{\text{T}}\)</span> plot, the channel length was reduced to <strong><span class="math inline">\(L = 2\ \mu\text{m}\)</span></strong> to shift the device operating point onto a higher, more dynamic speed curve.</p>
 <ul>
-<li><strong><code>ota-2stage.sch</code> &amp; <code>ota-2stage.sym</code>:</strong> The fundamental cell schematic and corresponding symbol containing the optimized geometric sizing (e.g., <span class="math inline">\(L = 2\text{ }\mu\text{m}\)</span>, <span class="math inline">\(C_{\mathrm{M}} = 0.9\text{ pF}\)</span>, and <span class="math inline">\(R_{\mathrm{z}} = 24\text{ k}\Omega\)</span>).</li>
-</ul>
-<p>To evaluate the design against all primary performance metrics, three separate testbenches were built in the same workspace folder:</p>
-<ol type="1">
-<li><strong><code>ota-2stage_tb-ac.sch</code>:</strong> Small-signal AC analysis to characterize open-loop DC gain (<span class="math inline">\(A_0\)</span>), Phase Margin (<span class="math inline">\(\text{PM}\)</span>), and Unity-Gain Bandwidth (<span class="math inline">\(\text{UGBW}\)</span>).</li>
-<li><strong><code>ota-2stage_tb-trans.sch</code>:</strong> Transient analysis to verify step-response behavior, settling time, and large-signal slew-rate limitations under a realistic <span class="math inline">\(1\text{ pF}\)</span> load.</li>
-<li><strong><code>ota-2stage_tb-noise.sch</code>:</strong> Noise spectrum evaluation to quantify the input-referred thermal and flicker (<span class="math inline">\(1/f\)</span>) noise floor.</li>
-</ol>
-<hr>
-</section>
-<section id="key-simulation-performance-results" class="level3" data-number="2.4.2">
-<h3 data-number="2.4.2" class="anchored" data-anchor-id="key-simulation-performance-results"><span class="header-section-number">2.4.2</span> Key Simulation Performance Results</h3>
-<p>The simulation runs verified that the optimized pole-splitting configuration successfully resolves the high-frequency stability challenges encountered in early design cycles.</p>
-<section id="small-signal-ac-response" class="level4" data-number="2.4.2.1">
-<h4 data-number="2.4.2.1" class="anchored" data-anchor-id="small-signal-ac-response"><span class="header-section-number">2.4.2.1</span> 1. Small-Signal AC Response</h4>
-<p>The AC characterization plots confirm an exceptionally clean frequency roll-off profile:</p>
-<ul>
-<li><strong>Unity-Gain Bandwidth (<span class="math inline">\(\text{UGBW}\)</span>):</strong> The simulated crossover frequency measures safely <strong>above the <span class="math inline">\(10\text{ MHz}\)</span> minimum requirement</strong>.</li>
-<li><strong>Loop Stability:</strong> Thanks to the Left-Half Plane (LHP) zero tracking added by the <span class="math inline">\(24\text{ k}\Omega\)</span> nulling resistor, the phase response exhibits no peak degradation or peaking anomalies near the roll-off frequency. The phase margin settles into a stable, well-damped region, ensuring no risk of ringing or oscillation.</li>
-</ul>
-</section>
-<section id="transient-and-noise-fidelity" class="level4" data-number="2.4.2.2">
-<h4 data-number="2.4.2.2" class="anchored" data-anchor-id="transient-and-noise-fidelity"><span class="header-section-number">2.4.2.2</span> 2. Transient and Noise Fidelity</h4>
-<ul>
-<li>The transient step response simulation (<code>ota-2stage_tb-trans.sch</code>) shows a well-behaved, symmetric settling behavior with minimal overshoot.</li>
-<li>The noise simulation (<code>ota-2stage_tb-noise.sch</code>) verifies that the input-referred noise voltage is kept low within the audio band.</li>
+<li><strong>Result:</strong> Decreasing <span class="math inline">\(L\)</span> successfully pushed the non-dominant pole to a significantly higher frequency, well out of the way of the audio bandwidth.</li>
+<li>Combined with a minor increase in the Miller compensation capacitance (<span class="math inline">\(C_{\text{M}}\)</span>) to cleanly split the poles, the high-frequency bumps were completely eliminated. This yielded a smooth, stable open-loop roll-off with a robust phase margin and a well-defined UGBW of 10 MHz.</li>
 </ul>
 </section>
 </section>
 </section>
-</section>
-<section id="references" class="level1 unnumbered" data-number="3">
+<section id="references" class="level1 unnumbered" data-number="6">
 
 
 </section>
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">3 References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">6 References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="list">
 <div id="ref-alberto2025miller" class="csl-entry" role="listitem">
 L., Alberto. 2025. <span>“Understanding Miller Compensation: A Guide to Frequency Stability.”</span> Mis Circuitos, July 1. <a href="https://miscircuitos.com/understanding-miller-compensation-a-guide-to-frequency-stability/">https://miscircuitos.com/understanding-miller-compensation-a-guide-to-frequency-stability/</a>.
 </div>
