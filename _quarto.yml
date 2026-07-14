@@ -1,6 +1,15 @@
 project:
   type: website
   output-dir: docs
+  # Explicitly tell Quarto what files to render, and what to ignore:
+  render:
+    - "document.ipynb"
+    - "gmid/sizing_2_stage_ota.ipynb"
+    - "gmid/techsweep_sg13_plots_nmos.ipynb"
+
+website:
+  title: 'Design of a 4th Order Hybrid Linkwitz-Riley Crossover Filter'
 
 execute:
   execute: true
+  freeze: true

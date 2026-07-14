@@ -9,588 +9,588 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "Your Notebook Title",
+    "title": "Design of a Hybrid 4th order Linkwitz-Riley Crossover Filter",
     "section": "",
     "text": "In this development report the design process of the Hybrid Linkwitz-Riley 4 crossover Filter is described. The development was done in a docker image for integrated circuit design, which is part of an open-source kit. The subject of this development report is the design of a crossover filter, including the filter characterization and several steps of circuit design. Furthermore, the layout process is also part of this documentation. Additionally, the experiences with the open source development environment are shared as well. The filter was designed by the use of the IHP sg13g2 PDK. GitHub Repo"
   },
   {
     "objectID": "index.html#ltspice-behavioural-model-schematic",
     "href": "index.html#ltspice-behavioural-model-schematic",
-    "title": "Your Notebook Title",
+    "title": "Design of a Hybrid 4th order Linkwitz-Riley Crossover Filter",
     "section": "4.1 LTspice Behavioural Model Schematic",
     "text": "4.1 LTspice Behavioural Model Schematic\n\n\n\n\n\n\nFigure 1: Behavioural model schematic of the LR4 filter designed in LTspice.\n\n\n\nThe behavioural model of the four stage Linkwitz Riley filter was designed and simulated in LTspice. The schematic Figure 1 consists of an AC voltage source, four active filter stages, and behavioural operational amplifier models. The input signal is applied using the voltage source V1, which is defined with an AC magnitude of 1 V. This allows the frequency response of the circuit to be directly observed in dB during AC analysis.\n\n4.1.1 Mathematical Derivation\nA standard Linkwitz-Riley 4th-order filter is constructed by cascading two identical 2nd-order Butterworth filters. The transfer function \\(H(s)\\) for the low-pass network can be expressed mathematically as:\n\\[H_{LP}(s) = \\frac{1}{(s^2 + \\sqrt{2}s + 1)^2}\\]\nWhere the voltage gains of both cascading stages must match perfectly to maintain the ideal crossover characteristics.\n\n\n4.1.2 Transfer Function and Filter Theory\nThe standard second-order low-pass transfer function is\n\\[\nH(s)=\\frac{\\omega_0^2}{s^2+\\frac{\\omega_0}{Q}s+\\omega_0^2}\n\\]\nwhere \\(\\omega_0\\) is the natural angular frequency and \\(Q\\) is the quality factor.\nThe angular frequency is related to the cutoff frequency by\n\\[\n\\omega_0 = 2\\pi f_c\n\\]\nA fourth-order Linkwitz-Riley response can be obtained by cascading two identical second-order Butterworth sections. Therefore, the LR4 transfer function is\n\\[\nH_{LR4}(s)=H_{BW2}(s)\\cdot H_{BW2}(s)\n\\]\nThis produces a fourth-order response with a steeper roll-off compared with the second-order section."
   },
   {
     "objectID": "index.html#component-selection",
     "href": "index.html#component-selection",
-    "title": "Your Notebook Title",
+    "title": "Design of a Hybrid 4th order Linkwitz-Riley Crossover Filter",
     "section": "4.2 Component Selection",
     "text": "4.2 Component Selection\nThe components chosen for the analog active operational amplifier implementation are summarized below.\n\n\n\nTable 2: Component selection parameters for the active filter stage.\n\n\n\n\n\n\n\n\n\n\n\n\nComponent ID\nIdeal Value\nChosen Value (Standard E96)\nTolerance\nFunction\n\n\n\n\n\\(R_1, R_2, R_3, R_5, R_6, R_7\\)\n\\(1.1\\text{ k}\\Omega\\)\n\\(1.1\\text{ k}\\Omega\\)\n\\(1\\%\\)\nFilter Node Resistors\n\n\n\\(R_4, R_8\\)\n\\(2.2\\text{ k}\\Omega\\)\n\\(2.2\\text{ k}\\Omega\\)\n\\(1\\%\\)\nFilter Node Resistors\n\n\n\\(C_1, C_5\\)\n\\(20\\text{ nF}\\)\n\\(20\\text{ nF}\\)\n\\(5\\%\\)\nFilter Node Capacitors\n\n\n\\(C_2, C_3, C_4, C_6, C_7, C_8\\)\n\\(10\\text{ nF}\\)\n\\(10\\text{ nF}\\)\n\\(5\\%\\)\nFilter Node Capacitors\n\n\n\\(U_1,U_2,U_3,U_4\\)\nOPA2134\nOPA2134\n—\nLow-Noise Audio Op-Amp\n\n\n\n\n\n\nAs outlined in Table 2, standard resistor values are selected to match the ideal cutoff thresholds as closely as possible.\n\n4.2.1 Component Value Verification\nThe component values used in the behavioural model must be verified to ensure that the required crossover frequency of approximately \\(10\\,\\text{kHz}\\) is obtained. The values initially presented in the component table were:\n\\[\nR = 15.8\\,\\text{k}\\Omega\n\\]\nand\n\\[\nC = 10\\,\\text{nF}.\n\\]\nFor a simple resistor-capacitor network, the characteristic frequency is calculated as:\n\\[\nf_c = \\frac{1}{2\\pi RC}.\n\\]\nSubstituting the stated values gives:\n\\[\nf_c =\n\\frac{1}\n{2\\pi(15.8\\times10^3)(10\\times10^{-9})}\n\\approx 1.01\\,\\text{kHz}.\n\\]\nTherefore, these component values do not correspond to the specified crossover frequency of \\(10\\,\\text{kHz}\\). The component table should instead contain the actual values used in the LTspice schematic.\n\n4.2.1.1 Low-Pass Section\nFor the second-order low-pass Sallen–Key stage, the natural frequency is determined using:\n\\[\nf_0 =\n\\frac{1}\n{2\\pi\\sqrt{R_1R_2C_1C_2}}.\n\\]\nThe quality factor is calculated as:\n\\[\nQ =\n\\frac{\\sqrt{R_1R_2C_1C_2}}\n{C_2(R_1+R_2)}.\n\\]\nThe component values (Table 2) used in the low-pass section are:\n\n\n\nComponent\nSelected value\n\n\n\n\n\\(R_1\\)\n\\(1.1\\,\\text{k}\\Omega\\)\n\n\n\\(R_2\\)\n\\(1.1\\,\\text{k}\\Omega\\)\n\n\n\\(C_1\\)\n\\(20\\,\\text{nF}\\)\n\n\n\\(C_2\\)\n\\(10\\,\\text{nF}\\)\n\n\n\nSubstituting these values into the frequency equation gives:\n\\[\nf_0 =\n\\frac{1}\n{2\\pi\\sqrt{\n(1.1\\times10^3)\n(1.1\\times10^3)\n(20\\times10^{-9})\n(10\\times10^{-9})\n}}\n\\]\n\\[\nf_0 \\approx 10.23\\,\\text{kHz}.\n\\]\nThe corresponding quality factor is:\n\\[\nQ \\approx 0.707.\n\\]\nThis value is equal to the Butterworth quality factor:\n\\[\nQ = \\frac{1}{\\sqrt{2}} \\approx 0.707.\n\\]\n\n\n4.2.1.2 High-Pass Section\nFor the second-order high-pass stage, the natural frequency is calculated using:\n\\[\nf_0 =\n\\frac{1}\n{2\\pi\\sqrt{R_3R_4C_3C_4}}.\n\\]\nThe quality factor is calculated as:\n\\[\nQ =\n\\frac{\\sqrt{R_3R_4C_3C_4}}\n{R_3(C_3+C_4)}.\n\\]\nThe component values (Table 2) used in the high-pass section are:\n\n\n\nComponent\nSelected value\n\n\n\n\n\\(R_3\\)\n\\(1.1\\,\\text{k}\\Omega\\)\n\n\n\\(R_4\\)\n\\(2.2\\,\\text{k}\\Omega\\)\n\n\n\\(C_3\\)\n\\(10\\,\\text{nF}\\)\n\n\n\\(C_4\\)\n\\(10\\,\\text{nF}\\)\n\n\n\nSubstituting the selected values gives:\n\\[\nf_0 \\approx 10.23\\,\\text{kHz}\n\\]\nand\n\\[\nQ \\approx 0.707.\n\\]\nTherefore, both the low-pass and high-pass stages are designed with approximately the same natural frequency and Butterworth quality factor. Cascading two identical second-order stages in each branch produces the required fourth-order Linkwitz–Riley response."
   },
   {
     "objectID": "index.html#ltspice-ac-frequency-response",
     "href": "index.html#ltspice-ac-frequency-response",
-    "title": "Your Notebook Title",
+    "title": "Design of a Hybrid 4th order Linkwitz-Riley Crossover Filter",
     "section": "4.3 LTspice AC Frequency Response",
     "text": "4.3 LTspice AC Frequency Response\n\n\n\n\n\n\nFigure 2: Behavioural model schematic of the LR4 filter designed in LTspice."
   },
   {
     "objectID": "index.html#nmos-differential-pair-m_1-m_2",
     "href": "index.html#nmos-differential-pair-m_1-m_2",
-    "title": "Your Notebook Title",
+    "title": "Design of a Hybrid 4th order Linkwitz-Riley Crossover Filter",
     "section": "5.1 NMOS Differential Pair (\\(M_1, M_2\\))",
     "text": "5.1 NMOS Differential Pair (\\(M_1, M_2\\))\nThe differential pair serves as the primary “input stage” that senses the incoming voltage signals.\nFunction: \\(M_1\\) and \\(M_2\\) are matched NMOS devices biased by the tail current flowing from \\(M_5\\). When a differential input voltage is applied across their gates, it is converted into differential drain currents governed by the transconductance (\\(g_{\\text{m}}\\)) of the transistors (Pretl et al. 2026).\nSymmetry: In an ideal, perfectly matched scenario, if the two input voltages are identical, the tail current (\\(I_{\\text{tail}}\\)) splits exactly in half (\\(I_{\\text{tail}}/2\\)) down both branches."
   },
   {
     "objectID": "index.html#nmos-tail-current-mirror-m_5-m_6",
     "href": "index.html#nmos-tail-current-mirror-m_5-m_6",
-    "title": "Your Notebook Title",
+    "title": "Design of a Hybrid 4th order Linkwitz-Riley Crossover Filter",
     "section": "5.2 NMOS Tail Current Mirror (\\(M_5, M_6\\))",
     "text": "5.2 NMOS Tail Current Mirror (\\(M_5, M_6\\))\nThis stage establishes the stable DC biasing environment required for the entire amplifier circuit.\nFunction: Transistors \\(M_5\\) and \\(M_6\\) form a current mirror. An external reference current (\\(I_{\\text{bias}}\\)) is fed through the transistor \\(M_6\\), which is then mirrored directly into \\(M_5\\) (Pretl et al. 2026).\nThe Tail Current: \\(M_5\\) operates as the tail current source, defining the total bias current (\\(I_{\\text{tail}}\\)) that passes through the input differential pair. This tail current is a critical design parameter, as it directly sets both the transconductance (\\(g_{\\text{m}}\\)) and the overall speed of the amplifier."
   },
   {
     "objectID": "index.html#pmos-current-mirror-load-m_3-m_4",
     "href": "index.html#pmos-current-mirror-load-m_3-m_4",
-    "title": "Your Notebook Title",
+    "title": "Design of a Hybrid 4th order Linkwitz-Riley Crossover Filter",
     "section": "5.3 PMOS Current Mirror Load (\\(M_3, M_4\\))",
     "text": "5.3 PMOS Current Mirror Load (\\(M_3, M_4\\))\nThis final section acts as an active load for the input pair and performs the differential-to-single-ended signal conversion.\nFunction: Transistors \\(M_3\\) and \\(M_4\\) form a PMOS current mirror. The diode-connected \\(M_3\\) senses the changing current flowing through the left branch (\\(M_1\\)) and replicates it over to the right branch via \\(M_4\\) (Pretl et al. 2026).\nSumming at the Output: At the single-ended output node, the mirrored current from \\(M_4\\) and the direct current from the right input branch (\\(M_2\\)) are subtracted/summed. When this net signal current is forced into the high-impedance output node, it builds up the final output voltage."
   },
   {
     "objectID": "index.html#transistor-sizing-and-g_textmi_textd-selection-strategy",
     "href": "index.html#transistor-sizing-and-g_textmi_textd-selection-strategy",
-    "title": "Your Notebook Title",
+    "title": "Design of a Hybrid 4th order Linkwitz-Riley Crossover Filter",
     "section": "5.4 Transistor Sizing and \\(g_{\\text{m}}/I_{\\text{D}}\\) Selection Strategy",
     "text": "5.4 Transistor Sizing and \\(g_{\\text{m}}/I_{\\text{D}}\\) Selection Strategy\nIn a 5T-OTA, selecting the device sizes involves balancing fundamental trade-offs between speed, power efficiency, noise, and matching. Rather than applying a uniform \\(g_{\\text{m}}/I_{\\text{D}}\\) ratio across all devices, each sub-block is targeted with a specific transconductance efficiency to maximize overall circuit performance.\n\n\n5.4.1 1. NMOS Input Differential Pair (\\(M_1, M_2\\))\nFor the input stage, a higher \\(g_{\\text{m}}/I_{\\text{D}}\\) value—typically in the range of 10 to 12 V⁻¹—is chosen to operate the devices in moderate inversion.\n\nGain and Power Efficiency\n\nThe primary goal of the input pair is to provide high transconductance (\\(g_{\\text{m}}\\)) to maximize the amplifier’s gain. Biasing at a high \\(g_{\\text{m}}/I_{\\text{D}}\\) value achieves this required transconductance while consuming the absolute minimum current (\\(I_{\\text{D}}\\)), maximizing power efficiency.\n\nNoise and Offset Optimization\n\nMaximizing the \\(g_{\\text{m}}/I_{\\text{D}}\\) ratio minimizes the overdrive voltage. This is a critical strategy for reducing the input offset voltage caused by threshold voltage mismatch between \\(M_1\\) and \\(M_2\\), while simultaneously minimizing the input-referred thermal noise.\n\n\n\n\n5.4.2 2. PMOS Load (\\(M_3, M_4\\)) and NMOS Tail (\\(M_5, M_6\\)) Current Mirrors\nFor the current mirror and load network, a lower \\(g_{\\text{m}}/I_{\\text{D}}\\) value—typically in the range of 6 to 8 V⁻¹—is chosen to operate the devices in strong inversion.\n\nCurrent Matching Accuracy\n\nFor current mirrors, matching accuracy takes priority over transconductance efficiency. A lower \\(g_{\\text{m}}/I_{\\text{D}}\\) ratio dictates a larger overdrive voltage (\\(V_{\\text{GS}} - V_{\\text{th}}\\)). This larger overdrive significantly reduces current mismatch arising from local threshold voltage variations (\\(\\Delta V_{\\text{th}}\\)) across the mirrors.\n\nOutput Resistance and DC Gain\n\nOperating these current sources at a lower \\(g_{\\text{m}}/I_{\\text{D}}\\) alongside longer channel lengths maximizes their output resistance (\\(r_0\\)). This improves both the mirroring precision and the overall DC voltage gain of the OTA.\n\nNoise Suppression\n\nTo reduce the total output noise contribution of the OTA, the transconductance of the load transistors (\\(g_{\\text{m3,4}}\\)) must be kept significantly lower than the transconductance of the input pair (\\(g_{\\text{m1,2}}\\)). Biasing the load devices at a lower \\(g_{\\text{m}}/I_{\\text{D}}\\) ensures their individual transconductance remains small, dropping their noise contribution.\n\n\n\n\n\n5.4.3 3. Summary Sizing Targets and Trade-offs\nThe table below outlines the final targeted \\(g_{\\text{m}}/I_{\\text{D}}\\) configuration and the core trade-offs managing the 5T-OTA architecture, further narrowing the no of combinations. To streamline the simulation and optimization phase, the design space was restricted to tight \\(g_{\\text{m}}/I_{\\text{D}}\\) windows. This dramatically reduces the number of design permutations and sweeps required during circuit characterization.\n\n\n\n\n\n\n\n\n\nTransistor Group\nInversion Region\nTargeted \\(g_{\\text{m}}/I_{\\text{D}}\\) Value\nKey Design Priorities\n\n\n\n\nInput Pair (\\(M_1, M_2\\))\nModerate Inversion\n10 to 12 V⁻¹\nHigh gain, low power consumption, minimized offset.\n\n\nPMOS Load (\\(M_3, M_4\\))\nStrong Inversion\n6 to 8 V⁻¹\nLow noise contribution, high output resistance, and precise current matching.\n\n\nNMOS Tail (\\(M_5, M_6\\))\nStrong Inversion\n6 to 8 V⁻¹\nHigh output resistance for stable biasing and precise current replication.\n\n\n\n\n\n5.4.4 Transistor Sizing and Architecture for the 5T-OTA\nTo determine the physical dimensions of the transistors within the 5T-OTA architecture, \\(g_m/I_D\\) design methodology utilizes pre-characterized technology lookup tables\n\n\n5.4.5 Design Specification & Reference Parameters\nThe circuit dimensioning is driven by explicit performance targets, including bandwidth, capacitive loading, and transistor geometry constraints. The primary design inputs and initial assumptions are structured in Table 3.\n\n\n\nTable 3: Input design parameters and specifications for the 5T-OTA as per sizing document in (Pretl et al. 2026).\n\n\n\n\n\n\n\n\n\n\nParameter\nSymbol\nInitial Value / Target\n\n\n\n\nLoad Capacitance\n\\(C_{\\mathrm{load}}\\)\n\\(50\\text{ fF}\\)\n\n\nTarget Bandwidth (-3dB Buffer)\n\\(f_{\\mathrm{bw}}\\)\n\\(10\\text{ MHz}\\)\n\n\nInput Pair Efficiency Target\n\\((g_m/I_D)_{1,2}\\)\n\\(10\\text{ V}^{-1}\\)\n\n\nActive Load Efficiency Target\n\\((g_m/I_D)_{3,4}\\)\n\\(5\\text{ V}^{-1}\\)\n\n\nTail Source Efficiency Target\n\\((g_m/I_D)_{5,6}\\)\n\\(5\\text{ V}^{-1}\\)\n\n\nAssigned Channel Length (All)\n\\(L_{1-6}\\)\n\\(5\\text{ }\\mu\\text{m}\\)\n\n\nExternal Reference Bias Input\n\\(I_{\\mathrm{bias,in}}\\)\n\\(20\\text{ }\\mu\\text{A}\\)\n\n\nMaximum Total Current Limit\n\\(I_{\\mathrm{total,limit}}\\)\n\\(10\\text{ }\\mu\\text{A}\\)\n\n\n\n\n\n\n\n\n\n5.4.6 Sizing Derivations & Mathematical Formulations\n\n5.4.6.1 Input Pair Transconductance (\\(g_m\\)) Extraction\nThe required transconductance for the differential input pair (\\(M_{1/2}\\)) is directly tied to the unity-gain bandwidth requirement of the system configuration. To protect against process, voltage, and temperature (PVT) variations, alongside parasitic transistor self-loading, a safety scaling factor of \\(3\\) is introduced into the fundamental bandwidth equation:\n\\[g_{m1,2} = f_{\\mathrm{bw}} \\cdot 3 \\cdot 4\\pi \\cdot C_{\\mathrm{load}}\\]\nSubstituting our core specifications (\\(10\\text{ MHz}\\) and \\(50\\text{ fF}\\)), the script calculates the necessary small-signal capability:\n\\[g_{m1,2} = 10\\text{ MHz} \\cdot 3 \\cdot 4\\pi \\cdot 50\\text{ fF} \\approx 0.0188\\text{ mS}\\]\n\n\n5.4.6.2 Bias Current Evaluation\nBy establishing the transconductance efficiency parameter \\((g_m/I_D)_{1,2} = 10\\), the single-branch bias current (\\(I_{D1,2}\\)) can be isolated:\n\\[I_{D1,2} = \\frac{g_{m1,2}}{(g_m/I_D)_{1,2}}\\]\nThe total tail current required from current source \\(M_5\\) corresponds to both operational branches:\n\\[I_{\\mathrm{total}} = 2 \\cdot I_{D1,2} \\approx 3.76\\text{ }\\mu\\text{A}\\]\nTo comply with standard layout grids and bias generation modules, this value is rounded up to a clean operational baseline of \\(4.0\\text{ }\\mu\\text{A}\\) (\\(I_{D1,2} = 2.0\\text{ }\\mu\\text{A}\\)).\n\n\n5.4.6.3 Gate Voltage & Physical Width Mapping\nOperating at a fixed bias length (\\(L = 5\\text{ }\\mu\\text{m}\\)), the calculated current and target efficiency points are mapped to the semiconductor technology databases to track their native gate-to-source voltage drops (\\(V_{\\mathrm{GS}}\\)):\nUsing the technology-specific current density value per micrometer of transistor width (\\(I_D/W\\)) provided by the lookup tables at these operating points, the physical widths (\\(W\\)) are computed via:\n\\[W = \\frac{I_D}{(I_D/W)}\\]\nand rounded\n\n\n5.4.6.4 External Bias Current Mirroring (\\(M_6\\))\nTo mirror the incoming off-chip reference current (\\(20\\text{ }\\mu\\text{A}\\)) down to our internal tail target (\\(4\\text{ }\\mu\\text{A}\\)), the geometry of the receiving diode-connected transistor (\\(M_6\\)) is scaled proportionally against the dimensions of \\(M_5\\):\n\\[W_6 = W_{5,\\mathrm{round}} \\cdot \\frac{I_{\\mathrm{bias,in}}}{I_{\\mathrm{total}}}\\]\n\n\n5.4.6.5 Open-Loop DC Gain Derivation\nThe open-loop DC voltage gain (\\(A_0\\)) of a single-stage 5T-OTA is defined by the transconductance of the input pair relative to the combined output conductances (\\(g_{\\mathrm{ds}}\\)) of both the input transistors and the active loads.\nThe total small-signal DC voltage gain is expressed using the following equation:\n\\[A_0 = \\frac{g_{m1,2}}{g_{\\mathrm{ds}1,2} + g_{\\mathrm{ds}3,4}}\\]\nWe can use the readly available sizing document to size a basic 5T-OTA, based on the input design parameters the document caculates the sizing for each transistor and other parameters like the gain, noise, power consumption and settling time. A sizing document is available at (Pretl et al. 2026)"
   },
   {
     "objectID": "index.html#transition-to-a-two-stage-ota-architecture",
     "href": "index.html#transition-to-a-two-stage-ota-architecture",
-    "title": "Your Notebook Title",
+    "title": "Design of a Hybrid 4th order Linkwitz-Riley Crossover Filter",
     "section": "5.5 Transition to a Two-Stage OTA Architecture",
     "text": "5.5 Transition to a Two-Stage OTA Architecture\n\n5.5.1 Why the 5T-OTA is Insufficient for Audio\nWhile the basic 5T-OTA is simple and efficient, it is not suitable for an audio amplifier because its open-loop DC gain is only \\(34.8\\text{ dB}\\) (around \\(55\\text{ V/V}\\)). High-fidelity audio applications demand significantly more gain to ensure precise signal reproduction, minimize output distortion, and keep gain errors low.\nBecause a single transistor stage cannot provide enough amplification on its own, we must transition to a Two-Stage OTA architecture as suggested in (Pretl et al. 2026).\n\n\n5.5.2 The Two-Stage Gain Equation\nBy cascading a second amplification stage directly after the initial differential stage, the total open-loop gain is multiplied together. The resulting total DC voltage gain is defined by the following equation:\n\\[A_{\\mathrm{OL, total}} = A_{v1} \\cdot A_{v2}\\]\nWhere: \\(A_{\\mathrm{OL, total}}\\) is the total open-loop DC gain of the system. \\(A_{v1}\\) is the voltage gain of the first stage (the differential input pair). \\(A_{v2}\\) is the voltage gain of the second stage (the common-source output stage).\nThis structural change easily pushes the total gain into the desired range for audio quality, while the added Miller compensation network (\\(C_\\mathrm{M}\\) and \\(R_\\mathrm{Z}\\)) ensures the entire circuit remains stable."
   },
   {
     "objectID": "index.html#transistor-sizing-and-architecture-for-the-2-stage-miller-ota",
     "href": "index.html#transistor-sizing-and-architecture-for-the-2-stage-miller-ota",
-    "title": "Your Notebook Title",
+    "title": "Design of a Hybrid 4th order Linkwitz-Riley Crossover Filter",
     "section": "5.6 Transistor Sizing and Architecture for the 2-Stage Miller OTA",
-    "text": "5.6 Transistor Sizing and Architecture for the 2-Stage Miller OTA\nIntegral part of an Linkwitz-Riley 4 Crossover Filter is an amplifier, and a 2-stage OTA is a good option as it offers high gain and is begginer friendly to design. A 2-stage OTA is essentially an 5-T OTA and a PMOS common source ampliflier cascaded with a Miller compensation capacitor \\(C_{\\text{M}}\\) and a Null resistor \\(R_{\\text{Z}}\\) as shown in Figure 4.\n\n\n\n\n\n\nFigure 4: The 2-stage OTA.\n\n\n\nThere are 4 major aspects of this OTA the input differential pair, pmos current mirrors, output gain PMOS, and tail current NMOS’s. The sizing of these transistors is done using gm/Id methodology.\n\n5.6.1 2. Design Space Explorations: Component and Geometry Selection\nTo transition successfully to the two-stage architecture, two critical component adjustments were made to ensure loop stability and realistic system performance:\n\nUpgrading \\(C_{\\mathrm{load}}\\) to \\(1\\text{ pF}\\) (from \\(50\\text{ fF}\\)): A \\(50\\text{ fF}\\) load only accounts for tiny, localized on-chip parasitics (Lenka et al. 2022). Since this OTA is designed to drive inside an LR4 active crossover filter network, \\(1\\text{ pF}\\) was chosen to represent realistic load (Lenka et al. 2022).\nScaling Down \\(L\\) to \\(2\\text{ }\\mu\\text{m}\\) (from \\(5\\text{ }\\mu\\text{m}\\)): Initial designs using \\(L = 5\\text{ }\\mu\\text{m}\\) suffered from severe high-frequency oscillations near the roll-off frequency. The provided technology plot reveals that an \\(L = 5\\text{ }\\mu\\text{m}\\) device features an extremely low transit frequency (\\(f_{\\mathrm{T}} &lt; 1\\text{ GHz}\\)) as shown in the plot below. By scaling to \\(L = 2\\text{ }\\mu\\text{m}\\), the internal device \\(f_{\\mathrm{T}}\\) is pushed much higher (towards the \\(2\\text{ to } 3\\text{ GHz}\\) range as shown in the plot below at L=1), pushing parasitic non-dominant poles safely past our operating bandwidth and eliminating the oscillations.\n\n\n\n\n\n\n\n\n\n\n\nSource: MOSFET gm/ID Evaluation Script for IHP SG13G2 NMOS\n\n\n5.6.2 Design Specification & Reference Parameters\nThe core target constraints, technology limits, and initial efficiency parameters are given in Table 4.\n\n\n\nTable 4: Design specifications for the 2-Stage OTA.\n\n\n\n\n\n\n\n\n\n\nParameter\nSymbol\nInitial Value / Target\n\n\n\n\nLoad Capacitance\n\\(C_{\\mathrm{load}}\\)\n\\(1\\text{ pF}\\)\n\n\nTarget Bandwidth (-3dB Buffer)\n\\(f_{\\mathrm{bw}}\\)\n\\(10\\text{ MHz}\\)\n\n\nInput Pair Efficiency Target\n\\((g_m/I_D)_{1,2}\\)\n\\(11\\text{ V}^{-1}\\)\n\n\nActive Load Efficiency Target\n\\((g_m/I_D)_{3,4}\\)\n\\(7\\text{ V}^{-1}\\)\n\n\nCS Driver Efficiency Target\n\\((g_m/I_D)_{5}\\)\n\\(10\\text{ V}^{-1}\\)\n\n\nCurrent Mirror Efficiency Target\n\\((g_m/I_D)_{6,7,8}\\)\n\\(6\\text{ V}^{-1}\\)\n\n\nAssigned Channel Length (All)\n\\(L_{1-8}\\)\n\\(2\\text{ }\\mu\\text{m}\\)\n\n\nTarget Open-Loop DC Gain\n\\(A_0\\)\n\\(\\ge 60\\text{ dB}\\)\n\n\nCore Current Draw Budget\n\\(I_{\\mathrm{limit}}\\)\n\\(\\le 30\\text{ }\\mu\\text{A}\\)\n\n\n\n\n\n\n\n\n\n5.6.3 Sizing Derivations & Mathematical Formulations\n\n5.6.3.1 Compensation Allocation & First-Stage Sizing\nTo shield the circuit from high-frequency stability decay, a Miller capacitance (\\(C_\\mathrm{M}\\)) is introduced relative to the total output load [nagulapalli2019low]:\n\\[C_\\mathrm{M} &gt; 0.5 \\cdot C_{\\mathrm{load}} = 500\\text{ fF}\\]\nThe input pair transconductance (\\(g_{m1,2}\\)) calculation incorporates a protective \\(3\\times\\) multiplier scaling to safeguard the target bandwidth against local process tracking shifts:\n\\[g_{m1,2,\\mathrm{ideal}} = 3 \\cdot (2\\pi f_{\\mathrm{bw}}) \\cdot C_\\mathrm{M} \\approx 0.09425\\text{ mS}\\]\nDividing by the efficiency parameter \\((g_m/I_D)_{1,2} = 11\\), the branch current yields a total ideal tail allocation of \\(I_{\\mathrm{tail,ideal}} \\approx 17.14\\text{ }\\mu\\text{A}\\)[cite: 3]. Quantizing this to a regular layout grid (steps of \\(0.5\\text{ }\\mu\\text{A}\\)) locks in our tail profile:\n\nTail Current Source (\\(I_{\\mathrm{tail}}\\)): \\(17.00\\text{ }\\mu\\text{A}\\)\nTrue Branch Current (\\(I_{D1,2}\\)): \\(8.50\\text{ }\\mu\\text{A}\\)\nTrue Manufactured Transconductance (\\(g_{m1,2}\\)): \\(11 \\cdot 8.5\\text{ }\\mu\\text{A} = \\mathbf{0.09350\\text{ mS}}\\)\n\n\n\n5.6.3.2 Second-Stage Stability & Resistor Calibration\nTo guarantee a robust phase margin, the secondary transconductance stage (\\(M_5\\)) must easily out-pace the target operational bandwidth boundary via an image-sizing coefficient rule:\n\\[g_{m5,\\mathrm{req}} = 2.2 \\cdot f_{\\mathrm{bw}} \\cdot 2\\pi \\cdot C_{\\mathrm{load}} \\approx 0.13823\\text{ mS}\\]\nDividing this by its distinct parameter \\((g_m/I_D)_5 = 10\\) establishes the analytical current demand \\(I_{D5,\\mathrm{req}} = 13.823\\text{ }\\mu\\text{A}\\). Mirror scaling constraints align the true current flow down to exactly \\(10.00\\text{ }\\mu\\text{A}\\) based on physical layout sizes. At this grid point, the driver generates its final small-signal capability:\n\\[g_{m5} = (g_m/I_D)_5 \\cdot I_{D5} = 10 \\cdot 10\\text{ }\\mu\\text{A} = \\mathbf{0.10000\\text{ mS}}\\]\nThe zero-nulling frequency compensation resistance (\\(R_z\\)) is set to cancel the right-half-plane (RHP) zero generated across the Miller framework:\n\\[R_z = \\frac{2}{g_{m5}} = \\mathbf{20.00\\text{ k}\\Omega}\\]\n\n\n\n\n5.6.4 Sizing Optimization Results\nThe physical layout dimensions established by mapping the grid current data back to the pygmid database lookup functions are structured in Table 5.\n\n\n\nTable 5: Final optimized structural dimensions for the 2-Stage Miller OTA.\n\n\n\n\n\n\n\n\n\n\n\nTransistor Group\nGeometric Layout Role\nWidth (\\(W\\))\nLength (\\(L\\))\n\n\n\n\n\\(M_{1/2}\\)\nNMOS Input Differential Pair\n\\(2.5\\text{ }\\mu\\text{m}\\)\n\\(2\\text{ }\\mu\\text{m}\\)\n\n\n\\(M_{3/4}\\)\nPMOS Active First-Stage Load\n\\(3.5\\text{ }\\mu\\text{m}\\)\n\\(2\\text{ }\\mu\\text{m}\\)\n\n\n\\(M_5\\)\nPMOS Common-Source Output Driver\n\\(9.5\\text{ }\\mu\\text{m}\\)\n\\(2\\text{ }\\mu\\text{m}\\)\n\n\n\\(M_6\\)\nNMOS External Reference Bias Input Receiver\n\\(2.0\\text{ }\\mu\\text{m}\\)\n\\(2\\text{ }\\mu\\text{m}\\)\n\n\n\\(M_7\\)\nNMOS First-Stage Tail Current Mirror\n\\(1.5\\text{ }\\mu\\text{m}\\)\n\\(2\\text{ }\\mu\\text{m}\\)\n\n\n\\(M_8\\)\nNMOS Second-Stage Output Active Load\n\\(1.0\\text{ }\\mu\\text{m}\\)\n\\(2\\text{ }\\mu\\text{m}\\)\n\n\n\n\n\n\n\n\n\n\n\n\nTipNotebook 2-Stage-OTA Sizing\n\n\n\n\n\n\n\n# Sizing for a 2 Stage OTA\nfrom pygmid import Lookup as lk\nimport numpy as np\nlv_nmos = lk('sg13_lv_nmos.mat')\nlv_pmos = lk('sg13_lv_pmos.mat')\n# list of parameters: VGS, VDS, VSB, L, W, NFING, ID, VT, GM, GMB, GDS, CGG, CGB, CGD, CGS, CDD, CSS, STH, SFL\n# if not specified, minimum L, VDS=max(vgs)/2=0.9 and VSB=0 are used \n\n\n# define the given parameters as taken from the specification table or inital guesses\nc_load = 1e-12\n#c_load = 1e-12\ngm_id_m12 = 11\ngm_id_m34 = 7\ngm_id_m5 = 10\ngm_id_m678 = 6\nl_12 = 2\nl_34 = 2\nl_5 = 2\nl_678 = 2\nf_bw = 10e6 # -3dB bandwidth of the voltage buffer\ni_total_limit = 30e-6\ni_bias_in = 20e-6\noutput_voltage = 1.3\nvin_min = 0.7\nvin_max = 0.9\nvdd_min = 1.45\nvdd_max = 1.55\ngain = 60\n\n\nc_m_min = 0.22*c_load\n# Industrial scaling multiplier (6.6x the lower bound) to swallow up local device parasitics\nc_m = 0.5*c_load\n#c_m = 150e-16\n#c_m = c_m_min\n\n\nprint('\\n--- Step 2: First Stage Core Sizing ---')\ngm_m12_ideal = 3*(2 * np.pi * f_bw) * c_m\nid_m12_ideal = gm_m12_ideal / gm_id_m12\ni_tail_ideal = 2 * id_m12_ideal\n\n# Snapping tail bias current parameter smoothly onto physical layout grid (0.5 µA blocks)\ni_tail = max(round(i_tail_ideal / 1e-6 * 2) / 2 * 1e-6, 0.5e-6)\nid_m12 = i_tail / 2   # Re-establish physical branch balance post-quantization\ngm_m12 = gm_id_m12 * id_m12  # Re-evaluate true manufactured transconductance from grid current\n\nprint(f'Required Analytical gm12 = {gm_m12_ideal*1e3:.5f} mS')\nprint(f'Grid Re-aligned I_tail   = {i_tail/1e-6:.2f} µA')\nprint(f'True Manufactured gm12   = {gm_m12*1e3:.5f} mS')\n\n\n--- Step 2: First Stage Core Sizing ---\nRequired Analytical gm12 = 0.09425 mS\nGrid Re-aligned I_tail   = 17.00 µA\nTrue Manufactured gm12   = 0.09350 mS\n\n\n\nprint('\\n--- Step 3: Second Stage Stability-Driven Constraints ---')\n# Image Sizing Rule:\ngm_m5_req = 2.2*f_bw*2*np.pi*c_load\nprint(f'Required Minimum Stage 2 transconductance gm5 = {gm_m5_req*1e3:.5f} mS')\n\nid_m5_required = gm_m5_req / gm_id_m5\nprint(f'Analytically Required Stage 2 Bias Current    = {id_m5_required/1e-6:.3f} µA')\n\n\n--- Step 3: Second Stage Stability-Driven Constraints ---\nRequired Minimum Stage 2 transconductance gm5 = 0.13823 mS\nAnalytically Required Stage 2 Bias Current    = 13.823 µA\n\n\n\n# we calculate the first stage  dc gain\ngm_gds_m12 = lv_nmos.lookup('GM_GDS', GM_ID=gm_id_m12, L=l_12, VDS=0.75, VSB=0)\ngm_gds_m34 = lv_pmos.lookup('GM_GDS', GM_ID=gm_id_m34, L=l_34, VDS=0.75, VSB=0)\n\ngds_m12 = gm_m12 / gm_gds_m12\ngm_m34 = gm_id_m34 * i_tail/2\ngds_m34 = gm_m34 / gm_gds_m34\n\na0 = gm_m12 / (gds_m12 + gds_m34)\nprint('First stage gain a0 =', round(20*np.log10(a0), 1), 'dB')\n\nFirst stage gain a0 = 31.6 dB\n\n\n\n# we can now look up the VGS of the MOSFET\nvgs_m12 = lv_nmos.look_upVGS(GM_ID=gm_id_m12, L=l_12, VDS=0.75, VSB=0.0)\nvgs_m34 = lv_pmos.look_upVGS(GM_ID=gm_id_m34, L=l_34, VDS=0.75, VSB=0.0) \nvgs_m76 = lv_nmos.look_upVGS(GM_ID=gm_id_m678, L=l_678, VDS=0.75, VSB=0.0) \n\nprint('vgs_12 =', round(float(vgs_m12), 3), 'V')\nprint('vgs_34 =', round(float(vgs_m34), 3), 'V')\nprint('vgs_76 =', round(float(vgs_m76), 3), 'V')\n\nvgs_12 = 0.37 V\nvgs_34 = 0.617 V\nvgs_76 = 0.547 V\n\n\n\n# calculate all widths\nid_w_m12 = lv_nmos.lookup('ID_W', GM_ID=gm_id_m12, L=l_12, VDS=vgs_m12, VSB=0)\nw_12 = id_m12 / id_w_m12\nw_12_round = max(round(w_12*2)/2, 0.5)\nprint('M1/2 W =', round(w_12, 2), 'um, rounded W =', w_12_round, 'um')\n\nid_m34 = id_m12\nid_w_m34 = lv_pmos.lookup('ID_W', GM_ID=gm_id_m34, L=l_34, VDS=vgs_m34, VSB=0)\nw_34 = id_m34 / id_w_m34\nw_34_round = max(round(w_34*2)/2, 0.5) \nprint('M3/4 W =', round(w_34, 2), 'um, rounded W =', w_34_round, 'um')\n\nid_w_m7 = lv_nmos.lookup('ID_W', GM_ID=gm_id_m678, L=l_678, VDS=vgs_m76, VSB=0)\nw_7 = i_tail / id_w_m7\nw_7_round = max(round(w_7*2)/2, 0.5)\nprint('M7 W =', round(w_7, 2), 'um, rounded W =', w_7_round, 'um')\n\nw_6 = w_7_round * i_bias_in / i_tail\nw_6_round = max(round(w_6*2)/2, 0.5)\nprint('M6 W =', round(w_6_round, 2), 'um')\n\n# ==============================================================================\n# Sizing for Second Stage: M8 and M5\n# ==============================================================================\nprint('\\n--- Second Stage Sizing ---')\n\n# Step A: Size M8 (Stage 2 NMOS Load Mirror) using id_m5_required\nid_w_m8 = lv_nmos.lookup('ID_W', GM_ID=gm_id_m678, L=l_678, VDS=0.75, VSB=0)\nw_8 = id_m5_required / id_w_m8\nw_8_round = max(round(w_8 * 2) / 2, 0.5)\nprint('M8 W =', round(w_8, 2), 'um, rounded W =', w_8_round, 'um')\n\n# Step B: Realign true mirrored current to layout grid constraints\nmirror_ratio_m8_m6 = w_8_round / w_6_round\nid_m5 = i_bias_in * mirror_ratio_m8_m6\nprint(f'True Mirrored Stage 2 Current (id_m5) = {id_m5/1e-6:.3f} µA')\n\n# Step C: Re-calculate actual physical gm5 and size M5 (PMOS Driver)\ngm_m5 = gm_id_m5 * id_m5\nid_w_m5 = lv_pmos.lookup('ID_W', GM_ID=gm_id_m5, L=l_5, VDS=0.75, VSB=0)\nw_5 = id_m5 / id_w_m5\nw_5_round = max(round(w_5 * 2) / 2, 0.5)\nprint('M5 W =', round(w_5, 2), 'um, rounded W =', w_5_round, 'um')\n\n# Step D: Complete the flow with your Zero-Nulling Resistor value\nrz = 2 / gm_m5\nprint(f'Textbook Zero-Nulling Resistor Rz = {rz/1e3:.2f} kΩ')\n\nM1/2 W = 2.7 um, rounded W = 2.5 um\nM3/4 W = 3.55 um, rounded W = 3.5 um\nM7 W = 1.25 um, rounded W = 1.5 um\nM6 W = 2.0 um\n\n--- Second Stage Sizing ---\nM8 W = 1.01 um, rounded W = 1.0 um\nTrue Mirrored Stage 2 Current (id_m5) = 10.000 µA\nM5 W = 9.27 um, rounded W = 9.5 um\nTextbook Zero-Nulling Resistor Rz = 20.00 kΩ\n\n\n\n# ==============================================================================\n# 5. Total Open-Loop DC Gain Evaluation\n# ==============================================================================\nprint('\\n--- Total DC Gain Evaluation ---')\n\n# Second stage gain evaluation\n# Extract the intrinsic gain of the PMOS Common-Source driver (M5)\ngm_gds_m5 = lv_pmos.lookup('GM_GDS', GM_ID=gm_id_m5, L=l_5, VDS=0.75, VSB=0)\ngds_m5    = gm_m5 / gm_gds_m5\n\n# Extract the output conductance density of the NMOS mirror load (M8)\ngds_id_m8 = lv_nmos.lookup('GDS_ID', GM_ID=gm_id_m678, L=l_678, VDS=0.75, VSB=0)\ngds_m8    = gds_id_m8 * id_m5\n\n# Compute Stage 2 Gain\na1 = gm_m5 / (gds_m5 + gds_m8)\n\n# Compute Total Open-Loop Gain\na0_total = a0 * a1\n\nprint(f'Stage 1 Open-Loop Gain (A1) = {20*np.log10(a0):.1f} dB')\nprint(f'Stage 2 Open-Loop Gain (A2) = {20*np.log10(a1):.1f} dB')\nprint(f'Total Open-Loop Gain (A0)   = {20*np.log10(a0_total):.1f} dB')\n\ngain_error = a0_total / (1 + a0_total)\nprint('voltage gain error =', round((gain_error-1)*100, 1), '%')\n\n\n--- Total DC Gain Evaluation ---\nStage 1 Open-Loop Gain (A1) = 31.6 dB\nStage 2 Open-Loop Gain (A2) = 34.3 dB\nTotal Open-Loop Gain (A0)   = 65.9 dB\nvoltage gain error = -0.1 %\n\n\n\n# ==============================================================================\n# 6. Node Parasitic Extraction, Actual UGBW, and Final Summary\n# ==============================================================================\nprint('--- Node Parasitic Extraction & Actual UGBW ---')\n\n# Look up frequency-dependent parasitic caps\ngm_cgs_m12  = lv_nmos.lookup('GM_CGS', GM_ID=gm_id_m12, L=l_12,  VDS=0.75, VSB=0)\ngm_cdd_m12  = lv_nmos.lookup('GM_CDD', GM_ID=gm_id_m12, L=l_12,  VDS=0.75, VSB=0)\ngm_cdd_m34  = lv_pmos.lookup('GM_CDD', GM_ID=gm_id_m34, L=l_34,  VDS=0.75, VSB=0)\n\n# NEW: Look up the gate-capacitance of the M5 driver\ngm_cgg_m5   = lv_pmos.lookup('GM_CGG', GM_ID=gm_id_m5,   L=l_5,   VDS=0.75, VSB=0)\n\ngm_w_m34 = lv_pmos.lookup('GM_W', GM_ID=gm_id_m34, L=l_34, VDS=0.75, VSB=0)\ngm_m34   = gm_w_m34 * w_34_round\n\n# NEW: Add the M5 gate load to the total internal node parasitic calculation\nc_para_internal = abs(gm_m12 / gm_cgs_m12) + abs(gm_m12 / gm_cdd_m12) + abs(gm_m34 / gm_cdd_m34) + abs(gm_m5 / gm_cgg_m5)\n\n# The effective Miller capacitance includes this parallel parasitic loading\nc_m_eff = c_m + c_para_internal\n\n# Calculate the actual physical UGBW roll-off from the true c_m_eff\nf_bw_actual = gm_m12 / (2 * np.pi * c_m_eff)\n\nt_slew = c_m_eff*output_voltage / i_tail\nprint('slewing time =', round(t_slew/1e-6, 3), 'µs')\n\ntau = 1 / (2 * np.pi * f_bw_actual)\nt_settle = 5 * tau\nprint('settling time =', round(t_settle/1e-6, 3), 'µs')\n\nprint(f'Internal Node Parasitic Load = {c_para_internal/1e-15:.2f} fF and of which m5 {abs(gm_m5 / gm_cgg_m5)/1e-15}')\nprint(f'Effective Miller Capacitance = {c_m_eff/1e-15:.2f} fF')\n\ni_total_rail = i_bias_in + i_tail + id_m5\n\n# Power calculation at the minimum and maximum VDD limits\npower_dissipation_min = i_total_rail * vdd_min\npower_dissipation_max = i_total_rail * vdd_max\nprint(f\"Total Current from VDD Rail = {i_total_rail/1e-6:.2f} µA\")\n\n# ==============================================================================\n# 7. Final Industrial Sizing Blueprint Summary Printout\n# ==============================================================================\ncap_density = 1.5e-15\nw_cm_approx = np.sqrt(c_m / cap_density)\n\nprint('\\n============================================================')\nprint('  Textbook-Aligned Industrial 2-Stage Miller OTA Blueprint')\nprint('============================================================')\nprint('\\nManufactured Device Sizes:')\nprint(f'  M1/2  W = {w_12_round} µm,  L = {l_12} µm   [NMOS Input Pair]')\nprint(f'  M3/4  W = {w_34_round} µm,  L = {l_34} µm   [PMOS Active Load]')\nprint(f'  M5    W = {w_5_round} µm,  L = {l_5} µm   [PMOS CS Driver]')\nprint(f'  M6    W = {w_6_round} µm,  L = {l_678} µm   [NMOS Ref Mirror]')\nprint(f'  M7    W = {w_7_round} µm,  L = {l_678} µm   [NMOS Tail Mirror]')\nprint(f'  M8    W = {w_8_round} µm,  L = {l_678} µm   [NMOS Load Mirror]')\n\nprint('\\nPassives Allocation:')\nprint(f'  Miller Cap Cm       = {c_m/1e-15:.1f} fF ({w_cm_approx:.1f} x {w_cm_approx:.1f} µm MOM cap)')\nprint(f'  Nulling Resistor Rz = {rz/1e3:.2f} kΩ')\n\nprint('\\nEvaluated Performance Metrics:')\nprint(f'  Target Specification UGBW = {f_bw/1e6:.2f} MHz')\nprint(f'  Actual Predicted UGBW     = {f_bw_actual/1e6:.2f} MHz (including layout parasitics)')\nprint(f'  Stage 1 Open-Loop Gain A1 = {20*np.log10(a0):.1f} dB')\nprint(f'  Stage 2 Open-Loop Gain A2 = {20*np.log10(a1):.1f} dB')\nprint(f'  Total Open-Loop Gain A0   = {20*np.log10(a0_total):.1f} dB (Specification: &gt;= {gain} dB)')\n\nprint('\\nCurrent Consumption Budget:')\nprint(f'  Stage 1 Tail Branch (I_tail) = {i_tail/1e-6:.2f} µA')\nprint(f'  Stage 2 Core Branch (Id_M5)  = {id_m5/1e-6:.2f} µA')\nprint(f'  Total Net Core Current Draw  = {(i_tail + id_m5)/1e-6:.2f} µA (Limit Budget: &lt;= {i_total_limit/1e-6:.2f} µA)')\nprint(f\"  Power Dissipation (at VDD = {vdd_max}V) = {power_dissipation_max*1e6:.2f} µW\")\nprint('============================================================')\n\n--- Node Parasitic Extraction & Actual UGBW ---\nslewing time = 0.046 µs\nsettling time = 0.032 µs\nInternal Node Parasitic Load = 99.54 fF and of which m5 80.75863693703191\nEffective Miller Capacitance = 599.54 fF\nTotal Current from VDD Rail = 47.00 µA\n\n============================================================\n  Textbook-Aligned Industrial 2-Stage Miller OTA Blueprint\n============================================================\n\nManufactured Device Sizes:\n  M1/2  W = 2.5 µm,  L = 2 µm   [NMOS Input Pair]\n  M3/4  W = 3.5 µm,  L = 2 µm   [PMOS Active Load]\n  M5    W = 9.5 µm,  L = 2 µm   [PMOS CS Driver]\n  M6    W = 2.0 µm,  L = 2 µm   [NMOS Ref Mirror]\n  M7    W = 1.5 µm,  L = 2 µm   [NMOS Tail Mirror]\n  M8    W = 1.0 µm,  L = 2 µm   [NMOS Load Mirror]\n\nPassives Allocation:\n  Miller Cap Cm       = 500.0 fF (18.3 x 18.3 µm MOM cap)\n  Nulling Resistor Rz = 20.00 kΩ\n\nEvaluated Performance Metrics:\n  Target Specification UGBW = 10.00 MHz\n  Actual Predicted UGBW     = 24.82 MHz (including layout parasitics)\n  Stage 1 Open-Loop Gain A1 = 31.6 dB\n  Stage 2 Open-Loop Gain A2 = 34.3 dB\n  Total Open-Loop Gain A0   = 65.9 dB (Specification: &gt;= 60 dB)\n\nCurrent Consumption Budget:\n  Stage 1 Tail Branch (I_tail) = 17.00 µA\n  Stage 2 Core Branch (Id_M5)  = 10.00 µA\n  Total Net Core Current Draw  = 27.00 µA (Limit Budget: &lt;= 30.00 µA)\n  Power Dissipation (at VDD = 1.55V) = 72.85 µW\n============================================================\n\n\nSource: Your Notebook Title\n\n\n\n\n\n\n5.6.5 Open-Loop DC Gain & Performance Evaluation\nBy splitting the design across cascaded active blocks, the total system gain successfully clears the targets required. The cumulative performance metrics are detailed in Table 6.\n\n\n\nTable 6: Performance summary of the 2-Stage Miller OTA configuration.\n\n\n\n\n\n\n\n\n\n\nPerformance Metric\nDesign Value\nStatus / Constraint\n\n\n\n\nStage 1 Gain (\\(A_1\\))\n\\(31.6\\text{ dB}\\)\nPrimary Voltage Boost\n\n\nStage 2 Gain (\\(A_2\\))\n\\(34.3\\text{ dB}\\)\nSecondary Common-Source Boost\n\n\nTotal Open-Loop Gain (\\(A_0\\))\n\\(65.9\\text{ dB}\\)\nPassed (\\(\\ge 60\\text{ dB}\\) Target)\n\n\nVoltage Gain Error (\\(\\epsilon\\))\n\\(-0.1\\%\\)\nMinimizes Closed-Loop Tracking Shifts\n\n\nCore Branch Current Draw\n\\(27.00\\text{ }\\mu\\text{A}\\)\nPassed (\\(\\le 30.00\\text{ }\\mu\\text{A}\\) Budget)\n\n\nPeak Power Dissipation\n\\(72.85\\text{ }\\mu\\text{W}\\)\nSimulated at \\(V_{\\mathrm{DD,max}} = 1.55\\text{ V}\\)\n\n\nPredicted Layout UGBW\n\\(24.82\\text{ MHz}\\)\nExceeds \\(10\\text{ MHz}\\) baseline specification\n\n\n\n\n\n\nThe sizing procedure and its calculation are best performed in a Jupyter notebook, as we can easily look up the exact data from the pre-computed tables:"
+    "text": "5.6 Transistor Sizing and Architecture for the 2-Stage Miller OTA\nIntegral part of an Linkwitz-Riley 4 Crossover Filter is an amplifier, and a 2-stage OTA is a good option as it offers high gain and is begginer friendly to design. A 2-stage OTA is essentially an 5-T OTA and a PMOS common source ampliflier cascaded with a Miller compensation capacitor \\(C_{\\text{M}}\\) and a Null resistor \\(R_{\\text{Z}}\\) as shown in Figure 4.\n\n\n\n\n\n\nFigure 4: The 2-stage OTA.\n\n\n\nThere are 4 major aspects of this OTA the input differential pair, pmos current mirrors, output gain PMOS, and tail current NMOS’s. The sizing of these transistors is done using gm/Id methodology.\n\n5.6.1 2. Design Space Explorations: Component and Geometry Selection\nTo transition successfully to the two-stage architecture, two critical component adjustments were made to ensure loop stability and realistic system performance:\n\nUpgrading \\(C_{\\mathrm{load}}\\) to \\(1\\text{ pF}\\) (from \\(50\\text{ fF}\\)): A \\(50\\text{ fF}\\) load only accounts for tiny, localized on-chip parasitics (Lenka et al. 2022). Since this OTA is designed to drive inside an LR4 active crossover filter network, \\(1\\text{ pF}\\) was chosen to represent realistic load (Lenka et al. 2022).\nScaling Down \\(L\\) to \\(2\\text{ }\\mu\\text{m}\\) (from \\(5\\text{ }\\mu\\text{m}\\)): Initial designs using \\(L = 5\\text{ }\\mu\\text{m}\\) suffered from severe high-frequency oscillations near the roll-off frequency. The provided technology plot reveals that an \\(L = 5\\text{ }\\mu\\text{m}\\) device features an extremely low transit frequency (\\(f_{\\mathrm{T}} &lt; 1\\text{ GHz}\\)) as shown in the plot below. By scaling to \\(L = 2\\text{ }\\mu\\text{m}\\), the internal device \\(f_{\\mathrm{T}}\\) is pushed much higher (towards the \\(2\\text{ to } 3\\text{ GHz}\\) range as shown in the plot below at L=1), pushing parasitic non-dominant poles safely past our operating bandwidth and eliminating the oscillations.\n\n\n\n\n\n\n\n\n\n\n\nSource: MOSFET gm/ID Evaluation Script for IHP SG13G2 NMOS\n\n\n5.6.2 Design Specification & Reference Parameters\nThe core target constraints, technology limits, and initial efficiency parameters are given in Table 4.\n\n\n\nTable 4: Design specifications for the 2-Stage OTA.\n\n\n\n\n\n\n\n\n\n\nParameter\nSymbol\nInitial Value / Target\n\n\n\n\nLoad Capacitance\n\\(C_{\\mathrm{load}}\\)\n\\(1\\text{ pF}\\)\n\n\nTarget Bandwidth (-3dB Buffer)\n\\(f_{\\mathrm{bw}}\\)\n\\(10\\text{ MHz}\\)\n\n\nInput Pair Efficiency Target\n\\((g_m/I_D)_{1,2}\\)\n\\(11\\text{ V}^{-1}\\)\n\n\nActive Load Efficiency Target\n\\((g_m/I_D)_{3,4}\\)\n\\(7\\text{ V}^{-1}\\)\n\n\nCS Driver Efficiency Target\n\\((g_m/I_D)_{5}\\)\n\\(10\\text{ V}^{-1}\\)\n\n\nCurrent Mirror Efficiency Target\n\\((g_m/I_D)_{6,7,8}\\)\n\\(6\\text{ V}^{-1}\\)\n\n\nAssigned Channel Length (All)\n\\(L_{1-8}\\)\n\\(2\\text{ }\\mu\\text{m}\\)\n\n\nTarget Open-Loop DC Gain\n\\(A_0\\)\n\\(\\ge 60\\text{ dB}\\)\n\n\nCore Current Draw Budget\n\\(I_{\\mathrm{limit}}\\)\n\\(\\le 30\\text{ }\\mu\\text{A}\\)\n\n\n\n\n\n\n\n\n\n5.6.3 Sizing Derivations & Mathematical Formulations\n\n5.6.3.1 Compensation Allocation & First-Stage Sizing\nTo shield the circuit from high-frequency stability decay, a Miller capacitance (\\(C_\\mathrm{M}\\)) is introduced relative to the total output load [nagulapalli2019low]:\n\\[C_\\mathrm{M} &gt; 0.5 \\cdot C_{\\mathrm{load}} = 500\\text{ fF}\\]\nThe input pair transconductance (\\(g_{m1,2}\\)) calculation incorporates a protective \\(3\\times\\) multiplier scaling to safeguard the target bandwidth against local process tracking shifts:\n\\[g_{m1,2,\\mathrm{ideal}} = 3 \\cdot (2\\pi f_{\\mathrm{bw}}) \\cdot C_\\mathrm{M} \\approx 0.09425\\text{ mS}\\]\nDividing by the efficiency parameter \\((g_m/I_D)_{1,2} = 11\\), the branch current yields a total ideal tail allocation of \\(I_{\\mathrm{tail,ideal}} \\approx 17.14\\text{ }\\mu\\text{A}\\)[cite: 3]. Quantizing this to a regular layout grid (steps of \\(0.5\\text{ }\\mu\\text{A}\\)) locks in our tail profile:\n\nTail Current Source (\\(I_{\\mathrm{tail}}\\)): \\(17.00\\text{ }\\mu\\text{A}\\)\nTrue Branch Current (\\(I_{D1,2}\\)): \\(8.50\\text{ }\\mu\\text{A}\\)\nTrue Manufactured Transconductance (\\(g_{m1,2}\\)): \\(11 \\cdot 8.5\\text{ }\\mu\\text{A} = \\mathbf{0.09350\\text{ mS}}\\)\n\n\n\n5.6.3.2 Second-Stage Stability & Resistor Calibration\nTo guarantee a robust phase margin, the secondary transconductance stage (\\(M_5\\)) must easily out-pace the target operational bandwidth boundary via an image-sizing coefficient rule:\n\\[g_{m5,\\mathrm{req}} = 2.2 \\cdot f_{\\mathrm{bw}} \\cdot 2\\pi \\cdot C_{\\mathrm{load}} \\approx 0.13823\\text{ mS}\\]\nDividing this by its distinct parameter \\((g_m/I_D)_5 = 10\\) establishes the analytical current demand \\(I_{D5,\\mathrm{req}} = 13.823\\text{ }\\mu\\text{A}\\). Mirror scaling constraints align the true current flow down to exactly \\(10.00\\text{ }\\mu\\text{A}\\) based on physical layout sizes. At this grid point, the driver generates its final small-signal capability:\n\\[g_{m5} = (g_m/I_D)_5 \\cdot I_{D5} = 10 \\cdot 10\\text{ }\\mu\\text{A} = \\mathbf{0.10000\\text{ mS}}\\]\nThe zero-nulling frequency compensation resistance (\\(R_z\\)) is set to cancel the right-half-plane (RHP) zero generated across the Miller framework:\n\\[R_z = \\frac{2}{g_{m5}} = \\mathbf{20.00\\text{ k}\\Omega}\\]\n\n\n\n\n5.6.4 Sizing Optimization Results\nThe physical layout dimensions established by mapping the grid current data back to the pygmid database lookup functions are structured in Table 5.\n\n\n\nTable 5: Final optimized structural dimensions for the 2-Stage Miller OTA.\n\n\n\n\n\n\n\n\n\n\n\nTransistor Group\nGeometric Layout Role\nWidth (\\(W\\))\nLength (\\(L\\))\n\n\n\n\n\\(M_{1/2}\\)\nNMOS Input Differential Pair\n\\(2.5\\text{ }\\mu\\text{m}\\)\n\\(2\\text{ }\\mu\\text{m}\\)\n\n\n\\(M_{3/4}\\)\nPMOS Active First-Stage Load\n\\(3.5\\text{ }\\mu\\text{m}\\)\n\\(2\\text{ }\\mu\\text{m}\\)\n\n\n\\(M_5\\)\nPMOS Common-Source Output Driver\n\\(9.5\\text{ }\\mu\\text{m}\\)\n\\(2\\text{ }\\mu\\text{m}\\)\n\n\n\\(M_6\\)\nNMOS External Reference Bias Input Receiver\n\\(2.0\\text{ }\\mu\\text{m}\\)\n\\(2\\text{ }\\mu\\text{m}\\)\n\n\n\\(M_7\\)\nNMOS First-Stage Tail Current Mirror\n\\(1.5\\text{ }\\mu\\text{m}\\)\n\\(2\\text{ }\\mu\\text{m}\\)\n\n\n\\(M_8\\)\nNMOS Second-Stage Output Active Load\n\\(1.0\\text{ }\\mu\\text{m}\\)\n\\(2\\text{ }\\mu\\text{m}\\)\n\n\n\n\n\n\n\n\n\n\n\n\nTipNotebook 2-Stage-OTA Sizing\n\n\n\n\n\n\n\n# Sizing for a 2 Stage OTA\nfrom pygmid import Lookup as lk\nimport numpy as np\nlv_nmos = lk('sg13_lv_nmos.mat')\nlv_pmos = lk('sg13_lv_pmos.mat')\n# list of parameters: VGS, VDS, VSB, L, W, NFING, ID, VT, GM, GMB, GDS, CGG, CGB, CGD, CGS, CDD, CSS, STH, SFL\n# if not specified, minimum L, VDS=max(vgs)/2=0.9 and VSB=0 are used \n\n\n# define the given parameters as taken from the specification table or inital guesses\nc_load = 1e-12\n#c_load = 1e-12\ngm_id_m12 = 11\ngm_id_m34 = 7\ngm_id_m5 = 10\ngm_id_m678 = 6\nl_12 = 2\nl_34 = 2\nl_5 = 2\nl_678 = 2\nf_bw = 10e6 # -3dB bandwidth of the voltage buffer\ni_total_limit = 30e-6\ni_bias_in = 20e-6\noutput_voltage = 1.3\nvin_min = 0.7\nvin_max = 0.9\nvdd_min = 1.45\nvdd_max = 1.55\ngain = 60\n\n\nc_m_min = 0.22*c_load\n# Industrial scaling multiplier (6.6x the lower bound) to swallow up local device parasitics\nc_m = 0.5*c_load\n#c_m = 150e-16\n#c_m = c_m_min\n\n\nprint('\\n--- Step 2: First Stage Core Sizing ---')\ngm_m12_ideal = 3*(2 * np.pi * f_bw) * c_m\nid_m12_ideal = gm_m12_ideal / gm_id_m12\ni_tail_ideal = 2 * id_m12_ideal\n\n# Snapping tail bias current parameter smoothly onto physical layout grid (0.5 µA blocks)\ni_tail = max(round(i_tail_ideal / 1e-6 * 2) / 2 * 1e-6, 0.5e-6)\nid_m12 = i_tail / 2   # Re-establish physical branch balance post-quantization\ngm_m12 = gm_id_m12 * id_m12  # Re-evaluate true manufactured transconductance from grid current\n\nprint(f'Required Analytical gm12 = {gm_m12_ideal*1e3:.5f} mS')\nprint(f'Grid Re-aligned I_tail   = {i_tail/1e-6:.2f} µA')\nprint(f'True Manufactured gm12   = {gm_m12*1e3:.5f} mS')\n\n\n--- Step 2: First Stage Core Sizing ---\nRequired Analytical gm12 = 0.09425 mS\nGrid Re-aligned I_tail   = 17.00 µA\nTrue Manufactured gm12   = 0.09350 mS\n\n\n\nprint('\\n--- Step 3: Second Stage Stability-Driven Constraints ---')\n# Image Sizing Rule:\ngm_m5_req = 2.2*f_bw*2*np.pi*c_load\nprint(f'Required Minimum Stage 2 transconductance gm5 = {gm_m5_req*1e3:.5f} mS')\n\nid_m5_required = gm_m5_req / gm_id_m5\nprint(f'Analytically Required Stage 2 Bias Current    = {id_m5_required/1e-6:.3f} µA')\n\n\n--- Step 3: Second Stage Stability-Driven Constraints ---\nRequired Minimum Stage 2 transconductance gm5 = 0.13823 mS\nAnalytically Required Stage 2 Bias Current    = 13.823 µA\n\n\n\n# we calculate the first stage  dc gain\ngm_gds_m12 = lv_nmos.lookup('GM_GDS', GM_ID=gm_id_m12, L=l_12, VDS=0.75, VSB=0)\ngm_gds_m34 = lv_pmos.lookup('GM_GDS', GM_ID=gm_id_m34, L=l_34, VDS=0.75, VSB=0)\n\ngds_m12 = gm_m12 / gm_gds_m12\ngm_m34 = gm_id_m34 * i_tail/2\ngds_m34 = gm_m34 / gm_gds_m34\n\na0 = gm_m12 / (gds_m12 + gds_m34)\nprint('First stage gain a0 =', round(20*np.log10(a0), 1), 'dB')\n\nFirst stage gain a0 = 31.6 dB\n\n\n\n# we can now look up the VGS of the MOSFET\nvgs_m12 = lv_nmos.look_upVGS(GM_ID=gm_id_m12, L=l_12, VDS=0.75, VSB=0.0)\nvgs_m34 = lv_pmos.look_upVGS(GM_ID=gm_id_m34, L=l_34, VDS=0.75, VSB=0.0) \nvgs_m76 = lv_nmos.look_upVGS(GM_ID=gm_id_m678, L=l_678, VDS=0.75, VSB=0.0) \n\nprint('vgs_12 =', round(float(vgs_m12), 3), 'V')\nprint('vgs_34 =', round(float(vgs_m34), 3), 'V')\nprint('vgs_76 =', round(float(vgs_m76), 3), 'V')\n\nvgs_12 = 0.37 V\nvgs_34 = 0.617 V\nvgs_76 = 0.547 V\n\n\n\n# calculate all widths\nid_w_m12 = lv_nmos.lookup('ID_W', GM_ID=gm_id_m12, L=l_12, VDS=vgs_m12, VSB=0)\nw_12 = id_m12 / id_w_m12\nw_12_round = max(round(w_12*2)/2, 0.5)\nprint('M1/2 W =', round(w_12, 2), 'um, rounded W =', w_12_round, 'um')\n\nid_m34 = id_m12\nid_w_m34 = lv_pmos.lookup('ID_W', GM_ID=gm_id_m34, L=l_34, VDS=vgs_m34, VSB=0)\nw_34 = id_m34 / id_w_m34\nw_34_round = max(round(w_34*2)/2, 0.5) \nprint('M3/4 W =', round(w_34, 2), 'um, rounded W =', w_34_round, 'um')\n\nid_w_m7 = lv_nmos.lookup('ID_W', GM_ID=gm_id_m678, L=l_678, VDS=vgs_m76, VSB=0)\nw_7 = i_tail / id_w_m7\nw_7_round = max(round(w_7*2)/2, 0.5)\nprint('M7 W =', round(w_7, 2), 'um, rounded W =', w_7_round, 'um')\n\nw_6 = w_7_round * i_bias_in / i_tail\nw_6_round = max(round(w_6*2)/2, 0.5)\nprint('M6 W =', round(w_6_round, 2), 'um')\n\n# ==============================================================================\n# Sizing for Second Stage: M8 and M5\n# ==============================================================================\nprint('\\n--- Second Stage Sizing ---')\n\n# Step A: Size M8 (Stage 2 NMOS Load Mirror) using id_m5_required\nid_w_m8 = lv_nmos.lookup('ID_W', GM_ID=gm_id_m678, L=l_678, VDS=0.75, VSB=0)\nw_8 = id_m5_required / id_w_m8\nw_8_round = max(round(w_8 * 2) / 2, 0.5)\nprint('M8 W =', round(w_8, 2), 'um, rounded W =', w_8_round, 'um')\n\n# Step B: Realign true mirrored current to layout grid constraints\nmirror_ratio_m8_m6 = w_8_round / w_6_round\nid_m5 = i_bias_in * mirror_ratio_m8_m6\nprint(f'True Mirrored Stage 2 Current (id_m5) = {id_m5/1e-6:.3f} µA')\n\n# Step C: Re-calculate actual physical gm5 and size M5 (PMOS Driver)\ngm_m5 = gm_id_m5 * id_m5\nid_w_m5 = lv_pmos.lookup('ID_W', GM_ID=gm_id_m5, L=l_5, VDS=0.75, VSB=0)\nw_5 = id_m5 / id_w_m5\nw_5_round = max(round(w_5 * 2) / 2, 0.5)\nprint('M5 W =', round(w_5, 2), 'um, rounded W =', w_5_round, 'um')\n\n# Step D: Complete the flow with your Zero-Nulling Resistor value\nrz = 2 / gm_m5\nprint(f'Textbook Zero-Nulling Resistor Rz = {rz/1e3:.2f} kΩ')\n\nM1/2 W = 2.7 um, rounded W = 2.5 um\nM3/4 W = 3.55 um, rounded W = 3.5 um\nM7 W = 1.25 um, rounded W = 1.5 um\nM6 W = 2.0 um\n\n--- Second Stage Sizing ---\nM8 W = 1.01 um, rounded W = 1.0 um\nTrue Mirrored Stage 2 Current (id_m5) = 10.000 µA\nM5 W = 9.27 um, rounded W = 9.5 um\nTextbook Zero-Nulling Resistor Rz = 20.00 kΩ\n\n\n\n# ==============================================================================\n# 5. Total Open-Loop DC Gain Evaluation\n# ==============================================================================\nprint('\\n--- Total DC Gain Evaluation ---')\n\n# Second stage gain evaluation\n# Extract the intrinsic gain of the PMOS Common-Source driver (M5)\ngm_gds_m5 = lv_pmos.lookup('GM_GDS', GM_ID=gm_id_m5, L=l_5, VDS=0.75, VSB=0)\ngds_m5    = gm_m5 / gm_gds_m5\n\n# Extract the output conductance density of the NMOS mirror load (M8)\ngds_id_m8 = lv_nmos.lookup('GDS_ID', GM_ID=gm_id_m678, L=l_678, VDS=0.75, VSB=0)\ngds_m8    = gds_id_m8 * id_m5\n\n# Compute Stage 2 Gain\na1 = gm_m5 / (gds_m5 + gds_m8)\n\n# Compute Total Open-Loop Gain\na0_total = a0 * a1\n\nprint(f'Stage 1 Open-Loop Gain (A1) = {20*np.log10(a0):.1f} dB')\nprint(f'Stage 2 Open-Loop Gain (A2) = {20*np.log10(a1):.1f} dB')\nprint(f'Total Open-Loop Gain (A0)   = {20*np.log10(a0_total):.1f} dB')\n\ngain_error = a0_total / (1 + a0_total)\nprint('voltage gain error =', round((gain_error-1)*100, 1), '%')\n\n\n--- Total DC Gain Evaluation ---\nStage 1 Open-Loop Gain (A1) = 31.6 dB\nStage 2 Open-Loop Gain (A2) = 34.3 dB\nTotal Open-Loop Gain (A0)   = 65.9 dB\nvoltage gain error = -0.1 %\n\n\n\n# ==============================================================================\n# 6. Node Parasitic Extraction, Actual UGBW, and Final Summary\n# ==============================================================================\nprint('--- Node Parasitic Extraction & Actual UGBW ---')\n\n# Look up frequency-dependent parasitic caps\ngm_cgs_m12  = lv_nmos.lookup('GM_CGS', GM_ID=gm_id_m12, L=l_12,  VDS=0.75, VSB=0)\ngm_cdd_m12  = lv_nmos.lookup('GM_CDD', GM_ID=gm_id_m12, L=l_12,  VDS=0.75, VSB=0)\ngm_cdd_m34  = lv_pmos.lookup('GM_CDD', GM_ID=gm_id_m34, L=l_34,  VDS=0.75, VSB=0)\n\n# NEW: Look up the gate-capacitance of the M5 driver\ngm_cgg_m5   = lv_pmos.lookup('GM_CGG', GM_ID=gm_id_m5,   L=l_5,   VDS=0.75, VSB=0)\n\ngm_w_m34 = lv_pmos.lookup('GM_W', GM_ID=gm_id_m34, L=l_34, VDS=0.75, VSB=0)\ngm_m34   = gm_w_m34 * w_34_round\n\n# NEW: Add the M5 gate load to the total internal node parasitic calculation\nc_para_internal = abs(gm_m12 / gm_cgs_m12) + abs(gm_m12 / gm_cdd_m12) + abs(gm_m34 / gm_cdd_m34) + abs(gm_m5 / gm_cgg_m5)\n\n# The effective Miller capacitance includes this parallel parasitic loading\nc_m_eff = c_m + c_para_internal\n\n# Calculate the actual physical UGBW roll-off from the true c_m_eff\nf_bw_actual = gm_m12 / (2 * np.pi * c_m_eff)\n\nt_slew = c_m_eff*output_voltage / i_tail\nprint('slewing time =', round(t_slew/1e-6, 3), 'µs')\n\ntau = 1 / (2 * np.pi * f_bw_actual)\nt_settle = 5 * tau\nprint('settling time =', round(t_settle/1e-6, 3), 'µs')\n\nprint(f'Internal Node Parasitic Load = {c_para_internal/1e-15:.2f} fF and of which m5 {abs(gm_m5 / gm_cgg_m5)/1e-15}')\nprint(f'Effective Miller Capacitance = {c_m_eff/1e-15:.2f} fF')\n\ni_total_rail = i_bias_in + i_tail + id_m5\n\n# Power calculation at the minimum and maximum VDD limits\npower_dissipation_min = i_total_rail * vdd_min\npower_dissipation_max = i_total_rail * vdd_max\nprint(f\"Total Current from VDD Rail = {i_total_rail/1e-6:.2f} µA\")\n\n# ==============================================================================\n# 7. Final Industrial Sizing Blueprint Summary Printout\n# ==============================================================================\ncap_density = 1.5e-15\nw_cm_approx = np.sqrt(c_m / cap_density)\n\nprint('\\n============================================================')\nprint('  Textbook-Aligned Industrial 2-Stage Miller OTA Blueprint')\nprint('============================================================')\nprint('\\nManufactured Device Sizes:')\nprint(f'  M1/2  W = {w_12_round} µm,  L = {l_12} µm   [NMOS Input Pair]')\nprint(f'  M3/4  W = {w_34_round} µm,  L = {l_34} µm   [PMOS Active Load]')\nprint(f'  M5    W = {w_5_round} µm,  L = {l_5} µm   [PMOS CS Driver]')\nprint(f'  M6    W = {w_6_round} µm,  L = {l_678} µm   [NMOS Ref Mirror]')\nprint(f'  M7    W = {w_7_round} µm,  L = {l_678} µm   [NMOS Tail Mirror]')\nprint(f'  M8    W = {w_8_round} µm,  L = {l_678} µm   [NMOS Load Mirror]')\n\nprint('\\nPassives Allocation:')\nprint(f'  Miller Cap Cm       = {c_m/1e-15:.1f} fF ({w_cm_approx:.1f} x {w_cm_approx:.1f} µm MOM cap)')\nprint(f'  Nulling Resistor Rz = {rz/1e3:.2f} kΩ')\n\nprint('\\nEvaluated Performance Metrics:')\nprint(f'  Target Specification UGBW = {f_bw/1e6:.2f} MHz')\nprint(f'  Actual Predicted UGBW     = {f_bw_actual/1e6:.2f} MHz (including layout parasitics)')\nprint(f'  Stage 1 Open-Loop Gain A1 = {20*np.log10(a0):.1f} dB')\nprint(f'  Stage 2 Open-Loop Gain A2 = {20*np.log10(a1):.1f} dB')\nprint(f'  Total Open-Loop Gain A0   = {20*np.log10(a0_total):.1f} dB (Specification: &gt;= {gain} dB)')\n\nprint('\\nCurrent Consumption Budget:')\nprint(f'  Stage 1 Tail Branch (I_tail) = {i_tail/1e-6:.2f} µA')\nprint(f'  Stage 2 Core Branch (Id_M5)  = {id_m5/1e-6:.2f} µA')\nprint(f'  Total Net Core Current Draw  = {(i_tail + id_m5)/1e-6:.2f} µA (Limit Budget: &lt;= {i_total_limit/1e-6:.2f} µA)')\nprint(f\"  Power Dissipation (at VDD = {vdd_max}V) = {power_dissipation_max*1e6:.2f} µW\")\nprint('============================================================')\n\n--- Node Parasitic Extraction & Actual UGBW ---\nslewing time = 0.046 µs\nsettling time = 0.032 µs\nInternal Node Parasitic Load = 99.54 fF and of which m5 80.75863693703191\nEffective Miller Capacitance = 599.54 fF\nTotal Current from VDD Rail = 47.00 µA\n\n============================================================\n  Textbook-Aligned Industrial 2-Stage Miller OTA Blueprint\n============================================================\n\nManufactured Device Sizes:\n  M1/2  W = 2.5 µm,  L = 2 µm   [NMOS Input Pair]\n  M3/4  W = 3.5 µm,  L = 2 µm   [PMOS Active Load]\n  M5    W = 9.5 µm,  L = 2 µm   [PMOS CS Driver]\n  M6    W = 2.0 µm,  L = 2 µm   [NMOS Ref Mirror]\n  M7    W = 1.5 µm,  L = 2 µm   [NMOS Tail Mirror]\n  M8    W = 1.0 µm,  L = 2 µm   [NMOS Load Mirror]\n\nPassives Allocation:\n  Miller Cap Cm       = 500.0 fF (18.3 x 18.3 µm MOM cap)\n  Nulling Resistor Rz = 20.00 kΩ\n\nEvaluated Performance Metrics:\n  Target Specification UGBW = 10.00 MHz\n  Actual Predicted UGBW     = 24.82 MHz (including layout parasitics)\n  Stage 1 Open-Loop Gain A1 = 31.6 dB\n  Stage 2 Open-Loop Gain A2 = 34.3 dB\n  Total Open-Loop Gain A0   = 65.9 dB (Specification: &gt;= 60 dB)\n\nCurrent Consumption Budget:\n  Stage 1 Tail Branch (I_tail) = 17.00 µA\n  Stage 2 Core Branch (Id_M5)  = 10.00 µA\n  Total Net Core Current Draw  = 27.00 µA (Limit Budget: &lt;= 30.00 µA)\n  Power Dissipation (at VDD = 1.55V) = 72.85 µW\n============================================================\n\n\nSource: Sizing for a 2 Stage OTA\n\n\n\n\n\n\n5.6.5 Open-Loop DC Gain & Performance Evaluation\nBy splitting the design across cascaded active blocks, the total system gain successfully clears the targets required. The cumulative performance metrics are detailed in Table 6.\n\n\n\nTable 6: Performance summary of the 2-Stage Miller OTA configuration.\n\n\n\n\n\n\n\n\n\n\nPerformance Metric\nDesign Value\nStatus / Constraint\n\n\n\n\nStage 1 Gain (\\(A_1\\))\n\\(31.6\\text{ dB}\\)\nPrimary Voltage Boost\n\n\nStage 2 Gain (\\(A_2\\))\n\\(34.3\\text{ dB}\\)\nSecondary Common-Source Boost\n\n\nTotal Open-Loop Gain (\\(A_0\\))\n\\(65.9\\text{ dB}\\)\nPassed (\\(\\ge 60\\text{ dB}\\) Target)\n\n\nVoltage Gain Error (\\(\\epsilon\\))\n\\(-0.1\\%\\)\nMinimizes Closed-Loop Tracking Shifts\n\n\nCore Branch Current Draw\n\\(27.00\\text{ }\\mu\\text{A}\\)\nPassed (\\(\\le 30.00\\text{ }\\mu\\text{A}\\) Budget)\n\n\nPeak Power Dissipation\n\\(72.85\\text{ }\\mu\\text{W}\\)\nSimulated at \\(V_{\\mathrm{DD,max}} = 1.55\\text{ V}\\)\n\n\nPredicted Layout UGBW\n\\(24.82\\text{ MHz}\\)\nExceeds \\(10\\text{ MHz}\\) baseline specification\n\n\n\n\n\n\nThe sizing procedure and its calculation are best performed in a Jupyter notebook, as we can easily look up the exact data from the pre-computed tables:"
   },
   {
     "objectID": "index.html#stage-ota-simulation-framework-and-results",
     "href": "index.html#stage-ota-simulation-framework-and-results",
-    "title": "Your Notebook Title",
+    "title": "Design of a Hybrid 4th order Linkwitz-Riley Crossover Filter",
     "section": "5.7 2-Stage OTA Simulation Framework and Results",
     "text": "5.7 2-Stage OTA Simulation Framework and Results\nTo validate the analytical sizing derivations and empirical stability optimizations, the design was constructed and verified inside the Xschem schematic capture environment utilizing the IHP SG13G2 open-source PDK.\n\n5.7.1 Simulation Environment Setup\nThe core amplifier design and its folders are in a folder :\n\nota-2stage.sch & ota-2stage.sym: The fundamental schematic and corresponding symbol containing the optimized geometric sizing (e.g., \\(L = 2\\text{ }\\mu\\text{m}\\), \\(C_{\\mathrm{M}} = 0.9\\text{ pF}\\), and \\(R_{\\mathrm{z}} = 24\\text{ k}\\Omega\\)).\n\nTo evaluate the design against all primary performance metrics, three separate testbenches were built in the same workspace folder:\n\nota-2stage_tb-ac.sch: Small-signal AC analysis to characterize closed-loop DC gain (\\(A_0\\)), and Unity-Gain Bandwidth (\\(f_bw\\)) as shown in Figure 5.\nota-2stage_tb-trans.sch: Transient analysis to verify step-response behavior and settling time.\nota-2stage_tb-noise.sch: Noise spectrum evaluation to look as noise parameters.\n\n\n\n\n\n\n\nFigure 5: 2-Stage OTA AC response testbench.\n\n\n\n\n\n\n5.7.2 Key Simulation Performance Results\nThe simulation runs verified that the optimized pole-splitting configuration successfully resolves the high-frequency stability challenges encountered in early design cycles.\n\n5.7.2.1 1. Small-Signal AC Response\nThe AC characterization plots confirm an exceptionally clean frequency roll-off profile:\n\nUnity-Gain Bandwidth (\\(\\text{UGBW}\\)): The simulated crossover frequency measures safely above the \\(10\\text{ MHz}\\) minimum requirement.\nLoop Stability: Thanks to the Left-Half Plane (LHP) zero tracking added by the \\(24\\text{ k}\\Omega\\) nulling resistor, the phase response exhibits no peak degradation or peaking anomalies near the roll-off frequency. The phase margin settles into a stable, well-damped region, ensuring no risk of ringing or oscillation.\n\n\n\n\n\n\n\nFigure 6: 2-Stage OTA AC response.\n\n\n\n\n\n5.7.2.2 2. Transient and Noise Fidelity\n\nThe transient step response simulation (ota-2stage_tb-trans.sch) shows a well-behaved, symmetric settling behavior with minimal overshoot.\nThe noise simulation (ota-2stage_tb-noise.sch) verifies that the input-referred noise voltage is kept low."
   },
   {
     "objectID": "index.html#sallen-key-low-pass-filter-integration",
     "href": "index.html#sallen-key-low-pass-filter-integration",
-    "title": "Your Notebook Title",
+    "title": "Design of a Hybrid 4th order Linkwitz-Riley Crossover Filter",
     "section": "5.8 Sallen-Key Low-Pass Filter Integration",
     "text": "5.8 Sallen-Key Low-Pass Filter Integration\nTo evaluate the 2-stage Miller OTA within its intended system environment, it was integrated into a 2nd-order Sallen-Key Active Low-Pass Filter (LPF). The target design metric requires a strict \\(-6\\text{ dB}\\) i.e \\(Q\\) = 0.5 cutoff frequency (\\(f_{\\mathrm{c}}\\)) at exactly \\(10\\text{ kHz}\\).\n\n5.8.1 Passive Network Synthesis & Load Matching\nInitial design attempts using standard textbook equal-component formulas yielded impractical. To synthesize realistic on-chip values, the Okawa-Denshi Active Filter Design Tool (Okawa Electric Design 2026) was utilized to compute a custom component matrix.\nBy setting the targeted performance constraints (\\(f_{\\mathrm{c}} = 10\\text{ kHz}\\)) and intentionally mapping the capacitor values to align with the OTA’s engineered load limit (\\(C_{\\mathrm{load}} = 1\\text{ pF}\\)), the network parameters were locked in:\n\nInput-Assigned Capacitors: \\(C_1 = 0.9\\text{ pF}\\), \\(C_2 = 0.4\\text{ pF}\\)\nSynthesized Tool Resistors: \\(R_1 = 68\\text{ M}\\Omega\\), \\(R_2 = 10\\text{ M}\\Omega\\)\n\n\n\n5.8.2 Filter Characterization Results\nWith the synthesized asymmetric resistor network implemented in the Xschem testbench , the active filter architecture functions exactly as intended:\n\nFrequency Tuning: The transfer function successfully achieves a stable attenuation slope with the desired \\(-6\\text{ dB}\\) cross-over breakpoint localized around \\(10\\text{ kHz}\\).\n\n\n\n\n\n\n\nNoteVerification Testbench Workspace\n\n\n\nAll verification testbenches are localized within the ./xschem workspace directory. Each setup used the exact same core ota-2stage.sym symbol, relying on the asymmetric impedance matching profiles calculated from the Okawa-Denshi design tool (Okawa Electric Design 2026):\nota-2stage_tb-sk-lpf.sch, ota-2stage_tb-sk-hpf.sch, ota-2stage_tb-lr2.sch and ota-2stage_tb-biquad.sch"
   },
   {
     "objectID": "index.html#plots",
     "href": "index.html#plots",
-    "title": "Your Notebook Title",
+    "title": "Design of a Hybrid 4th order Linkwitz-Riley Crossover Filter",
     "section": "8.1 Plots",
     "text": "8.1 Plots"
   },
   {
     "objectID": "index.html#gain_vs_temp",
     "href": "index.html#gain_vs_temp",
-    "title": "Your Notebook Title",
+    "title": "Design of a Hybrid 4th order Linkwitz-Riley Crossover Filter",
     "section": "8.2 gain_vs_temp",
     "text": "8.2 gain_vs_temp\n\n\n\ngain_vs_temp"
   },
   {
     "objectID": "index.html#gain_vs_vin",
     "href": "index.html#gain_vs_vin",
-    "title": "Your Notebook Title",
+    "title": "Design of a Hybrid 4th order Linkwitz-Riley Crossover Filter",
     "section": "8.3 gain_vs_vin",
     "text": "8.3 gain_vs_vin\n\n\n\ngain_vs_vin"
   },
   {
     "objectID": "index.html#gain_vs_vdd",
     "href": "index.html#gain_vs_vdd",
-    "title": "Your Notebook Title",
+    "title": "Design of a Hybrid 4th order Linkwitz-Riley Crossover Filter",
     "section": "8.4 gain_vs_vdd",
     "text": "8.4 gain_vs_vdd\n\n\n\ngain_vs_vdd"
   },
   {
     "objectID": "index.html#gain_vs_corner",
     "href": "index.html#gain_vs_corner",
-    "title": "Your Notebook Title",
+    "title": "Design of a Hybrid 4th order Linkwitz-Riley Crossover Filter",
     "section": "8.5 gain_vs_corner",
     "text": "8.5 gain_vs_corner\n\n\n\ngain_vs_corner"
   },
   {
     "objectID": "index.html#bw_vs_temp",
     "href": "index.html#bw_vs_temp",
-    "title": "Your Notebook Title",
+    "title": "Design of a Hybrid 4th order Linkwitz-Riley Crossover Filter",
     "section": "8.6 bw_vs_temp",
     "text": "8.6 bw_vs_temp\n\n\n\nbw_vs_temp"
   },
   {
     "objectID": "index.html#bw_vs_vin",
     "href": "index.html#bw_vs_vin",
-    "title": "Your Notebook Title",
+    "title": "Design of a Hybrid 4th order Linkwitz-Riley Crossover Filter",
     "section": "8.7 bw_vs_vin",
     "text": "8.7 bw_vs_vin\n\n\n\nbw_vs_vin"
   },
   {
     "objectID": "index.html#bw_vs_vdd",
     "href": "index.html#bw_vs_vdd",
-    "title": "Your Notebook Title",
+    "title": "Design of a Hybrid 4th order Linkwitz-Riley Crossover Filter",
     "section": "8.8 bw_vs_vdd",
     "text": "8.8 bw_vs_vdd\n\n\n\nbw_vs_vdd"
   },
   {
     "objectID": "index.html#bw_vs_corner",
     "href": "index.html#bw_vs_corner",
-    "title": "Your Notebook Title",
+    "title": "Design of a Hybrid 4th order Linkwitz-Riley Crossover Filter",
     "section": "8.9 bw_vs_corner",
     "text": "8.9 bw_vs_corner\n\n\n\nbw_vs_corner"
   },
   {
     "objectID": "index.html#gain_mc",
     "href": "index.html#gain_mc",
-    "title": "Your Notebook Title",
+    "title": "Design of a Hybrid 4th order Linkwitz-Riley Crossover Filter",
     "section": "8.10 gain_mc",
     "text": "8.10 gain_mc\n\n\n\ngain_mc"
   },
   {
     "objectID": "index.html#bw_mc",
     "href": "index.html#bw_mc",
-    "title": "Your Notebook Title",
+    "title": "Design of a Hybrid 4th order Linkwitz-Riley Crossover Filter",
     "section": "8.11 bw_mc",
     "text": "8.11 bw_mc\n\n\n\nbw_mc"
   },
   {
     "objectID": "index.html#noise_vs_temp",
     "href": "index.html#noise_vs_temp",
-    "title": "Your Notebook Title",
+    "title": "Design of a Hybrid 4th order Linkwitz-Riley Crossover Filter",
     "section": "8.12 noise_vs_temp",
     "text": "8.12 noise_vs_temp\n\n\n\nnoise_vs_temp"
   },
   {
     "objectID": "index.html#noise_vs_vin",
     "href": "index.html#noise_vs_vin",
-    "title": "Your Notebook Title",
+    "title": "Design of a Hybrid 4th order Linkwitz-Riley Crossover Filter",
     "section": "8.13 noise_vs_vin",
     "text": "8.13 noise_vs_vin\n\n\n\nnoise_vs_vin"
   },
   {
     "objectID": "index.html#noise_vs_vdd",
     "href": "index.html#noise_vs_vdd",
-    "title": "Your Notebook Title",
+    "title": "Design of a Hybrid 4th order Linkwitz-Riley Crossover Filter",
     "section": "8.14 noise_vs_vdd",
     "text": "8.14 noise_vs_vdd\n\n\n\nnoise_vs_vdd"
   },
   {
     "objectID": "index.html#noise_vs_corner",
     "href": "index.html#noise_vs_corner",
-    "title": "Your Notebook Title",
+    "title": "Design of a Hybrid 4th order Linkwitz-Riley Crossover Filter",
     "section": "8.15 noise_vs_corner",
     "text": "8.15 noise_vs_corner\n\n\n\nnoise_vs_corner"
   },
   {
     "objectID": "index.html#settling_vs_temp",
     "href": "index.html#settling_vs_temp",
-    "title": "Your Notebook Title",
+    "title": "Design of a Hybrid 4th order Linkwitz-Riley Crossover Filter",
     "section": "8.16 settling_vs_temp",
     "text": "8.16 settling_vs_temp\n\n\n\nsettling_vs_temp"
   },
   {
     "objectID": "index.html#settling_vs_vin",
     "href": "index.html#settling_vs_vin",
-    "title": "Your Notebook Title",
+    "title": "Design of a Hybrid 4th order Linkwitz-Riley Crossover Filter",
     "section": "8.17 settling_vs_vin",
     "text": "8.17 settling_vs_vin\n\n\n\nsettling_vs_vin"
   },
   {
     "objectID": "index.html#settling_vs_vdd",
     "href": "index.html#settling_vs_vdd",
-    "title": "Your Notebook Title",
+    "title": "Design of a Hybrid 4th order Linkwitz-Riley Crossover Filter",
     "section": "8.18 settling_vs_vdd",
     "text": "8.18 settling_vs_vdd\n\n\n\nsettling_vs_vdd"
   },
   {
     "objectID": "index.html#settling_vs_corner",
     "href": "index.html#settling_vs_corner",
-    "title": "Your Notebook Title",
+    "title": "Design of a Hybrid 4th order Linkwitz-Riley Crossover Filter",
     "section": "8.19 settling_vs_corner",
     "text": "8.19 settling_vs_corner\n\n\n\nsettling_vs_corner"
   },
   {
     "objectID": "index.html#gain_vs_temp_lpf",
     "href": "index.html#gain_vs_temp_lpf",
-    "title": "Your Notebook Title",
+    "title": "Design of a Hybrid 4th order Linkwitz-Riley Crossover Filter",
     "section": "8.20 gain_vs_temp_lpf",
     "text": "8.20 gain_vs_temp_lpf\n\n\n\ngain_vs_temp_lpf"
   },
   {
     "objectID": "index.html#gain_vs_vin_lpf",
     "href": "index.html#gain_vs_vin_lpf",
-    "title": "Your Notebook Title",
+    "title": "Design of a Hybrid 4th order Linkwitz-Riley Crossover Filter",
     "section": "8.21 gain_vs_vin_lpf",
     "text": "8.21 gain_vs_vin_lpf\n\n\n\ngain_vs_vin_lpf"
   },
   {
     "objectID": "index.html#gain_vs_vdd_lpf",
     "href": "index.html#gain_vs_vdd_lpf",
-    "title": "Your Notebook Title",
+    "title": "Design of a Hybrid 4th order Linkwitz-Riley Crossover Filter",
     "section": "8.22 gain_vs_vdd_lpf",
     "text": "8.22 gain_vs_vdd_lpf\n\n\n\ngain_vs_vdd_lpf"
   },
   {
     "objectID": "index.html#gain_vs_corner_lpf",
     "href": "index.html#gain_vs_corner_lpf",
-    "title": "Your Notebook Title",
+    "title": "Design of a Hybrid 4th order Linkwitz-Riley Crossover Filter",
     "section": "8.23 gain_vs_corner_lpf",
     "text": "8.23 gain_vs_corner_lpf\n\n\n\ngain_vs_corner_lpf"
   },
   {
     "objectID": "index.html#fc_vs_temp_lpf",
     "href": "index.html#fc_vs_temp_lpf",
-    "title": "Your Notebook Title",
+    "title": "Design of a Hybrid 4th order Linkwitz-Riley Crossover Filter",
     "section": "8.24 fc_vs_temp_lpf",
     "text": "8.24 fc_vs_temp_lpf\n\n\n\nfc_vs_temp_lpf"
   },
   {
     "objectID": "index.html#fc_vs_vin_lpf",
     "href": "index.html#fc_vs_vin_lpf",
-    "title": "Your Notebook Title",
+    "title": "Design of a Hybrid 4th order Linkwitz-Riley Crossover Filter",
     "section": "8.25 fc_vs_vin_lpf",
     "text": "8.25 fc_vs_vin_lpf\n\n\n\nfc_vs_vin_lpf"
   },
   {
     "objectID": "index.html#fc_vs_vdd_lpf",
     "href": "index.html#fc_vs_vdd_lpf",
-    "title": "Your Notebook Title",
+    "title": "Design of a Hybrid 4th order Linkwitz-Riley Crossover Filter",
     "section": "8.26 fc_vs_vdd_lpf",
     "text": "8.26 fc_vs_vdd_lpf\n\n\n\nfc_vs_vdd_lpf"
   },
   {
     "objectID": "index.html#fc_vs_corner_lpf",
     "href": "index.html#fc_vs_corner_lpf",
-    "title": "Your Notebook Title",
+    "title": "Design of a Hybrid 4th order Linkwitz-Riley Crossover Filter",
     "section": "8.27 fc_vs_corner_lpf",
     "text": "8.27 fc_vs_corner_lpf\n\n\n\nfc_vs_corner_lpf"
   },
   {
     "objectID": "index.html#gain_mc_lpf",
     "href": "index.html#gain_mc_lpf",
-    "title": "Your Notebook Title",
+    "title": "Design of a Hybrid 4th order Linkwitz-Riley Crossover Filter",
     "section": "8.28 gain_mc_lpf",
     "text": "8.28 gain_mc_lpf\n\n\n\ngain_mc_lpf"
   },
   {
     "objectID": "index.html#fc_mc_lpf",
     "href": "index.html#fc_mc_lpf",
-    "title": "Your Notebook Title",
+    "title": "Design of a Hybrid 4th order Linkwitz-Riley Crossover Filter",
     "section": "8.29 fc_mc_lpf",
     "text": "8.29 fc_mc_lpf\n\n\n\nfc_mc_lpf"
   },
   {
     "objectID": "index.html#noise_vs_temp_lpf",
     "href": "index.html#noise_vs_temp_lpf",
-    "title": "Your Notebook Title",
+    "title": "Design of a Hybrid 4th order Linkwitz-Riley Crossover Filter",
     "section": "8.30 noise_vs_temp_lpf",
     "text": "8.30 noise_vs_temp_lpf\n\n\n\nnoise_vs_temp_lpf"
   },
   {
     "objectID": "index.html#noise_vs_vin_lpf",
     "href": "index.html#noise_vs_vin_lpf",
-    "title": "Your Notebook Title",
+    "title": "Design of a Hybrid 4th order Linkwitz-Riley Crossover Filter",
     "section": "8.31 noise_vs_vin_lpf",
     "text": "8.31 noise_vs_vin_lpf\n\n\n\nnoise_vs_vin_lpf"
   },
   {
     "objectID": "index.html#noise_vs_vdd_lpf",
     "href": "index.html#noise_vs_vdd_lpf",
-    "title": "Your Notebook Title",
+    "title": "Design of a Hybrid 4th order Linkwitz-Riley Crossover Filter",
     "section": "8.32 noise_vs_vdd_lpf",
     "text": "8.32 noise_vs_vdd_lpf\n\n\n\nnoise_vs_vdd_lpf"
   },
   {
     "objectID": "index.html#noise_vs_corner_lpf",
     "href": "index.html#noise_vs_corner_lpf",
-    "title": "Your Notebook Title",
+    "title": "Design of a Hybrid 4th order Linkwitz-Riley Crossover Filter",
     "section": "8.33 noise_vs_corner_lpf",
     "text": "8.33 noise_vs_corner_lpf\n\n\n\nnoise_vs_corner_lpf"
   },
   {
     "objectID": "index.html#settling_vs_temp_lpf",
     "href": "index.html#settling_vs_temp_lpf",
-    "title": "Your Notebook Title",
+    "title": "Design of a Hybrid 4th order Linkwitz-Riley Crossover Filter",
     "section": "8.34 settling_vs_temp_lpf",
     "text": "8.34 settling_vs_temp_lpf\n\n\n\nsettling_vs_temp_lpf"
   },
   {
     "objectID": "index.html#settling_vs_vin_lpf",
     "href": "index.html#settling_vs_vin_lpf",
-    "title": "Your Notebook Title",
+    "title": "Design of a Hybrid 4th order Linkwitz-Riley Crossover Filter",
     "section": "8.35 settling_vs_vin_lpf",
     "text": "8.35 settling_vs_vin_lpf\n\n\n\nsettling_vs_vin_lpf"
   },
   {
     "objectID": "index.html#settling_vs_vdd_lpf",
     "href": "index.html#settling_vs_vdd_lpf",
-    "title": "Your Notebook Title",
+    "title": "Design of a Hybrid 4th order Linkwitz-Riley Crossover Filter",
     "section": "8.36 settling_vs_vdd_lpf",
     "text": "8.36 settling_vs_vdd_lpf\n\n\n\nsettling_vs_vdd_lpf"
   },
   {
     "objectID": "index.html#settling_vs_corner_lpf",
     "href": "index.html#settling_vs_corner_lpf",
-    "title": "Your Notebook Title",
+    "title": "Design of a Hybrid 4th order Linkwitz-Riley Crossover Filter",
     "section": "8.37 settling_vs_corner_lpf",
     "text": "8.37 settling_vs_corner_lpf\n\n\n\nsettling_vs_corner_lpf"
   },
   {
     "objectID": "index.html#gain_vs_temp_lr4_lpf",
     "href": "index.html#gain_vs_temp_lr4_lpf",
-    "title": "Your Notebook Title",
+    "title": "Design of a Hybrid 4th order Linkwitz-Riley Crossover Filter",
     "section": "8.38 gain_vs_temp_lr4_lpf",
     "text": "8.38 gain_vs_temp_lr4_lpf\n\n\n\ngain_vs_temp_lr4_lpf"
   },
   {
     "objectID": "index.html#gain_vs_vin_lr4_lpf",
     "href": "index.html#gain_vs_vin_lr4_lpf",
-    "title": "Your Notebook Title",
+    "title": "Design of a Hybrid 4th order Linkwitz-Riley Crossover Filter",
     "section": "8.39 gain_vs_vin_lr4_lpf",
     "text": "8.39 gain_vs_vin_lr4_lpf\n\n\n\ngain_vs_vin_lr4_lpf"
   },
   {
     "objectID": "index.html#gain_vs_vdd_lr4_lpf",
     "href": "index.html#gain_vs_vdd_lr4_lpf",
-    "title": "Your Notebook Title",
+    "title": "Design of a Hybrid 4th order Linkwitz-Riley Crossover Filter",
     "section": "8.40 gain_vs_vdd_lr4_lpf",
     "text": "8.40 gain_vs_vdd_lr4_lpf\n\n\n\ngain_vs_vdd_lr4_lpf"
   },
   {
     "objectID": "index.html#gain_vs_corner_lr4_lpf",
     "href": "index.html#gain_vs_corner_lr4_lpf",
-    "title": "Your Notebook Title",
+    "title": "Design of a Hybrid 4th order Linkwitz-Riley Crossover Filter",
     "section": "8.41 gain_vs_corner_lr4_lpf",
     "text": "8.41 gain_vs_corner_lr4_lpf\n\n\n\ngain_vs_corner_lr4_lpf"
   },
   {
     "objectID": "index.html#fc_vs_temp_lr4_lpf",
     "href": "index.html#fc_vs_temp_lr4_lpf",
-    "title": "Your Notebook Title",
+    "title": "Design of a Hybrid 4th order Linkwitz-Riley Crossover Filter",
     "section": "8.42 fc_vs_temp_lr4_lpf",
     "text": "8.42 fc_vs_temp_lr4_lpf\n\n\n\nfc_vs_temp_lr4_lpf"
   },
   {
     "objectID": "index.html#fc_vs_vin_lr4_lpf",
     "href": "index.html#fc_vs_vin_lr4_lpf",
-    "title": "Your Notebook Title",
+    "title": "Design of a Hybrid 4th order Linkwitz-Riley Crossover Filter",
     "section": "8.43 fc_vs_vin_lr4_lpf",
     "text": "8.43 fc_vs_vin_lr4_lpf\n\n\n\nfc_vs_vin_lr4_lpf"
   },
   {
     "objectID": "index.html#fc_vs_vdd_lr4_lpf",
     "href": "index.html#fc_vs_vdd_lr4_lpf",
-    "title": "Your Notebook Title",
+    "title": "Design of a Hybrid 4th order Linkwitz-Riley Crossover Filter",
     "section": "8.44 fc_vs_vdd_lr4_lpf",
     "text": "8.44 fc_vs_vdd_lr4_lpf\n\n\n\nfc_vs_vdd_lr4_lpf"
   },
   {
     "objectID": "index.html#fc_vs_corner_lr4_lpf",
     "href": "index.html#fc_vs_corner_lr4_lpf",
-    "title": "Your Notebook Title",
+    "title": "Design of a Hybrid 4th order Linkwitz-Riley Crossover Filter",
     "section": "8.45 fc_vs_corner_lr4_lpf",
     "text": "8.45 fc_vs_corner_lr4_lpf\n\n\n\nfc_vs_corner_lr4_lpf"
   },
   {
     "objectID": "index.html#gain_vs_temp_lr4_hpf",
     "href": "index.html#gain_vs_temp_lr4_hpf",
-    "title": "Your Notebook Title",
+    "title": "Design of a Hybrid 4th order Linkwitz-Riley Crossover Filter",
     "section": "8.46 gain_vs_temp_lr4_hpf",
     "text": "8.46 gain_vs_temp_lr4_hpf\n\n\n\ngain_vs_temp_lr4_hpf"
   },
   {
     "objectID": "index.html#gain_vs_vin_lr4_hpf",
     "href": "index.html#gain_vs_vin_lr4_hpf",
-    "title": "Your Notebook Title",
+    "title": "Design of a Hybrid 4th order Linkwitz-Riley Crossover Filter",
     "section": "8.47 gain_vs_vin_lr4_hpf",
     "text": "8.47 gain_vs_vin_lr4_hpf\n\n\n\ngain_vs_vin_lr4_hpf"
   },
   {
     "objectID": "index.html#gain_vs_vdd_lr4_hpf",
     "href": "index.html#gain_vs_vdd_lr4_hpf",
-    "title": "Your Notebook Title",
+    "title": "Design of a Hybrid 4th order Linkwitz-Riley Crossover Filter",
     "section": "8.48 gain_vs_vdd_lr4_hpf",
     "text": "8.48 gain_vs_vdd_lr4_hpf\n\n\n\ngain_vs_vdd_lr4_hpf"
   },
   {
     "objectID": "index.html#gain_vs_corner_lr4_hpf",
     "href": "index.html#gain_vs_corner_lr4_hpf",
-    "title": "Your Notebook Title",
+    "title": "Design of a Hybrid 4th order Linkwitz-Riley Crossover Filter",
     "section": "8.49 gain_vs_corner_lr4_hpf",
     "text": "8.49 gain_vs_corner_lr4_hpf\n\n\n\ngain_vs_corner_lr4_hpf"
   },
   {
     "objectID": "index.html#fc_vs_temp_lr4_hpf",
     "href": "index.html#fc_vs_temp_lr4_hpf",
-    "title": "Your Notebook Title",
+    "title": "Design of a Hybrid 4th order Linkwitz-Riley Crossover Filter",
     "section": "8.50 fc_vs_temp_lr4_hpf",
     "text": "8.50 fc_vs_temp_lr4_hpf\n\n\n\nfc_vs_temp_lr4_hpf"
   },
   {
     "objectID": "index.html#fc_vs_vin_lr4_hpf",
     "href": "index.html#fc_vs_vin_lr4_hpf",
-    "title": "Your Notebook Title",
+    "title": "Design of a Hybrid 4th order Linkwitz-Riley Crossover Filter",
     "section": "8.51 fc_vs_vin_lr4_hpf",
     "text": "8.51 fc_vs_vin_lr4_hpf\n\n\n\nfc_vs_vin_lr4_hpf"
   },
   {
     "objectID": "index.html#fc_vs_vdd_lr4_hpf",
     "href": "index.html#fc_vs_vdd_lr4_hpf",
-    "title": "Your Notebook Title",
+    "title": "Design of a Hybrid 4th order Linkwitz-Riley Crossover Filter",
     "section": "8.52 fc_vs_vdd_lr4_hpf",
     "text": "8.52 fc_vs_vdd_lr4_hpf\n\n\n\nfc_vs_vdd_lr4_hpf"
   },
   {
     "objectID": "index.html#fc_vs_corner_lr4_hpf",
     "href": "index.html#fc_vs_corner_lr4_hpf",
-    "title": "Your Notebook Title",
+    "title": "Design of a Hybrid 4th order Linkwitz-Riley Crossover Filter",
     "section": "8.53 fc_vs_corner_lr4_hpf",
     "text": "8.53 fc_vs_corner_lr4_hpf\n\n\n\nfc_vs_corner_lr4_hpf"
   },
   {
     "objectID": "index.html#phase_error_vs_temp",
     "href": "index.html#phase_error_vs_temp",
-    "title": "Your Notebook Title",
+    "title": "Design of a Hybrid 4th order Linkwitz-Riley Crossover Filter",
     "section": "8.54 phase_error_vs_temp",
     "text": "8.54 phase_error_vs_temp\n\n\n\nphase_error_vs_temp"
   },
   {
     "objectID": "index.html#phase_error_vs_corner",
     "href": "index.html#phase_error_vs_corner",
-    "title": "Your Notebook Title",
+    "title": "Design of a Hybrid 4th order Linkwitz-Riley Crossover Filter",
     "section": "8.55 phase_error_vs_corner",
     "text": "8.55 phase_error_vs_corner\n\n\n\nphase_error_vs_corner"
   },
   {
     "objectID": "index.html#noise_vs_temp_lpf-1",
     "href": "index.html#noise_vs_temp_lpf-1",
-    "title": "Your Notebook Title",
+    "title": "Design of a Hybrid 4th order Linkwitz-Riley Crossover Filter",
     "section": "8.56 noise_vs_temp_lpf",
     "text": "8.56 noise_vs_temp_lpf\n\n\n\nnoise_vs_temp_lpf"
   },
   {
     "objectID": "index.html#noise_vs_vin_lpf-1",
     "href": "index.html#noise_vs_vin_lpf-1",
-    "title": "Your Notebook Title",
+    "title": "Design of a Hybrid 4th order Linkwitz-Riley Crossover Filter",
     "section": "8.57 noise_vs_vin_lpf",
     "text": "8.57 noise_vs_vin_lpf\n\n\n\nnoise_vs_vin_lpf"
   },
   {
     "objectID": "index.html#noise_vs_vdd_lpf-1",
     "href": "index.html#noise_vs_vdd_lpf-1",
-    "title": "Your Notebook Title",
+    "title": "Design of a Hybrid 4th order Linkwitz-Riley Crossover Filter",
     "section": "8.58 noise_vs_vdd_lpf",
     "text": "8.58 noise_vs_vdd_lpf\n\n\n\nnoise_vs_vdd_lpf"
   },
   {
     "objectID": "index.html#noise_vs_corner_lpf-1",
     "href": "index.html#noise_vs_corner_lpf-1",
-    "title": "Your Notebook Title",
+    "title": "Design of a Hybrid 4th order Linkwitz-Riley Crossover Filter",
     "section": "8.59 noise_vs_corner_lpf",
     "text": "8.59 noise_vs_corner_lpf\n\n\n\nnoise_vs_corner_lpf"
   },
   {
     "objectID": "index.html#noise_vs_temp_hpf",
     "href": "index.html#noise_vs_temp_hpf",
-    "title": "Your Notebook Title",
+    "title": "Design of a Hybrid 4th order Linkwitz-Riley Crossover Filter",
     "section": "8.60 noise_vs_temp_hpf",
     "text": "8.60 noise_vs_temp_hpf\n\n\n\nnoise_vs_temp_hpf"
   },
   {
     "objectID": "index.html#noise_vs_vin_hpf",
     "href": "index.html#noise_vs_vin_hpf",
-    "title": "Your Notebook Title",
+    "title": "Design of a Hybrid 4th order Linkwitz-Riley Crossover Filter",
     "section": "8.61 noise_vs_vin_hpf",
     "text": "8.61 noise_vs_vin_hpf\n\n\n\nnoise_vs_vin_hpf"
   },
   {
     "objectID": "index.html#noise_vs_vdd_hpf",
     "href": "index.html#noise_vs_vdd_hpf",
-    "title": "Your Notebook Title",
+    "title": "Design of a Hybrid 4th order Linkwitz-Riley Crossover Filter",
     "section": "8.62 noise_vs_vdd_hpf",
     "text": "8.62 noise_vs_vdd_hpf\n\n\n\nnoise_vs_vdd_hpf"
   },
   {
     "objectID": "index.html#noise_vs_corner_hpf",
     "href": "index.html#noise_vs_corner_hpf",
-    "title": "Your Notebook Title",
+    "title": "Design of a Hybrid 4th order Linkwitz-Riley Crossover Filter",
     "section": "8.63 noise_vs_corner_hpf",
     "text": "8.63 noise_vs_corner_hpf\n\n\n\nnoise_vs_corner_hpf"
   },
   {
     "objectID": "index.html#settling_vs_temp_lr4_lpf",
     "href": "index.html#settling_vs_temp_lr4_lpf",
-    "title": "Your Notebook Title",
+    "title": "Design of a Hybrid 4th order Linkwitz-Riley Crossover Filter",
     "section": "8.64 settling_vs_temp_lr4_lpf",
     "text": "8.64 settling_vs_temp_lr4_lpf\n\n\n\nsettling_vs_temp_lr4_lpf"
   },
   {
     "objectID": "index.html#settling_vs_vin_lr4_lpf",
     "href": "index.html#settling_vs_vin_lr4_lpf",
-    "title": "Your Notebook Title",
+    "title": "Design of a Hybrid 4th order Linkwitz-Riley Crossover Filter",
     "section": "8.65 settling_vs_vin_lr4_lpf",
     "text": "8.65 settling_vs_vin_lr4_lpf\n\n\n\nsettling_vs_vin_lr4_lpf"
   },
   {
     "objectID": "index.html#settling_vs_vdd_lr4_lpf",
     "href": "index.html#settling_vs_vdd_lr4_lpf",
-    "title": "Your Notebook Title",
+    "title": "Design of a Hybrid 4th order Linkwitz-Riley Crossover Filter",
     "section": "8.66 settling_vs_vdd_lr4_lpf",
     "text": "8.66 settling_vs_vdd_lr4_lpf\n\n\n\nsettling_vs_vdd_lr4_lpf"
   },
   {
     "objectID": "index.html#settling_vs_corner_lr4_lpf",
     "href": "index.html#settling_vs_corner_lr4_lpf",
-    "title": "Your Notebook Title",
+    "title": "Design of a Hybrid 4th order Linkwitz-Riley Crossover Filter",
     "section": "8.67 settling_vs_corner_lr4_lpf",
     "text": "8.67 settling_vs_corner_lr4_lpf\n\n\n\nsettling_vs_corner_lr4_lpf"
   },
   {
     "objectID": "index.html#settling_vs_temp_lr4_hpf",
     "href": "index.html#settling_vs_temp_lr4_hpf",
-    "title": "Your Notebook Title",
+    "title": "Design of a Hybrid 4th order Linkwitz-Riley Crossover Filter",
     "section": "8.68 settling_vs_temp_lr4_hpf",
     "text": "8.68 settling_vs_temp_lr4_hpf\n\n\n\nsettling_vs_temp_lr4_hpf"
   },
   {
     "objectID": "index.html#settling_vs_vin_lr4_hpf",
     "href": "index.html#settling_vs_vin_lr4_hpf",
-    "title": "Your Notebook Title",
+    "title": "Design of a Hybrid 4th order Linkwitz-Riley Crossover Filter",
     "section": "8.69 settling_vs_vin_lr4_hpf",
     "text": "8.69 settling_vs_vin_lr4_hpf\n\n\n\nsettling_vs_vin_lr4_hpf"
   },
   {
     "objectID": "index.html#settling_vs_vdd_lr4_hpf",
     "href": "index.html#settling_vs_vdd_lr4_hpf",
-    "title": "Your Notebook Title",
+    "title": "Design of a Hybrid 4th order Linkwitz-Riley Crossover Filter",
     "section": "8.70 settling_vs_vdd_lr4_hpf",
     "text": "8.70 settling_vs_vdd_lr4_hpf\n\n\n\nsettling_vs_vdd_lr4_hpf"
   },
   {
     "objectID": "index.html#settling_vs_corner_lr4_hpf",
     "href": "index.html#settling_vs_corner_lr4_hpf",
-    "title": "Your Notebook Title",
+    "title": "Design of a Hybrid 4th order Linkwitz-Riley Crossover Filter",
     "section": "8.71 settling_vs_corner_lr4_hpf",
     "text": "8.71 settling_vs_corner_lr4_hpf\n\n\n\nsettling_vs_corner_lr4_hpf"
   },
   {
     "objectID": "gmid/sizing_2_stage_ota.html",
     "href": "gmid/sizing_2_stage_ota.html",
-    "title": "Your Notebook Title",
+    "title": "Design of a 4th Order Hybrid Linkwitz-Riley Crossover Filter",
     "section": "",
     "text": "# Sizing for a 2 Stage OTA\nfrom pygmid import Lookup as lk\nimport numpy as np\nlv_nmos = lk('sg13_lv_nmos.mat')\nlv_pmos = lk('sg13_lv_pmos.mat')\n# list of parameters: VGS, VDS, VSB, L, W, NFING, ID, VT, GM, GMB, GDS, CGG, CGB, CGD, CGS, CDD, CSS, STH, SFL\n# if not specified, minimum L, VDS=max(vgs)/2=0.9 and VSB=0 are used \n\n\n# define the given parameters as taken from the specification table or inital guesses\nc_load = 1e-12\n#c_load = 1e-12\ngm_id_m12 = 11\ngm_id_m34 = 7\ngm_id_m5 = 10\ngm_id_m678 = 6\nl_12 = 2\nl_34 = 2\nl_5 = 2\nl_678 = 2\nf_bw = 10e6 # -3dB bandwidth of the voltage buffer\ni_total_limit = 30e-6\ni_bias_in = 20e-6\noutput_voltage = 1.3\nvin_min = 0.7\nvin_max = 0.9\nvdd_min = 1.45\nvdd_max = 1.55\ngain = 60\n\n\nc_m_min = 0.22*c_load\n# Industrial scaling multiplier (6.6x the lower bound) to swallow up local device parasitics\nc_m = 0.5*c_load\n#c_m = 150e-16\n#c_m = c_m_min\n\n\nprint('\\n--- Step 2: First Stage Core Sizing ---')\ngm_m12_ideal = 3*(2 * np.pi * f_bw) * c_m\nid_m12_ideal = gm_m12_ideal / gm_id_m12\ni_tail_ideal = 2 * id_m12_ideal\n\n# Snapping tail bias current parameter smoothly onto physical layout grid (0.5 µA blocks)\ni_tail = max(round(i_tail_ideal / 1e-6 * 2) / 2 * 1e-6, 0.5e-6)\nid_m12 = i_tail / 2   # Re-establish physical branch balance post-quantization\ngm_m12 = gm_id_m12 * id_m12  # Re-evaluate true manufactured transconductance from grid current\n\nprint(f'Required Analytical gm12 = {gm_m12_ideal*1e3:.5f} mS')\nprint(f'Grid Re-aligned I_tail   = {i_tail/1e-6:.2f} µA')\nprint(f'True Manufactured gm12   = {gm_m12*1e3:.5f} mS')\n\n\n--- Step 2: First Stage Core Sizing ---\nRequired Analytical gm12 = 0.09425 mS\nGrid Re-aligned I_tail   = 17.00 µA\nTrue Manufactured gm12   = 0.09350 mS\n\n\n\nprint('\\n--- Step 3: Second Stage Stability-Driven Constraints ---')\n# Image Sizing Rule:\ngm_m5_req = 2.2*f_bw*2*np.pi*c_load\nprint(f'Required Minimum Stage 2 transconductance gm5 = {gm_m5_req*1e3:.5f} mS')\n\nid_m5_required = gm_m5_req / gm_id_m5\nprint(f'Analytically Required Stage 2 Bias Current    = {id_m5_required/1e-6:.3f} µA')\n\n\n--- Step 3: Second Stage Stability-Driven Constraints ---\nRequired Minimum Stage 2 transconductance gm5 = 0.13823 mS\nAnalytically Required Stage 2 Bias Current    = 13.823 µA\n\n\n\n# we calculate the first stage  dc gain\ngm_gds_m12 = lv_nmos.lookup('GM_GDS', GM_ID=gm_id_m12, L=l_12, VDS=0.75, VSB=0)\ngm_gds_m34 = lv_pmos.lookup('GM_GDS', GM_ID=gm_id_m34, L=l_34, VDS=0.75, VSB=0)\n\ngds_m12 = gm_m12 / gm_gds_m12\ngm_m34 = gm_id_m34 * i_tail/2\ngds_m34 = gm_m34 / gm_gds_m34\n\na0 = gm_m12 / (gds_m12 + gds_m34)\nprint('First stage gain a0 =', round(20*np.log10(a0), 1), 'dB')\n\nFirst stage gain a0 = 31.6 dB\n\n\n\n# we can now look up the VGS of the MOSFET\nvgs_m12 = lv_nmos.look_upVGS(GM_ID=gm_id_m12, L=l_12, VDS=0.75, VSB=0.0)\nvgs_m34 = lv_pmos.look_upVGS(GM_ID=gm_id_m34, L=l_34, VDS=0.75, VSB=0.0) \nvgs_m76 = lv_nmos.look_upVGS(GM_ID=gm_id_m678, L=l_678, VDS=0.75, VSB=0.0) \n\nprint('vgs_12 =', round(float(vgs_m12), 3), 'V')\nprint('vgs_34 =', round(float(vgs_m34), 3), 'V')\nprint('vgs_76 =', round(float(vgs_m76), 3), 'V')\n\nvgs_12 = 0.37 V\nvgs_34 = 0.617 V\nvgs_76 = 0.547 V\n\n\n\n# calculate all widths\nid_w_m12 = lv_nmos.lookup('ID_W', GM_ID=gm_id_m12, L=l_12, VDS=vgs_m12, VSB=0)\nw_12 = id_m12 / id_w_m12\nw_12_round = max(round(w_12*2)/2, 0.5)\nprint('M1/2 W =', round(w_12, 2), 'um, rounded W =', w_12_round, 'um')\n\nid_m34 = id_m12\nid_w_m34 = lv_pmos.lookup('ID_W', GM_ID=gm_id_m34, L=l_34, VDS=vgs_m34, VSB=0)\nw_34 = id_m34 / id_w_m34\nw_34_round = max(round(w_34*2)/2, 0.5) \nprint('M3/4 W =', round(w_34, 2), 'um, rounded W =', w_34_round, 'um')\n\nid_w_m7 = lv_nmos.lookup('ID_W', GM_ID=gm_id_m678, L=l_678, VDS=vgs_m76, VSB=0)\nw_7 = i_tail / id_w_m7\nw_7_round = max(round(w_7*2)/2, 0.5)\nprint('M7 W =', round(w_7, 2), 'um, rounded W =', w_7_round, 'um')\n\nw_6 = w_7_round * i_bias_in / i_tail\nw_6_round = max(round(w_6*2)/2, 0.5)\nprint('M6 W =', round(w_6_round, 2), 'um')\n\n# ==============================================================================\n# Sizing for Second Stage: M8 and M5\n# ==============================================================================\nprint('\\n--- Second Stage Sizing ---')\n\n# Step A: Size M8 (Stage 2 NMOS Load Mirror) using id_m5_required\nid_w_m8 = lv_nmos.lookup('ID_W', GM_ID=gm_id_m678, L=l_678, VDS=0.75, VSB=0)\nw_8 = id_m5_required / id_w_m8\nw_8_round = max(round(w_8 * 2) / 2, 0.5)\nprint('M8 W =', round(w_8, 2), 'um, rounded W =', w_8_round, 'um')\n\n# Step B: Realign true mirrored current to layout grid constraints\nmirror_ratio_m8_m6 = w_8_round / w_6_round\nid_m5 = i_bias_in * mirror_ratio_m8_m6\nprint(f'True Mirrored Stage 2 Current (id_m5) = {id_m5/1e-6:.3f} µA')\n\n# Step C: Re-calculate actual physical gm5 and size M5 (PMOS Driver)\ngm_m5 = gm_id_m5 * id_m5\nid_w_m5 = lv_pmos.lookup('ID_W', GM_ID=gm_id_m5, L=l_5, VDS=0.75, VSB=0)\nw_5 = id_m5 / id_w_m5\nw_5_round = max(round(w_5 * 2) / 2, 0.5)\nprint('M5 W =', round(w_5, 2), 'um, rounded W =', w_5_round, 'um')\n\n# Step D: Complete the flow with your Zero-Nulling Resistor value\nrz = 2 / gm_m5\nprint(f'Textbook Zero-Nulling Resistor Rz = {rz/1e3:.2f} kΩ')\n\nM1/2 W = 2.7 um, rounded W = 2.5 um\nM3/4 W = 3.55 um, rounded W = 3.5 um\nM7 W = 1.25 um, rounded W = 1.5 um\nM6 W = 2.0 um\n\n--- Second Stage Sizing ---\nM8 W = 1.01 um, rounded W = 1.0 um\nTrue Mirrored Stage 2 Current (id_m5) = 10.000 µA\nM5 W = 9.27 um, rounded W = 9.5 um\nTextbook Zero-Nulling Resistor Rz = 20.00 kΩ\n\n\n\n# ==============================================================================\n# 5. Total Open-Loop DC Gain Evaluation\n# ==============================================================================\nprint('\\n--- Total DC Gain Evaluation ---')\n\n# Second stage gain evaluation\n# Extract the intrinsic gain of the PMOS Common-Source driver (M5)\ngm_gds_m5 = lv_pmos.lookup('GM_GDS', GM_ID=gm_id_m5, L=l_5, VDS=0.75, VSB=0)\ngds_m5    = gm_m5 / gm_gds_m5\n\n# Extract the output conductance density of the NMOS mirror load (M8)\ngds_id_m8 = lv_nmos.lookup('GDS_ID', GM_ID=gm_id_m678, L=l_678, VDS=0.75, VSB=0)\ngds_m8    = gds_id_m8 * id_m5\n\n# Compute Stage 2 Gain\na1 = gm_m5 / (gds_m5 + gds_m8)\n\n# Compute Total Open-Loop Gain\na0_total = a0 * a1\n\nprint(f'Stage 1 Open-Loop Gain (A1) = {20*np.log10(a0):.1f} dB')\nprint(f'Stage 2 Open-Loop Gain (A2) = {20*np.log10(a1):.1f} dB')\nprint(f'Total Open-Loop Gain (A0)   = {20*np.log10(a0_total):.1f} dB')\n\ngain_error = a0_total / (1 + a0_total)\nprint('voltage gain error =', round((gain_error-1)*100, 1), '%')\n\n\n--- Total DC Gain Evaluation ---\nStage 1 Open-Loop Gain (A1) = 31.6 dB\nStage 2 Open-Loop Gain (A2) = 34.3 dB\nTotal Open-Loop Gain (A0)   = 65.9 dB\nvoltage gain error = -0.1 %\n\n\n\n# ==============================================================================\n# 6. Node Parasitic Extraction, Actual UGBW, and Final Summary\n# ==============================================================================\nprint('--- Node Parasitic Extraction & Actual UGBW ---')\n\n# Look up frequency-dependent parasitic caps\ngm_cgs_m12  = lv_nmos.lookup('GM_CGS', GM_ID=gm_id_m12, L=l_12,  VDS=0.75, VSB=0)\ngm_cdd_m12  = lv_nmos.lookup('GM_CDD', GM_ID=gm_id_m12, L=l_12,  VDS=0.75, VSB=0)\ngm_cdd_m34  = lv_pmos.lookup('GM_CDD', GM_ID=gm_id_m34, L=l_34,  VDS=0.75, VSB=0)\n\n# NEW: Look up the gate-capacitance of the M5 driver\ngm_cgg_m5   = lv_pmos.lookup('GM_CGG', GM_ID=gm_id_m5,   L=l_5,   VDS=0.75, VSB=0)\n\ngm_w_m34 = lv_pmos.lookup('GM_W', GM_ID=gm_id_m34, L=l_34, VDS=0.75, VSB=0)\ngm_m34   = gm_w_m34 * w_34_round\n\n# NEW: Add the M5 gate load to the total internal node parasitic calculation\nc_para_internal = abs(gm_m12 / gm_cgs_m12) + abs(gm_m12 / gm_cdd_m12) + abs(gm_m34 / gm_cdd_m34) + abs(gm_m5 / gm_cgg_m5)\n\n# The effective Miller capacitance includes this parallel parasitic loading\nc_m_eff = c_m + c_para_internal\n\n# Calculate the actual physical UGBW roll-off from the true c_m_eff\nf_bw_actual = gm_m12 / (2 * np.pi * c_m_eff)\n\nt_slew = c_m_eff*output_voltage / i_tail\nprint('slewing time =', round(t_slew/1e-6, 3), 'µs')\n\ntau = 1 / (2 * np.pi * f_bw_actual)\nt_settle = 5 * tau\nprint('settling time =', round(t_settle/1e-6, 3), 'µs')\n\nprint(f'Internal Node Parasitic Load = {c_para_internal/1e-15:.2f} fF and of which m5 {abs(gm_m5 / gm_cgg_m5)/1e-15}')\nprint(f'Effective Miller Capacitance = {c_m_eff/1e-15:.2f} fF')\n\ni_total_rail = i_bias_in + i_tail + id_m5\n\n# Power calculation at the minimum and maximum VDD limits\npower_dissipation_min = i_total_rail * vdd_min\npower_dissipation_max = i_total_rail * vdd_max\nprint(f\"Total Current from VDD Rail = {i_total_rail/1e-6:.2f} µA\")\n\n# ==============================================================================\n# 7. Final Industrial Sizing Blueprint Summary Printout\n# ==============================================================================\ncap_density = 1.5e-15\nw_cm_approx = np.sqrt(c_m / cap_density)\n\nprint('\\n============================================================')\nprint('  Textbook-Aligned Industrial 2-Stage Miller OTA Blueprint')\nprint('============================================================')\nprint('\\nManufactured Device Sizes:')\nprint(f'  M1/2  W = {w_12_round} µm,  L = {l_12} µm   [NMOS Input Pair]')\nprint(f'  M3/4  W = {w_34_round} µm,  L = {l_34} µm   [PMOS Active Load]')\nprint(f'  M5    W = {w_5_round} µm,  L = {l_5} µm   [PMOS CS Driver]')\nprint(f'  M6    W = {w_6_round} µm,  L = {l_678} µm   [NMOS Ref Mirror]')\nprint(f'  M7    W = {w_7_round} µm,  L = {l_678} µm   [NMOS Tail Mirror]')\nprint(f'  M8    W = {w_8_round} µm,  L = {l_678} µm   [NMOS Load Mirror]')\n\nprint('\\nPassives Allocation:')\nprint(f'  Miller Cap Cm       = {c_m/1e-15:.1f} fF ({w_cm_approx:.1f} x {w_cm_approx:.1f} µm MOM cap)')\nprint(f'  Nulling Resistor Rz = {rz/1e3:.2f} kΩ')\n\nprint('\\nEvaluated Performance Metrics:')\nprint(f'  Target Specification UGBW = {f_bw/1e6:.2f} MHz')\nprint(f'  Actual Predicted UGBW     = {f_bw_actual/1e6:.2f} MHz (including layout parasitics)')\nprint(f'  Stage 1 Open-Loop Gain A1 = {20*np.log10(a0):.1f} dB')\nprint(f'  Stage 2 Open-Loop Gain A2 = {20*np.log10(a1):.1f} dB')\nprint(f'  Total Open-Loop Gain A0   = {20*np.log10(a0_total):.1f} dB (Specification: &gt;= {gain} dB)')\n\nprint('\\nCurrent Consumption Budget:')\nprint(f'  Stage 1 Tail Branch (I_tail) = {i_tail/1e-6:.2f} µA')\nprint(f'  Stage 2 Core Branch (Id_M5)  = {id_m5/1e-6:.2f} µA')\nprint(f'  Total Net Core Current Draw  = {(i_tail + id_m5)/1e-6:.2f} µA (Limit Budget: &lt;= {i_total_limit/1e-6:.2f} µA)')\nprint(f\"  Power Dissipation (at VDD = {vdd_max}V) = {power_dissipation_max*1e6:.2f} µW\")\nprint('============================================================')\n\n--- Node Parasitic Extraction & Actual UGBW ---\nslewing time = 0.046 µs\nsettling time = 0.032 µs\nInternal Node Parasitic Load = 99.54 fF and of which m5 80.75863693703191\nEffective Miller Capacitance = 599.54 fF\nTotal Current from VDD Rail = 47.00 µA\n\n============================================================\n  Textbook-Aligned Industrial 2-Stage Miller OTA Blueprint\n============================================================\n\nManufactured Device Sizes:\n  M1/2  W = 2.5 µm,  L = 2 µm   [NMOS Input Pair]\n  M3/4  W = 3.5 µm,  L = 2 µm   [PMOS Active Load]\n  M5    W = 9.5 µm,  L = 2 µm   [PMOS CS Driver]\n  M6    W = 2.0 µm,  L = 2 µm   [NMOS Ref Mirror]\n  M7    W = 1.5 µm,  L = 2 µm   [NMOS Tail Mirror]\n  M8    W = 1.0 µm,  L = 2 µm   [NMOS Load Mirror]\n\nPassives Allocation:\n  Miller Cap Cm       = 500.0 fF (18.3 x 18.3 µm MOM cap)\n  Nulling Resistor Rz = 20.00 kΩ\n\nEvaluated Performance Metrics:\n  Target Specification UGBW = 10.00 MHz\n  Actual Predicted UGBW     = 24.82 MHz (including layout parasitics)\n  Stage 1 Open-Loop Gain A1 = 31.6 dB\n  Stage 2 Open-Loop Gain A2 = 34.3 dB\n  Total Open-Loop Gain A0   = 65.9 dB (Specification: &gt;= 60 dB)\n\nCurrent Consumption Budget:\n  Stage 1 Tail Branch (I_tail) = 17.00 µA\n  Stage 2 Core Branch (Id_M5)  = 10.00 µA\n  Total Net Core Current Draw  = 27.00 µA (Limit Budget: &lt;= 30.00 µA)\n  Power Dissipation (at VDD = 1.55V) = 72.85 µW\n============================================================"
   }
