@@ -8,7 +8,7 @@
 
 <meta name="author" content="Sriram Repaka">
 <meta name="author" content="Mula Vishnu Veeranjan Sunkari">
-<meta name="dcterms.date" content="2026-07-14">
+<meta name="dcterms.date" content="2026-07-15">
 
 <title>Design of a Hybrid 4th order Linkwitz-Riley Crossover Filter – Design of a 4th Order Hybrid Linkwitz-Riley Crossover Filter</title>
 <style>
@@ -281,7 +281,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">July 14, 2026</p>
+      <p class="date">July 15, 2026</p>
     </div>
   </div>
   
@@ -734,7 +734,7 @@ The primary goal of the input pair is to provide high transconductance (<span cl
 </dd>
 <dt><strong>Noise and Offset Optimization</strong></dt>
 <dd>
-Maximizing the <span class="math inline">\(g_{\text{m}}/I_{\text{D}}\)</span> ratio minimizes the overdrive voltage. This is a critical strategy for reducing the input offset voltage caused by threshold voltage mismatch between <span class="math inline">\(M_1\)</span> and <span class="math inline">\(M_2\)</span>, while simultaneously minimizing the input-referred thermal noise.
+Maximizing the <span class="math inline">\(g_{\text{m}}/I_{\text{D}}\)</span> ratio minimizes the overdrive voltage. This is a critical strategy for reducing the input offset voltage caused by threshold voltage mismatch between <span class="math inline">\(M_1\)</span> and <span class="math inline">\(M_2\)</span>, while simultaneously minimizing the input-referred thermal noise <span class="citation" data-cites="nagulapalli2019low">(<a href="#ref-nagulapalli2019low" role="doc-biblioref">Nagulapalli et al. 2019</a>)</span>.
 </dd>
 </dl>
 </section>
@@ -748,11 +748,11 @@ For current mirrors, matching accuracy takes priority over transconductance effi
 </dd>
 <dt><strong>Output Resistance and DC Gain</strong></dt>
 <dd>
-Operating these current sources at a lower <span class="math inline">\(g_{\text{m}}/I_{\text{D}}\)</span> alongside longer channel lengths maximizes their output resistance (<span class="math inline">\(r_0\)</span>). This improves both the mirroring precision and the overall DC voltage gain of the OTA.
+Operating these current sources at a lower <span class="math inline">\(g_{\text{m}}/I_{\text{D}}\)</span> alongside longer channel lengths maximizes their output resistance (<span class="math inline">\(r_0\)</span>). This improves both the mirroring precision and the overall DC voltage gain of the OTA <span class="citation" data-cites="nagulapalli2019low">(<a href="#ref-nagulapalli2019low" role="doc-biblioref">Nagulapalli et al. 2019</a>)</span>.
 </dd>
 <dt><strong>Noise Suppression</strong></dt>
 <dd>
-To reduce the total output noise contribution of the OTA, the transconductance of the load transistors (<span class="math inline">\(g_{\text{m3,4}}\)</span>) must be kept significantly lower than the transconductance of the input pair (<span class="math inline">\(g_{\text{m1,2}}\)</span>). Biasing the load devices at a lower <span class="math inline">\(g_{\text{m}}/I_{\text{D}}\)</span> ensures their individual transconductance remains small, dropping their noise contribution.
+To reduce the total output noise contribution of the OTA, the transconductance of the load transistors (<span class="math inline">\(g_{\text{m3,4}}\)</span>) must be kept significantly lower than the transconductance of the input pair (<span class="math inline">\(g_{\text{m1,2}}\)</span>). Biasing the load devices at a lower <span class="math inline">\(g_{\text{m}}/I_{\text{D}}\)</span> ensures their individual transconductance remains small, dropping their noise contribution <span class="citation" data-cites="nagulapalli2019low">(<a href="#ref-nagulapalli2019low" role="doc-biblioref">Nagulapalli et al. 2019</a>)</span>.
 </dd>
 </dl>
 <hr>
@@ -835,17 +835,17 @@ Table&nbsp;3: Input design parameters and specifications for the 5T-OTA as per s
 <td style="text-align: left;"><span class="math inline">\(10\text{ MHz}\)</span></td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;"><strong>Input Pair Efficiency Target</strong></td>
+<td style="text-align: left;"><strong>Input Pair <span class="math inline">\((g_m/I_D)\)</span></strong></td>
 <td style="text-align: center;"><span class="math inline">\((g_m/I_D)_{1,2}\)</span></td>
 <td style="text-align: left;"><span class="math inline">\(10\text{ V}^{-1}\)</span></td>
 </tr>
 <tr class="even">
-<td style="text-align: left;"><strong>Active Load Efficiency Target</strong></td>
+<td style="text-align: left;"><strong>Active Load <span class="math inline">\((g_m/I_D)\)</span></strong></td>
 <td style="text-align: center;"><span class="math inline">\((g_m/I_D)_{3,4}\)</span></td>
 <td style="text-align: left;"><span class="math inline">\(5\text{ V}^{-1}\)</span></td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;"><strong>Tail Source Efficiency Target</strong></td>
+<td style="text-align: left;"><strong>Tail Source current mirror <span class="math inline">\((g_m/I_D)\)</span></strong></td>
 <td style="text-align: center;"><span class="math inline">\((g_m/I_D)_{5,6}\)</span></td>
 <td style="text-align: left;"><span class="math inline">\(5\text{ V}^{-1}\)</span></td>
 </tr>
@@ -877,7 +877,7 @@ Table&nbsp;3: Input design parameters and specifications for the 5T-OTA as per s
 <h4 data-number="5.4.6.1" class="anchored" data-anchor-id="input-pair-transconductance-g_m-extraction"><span class="header-section-number">5.4.6.1</span> Input Pair Transconductance (<span class="math inline">\(g_m\)</span>) Extraction</h4>
 <p>The required transconductance for the differential input pair (<span class="math inline">\(M_{1/2}\)</span>) is directly tied to the unity-gain bandwidth requirement of the system configuration. To protect against process, voltage, and temperature (PVT) variations, alongside parasitic transistor self-loading, a safety scaling factor of <span class="math inline">\(3\)</span> is introduced into the fundamental bandwidth equation:</p>
 <p><span class="math display">\[g_{m1,2} = f_{\mathrm{bw}} \cdot 3 \cdot 4\pi \cdot C_{\mathrm{load}}\]</span></p>
-<p>Substituting our core specifications (<span class="math inline">\(10\text{ MHz}\)</span> and <span class="math inline">\(50\text{ fF}\)</span>), the script calculates the necessary small-signal capability:</p>
+<p>Substituting our core specifications (<span class="math inline">\(10\text{ MHz}\)</span> and <span class="math inline">\(50\text{ fF}\)</span>), the script calculates the necessary small-signal capability <span class="citation" data-cites="pretl2026">(<a href="#ref-pretl2026" role="doc-biblioref">Pretl et al. 2026</a>)</span>:</p>
 <p><span class="math display">\[g_{m1,2} = 10\text{ MHz} \cdot 3 \cdot 4\pi \cdot 50\text{ fF} \approx 0.0188\text{ mS}\]</span></p>
 </section>
 <section id="bias-current-evaluation" class="level4" data-number="5.4.6.2">
@@ -886,14 +886,14 @@ Table&nbsp;3: Input design parameters and specifications for the 5T-OTA as per s
 <p><span class="math display">\[I_{D1,2} = \frac{g_{m1,2}}{(g_m/I_D)_{1,2}}\]</span></p>
 <p>The total tail current required from current source <span class="math inline">\(M_5\)</span> corresponds to both operational branches:</p>
 <p><span class="math display">\[I_{\mathrm{total}} = 2 \cdot I_{D1,2} \approx 3.76\text{ }\mu\text{A}\]</span></p>
-<p>To comply with standard layout grids and bias generation modules, this value is rounded up to a clean operational baseline of <strong><span class="math inline">\(4.0\text{ }\mu\text{A}\)</span></strong> (<span class="math inline">\(I_{D1,2} = 2.0\text{ }\mu\text{A}\)</span>).</p>
+<p>To comply with standard layout grids and bias generation modules, this value is rounded up to a clean operational baseline of <strong><span class="math inline">\(4.0\text{ }\mu\text{A}\)</span></strong> (<span class="math inline">\(I_{D1,2} = 2.0\text{ }\mu\text{A}\)</span>) <span class="citation" data-cites="pretl2026">(<a href="#ref-pretl2026" role="doc-biblioref">Pretl et al. 2026</a>)</span>.</p>
 </section>
 <section id="gate-voltage-physical-width-mapping" class="level4" data-number="5.4.6.3">
 <h4 data-number="5.4.6.3" class="anchored" data-anchor-id="gate-voltage-physical-width-mapping"><span class="header-section-number">5.4.6.3</span> Gate Voltage &amp; Physical Width Mapping</h4>
-<p>Operating at a fixed bias length (<span class="math inline">\(L = 5\text{ }\mu\text{m}\)</span>), the calculated current and target efficiency points are mapped to the semiconductor technology databases to track their native gate-to-source voltage drops (<span class="math inline">\(V_{\mathrm{GS}}\)</span>):</p>
+<p>Operating at a fixed length (<span class="math inline">\(L = 5\text{ }\mu\text{m}\)</span>), the calculated current and target <span class="math inline">\((g_m/I_D)\)</span> are mapped to the semiconductor technology databases to track their native gate-to-source voltage drops (<span class="math inline">\(V_{\mathrm{GS}}\)</span>):</p>
 <p>Using the technology-specific current density value per micrometer of transistor width (<span class="math inline">\(I_D/W\)</span>) provided by the lookup tables at these operating points, the physical widths (<span class="math inline">\(W\)</span>) are computed via:</p>
 <p><span class="math display">\[W = \frac{I_D}{(I_D/W)}\]</span></p>
-<p>and rounded</p>
+<p>and rounded <span class="citation" data-cites="pretl2026">(<a href="#ref-pretl2026" role="doc-biblioref">Pretl et al. 2026</a>)</span></p>
 </section>
 <section id="external-bias-current-mirroring-m_6" class="level4" data-number="5.4.6.4">
 <h4 data-number="5.4.6.4" class="anchored" data-anchor-id="external-bias-current-mirroring-m_6"><span class="header-section-number">5.4.6.4</span> External Bias Current Mirroring (<span class="math inline">\(M_6\)</span>)</h4>
@@ -913,7 +913,7 @@ Table&nbsp;3: Input design parameters and specifications for the 5T-OTA as per s
 <h2 data-number="5.5" class="anchored" data-anchor-id="transition-to-a-two-stage-ota-architecture"><span class="header-section-number">5.5</span> Transition to a Two-Stage OTA Architecture</h2>
 <section id="why-the-5t-ota-is-insufficient-for-audio" class="level3" data-number="5.5.1">
 <h3 data-number="5.5.1" class="anchored" data-anchor-id="why-the-5t-ota-is-insufficient-for-audio"><span class="header-section-number">5.5.1</span> Why the 5T-OTA is Insufficient for Audio</h3>
-<p>While the basic 5T-OTA is simple and efficient, it is not suitable for an audio amplifier because its open-loop DC gain is only <strong><span class="math inline">\(34.8\text{ dB}\)</span></strong> (around <span class="math inline">\(55\text{ V/V}\)</span>). High-fidelity audio applications demand significantly more gain to ensure precise signal reproduction, minimize output distortion, and keep gain errors low.</p>
+<p>While the basic 5T-OTA is simple and efficient, it is not suitable for an audio amplifier because its open-loop DC gain is only <strong><span class="math inline">\(34.8\text{ dB}\)</span></strong> (around <span class="math inline">\(55\text{ V/V}\)</span>). High-fidelity audio applications demand significantly more gain to minimize output distortion, and keep gain errors low.</p>
 <p>Because a single transistor stage cannot provide enough amplification on its own, we must transition to a <strong>Two-Stage OTA</strong> architecture as suggested in <span class="citation" data-cites="pretl2026">(<a href="#ref-pretl2026" role="doc-biblioref">Pretl et al. 2026</a>)</span>.</p>
 </section>
 <section id="the-two-stage-gain-equation" class="level3" data-number="5.5.2">
@@ -926,7 +926,7 @@ Table&nbsp;3: Input design parameters and specifications for the 5T-OTA as per s
 </section>
 <section id="transistor-sizing-and-architecture-for-the-2-stage-miller-ota" class="level2" data-number="5.6">
 <h2 data-number="5.6" class="anchored" data-anchor-id="transistor-sizing-and-architecture-for-the-2-stage-miller-ota"><span class="header-section-number">5.6</span> Transistor Sizing and Architecture for the 2-Stage Miller OTA</h2>
-<p>Integral part of an Linkwitz-Riley 4 Crossover Filter is an amplifier, and a 2-stage OTA is a good option as it offers high gain and is begginer friendly to design. A 2-stage OTA is essentially an 5-T OTA and a PMOS common source ampliflier cascaded with a Miller compensation capacitor <span class="math inline">\(C_{\text{M}}\)</span> and a Null resistor <span class="math inline">\(R_{\text{Z}}\)</span> as shown in <a href="#fig-2-stage-ota" class="quarto-xref">Figure&nbsp;4</a>.</p>
+<p>Integral part of an Linkwitz-Riley 4 Crossover Filter is an amplifier, and a 2-stage OTA is a good option as it offers high gain and is begginer friendly design. A 2-stage OTA is essentially an 5-T OTA and a PMOS common source ampliflier cascaded with a Miller compensation capacitor <span class="math inline">\(C_{\text{M}}\)</span> and a Null resistor <span class="math inline">\(R_{\text{Z}}\)</span> as shown in <a href="#fig-2-stage-ota" class="quarto-xref">Figure&nbsp;4</a>.</p>
 <div id="fig-2-stage-ota" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-2-stage-ota-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -937,7 +937,7 @@ Figure&nbsp;4: The 2-stage OTA.
 </figcaption>
 </figure>
 </div>
-<p>There are 4 major aspects of this OTA the input differential pair, pmos current mirrors, output gain PMOS, and tail current NMOS’s. The sizing of these transistors is done using gm/Id methodology.</p>
+<p>There are 4 major aspects of this OTA the input differential pair, pmos current mirrors, output gain PMOS, and tail current NMOS’s. The sizing of these transistors is again done using gm/Id methodology.</p>
 <section id="design-space-explorations-component-and-geometry-selection" class="level3" data-number="5.6.1">
 <h3 data-number="5.6.1" class="anchored" data-anchor-id="design-space-explorations-component-and-geometry-selection"><span class="header-section-number">5.6.1</span> 2. Design Space Explorations: Component and Geometry Selection</h3>
 <p>To transition successfully to the two-stage architecture, two critical component adjustments were made to ensure loop stability and realistic system performance:</p>
@@ -991,22 +991,22 @@ Table&nbsp;4: Design specifications for the 2-Stage OTA.
 <td style="text-align: left;"><span class="math inline">\(10\text{ MHz}\)</span></td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;"><strong>Input Pair Efficiency Target</strong></td>
+<td style="text-align: left;"><strong>Input Pair <span class="math inline">\((g_m/I_D)\)</span></strong></td>
 <td style="text-align: center;"><span class="math inline">\((g_m/I_D)_{1,2}\)</span></td>
 <td style="text-align: left;"><span class="math inline">\(11\text{ V}^{-1}\)</span></td>
 </tr>
 <tr class="even">
-<td style="text-align: left;"><strong>Active Load Efficiency Target</strong></td>
+<td style="text-align: left;"><strong>Active Load <span class="math inline">\((g_m/I_D)\)</span></strong></td>
 <td style="text-align: center;"><span class="math inline">\((g_m/I_D)_{3,4}\)</span></td>
 <td style="text-align: left;"><span class="math inline">\(7\text{ V}^{-1}\)</span></td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;"><strong>CS Driver Efficiency Target</strong></td>
+<td style="text-align: left;"><strong>CS Transistor <span class="math inline">\((g_m/I_D)\)</span></strong></td>
 <td style="text-align: center;"><span class="math inline">\((g_m/I_D)_{5}\)</span></td>
 <td style="text-align: left;"><span class="math inline">\(10\text{ V}^{-1}\)</span></td>
 </tr>
 <tr class="even">
-<td style="text-align: left;"><strong>Current Mirror Efficiency Target</strong></td>
+<td style="text-align: left;"><strong>Current Mirror <span class="math inline">\((g_m/I_D)\)</span></strong></td>
 <td style="text-align: center;"><span class="math inline">\((g_m/I_D)_{6,7,8}\)</span></td>
 <td style="text-align: left;"><span class="math inline">\(6\text{ V}^{-1}\)</span></td>
 </tr>
@@ -1036,11 +1036,11 @@ Table&nbsp;4: Design specifications for the 2-Stage OTA.
 <h3 data-number="5.6.3" class="anchored" data-anchor-id="sizing-derivations-mathematical-formulations-1"><span class="header-section-number">5.6.3</span> Sizing Derivations &amp; Mathematical Formulations</h3>
 <section id="compensation-allocation-first-stage-sizing" class="level4" data-number="5.6.3.1">
 <h4 data-number="5.6.3.1" class="anchored" data-anchor-id="compensation-allocation-first-stage-sizing"><span class="header-section-number">5.6.3.1</span> Compensation Allocation &amp; First-Stage Sizing</h4>
-<p>To shield the circuit from high-frequency stability decay, a Miller capacitance (<span class="math inline">\(C_\mathrm{M}\)</span>) is introduced relative to the total output load [nagulapalli2019low]:</p>
+<p>To shield the circuit from high-frequency stability decay, a Miller capacitance (<span class="math inline">\(C_\mathrm{M}\)</span>) is introduced relative to the total output load <span class="citation" data-cites="nagulapalli2019low">(<a href="#ref-nagulapalli2019low" role="doc-biblioref">Nagulapalli et al. 2019</a>)</span>:</p>
 <p><span class="math display">\[C_\mathrm{M} &gt; 0.5 \cdot C_{\mathrm{load}} = 500\text{ fF}\]</span></p>
 <p>The input pair transconductance (<span class="math inline">\(g_{m1,2}\)</span>) calculation incorporates a protective <span class="math inline">\(3\times\)</span> multiplier scaling to safeguard the target bandwidth against local process tracking shifts:</p>
 <p><span class="math display">\[g_{m1,2,\mathrm{ideal}} = 3 \cdot (2\pi f_{\mathrm{bw}}) \cdot C_\mathrm{M} \approx 0.09425\text{ mS}\]</span></p>
-<p>Dividing by the efficiency parameter <span class="math inline">\((g_m/I_D)_{1,2} = 11\)</span>, the branch current yields a total ideal tail allocation of <span class="math inline">\(I_{\mathrm{tail,ideal}} \approx 17.14\text{ }\mu\text{A}\)</span>[cite: 3]. Quantizing this to a regular layout grid (steps of <span class="math inline">\(0.5\text{ }\mu\text{A}\)</span>) locks in our tail profile:</p>
+<p>Dividing by the efficiency parameter <span class="math inline">\((g_m/I_D)_{1,2} = 11\)</span>, the branch current yields a total ideal tail allocation of <span class="math inline">\(I_{\mathrm{tail,ideal}} \approx 17.14\text{ }\mu\text{A}\)</span>. Quantizing this to a regular layout grid (steps of <span class="math inline">\(0.5\text{ }\mu\text{A}\)</span>) locks in our tail profile:</p>
 <ul>
 <li><strong>Tail Current Source (<span class="math inline">\(I_{\mathrm{tail}}\)</span>):</strong> <strong><span class="math inline">\(17.00\text{ }\mu\text{A}\)</span></strong></li>
 <li><strong>True Branch Current (<span class="math inline">\(I_{D1,2}\)</span>):</strong> <strong><span class="math inline">\(8.50\text{ }\mu\text{A}\)</span></strong></li>
@@ -1049,11 +1049,11 @@ Table&nbsp;4: Design specifications for the 2-Stage OTA.
 </section>
 <section id="second-stage-stability-resistor-calibration" class="level4" data-number="5.6.3.2">
 <h4 data-number="5.6.3.2" class="anchored" data-anchor-id="second-stage-stability-resistor-calibration"><span class="header-section-number">5.6.3.2</span> Second-Stage Stability &amp; Resistor Calibration</h4>
-<p>To guarantee a robust phase margin, the secondary transconductance stage (<span class="math inline">\(M_5\)</span>) must easily out-pace the target operational bandwidth boundary via an image-sizing coefficient rule:</p>
+<p>To guarantee a robust design, the secondary transconductance stage (<span class="math inline">\(M_5\)</span>) must easily out-pace the target operational bandwidth boundary via <span class="math inline">\((g_m/I_D)\)</span> sizing methodology:</p>
 <p><span class="math display">\[g_{m5,\mathrm{req}} = 2.2 \cdot f_{\mathrm{bw}} \cdot 2\pi \cdot C_{\mathrm{load}} \approx 0.13823\text{ mS}\]</span></p>
 <p>Dividing this by its distinct parameter <span class="math inline">\((g_m/I_D)_5 = 10\)</span> establishes the analytical current demand <span class="math inline">\(I_{D5,\mathrm{req}} = 13.823\text{ }\mu\text{A}\)</span>. Mirror scaling constraints align the true current flow down to exactly <strong><span class="math inline">\(10.00\text{ }\mu\text{A}\)</span></strong> based on physical layout sizes. At this grid point, the driver generates its final small-signal capability:</p>
 <p><span class="math display">\[g_{m5} = (g_m/I_D)_5 \cdot I_{D5} = 10 \cdot 10\text{ }\mu\text{A} = \mathbf{0.10000\text{ mS}}\]</span></p>
-<p>The zero-nulling frequency compensation resistance (<span class="math inline">\(R_z\)</span>) is set to cancel the right-half-plane (RHP) zero generated across the Miller framework:</p>
+<p>The zero-nulling frequency compensation resistance (<span class="math inline">\(R_z\)</span>) is set to cancel the right-half-plane (RHP) zero generated across the Miller framework <span class="citation" data-cites="alberto2025miller">(<a href="#ref-alberto2025miller" role="doc-biblioref">L. 2025</a>)</span>:</p>
 <p><span class="math display">\[R_z = \frac{2}{g_{m5}} = \mathbf{20.00\text{ k}\Omega}\]</span></p>
 <hr>
 </section>
@@ -1124,6 +1124,7 @@ Table&nbsp;5: Final optimized structural dimensions for the 2-Stage Miller OTA.
 </div>
 </figure>
 </div>
+<p>The sizing procedure and its calculation are best performed in a Jupyter notebook, as we can easily look up the exact data from the pre-computed lookup tables:</p>
 <div class="callout callout-style-default callout-tip callout-titled" title="Notebook 2-Stage-OTA Sizing">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -1500,9 +1501,9 @@ Table&nbsp;6: Performance summary of the 2-Stage Miller OTA configuration.
 <td style="text-align: left;"><strong>Passed</strong> (<span class="math inline">\(\ge 60\text{ dB}\)</span> Target)</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;"><strong>Voltage Gain Error (<span class="math inline">\(\epsilon\)</span>)</strong></td>
+<td style="text-align: left;">**Voltage Gain Error</td>
 <td style="text-align: center;"><strong><span class="math inline">\(-0.1\%\)</span></strong></td>
-<td style="text-align: left;">Minimizes Closed-Loop Tracking Shifts</td>
+<td style="text-align: left;">Passes a target of <span class="math inline">\(&lt;0.3%\)</span></td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;"><strong>Core Branch Current Draw</strong></td>
@@ -1524,7 +1525,6 @@ Table&nbsp;6: Performance summary of the 2-Stage Miller OTA configuration.
 </div>
 </figure>
 </div>
-<p>The sizing procedure and its calculation are best performed in a Jupyter notebook, as we can easily look up the exact data from the pre-computed tables:</p>
 </section>
 </section>
 <section id="stage-ota-simulation-framework-and-results" class="level2" data-number="5.7">
@@ -1532,15 +1532,15 @@ Table&nbsp;6: Performance summary of the 2-Stage Miller OTA configuration.
 <p>To validate the analytical sizing derivations and empirical stability optimizations, the design was constructed and verified inside the <strong>Xschem</strong> schematic capture environment utilizing the <strong>IHP SG13G2</strong> open-source PDK.</p>
 <section id="simulation-environment-setup" class="level3" data-number="5.7.1">
 <h3 data-number="5.7.1" class="anchored" data-anchor-id="simulation-environment-setup"><span class="header-section-number">5.7.1</span> Simulation Environment Setup</h3>
-<p>The core amplifier design and its folders are in a folder :</p>
+<p>The core amplifier design and its folders :</p>
 <ul>
 <li><strong><code>ota-2stage.sch</code> &amp; <code>ota-2stage.sym</code>:</strong> The fundamental schematic and corresponding symbol containing the optimized geometric sizing (e.g., <span class="math inline">\(L = 2\text{ }\mu\text{m}\)</span>, <span class="math inline">\(C_{\mathrm{M}} = 0.9\text{ pF}\)</span>, and <span class="math inline">\(R_{\mathrm{z}} = 24\text{ k}\Omega\)</span>).</li>
 </ul>
 <p>To evaluate the design against all primary performance metrics, three separate testbenches were built in the same workspace folder:</p>
 <ol type="1">
-<li><strong><code>ota-2stage_tb-ac.sch</code>:</strong> Small-signal AC analysis to characterize closed-loop DC gain (<span class="math inline">\(A_0\)</span>), and Unity-Gain Bandwidth (<span class="math inline">\(f_bw\)</span>) as shown in <a href="#fig-2-stage-ac-response" class="quarto-xref">Figure&nbsp;5</a>.</li>
+<li><strong><code>ota-2stage_tb-ac.sch</code>:</strong> Small-signal AC analysis to characterize closed-loop DC gain (<span class="math inline">\(A_0\)</span>), and Unity-Gain Bandwidth (<span class="math inline">\(f_(bw)\)</span>) as shown in <a href="#fig-2-stage-ac-response" class="quarto-xref">Figure&nbsp;5</a>.</li>
 <li><strong><code>ota-2stage_tb-trans.sch</code>:</strong> Transient analysis to verify step-response behavior and settling time.</li>
-<li><strong><code>ota-2stage_tb-noise.sch</code>:</strong> Noise spectrum evaluation to look as noise parameters.</li>
+<li><strong><code>ota-2stage_tb-noise.sch</code>:</strong> Noise spectrum evaluation.</li>
 </ol>
 <div id="fig-2-stage-ac-response" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -1562,7 +1562,7 @@ Figure&nbsp;5: 2-Stage OTA AC response testbench.
 <p>The AC characterization plots confirm an exceptionally clean frequency roll-off profile:</p>
 <ul>
 <li><strong>Unity-Gain Bandwidth (<span class="math inline">\(\text{UGBW}\)</span>):</strong> The simulated crossover frequency measures safely <strong>above the <span class="math inline">\(10\text{ MHz}\)</span> minimum requirement</strong>.</li>
-<li><strong>Loop Stability:</strong> Thanks to the Left-Half Plane (LHP) zero tracking added by the <span class="math inline">\(24\text{ k}\Omega\)</span> nulling resistor, the phase response exhibits no peak degradation or peaking anomalies near the roll-off frequency. The phase margin settles into a stable, well-damped region, ensuring no risk of ringing or oscillation.</li>
+<li><strong>Loop Stability:</strong> Thanks to the Left-Half Plane (LHP) zero tracking added by the <span class="math inline">\(24\text{ k}\Omega\)</span> nulling resistor ensuring no risk of ringing or oscillation.</li>
 </ul>
 <div id="fig-2-stage-ac-response-result" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -1589,7 +1589,7 @@ Figure&nbsp;6: 2-Stage OTA AC response.
 <p>To evaluate the 2-stage Miller OTA within its intended system environment, it was integrated into a 2nd-order Sallen-Key Active Low-Pass Filter (LPF). The target design metric requires a strict <strong><span class="math inline">\(-6\text{ dB}\)</span> i.e <span class="math inline">\(Q\)</span> = 0.5 cutoff frequency (<span class="math inline">\(f_{\mathrm{c}}\)</span>) at exactly <span class="math inline">\(10\text{ kHz}\)</span></strong>.</p>
 <section id="passive-network-synthesis-load-matching" class="level3" data-number="5.8.1">
 <h3 data-number="5.8.1" class="anchored" data-anchor-id="passive-network-synthesis-load-matching"><span class="header-section-number">5.8.1</span> Passive Network Synthesis &amp; Load Matching</h3>
-<p>Initial design attempts using standard textbook equal-component formulas yielded impractical. To synthesize realistic on-chip values, the <strong>Okawa-Denshi Active Filter Design Tool</strong> <span class="citation" data-cites="okawa_sallen_key">(<a href="#ref-okawa_sallen_key" role="doc-biblioref">Okawa Electric Design 2026</a>)</span> was utilized to compute a custom component matrix.</p>
+<p>Initial design attempts using standard textbook equal-component formulas yielded impractical results. To synthesize realistic on-chip values, the <strong>Okawa-Denshi Active Filter Design Tool</strong> <span class="citation" data-cites="okawa_sallen_key">(<a href="#ref-okawa_sallen_key" role="doc-biblioref">Okawa Electric Design 2026</a>)</span> was utilized to compute a the requires R and C values.</p>
 <p>By setting the targeted performance constraints (<span class="math inline">\(f_{\mathrm{c}} = 10\text{ kHz}\)</span>) and intentionally mapping the capacitor values to align with the OTA’s engineered load limit (<span class="math inline">\(C_{\mathrm{load}} = 1\text{ pF}\)</span>), the network parameters were locked in:</p>
 <ul>
 <li><strong>Input-Assigned Capacitors:</strong> <span class="math inline">\(C_1 = 0.9\text{ pF}\)</span>, <span class="math inline">\(C_2 = 0.4\text{ pF}\)</span></li>
@@ -1600,7 +1600,7 @@ Figure&nbsp;6: 2-Stage OTA AC response.
 <h3 data-number="5.8.2" class="anchored" data-anchor-id="filter-characterization-results"><span class="header-section-number">5.8.2</span> Filter Characterization Results</h3>
 <p>With the synthesized asymmetric resistor network implemented in the Xschem testbench , the active filter architecture functions exactly as intended:</p>
 <ul>
-<li><strong>Frequency Tuning:</strong> The transfer function successfully achieves a stable attenuation slope with the desired <span class="math inline">\(-6\text{ dB}\)</span> cross-over breakpoint localized around <strong><span class="math inline">\(10\text{ kHz}\)</span></strong>.</li>
+<li><strong>Frequency Tuning:</strong> The ac responce successfully achieves a stable attenuation slope with the desired <span class="math inline">\(-6\text{ dB}\)</span> cross-over breakpoint localized around <strong><span class="math inline">\(10\text{ kHz}\)</span></strong>.</li>
 </ul>
 <div class="callout callout-style-default callout-note callout-titled" title="Verification Testbench Workspace">
 <div class="callout-header d-flex align-content-center">
@@ -1612,7 +1612,7 @@ Figure&nbsp;6: 2-Stage OTA AC response.
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>All verification testbenches are localized within the <code>./xschem</code> workspace directory. Each setup used the exact same core <code>ota-2stage.sym</code> symbol, relying on the asymmetric impedance matching profiles calculated from the Okawa-Denshi design tool <span class="citation" data-cites="okawa_sallen_key">(<a href="#ref-okawa_sallen_key" role="doc-biblioref">Okawa Electric Design 2026</a>)</span>:</p>
+<p>All verification testbenches are present in the <code>./xschem</code> workspace directory. Each setup used the exact same core <code>ota-2stage.sym</code> symbol, relying on the asymmetric impedance matching profiles calculated from the Okawa-Denshi design tool <span class="citation" data-cites="okawa_sallen_key">(<a href="#ref-okawa_sallen_key" role="doc-biblioref">Okawa Electric Design 2026</a>)</span>:</p>
 <p><code>ota-2stage_tb-sk-lpf.sch</code>, <code>ota-2stage_tb-sk-hpf.sch</code>, <code>ota-2stage_tb-lr2.sch</code> and <code>ota-2stage_tb-biquad.sch</code></p>
 </div>
 </div>
@@ -1701,7 +1701,7 @@ Figure&nbsp;6: 2-Stage OTA AC response.
 </section>
 <section id="simulation-environment-setup-1" class="level2" data-number="6.2">
 <h2 data-number="6.2" class="anchored" data-anchor-id="simulation-environment-setup-1"><span class="header-section-number">6.2</span> Simulation Environment Setup</h2>
-<p>The core filter design is implemented in testbench schematic using the <code>ota-2stage.sym</code> we made before is present in <code>ota-2stage_tb-sk-LR4.sch</code> which is shown below in figure <a href="#fig-2-stage-LR4-tb" class="quarto-xref">Figure&nbsp;7</a></p>
+<p>The core filter design testbench schematic using the same <code>ota-2stage.sym</code> is present in <code>ota-2stage_tb-sk-LR4.sch</code> which is shown below in figure <a href="#fig-2-stage-LR4-tb" class="quarto-xref">Figure&nbsp;7</a></p>
 <div id="fig-2-stage-LR4-tb" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-2-stage-LR4-tb-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -1741,9 +1741,9 @@ Figure&nbsp;9: 4th-order Linkwitz–Riley crossover filter Phase response
 <h2 data-number="7.1" class="anchored" data-anchor-id="methodology-and-objectives-why-it-is-required"><span class="header-section-number">7.1</span> Methodology and Objectives (Why it is Required)</h2>
 <p>A nominal circuit simulation operating solely at typical-typical (TT) manufacturing process parameters, fixed nominal supply voltages, and a constant room temperature (<span class="math inline">\(27^\circ\text{C}\)</span>) provides an incomplete representation of real-world silicon performance. To guarantee high-yield manufacturability and operational robustness, the design must be validated against random environmental fluctuations and process parameters:</p>
 <ol type="1">
-<li><strong>Environmental and Operational Variations (Voltage and Temperature):</strong> Power supply networks experience dynamic regulation tolerances, and environmental operating temperatures shift based on load and ambient conditions. The circuit must preserve properties across these extreme shifts.</li>
-<li><strong>Systemic Manufacturing Excursions (Process Corners):</strong> Standard wafer fabrication introduces predictable deviations in threshold voltages (<span class="math inline">\(V_{\text{th}}\)</span>), oxide thicknesses (<span class="math inline">\(t_{\text{ox}}\)</span>), and carrier mobilities (<span class="math inline">\(\mu\)</span>). Foundries quantify these boundaries through five discrete device corners: <strong>TT</strong> (Typical-Typical), <strong>SS</strong> (Slow-Slow), <strong>SF</strong> (Slow-Fast), <strong>FS</strong> (Fast-Slow), and <strong>FF</strong> (Fast-Fast).</li>
-<li><strong>Random Local Mismatch (Monte Carlo):</strong> Distinct from macroscopic wafer-to-wafer process variations, adjacent transistors on the same die experience microscopic, localized geometric differences (such as edge roughness or local dopant fluctuations). This mismatch induces random offsets, altering matching-critical parameters like input-pair symmetry, open-loop gain uniformity, and filter pole stability.</li>
+<li><strong>Environmental and Operational Variations (Voltage and Temperature):</strong> Power supply networks experience dynamic regulation tolerances, and environmental operating temperatures shift based on load and ambient conditions. The circuit must preserve properties across these extreme shifts <span class="citation" data-cites="pretl2026">(<a href="#ref-pretl2026" role="doc-biblioref">Pretl et al. 2026</a>)</span>.</li>
+<li><strong>Systemic Manufacturing Excursions (Process Corners):</strong> Standard wafer fabrication introduces predictable deviations in threshold voltages (<span class="math inline">\(V_{\text{th}}\)</span>), oxide thicknesses (<span class="math inline">\(t_{\text{ox}}\)</span>), and carrier mobilities (<span class="math inline">\(\mu\)</span>). Foundries quantify these boundaries through five discrete device corners: <strong>TT</strong> (Typical-Typical), <strong>SS</strong> (Slow-Slow), <strong>SF</strong> (Slow-Fast), <strong>FS</strong> (Fast-Slow), and <strong>FF</strong> (Fast-Fast) <span class="citation" data-cites="pretl2026">(<a href="#ref-pretl2026" role="doc-biblioref">Pretl et al. 2026</a>)</span>.</li>
+<li><strong>Random Local Mismatch (Monte Carlo):</strong> Distinct from macroscopic wafer-to-wafer process variations, adjacent transistors on the same die experience microscopic, localized geometric differences (such as edge roughness or local dopant fluctuations). This mismatch induces random offsets, altering matching-critical parameters like input-pair symmetry, open-loop gain uniformity, and filter pole stability <span class="citation" data-cites="pretl2026">(<a href="#ref-pretl2026" role="doc-biblioref">Pretl et al. 2026</a>)</span>.</li>
 </ol>
 <p>Evaluating every combination of these variables creates a vast, multi-dimensional simulation space that must be systematically evaluated against pass/fail design metrics.</p>
 </section>
@@ -2718,7 +2718,7 @@ Note&nbsp;1: CACE Summary for 2-Stage-OTA and LR4 filter
 <p>Looking at the CACE report in <a href="#nte-2-stage-ota-cace-result" class="quarto-xref">Note&nbsp;1</a>, we see that (luckily) the specification is met for all parameters. This is great news! We now have a design that we carefully simulated across PVT and other corners and that is ready for layout.</p>
 <section id="monte-carlo-simulation-analysis" class="level2" data-number="9.1">
 <h2 data-number="9.1" class="anchored" data-anchor-id="monte-carlo-simulation-analysis"><span class="header-section-number">9.1</span> Monte Carlo Simulation Analysis</h2>
-<p>Looking at the CACE report in <a href="#nte-2-stage-ota-cace-result" class="quarto-xref">Note&nbsp;1</a>, we see that the output voltage specification is not met. We should now go back and change the transistor sizing (increasing <span class="math inline">\(L\)</span> while keeping the <span class="math inline">\(g_m/I_D\)</span> values). Likely we will find that some performance parameters are now deteriorating due to the increased MOSFET dimensions, and we need to iterate until all performance metrics are met in the presence of transistor mismatch.</p>
+<p>Looking at the CACE report in <a href="#nte-2-stage-ota-cace-result" class="quarto-xref">Note&nbsp;1</a>, we see that the output voltage specification is not met. We should now go back and change the transistor sizing (increasing <span class="math inline">\(L\)</span> while keeping the <span class="math inline">\(g_m/I_D\)</span> values). Likely we will find that some performance parameters are now deteriorating due to the increased MOSFET dimensions, and we need to iterate until all performance metrics are met.</p>
 <p>It is not unusual that the power consumption now increases, as we have to increase the size of the MOSFETs for matching, and these larger MOSFETs increase the parasitic capacitances which in turn lead to larger power consumption to keep the required bandwidth by increasing the <span class="math inline">\(g_m\)</span>.</p>
 </section>
 </section>
