@@ -32,280 +32,280 @@
 
 ## gain_vs_temp
 
-![gain_vs_temp](/cace/_docs/ota-2stage/schematic/gain_vs_temp.png)
+![gain_vs_temp](cace/_docs/ota-2stage/schematic/gain_vs_temp.png)
 
 ## gain_vs_vin
 
-![gain_vs_vin](/cace/_docs/ota-2stage/schematic/gain_vs_vin.png)
+![gain_vs_vin](cace/_docs/ota-2stage/schematic/gain_vs_vin.png)
 
 ## gain_vs_vdd
 
-![gain_vs_vdd](/cace/_docs/ota-2stage/schematic/gain_vs_vdd.png)
+![gain_vs_vdd](cace/_docs/ota-2stage/schematic/gain_vs_vdd.png)
 
 ## gain_vs_corner
 
-![gain_vs_corner](/cace/_docs/ota-2stage/schematic/gain_vs_corner.png)
+![gain_vs_corner](cace/_docs/ota-2stage/schematic/gain_vs_corner.png)
 
 ## bw_vs_temp
 
-![bw_vs_temp](/cace/_docs/ota-2stage/schematic/bw_vs_temp.png)
+![bw_vs_temp](cace/_docs/ota-2stage/schematic/bw_vs_temp.png)
 
 ## bw_vs_vin
 
-![bw_vs_vin](/cace/_docs/ota-2stage/schematic/bw_vs_vin.png)
+![bw_vs_vin](cace/_docs/ota-2stage/schematic/bw_vs_vin.png)
 
 ## bw_vs_vdd
 
-![bw_vs_vdd](/cace/_docs/ota-2stage/schematic/bw_vs_vdd.png)
+![bw_vs_vdd](cace/_docs/ota-2stage/schematic/bw_vs_vdd.png)
 
 ## bw_vs_corner
 
-![bw_vs_corner](/cace/_docs/ota-2stage/schematic/bw_vs_corner.png)
+![bw_vs_corner](cace/_docs/ota-2stage/schematic/bw_vs_corner.png)
 
 ## gain_mc
 
-![gain_mc](/cace/_docs/ota-2stage/schematic/gain_mc.png)
+![gain_mc](cace/_docs/ota-2stage/schematic/gain_mc.png)
 
 ## bw_mc
 
-![bw_mc](/cace/_docs/ota-2stage/schematic/bw_mc.png)
+![bw_mc](cace/_docs/ota-2stage/schematic/bw_mc.png)
 
 ## noise_vs_temp
 
-![noise_vs_temp](/cace/_docs/ota-2stage/schematic/noise_vs_temp.png)
+![noise_vs_temp](cace/_docs/ota-2stage/schematic/noise_vs_temp.png)
 
 ## noise_vs_vin
 
-![noise_vs_vin](/cace/_docs/ota-2stage/schematic/noise_vs_vin.png)
+![noise_vs_vin](cace/_docs/ota-2stage/schematic/noise_vs_vin.png)
 
 ## noise_vs_vdd
 
-![noise_vs_vdd](/cace/_docs/ota-2stage/schematic/noise_vs_vdd.png)
+![noise_vs_vdd](cace/_docs/ota-2stage/schematic/noise_vs_vdd.png)
 
 ## noise_vs_corner
 
-![noise_vs_corner](/cace/_docs/ota-2stage/schematic/noise_vs_corner.png)
+![noise_vs_corner](cace/_docs/ota-2stage/schematic/noise_vs_corner.png)
 
 ## settling_vs_temp
 
-![settling_vs_temp](/cace/_docs/ota-2stage/schematic/settling_vs_temp.png)
+![settling_vs_temp](cace/_docs/ota-2stage/schematic/settling_vs_temp.png)
 
 ## settling_vs_vin
 
-![settling_vs_vin](/cace/_docs/ota-2stage/schematic/settling_vs_vin.png)
+![settling_vs_vin](cace/_docs/ota-2stage/schematic/settling_vs_vin.png)
 
 ## settling_vs_vdd
 
-![settling_vs_vdd](/cace/_docs/ota-2stage/schematic/settling_vs_vdd.png)
+![settling_vs_vdd](cace/_docs/ota-2stage/schematic/settling_vs_vdd.png)
 
 ## settling_vs_corner
 
-![settling_vs_corner](/cace/_docs/ota-2stage/schematic/settling_vs_corner.png)
+![settling_vs_corner](cace/_docs/ota-2stage/schematic/settling_vs_corner.png)
 
 ## gain_vs_temp_lpf
 
-![gain_vs_temp_lpf](/cace/_docs/ota-2stage/schematic/gain_vs_temp_lpf.png)
+![gain_vs_temp_lpf](cace/_docs/ota-2stage/schematic/gain_vs_temp_lpf.png)
 
 ## gain_vs_vin_lpf
 
-![gain_vs_vin_lpf](/cace/_docs/ota-2stage/schematic/gain_vs_vin_lpf.png)
+![gain_vs_vin_lpf](cace/_docs/ota-2stage/schematic/gain_vs_vin_lpf.png)
 
 ## gain_vs_vdd_lpf
 
-![gain_vs_vdd_lpf](/cace/_docs/ota-2stage/schematic/gain_vs_vdd_lpf.png)
+![gain_vs_vdd_lpf](cace/_docs/ota-2stage/schematic/gain_vs_vdd_lpf.png)
 
 ## gain_vs_corner_lpf
 
-![gain_vs_corner_lpf](/cace/_docs/ota-2stage/schematic/gain_vs_corner_lpf.png)
+![gain_vs_corner_lpf](cace/_docs/ota-2stage/schematic/gain_vs_corner_lpf.png)
 
 ## fc_vs_temp_lpf
 
-![fc_vs_temp_lpf](/cace/_docs/ota-2stage/schematic/fc_vs_temp_lpf.png)
+![fc_vs_temp_lpf](cace/_docs/ota-2stage/schematic/fc_vs_temp_lpf.png)
 
 ## fc_vs_vin_lpf
 
-![fc_vs_vin_lpf](/cace/_docs/ota-2stage/schematic/fc_vs_vin_lpf.png)
+![fc_vs_vin_lpf](cace/_docs/ota-2stage/schematic/fc_vs_vin_lpf.png)
 
 ## fc_vs_vdd_lpf
 
-![fc_vs_vdd_lpf](/cace/_docs/ota-2stage/schematic/fc_vs_vdd_lpf.png)
+![fc_vs_vdd_lpf](cace/_docs/ota-2stage/schematic/fc_vs_vdd_lpf.png)
 
 ## fc_vs_corner_lpf
 
-![fc_vs_corner_lpf](/cace/_docs/ota-2stage/schematic/fc_vs_corner_lpf.png)
+![fc_vs_corner_lpf](cace/_docs/ota-2stage/schematic/fc_vs_corner_lpf.png)
 
 ## gain_mc_lpf
 
-![gain_mc_lpf](/cace/_docs/ota-2stage/schematic/gain_mc_lpf.png)
+![gain_mc_lpf](cace/_docs/ota-2stage/schematic/gain_mc_lpf.png)
 
 ## fc_mc_lpf
 
-![fc_mc_lpf](/cace/_docs/ota-2stage/schematic/fc_mc_lpf.png)
+![fc_mc_lpf](cace/_docs/ota-2stage/schematic/fc_mc_lpf.png)
 
 ## noise_vs_temp_lpf
 
-![noise_vs_temp_lpf](/cace/_docs/ota-2stage/schematic/noise_vs_temp_lpf.png)
+![noise_vs_temp_lpf](cace/_docs/ota-2stage/schematic/noise_vs_temp_lpf.png)
 
 ## noise_vs_vin_lpf
 
-![noise_vs_vin_lpf](/cace/_docs/ota-2stage/schematic/noise_vs_vin_lpf.png)
+![noise_vs_vin_lpf](cace/_docs/ota-2stage/schematic/noise_vs_vin_lpf.png)
 
 ## noise_vs_vdd_lpf
 
-![noise_vs_vdd_lpf](/cace/_docs/ota-2stage/schematic/noise_vs_vdd_lpf.png)
+![noise_vs_vdd_lpf](cace/_docs/ota-2stage/schematic/noise_vs_vdd_lpf.png)
 
 ## noise_vs_corner_lpf
 
-![noise_vs_corner_lpf](/cace/_docs/ota-2stage/schematic/noise_vs_corner_lpf.png)
+![noise_vs_corner_lpf](cace/_docs/ota-2stage/schematic/noise_vs_corner_lpf.png)
 
 ## settling_vs_temp_lpf
 
-![settling_vs_temp_lpf](/cace/_docs/ota-2stage/schematic/settling_vs_temp_lpf.png)
+![settling_vs_temp_lpf](cace/_docs/ota-2stage/schematic/settling_vs_temp_lpf.png)
 
 ## settling_vs_vin_lpf
 
-![settling_vs_vin_lpf](/cace/_docs/ota-2stage/schematic/settling_vs_vin_lpf.png)
+![settling_vs_vin_lpf](cace/_docs/ota-2stage/schematic/settling_vs_vin_lpf.png)
 
 ## settling_vs_vdd_lpf
 
-![settling_vs_vdd_lpf](/cace/_docs/ota-2stage/schematic/settling_vs_vdd_lpf.png)
+![settling_vs_vdd_lpf](cace/_docs/ota-2stage/schematic/settling_vs_vdd_lpf.png)
 
 ## settling_vs_corner_lpf
 
-![settling_vs_corner_lpf](/cace/_docs/ota-2stage/schematic/settling_vs_corner_lpf.png)
+![settling_vs_corner_lpf](cace/_docs/ota-2stage/schematic/settling_vs_corner_lpf.png)
 
 ## gain_vs_temp_lr4_lpf
 
-![gain_vs_temp_lr4_lpf](/cace/_docs/ota-2stage/schematic/gain_vs_temp_lr4_lpf.png)
+![gain_vs_temp_lr4_lpf](cace/_docs/ota-2stage/schematic/gain_vs_temp_lr4_lpf.png)
 
 ## gain_vs_vin_lr4_lpf
 
-![gain_vs_vin_lr4_lpf](/cace/_docs/ota-2stage/schematic/gain_vs_vin_lr4_lpf.png)
+![gain_vs_vin_lr4_lpf](cace/_docs/ota-2stage/schematic/gain_vs_vin_lr4_lpf.png)
 
 ## gain_vs_vdd_lr4_lpf
 
-![gain_vs_vdd_lr4_lpf](/cace/_docs/ota-2stage/schematic/gain_vs_vdd_lr4_lpf.png)
+![gain_vs_vdd_lr4_lpf](cace/_docs/ota-2stage/schematic/gain_vs_vdd_lr4_lpf.png)
 
 ## gain_vs_corner_lr4_lpf
 
-![gain_vs_corner_lr4_lpf](/cace/_docs/ota-2stage/schematic/gain_vs_corner_lr4_lpf.png)
+![gain_vs_corner_lr4_lpf](cace/_docs/ota-2stage/schematic/gain_vs_corner_lr4_lpf.png)
 
 ## fc_vs_temp_lr4_lpf
 
-![fc_vs_temp_lr4_lpf](/cace/_docs/ota-2stage/schematic/fc_vs_temp_lr4_lpf.png)
+![fc_vs_temp_lr4_lpf](cace/_docs/ota-2stage/schematic/fc_vs_temp_lr4_lpf.png)
 
 ## fc_vs_vin_lr4_lpf
 
-![fc_vs_vin_lr4_lpf](/cace/_docs/ota-2stage/schematic/fc_vs_vin_lr4_lpf.png)
+![fc_vs_vin_lr4_lpf](cace/_docs/ota-2stage/schematic/fc_vs_vin_lr4_lpf.png)
 
 ## fc_vs_vdd_lr4_lpf
 
-![fc_vs_vdd_lr4_lpf](/cace/_docs/ota-2stage/schematic/fc_vs_vdd_lr4_lpf.png)
+![fc_vs_vdd_lr4_lpf](cace/_docs/ota-2stage/schematic/fc_vs_vdd_lr4_lpf.png)
 
 ## fc_vs_corner_lr4_lpf
 
-![fc_vs_corner_lr4_lpf](/cace/_docs/ota-2stage/schematic/fc_vs_corner_lr4_lpf.png)
+![fc_vs_corner_lr4_lpf](cace/_docs/ota-2stage/schematic/fc_vs_corner_lr4_lpf.png)
 
 ## gain_vs_temp_lr4_hpf
 
-![gain_vs_temp_lr4_hpf](/cace/_docs/ota-2stage/schematic/gain_vs_temp_lr4_hpf.png)
+![gain_vs_temp_lr4_hpf](cace/_docs/ota-2stage/schematic/gain_vs_temp_lr4_hpf.png)
 
 ## gain_vs_vin_lr4_hpf
 
-![gain_vs_vin_lr4_hpf](/cace/_docs/ota-2stage/schematic/gain_vs_vin_lr4_hpf.png)
+![gain_vs_vin_lr4_hpf](cace/_docs/ota-2stage/schematic/gain_vs_vin_lr4_hpf.png)
 
 ## gain_vs_vdd_lr4_hpf
 
-![gain_vs_vdd_lr4_hpf](/cace/_docs/ota-2stage/schematic/gain_vs_vdd_lr4_hpf.png)
+![gain_vs_vdd_lr4_hpf](cace/_docs/ota-2stage/schematic/gain_vs_vdd_lr4_hpf.png)
 
 ## gain_vs_corner_lr4_hpf
 
-![gain_vs_corner_lr4_hpf](/cace/_docs/ota-2stage/schematic/gain_vs_corner_lr4_hpf.png)
+![gain_vs_corner_lr4_hpf](cace/_docs/ota-2stage/schematic/gain_vs_corner_lr4_hpf.png)
 
 ## fc_vs_temp_lr4_hpf
 
-![fc_vs_temp_lr4_hpf](/cace/_docs/ota-2stage/schematic/fc_vs_temp_lr4_hpf.png)
+![fc_vs_temp_lr4_hpf](cace/_docs/ota-2stage/schematic/fc_vs_temp_lr4_hpf.png)
 
 ## fc_vs_vin_lr4_hpf
 
-![fc_vs_vin_lr4_hpf](/cace/_docs/ota-2stage/schematic/fc_vs_vin_lr4_hpf.png)
+![fc_vs_vin_lr4_hpf](cace/_docs/ota-2stage/schematic/fc_vs_vin_lr4_hpf.png)
 
 ## fc_vs_vdd_lr4_hpf
 
-![fc_vs_vdd_lr4_hpf](/cace/_docs/ota-2stage/schematic/fc_vs_vdd_lr4_hpf.png)
+![fc_vs_vdd_lr4_hpf](cace/_docs/ota-2stage/schematic/fc_vs_vdd_lr4_hpf.png)
 
 ## fc_vs_corner_lr4_hpf
 
-![fc_vs_corner_lr4_hpf](/cace/_docs/ota-2stage/schematic/fc_vs_corner_lr4_hpf.png)
+![fc_vs_corner_lr4_hpf](cace/_docs/ota-2stage/schematic/fc_vs_corner_lr4_hpf.png)
 
 ## phase_error_vs_temp
 
-![phase_error_vs_temp](/cace/_docs/ota-2stage/schematic/phase_error_vs_temp.png)
+![phase_error_vs_temp](cace/_docs/ota-2stage/schematic/phase_error_vs_temp.png)
 
 ## phase_error_vs_corner
 
-![phase_error_vs_corner](/cace/_docs/ota-2stage/schematic/phase_error_vs_corner.png)
+![phase_error_vs_corner](cace/_docs/ota-2stage/schematic/phase_error_vs_corner.png)
 
 ## noise_vs_temp_lpf
 
-![noise_vs_temp_lpf](/cace/_docs/ota-2stage/schematic/noise_vs_temp_lpf.png)
+![noise_vs_temp_lpf](cace/_docs/ota-2stage/schematic/noise_vs_temp_lpf.png)
 
 ## noise_vs_vin_lpf
 
-![noise_vs_vin_lpf](/cace/_docs/ota-2stage/schematic/noise_vs_vin_lpf.png)
+![noise_vs_vin_lpf](cace/_docs/ota-2stage/schematic/noise_vs_vin_lpf.png)
 
 ## noise_vs_vdd_lpf
 
-![noise_vs_vdd_lpf](/cace/_docs/ota-2stage/schematic/noise_vs_vdd_lpf.png)
+![noise_vs_vdd_lpf](cace/_docs/ota-2stage/schematic/noise_vs_vdd_lpf.png)
 
 ## noise_vs_corner_lpf
 
-![noise_vs_corner_lpf](/cace/_docs/ota-2stage/schematic/noise_vs_corner_lpf.png)
+![noise_vs_corner_lpf](cace/_docs/ota-2stage/schematic/noise_vs_corner_lpf.png)
 
 ## noise_vs_temp_hpf
 
-![noise_vs_temp_hpf](/cace/_docs/ota-2stage/schematic/noise_vs_temp_hpf.png)
+![noise_vs_temp_hpf](cace/_docs/ota-2stage/schematic/noise_vs_temp_hpf.png)
 
 ## noise_vs_vin_hpf
 
-![noise_vs_vin_hpf](/cace/_docs/ota-2stage/schematic/noise_vs_vin_hpf.png)
+![noise_vs_vin_hpf](cace/_docs/ota-2stage/schematic/noise_vs_vin_hpf.png)
 
 ## noise_vs_vdd_hpf
 
-![noise_vs_vdd_hpf](/cace/_docs/ota-2stage/schematic/noise_vs_vdd_hpf.png)
+![noise_vs_vdd_hpf](cace/_docs/ota-2stage/schematic/noise_vs_vdd_hpf.png)
 
 ## noise_vs_corner_hpf
 
-![noise_vs_corner_hpf](/cace/_docs/ota-2stage/schematic/noise_vs_corner_hpf.png)
+![noise_vs_corner_hpf](cace/_docs/ota-2stage/schematic/noise_vs_corner_hpf.png)
 
 ## settling_vs_temp_lr4_lpf
 
-![settling_vs_temp_lr4_lpf](/cace/_docs/ota-2stage/schematic/settling_vs_temp_lr4_lpf.png)
+![settling_vs_temp_lr4_lpf](cace/_docs/ota-2stage/schematic/settling_vs_temp_lr4_lpf.png)
 
 ## settling_vs_vin_lr4_lpf
 
-![settling_vs_vin_lr4_lpf](/cace/_docs/ota-2stage/schematic/settling_vs_vin_lr4_lpf.png)
+![settling_vs_vin_lr4_lpf](cace/_docs/ota-2stage/schematic/settling_vs_vin_lr4_lpf.png)
 
 ## settling_vs_vdd_lr4_lpf
 
-![settling_vs_vdd_lr4_lpf](/cace/_docs/ota-2stage/schematic/settling_vs_vdd_lr4_lpf.png)
+![settling_vs_vdd_lr4_lpf](cace/_docs/ota-2stage/schematic/settling_vs_vdd_lr4_lpf.png)
 
 ## settling_vs_corner_lr4_lpf
 
-![settling_vs_corner_lr4_lpf](/cace/_docs/ota-2stage/schematic/settling_vs_corner_lr4_lpf.png)
+![settling_vs_corner_lr4_lpf](cace/_docs/ota-2stage/schematic/settling_vs_corner_lr4_lpf.png)
 
 ## settling_vs_temp_lr4_hpf
 
-![settling_vs_temp_lr4_hpf](/cace/_docs/ota-2stage/schematic/settling_vs_temp_lr4_hpf.png)
+![settling_vs_temp_lr4_hpf](cace/_docs/ota-2stage/schematic/settling_vs_temp_lr4_hpf.png)
 
 ## settling_vs_vin_lr4_hpf
 
-![settling_vs_vin_lr4_hpf](/cace/_docs/ota-2stage/schematic/settling_vs_vin_lr4_hpf.png)
+![settling_vs_vin_lr4_hpf](cace/_docs/ota-2stage/schematic/settling_vs_vin_lr4_hpf.png)
 
 ## settling_vs_vdd_lr4_hpf
 
-![settling_vs_vdd_lr4_hpf](/cace/_docs/ota-2stage/schematic/settling_vs_vdd_lr4_hpf.png)
+![settling_vs_vdd_lr4_hpf](cace/_docs/ota-2stage/schematic/settling_vs_vdd_lr4_hpf.png)
 
 ## settling_vs_corner_lr4_hpf
 
-![settling_vs_corner_lr4_hpf](/cace/_docs/ota-2stage/schematic/settling_vs_corner_lr4_hpf.png)
+![settling_vs_corner_lr4_hpf](cace/_docs/ota-2stage/schematic/settling_vs_corner_lr4_hpf.png)
