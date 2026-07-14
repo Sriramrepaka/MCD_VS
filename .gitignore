@@ -7,4 +7,4 @@ cace/templates/simulations
 _runs
 
 /.quarto/
-**/*.quarto_ipynb
+
