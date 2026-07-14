@@ -6,7 +6,7 @@ The course makes heavy use of circuit simulation, using [**Xschem**](https://xsc
 
 Tools and PDK are integrated in the [**IIC-OSIC-TOOLS**](https://github.com/iic-jku/IIC-OSIC-TOOLS) Docker image.
 
-All material is made publicly available
+All material is made publicly available, to access a detailed report on the same click [**report**](https://sriramrepaka.github.io/MCD_VS/)
 
 ---
 
