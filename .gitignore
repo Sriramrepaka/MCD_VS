@@ -8,3 +8,5 @@ _runs
 
 /.quarto/
 
+
+**/*.quarto_ipynb
