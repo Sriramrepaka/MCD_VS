@@ -7,6 +7,9 @@ project:
     - "gmid/sizing_2_stage_ota.ipynb"
     - "gmid/techsweep_sg13_plots_nmos.ipynb"
 
+  resources:
+    - "cace/_docs/ota-2stage/schematic/"
+
 website:
   title: 'Design of a 4th Order Hybrid Linkwitz-Riley Crossover Filter'
 
