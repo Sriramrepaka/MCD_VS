@@ -227,18 +227,20 @@ window.Quarto = {
   </ul></li>
   <li><a href="#linkwitzriley-fourth-order-lr4-crossover-filter" id="toc-linkwitzriley-fourth-order-lr4-crossover-filter" class="nav-link" data-scroll-target="#linkwitzriley-fourth-order-lr4-crossover-filter"><span class="header-section-number">6</span> Linkwitz–Riley Fourth-Order (LR4) Crossover Filter</a>
   <ul class="collapse">
-  <li><a href="#component-values-for-the-linkwitzriley-crossover" id="toc-component-values-for-the-linkwitzriley-crossover" class="nav-link" data-scroll-target="#component-values-for-the-linkwitzriley-crossover"><span class="header-section-number">6.0.1</span> Component values for the Linkwitz–Riley crossover</a></li>
-  <li><a href="#simulation-environment-setup-1" id="toc-simulation-environment-setup-1" class="nav-link" data-scroll-target="#simulation-environment-setup-1"><span class="header-section-number">6.0.2</span> Simulation Environment Setup</a></li>
+  <li><a href="#component-values-for-the-linkwitzriley-crossover" id="toc-component-values-for-the-linkwitzriley-crossover" class="nav-link" data-scroll-target="#component-values-for-the-linkwitzriley-crossover"><span class="header-section-number">6.1</span> Component values for the Linkwitz–Riley crossover</a></li>
+  <li><a href="#simulation-environment-setup-1" id="toc-simulation-environment-setup-1" class="nav-link" data-scroll-target="#simulation-environment-setup-1"><span class="header-section-number">6.2</span> Simulation Environment Setup</a></li>
   </ul></li>
   <li><a href="#process-voltage-temperature-pvt-and-monte-carlo-mc-verification" id="toc-process-voltage-temperature-pvt-and-monte-carlo-mc-verification" class="nav-link" data-scroll-target="#process-voltage-temperature-pvt-and-monte-carlo-mc-verification"><span class="header-section-number">7</span> Process, Voltage, Temperature (PVT) and Monte Carlo (MC) Verification</a>
   <ul class="collapse">
-  <li><a href="#methodology-and-objectives-why-it-is-required" id="toc-methodology-and-objectives-why-it-is-required" class="nav-link" data-scroll-target="#methodology-and-objectives-why-it-is-required"><span class="header-section-number">7.0.1</span> Methodology and Objectives (Why it is Required)</a></li>
-  <li><a href="#implementation-framework-how-it-is-executed" id="toc-implementation-framework-how-it-is-executed" class="nav-link" data-scroll-target="#implementation-framework-how-it-is-executed"><span class="header-section-number">7.0.2</span> Implementation Framework (How it is Executed)</a></li>
-  <li><a href="#pvt-simulation-analysis" id="toc-pvt-simulation-analysis" class="nav-link" data-scroll-target="#pvt-simulation-analysis"><span class="header-section-number">8.71.1</span> PVT Simulation Analysis</a></li>
-  <li><a href="#monte-carlo-simulation-analysis" id="toc-monte-carlo-simulation-analysis" class="nav-link" data-scroll-target="#monte-carlo-simulation-analysis"><span class="header-section-number">8.71.2</span> Monte Carlo Simulation Analysis</a></li>
+  <li><a href="#methodology-and-objectives-why-it-is-required" id="toc-methodology-and-objectives-why-it-is-required" class="nav-link" data-scroll-target="#methodology-and-objectives-why-it-is-required"><span class="header-section-number">7.1</span> Methodology and Objectives (Why it is Required)</a></li>
+  <li><a href="#implementation-framework-how-it-is-executed" id="toc-implementation-framework-how-it-is-executed" class="nav-link" data-scroll-target="#implementation-framework-how-it-is-executed"><span class="header-section-number">7.2</span> Implementation Framework (How it is Executed)</a></li>
   </ul></li>
-  <li><a href="#declaration-of-generative-ai-assistance" id="toc-declaration-of-generative-ai-assistance" class="nav-link" data-scroll-target="#declaration-of-generative-ai-assistance"><span class="header-section-number">9</span> Declaration of Generative AI Assistance</a></li>
-  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references"><span class="header-section-number">10</span> References</a></li>
+  <li><a href="#pvt-simulation-analysis" id="toc-pvt-simulation-analysis" class="nav-link" data-scroll-target="#pvt-simulation-analysis"><span class="header-section-number">9</span> PVT Simulation Analysis</a>
+  <ul class="collapse">
+  <li><a href="#monte-carlo-simulation-analysis" id="toc-monte-carlo-simulation-analysis" class="nav-link" data-scroll-target="#monte-carlo-simulation-analysis"><span class="header-section-number">9.1</span> Monte Carlo Simulation Analysis</a></li>
+  </ul></li>
+  <li><a href="#declaration-of-generative-ai-assistance" id="toc-declaration-of-generative-ai-assistance" class="nav-link" data-scroll-target="#declaration-of-generative-ai-assistance"><span class="header-section-number">10</span> Declaration of Generative AI Assistance</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references"><span class="header-section-number">11</span> References</a></li>
   </ul>
 <div class="quarto-alternate-notebooks"><h2>Notebooks</h2><ul><li><a href="gmid\techsweep_sg13_plots_nmos-preview.html"><i class="bi bi-journal-code"></i>MOSFET gm/ID Evaluation Script for IHP SG13G2 NMOS</a></li><li><a href="gmid\sizing_2_stage_ota-preview.html"><i class="bi bi-journal-code"></i>Sizing for a 2 Stage OTA</a></li></ul></div></nav>
     </div>
@@ -1632,8 +1634,8 @@ Figure&nbsp;6: 2-Stage OTA AC response.
 <li>Flat summed response when the low-pass and high-pass outputs are combined</li>
 </ul>
 <p>The component values are again derived from <span class="citation" data-cites="okawa_sallen_key">(<a href="#ref-okawa_sallen_key" role="doc-biblioref">Okawa Electric Design 2026</a>)</span> tool and the values used are shown in the table below.</p>
-<section id="component-values-for-the-linkwitzriley-crossover" class="level3" data-number="6.0.1">
-<h3 data-number="6.0.1" class="anchored" data-anchor-id="component-values-for-the-linkwitzriley-crossover"><span class="header-section-number">6.0.1</span> Component values for the Linkwitz–Riley crossover</h3>
+<section id="component-values-for-the-linkwitzriley-crossover" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="component-values-for-the-linkwitzriley-crossover"><span class="header-section-number">6.1</span> Component values for the Linkwitz–Riley crossover</h2>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 17%">
@@ -1697,8 +1699,8 @@ Figure&nbsp;6: 2-Stage OTA AC response.
 </tbody>
 </table>
 </section>
-<section id="simulation-environment-setup-1" class="level3" data-number="6.0.2">
-<h3 data-number="6.0.2" class="anchored" data-anchor-id="simulation-environment-setup-1"><span class="header-section-number">6.0.2</span> Simulation Environment Setup</h3>
+<section id="simulation-environment-setup-1" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="simulation-environment-setup-1"><span class="header-section-number">6.2</span> Simulation Environment Setup</h2>
 <p>The core filter design is implemented in testbench schematic using the <code>ota-2stage.sym</code> we made before is present in <code>ota-2stage_tb-sk-LR4.sch</code> which is shown below in figure <a href="#fig-2-stage-LR4-tb" class="quarto-xref">Figure&nbsp;7</a></p>
 <div id="fig-2-stage-LR4-tb" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -1735,8 +1737,8 @@ Figure&nbsp;9: 4th-order Linkwitz–Riley crossover filter Phase response
 </section>
 <section id="process-voltage-temperature-pvt-and-monte-carlo-mc-verification" class="level1" data-number="7">
 <h1 data-number="7"><span class="header-section-number">7</span> Process, Voltage, Temperature (PVT) and Monte Carlo (MC) Verification</h1>
-<section id="methodology-and-objectives-why-it-is-required" class="level3" data-number="7.0.1">
-<h3 data-number="7.0.1" class="anchored" data-anchor-id="methodology-and-objectives-why-it-is-required"><span class="header-section-number">7.0.1</span> Methodology and Objectives (Why it is Required)</h3>
+<section id="methodology-and-objectives-why-it-is-required" class="level2" data-number="7.1">
+<h2 data-number="7.1" class="anchored" data-anchor-id="methodology-and-objectives-why-it-is-required"><span class="header-section-number">7.1</span> Methodology and Objectives (Why it is Required)</h2>
 <p>A nominal circuit simulation operating solely at typical-typical (TT) manufacturing process parameters, fixed nominal supply voltages, and a constant room temperature (<span class="math inline">\(27^\circ\text{C}\)</span>) provides an incomplete representation of real-world silicon performance. To guarantee high-yield manufacturability and operational robustness, the design must be validated against random environmental fluctuations and process parameters:</p>
 <ol type="1">
 <li><strong>Environmental and Operational Variations (Voltage and Temperature):</strong> Power supply networks experience dynamic regulation tolerances, and environmental operating temperatures shift based on load and ambient conditions. The circuit must preserve properties across these extreme shifts.</li>
@@ -1745,8 +1747,8 @@ Figure&nbsp;9: 4th-order Linkwitz–Riley crossover filter Phase response
 </ol>
 <p>Evaluating every combination of these variables creates a vast, multi-dimensional simulation space that must be systematically evaluated against pass/fail design metrics.</p>
 </section>
-<section id="implementation-framework-how-it-is-executed" class="level3" data-number="7.0.2">
-<h3 data-number="7.0.2" class="anchored"><span class="header-section-number">7.0.2</span> Implementation Framework (How it is Executed)</h3>
+<section id="implementation-framework-how-it-is-executed" class="level2" data-number="7.2">
+<h2 data-number="7.2" class="anchored" data-anchor-id="implementation-framework-how-it-is-executed"><span class="header-section-number">7.2</span> Implementation Framework (How it is Executed)</h2>
 <p>To efficiently execute this extensive matrix without relying on manual, error-prone testbench modifications, the verification architecture utilizes <strong>CACE (Circuit Automatic Characterization Engine)</strong>.</p>
 <p>CACE acts as an automated simulation runner that structures, parallelizes, and sweeps the design space via a unified, programmatically driven pipeline:</p>
 <div class="callout callout-style-default callout-warning callout-titled" title="Running CACE Simulation">
@@ -2710,18 +2712,18 @@ Note&nbsp;1: CACE Summary for 2-Stage-OTA and LR4 filter
 </div>
 </div>
 </section>
-<section id="pvt-simulation-analysis" class="level3" data-number="8.71.1">
-<h3 data-number="8.71.1" class="anchored" data-anchor-id="pvt-simulation-analysis"><span class="header-section-number">8.71.1</span> PVT Simulation Analysis</h3>
-<p>Looking at the CACE report in <a href="#nte-2-stage-ota-cace-result" class="quarto-xref">Note&nbsp;1</a>, we see that (luckily) the specification is met for all parameters. This is great news! We now have a design that we carefully simulated across PVT and other corners and that is ready for layout.</p>
 </section>
-<section id="monte-carlo-simulation-analysis" class="level3" data-number="8.71.2">
-<h3 data-number="8.71.2" class="anchored" data-anchor-id="monte-carlo-simulation-analysis"><span class="header-section-number">8.71.2</span> Monte Carlo Simulation Analysis</h3>
+<section id="pvt-simulation-analysis" class="level1" data-number="9">
+<h1 data-number="9"><span class="header-section-number">9</span> PVT Simulation Analysis</h1>
+<p>Looking at the CACE report in <a href="#nte-2-stage-ota-cace-result" class="quarto-xref">Note&nbsp;1</a>, we see that (luckily) the specification is met for all parameters. This is great news! We now have a design that we carefully simulated across PVT and other corners and that is ready for layout.</p>
+<section id="monte-carlo-simulation-analysis" class="level2" data-number="9.1">
+<h2 data-number="9.1" class="anchored" data-anchor-id="monte-carlo-simulation-analysis"><span class="header-section-number">9.1</span> Monte Carlo Simulation Analysis</h2>
 <p>Looking at the CACE report in <a href="#nte-2-stage-ota-cace-result" class="quarto-xref">Note&nbsp;1</a>, we see that the output voltage specification is not met. We should now go back and change the transistor sizing (increasing <span class="math inline">\(L\)</span> while keeping the <span class="math inline">\(g_m/I_D\)</span> values). Likely we will find that some performance parameters are now deteriorating due to the increased MOSFET dimensions, and we need to iterate until all performance metrics are met in the presence of transistor mismatch.</p>
 <p>It is not unusual that the power consumption now increases, as we have to increase the size of the MOSFETs for matching, and these larger MOSFETs increase the parasitic capacitances which in turn lead to larger power consumption to keep the required bandwidth by increasing the <span class="math inline">\(g_m\)</span>.</p>
 </section>
 </section>
-<section id="declaration-of-generative-ai-assistance" class="level1" data-number="9">
-<h1 data-number="9"><span class="header-section-number">9</span> Declaration of Generative AI Assistance</h1>
+<section id="declaration-of-generative-ai-assistance" class="level1" data-number="10">
+<h1 data-number="10"><span class="header-section-number">10</span> Declaration of Generative AI Assistance</h1>
 <p>In accordance with academic integrity and transparency guidelines, the following generative AI tools were utilized during the development and documentation of this project:</p>
 <ul>
 <li><strong>NotebookLM (Google):</strong> Employed as an interactive literature-analysis and educational tool to support the conceptual understanding of the two-stage Operational Transconductance Amplifier (OTA) topology and to assist in verifying the mathematical formulations governing transconductance (<span class="math inline">\(g_m\)</span>) Miller capacitance <span class="math inline">\(C_M\)</span> and Null resistor <span class="math inline">\(R_Z\)</span> calculations <span class="citation" data-cites="repakasunkari2026notebooklm">(<a href="#ref-repakasunkari2026notebooklm" role="doc-biblioref">Repaka and Sunkari 2026</a>)</span>.</li>
@@ -2729,14 +2731,14 @@ Note&nbsp;1: CACE Summary for 2-Stage-OTA and LR4 filter
 </ul>
 <p>All primary circuit design, schematics in Xschem, simulation configurations, and engineering decision-making remain the original work of the authors.</p>
 </section>
-<section id="references" class="level1" data-number="10">
+<section id="references" class="level1" data-number="11">
 
 
 
 
 </section>
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">10 References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">11 References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="list">
 <div id="ref-alberto2025miller" class="csl-entry" role="listitem">
 L., Alberto. 2025. <span>“Understanding Miller Compensation: A Guide to Frequency Stability.”</span> Mis Circuitos, July 1. <a href="https://miscircuitos.com/understanding-miller-compensation-a-guide-to-frequency-stability/">https://miscircuitos.com/understanding-miller-compensation-a-guide-to-frequency-stability/</a>.
 </div>
