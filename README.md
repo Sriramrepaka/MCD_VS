@@ -6,6 +6,8 @@ The course makes heavy use of circuit simulation, using [**Xschem**](https://xsc
 
 Tools and PDK are integrated in the [**IIC-OSIC-TOOLS**](https://github.com/iic-jku/IIC-OSIC-TOOLS) Docker image.
 
+This work takes heavy inspiration from [**Analog Circuit Design**](https://iic-jku.github.io/analog-circuit-design/aicd.html) course.
+
 All material is made publicly available, to access a detailed report on the same click [**report**](https://sriramrepaka.github.io/MCD_VS/)
 
 ---
