@@ -181,10 +181,7 @@ window.Quarto = {
   <li><a href="#mathematical-derivation" id="toc-mathematical-derivation" class="nav-link" data-scroll-target="#mathematical-derivation"><span class="header-section-number">4.1.1</span> Mathematical Derivation</a></li>
   <li><a href="#transfer-function-and-filter-theory" id="toc-transfer-function-and-filter-theory" class="nav-link" data-scroll-target="#transfer-function-and-filter-theory"><span class="header-section-number">4.1.2</span> Transfer Function and Filter Theory</a></li>
   </ul></li>
-  <li><a href="#component-selection" id="toc-component-selection" class="nav-link" data-scroll-target="#component-selection"><span class="header-section-number">4.2</span> Component Selection</a>
-  <ul class="collapse">
-  <li><a href="#component-value-verification" id="toc-component-value-verification" class="nav-link" data-scroll-target="#component-value-verification"><span class="header-section-number">4.2.1</span> Component Value Verification</a></li>
-  </ul></li>
+  <li><a href="#component-selection" id="toc-component-selection" class="nav-link" data-scroll-target="#component-selection"><span class="header-section-number">4.2</span> Component Selection</a></li>
   <li><a href="#ltspice-ac-frequency-response" id="toc-ltspice-ac-frequency-response" class="nav-link" data-scroll-target="#ltspice-ac-frequency-response"><span class="header-section-number">4.3</span> LTspice AC Frequency Response</a></li>
   </ul></li>
   <li><a href="#principle-of-operation-the-5-transistor-ota-5t-ota" id="toc-principle-of-operation-the-5-transistor-ota-5t-ota" class="nav-link" data-scroll-target="#principle-of-operation-the-5-transistor-ota-5t-ota"><span class="header-section-number">5</span> Principle of Operation: The 5-Transistor OTA (5T-OTA)</a>
@@ -299,18 +296,18 @@ window.Quarto = {
 </section>
 <section id="introduction" class="level1" data-number="2">
 <h1 data-number="2"><span class="header-section-number">2</span> Introduction</h1>
-<p>Integrated circuits (ICs) have become indispensable in modern electronic systems owing to their compact form factor and reduced power consumption relative to discrete implementations, like PCBs. In this work, we present the design and implementation of a Hybrid Linkwitz-Riley 4 Crossover Filter filter using open-source tools, such as <strong>Xschem</strong>. The following documentation details the methodologies and development steps undertaken throughout the filter’s implementation.</p>
+<p>Integrated circuits (ICs) have become indispensable in modern electronic systems owing to their compact form factor and reduced power consumption relative to discrete implementations, like PCBs. In this work, we present the design and implementation of a Hybrid Linkwitz-Riley 4 Crossover filter using open-source tools, such as <strong>Xschem</strong>. The following documentation details the methodologies and development steps undertaken throughout the filter’s implementation.</p>
 <p>This project is part of the Electronics Engineering (M. Sc.) course <em>“Microelectronic Circuit Design (MCD)”</em> at Hochschule Bremen City University of Applied Sciences (HSB).</p>
 <p>The outcomes of this report and the development methodology used to design the filter will be made publicly available on GitHub. Everyone is welcome to use, modify, and share this work freely. This course and project would not have been possible without the excellent open-source tools created by the dedicated community of layout designers, enthusiasts, and developers. Some of the tools used include iic-osic-tools, IHP Open PDK, Docker, Xschem, ngspice, LTspice, Quarto, Python, and Git for version control.</p>
 </section>
 <section id="filter-specifications" class="level1" data-number="3">
 <h1 data-number="3"><span class="header-section-number">3</span> Filter Specifications</h1>
-<p>The filter consists of four distinct topology types, each realized using operational amplifiers (OpAmps):</p>
+<p>The filter consists of two distinct topology types, each realized using operational amplifiers (OpAmps):</p>
 <ul>
 <li><strong>Low-Pass (LP)</strong></li>
 <li><strong>High-Pass (HP)</strong></li>
 </ul>
-<p>In this project, a fully integrated second-order Hybrid Linkwitz-Riley 4 Crossover Filter is designed, whose key specifications are given in <a href="#tbl-components" class="quarto-xref">Table&nbsp;1</a> :</p>
+<p>In this project, a fully integrated fourth-order Hybrid Linkwitz-Riley Crossover Filter is designed, whose key specifications are given in <a href="#tbl-components" class="quarto-xref">Table&nbsp;1</a> :</p>
 <div id="tbl-components" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-components-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -535,30 +532,8 @@ Table&nbsp;2: Component selection parameters for the active filter stage.
 </figure>
 </div>
 <p>As outlined in <a href="#tbl-componentsxschem" class="quarto-xref">Table&nbsp;2</a>, standard resistor values are selected to match the ideal cutoff thresholds as closely as possible.</p>
-<section id="component-value-verification" class="level3" data-number="4.2.1">
-<h3 data-number="4.2.1" class="anchored" data-anchor-id="component-value-verification"><span class="header-section-number">4.2.1</span> Component Value Verification</h3>
-<p>The component values used in the behavioural model must be verified to ensure that the required crossover frequency of approximately <span class="math inline">\(10\,\text{kHz}\)</span> is obtained. The values initially presented in the component table were:</p>
-<p><span class="math display">\[
-R = 15.8\,\text{k}\Omega
-\]</span></p>
-<p>and</p>
-<p><span class="math display">\[
-C = 10\,\text{nF}.
-\]</span></p>
-<p>For a simple resistor-capacitor network, the characteristic frequency is calculated as:</p>
-<p><span class="math display">\[
-f_c = \frac{1}{2\pi RC}.
-\]</span></p>
-<p>Substituting the stated values gives:</p>
-<p><span class="math display">\[
-f_c =
-\frac{1}
-{2\pi(15.8\times10^3)(10\times10^{-9})}
-\approx 1.01\,\text{kHz}.
-\]</span></p>
-<p>Therefore, these component values do not correspond to the specified crossover frequency of <span class="math inline">\(10\,\text{kHz}\)</span>. The component table should instead contain the actual values used in the LTspice schematic.</p>
-<section id="low-pass-section" class="level4" data-number="4.2.1.1">
-<h4 data-number="4.2.1.1" class="anchored" data-anchor-id="low-pass-section"><span class="header-section-number">4.2.1.1</span> Low-Pass Section</h4>
+<section id="low-pass-section" class="level4" data-number="4.2.0.1">
+<h4 data-number="4.2.0.1" class="anchored" data-anchor-id="low-pass-section"><span class="header-section-number">4.2.0.1</span> Low-Pass Section</h4>
 <p>For the second-order low-pass Sallen–Key stage, the natural frequency is determined using:</p>
 <p><span class="math display">\[
 f_0 =
@@ -621,8 +596,8 @@ Q \approx 0.707.
 Q = \frac{1}{\sqrt{2}} \approx 0.707.
 \]</span></p>
 </section>
-<section id="high-pass-section" class="level4" data-number="4.2.1.2">
-<h4 data-number="4.2.1.2" class="anchored" data-anchor-id="high-pass-section"><span class="header-section-number">4.2.1.2</span> High-Pass Section</h4>
+<section id="high-pass-section" class="level4" data-number="4.2.0.2">
+<h4 data-number="4.2.0.2" class="anchored" data-anchor-id="high-pass-section"><span class="header-section-number">4.2.0.2</span> High-Pass Section</h4>
 <p>For the second-order high-pass stage, the natural frequency is calculated using:</p>
 <p><span class="math display">\[
 f_0 =
@@ -671,7 +646,6 @@ f_0 \approx 10.23\,\text{kHz}
 Q \approx 0.707.
 \]</span></p>
 <p>Therefore, both the low-pass and high-pass stages are designed with approximately the same natural frequency and Butterworth quality factor. Cascading two identical second-order stages in each branch produces the required fourth-order Linkwitz–Riley response.</p>
-</section>
 </section>
 </section>
 <section id="ltspice-ac-frequency-response" class="level2" data-number="4.3">
