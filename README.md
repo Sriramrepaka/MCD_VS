@@ -1,4 +1,4 @@
-# Hybrid Linkwitz-Riley (LR4) Active Crossover filter design using a 2-Stage OTA
+# Design of a Hybrid 4th order Linkwitz-Riley Crossover Filter
 
 This repository contains the complete design, sizing, schematic capture, and automated verification framework for a high-performance **Two-Stage Miller-Compensated Operational Transconductance Amplifier (OTA)**. Optimized using the $g_m/I_D$ methodology, this amplifier serves as the core operational block for an hybrid Linkwitz-Riley 4th-order (LR4) active crossover filter system.
 
